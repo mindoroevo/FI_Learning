@@ -47,6 +47,7 @@ body {
 .topbar-actions {
   display: flex;
   gap: 8px;
+  align-items: center;
 }
 input[type="search"], button {
   border: 1px solid var(--border);
@@ -56,6 +57,20 @@ input[type="search"], button {
   padding: 8px 10px;
 }
 button { cursor: pointer; }
+
+.legal-link {
+  border: 1px solid var(--border);
+  background: var(--panel-2);
+  color: var(--text);
+  border-radius: 8px;
+  padding: 8px 10px;
+  text-decoration: none;
+  line-height: 1;
+}
+
+.legal-link:hover {
+  border-color: var(--accent);
+}
 
 .layout {
   display: grid;
