@@ -1,0 +1,193 @@
+{
+  "meta": {
+    "module": "002",
+    "title": "Bedarfsermittlung & Anforderungsanalyse"
+  },
+  "engine": "mixed",
+  "mcq": [
+    {
+      "id": "2_m_1",
+      "question": "Ein Kunde sagt im Interview: 'Das neue System muss viel schneller sein als das alte.' Wie gehst Du als Anforderungsanalytiker damit um?",
+      "options": [
+        "Ich notiere 'Hohe Performance' als Anforderung.",
+        "Ich frage nach einer konkreten Metrik (z.B. 'Maximale Ladezeit unter 2 Sekunden bei 50 gleichzeitigen Nutzern').",
+        "Ich empfehle pauschal die teuerste Hardware, um auf der sicheren Seite zu sein.",
+        "Ich ignoriere die Aussage, da sie subjektiv ist."
+      ],
+      "correct": [1],
+      "classification": "apply",
+      "explanation": "Subjektive Begriffe wie 'schnell' oder 'benutzerfreundlich' sind im Streitfall juristisch wertlos. Anforderungen müssen **SMART** (Spezifisch, Messbar, Akzeptiert, Realistisch, Terminiert) sein."
+    },
+    {
+      "id": "2_m_2",
+      "question": "Welches Dokument ist rechtlich bindend für die *konkrete Umsetzung* und wird oft Vertragsbestandteil?",
+      "options": [
+        "Das Lastenheft des Auftraggebers",
+        "Das Protokoll des ersten Kennenlern-Meetings",
+        "Das Pflichtenheft des Auftragnehmers",
+        "Die Powerpoint-Präsentation vom Vertrieb"
+      ],
+      "correct": [2],
+      "classification": "legal",
+      "explanation": "Das **Pflichtenheft** beschreibt detailliert, WIE der Auftragnehmer die Wünsche umsetzt. Nach Unterschrift ist es die Basis für die Abnahme und Vergütung. Das Lastenheft ist nur der Wunschzettel."
+    },
+    {
+      "id": "2_m_3",
+      "question": "Was versteht man unter 'Scope Creep' in einem IT-Projekt?",
+      "options": [
+        "Den schleichenden Zuwachs neuer Anforderungen während des Projekts, ohne dass Budget oder Deadline angepasst werden.",
+        "Einen Hardware-Defekt, der sich langsam im Netzwerk ausbreitet.",
+        "Die langsame Einarbeitung neuer Mitarbeiter in das Projektteam.",
+        "Eine spezielle agile Methode zur Projektsteuerung."
+      ],
+      "correct": [0],
+      "classification": "theory",
+      "explanation": "**Scope Creep** (Umfangsschleichung) ist gefährlich: Der Kunde will 'nur noch kurz' ein kleines Feature mehr. Viele kleine 'nur noch kurz' führen oft zum Scheitern von Projekten (Budget/Zeit überschritten)."
+    },
+    {
+      "id": "2_m_4",
+      "question": "Welche Frage eignet sich am besten für ein offenes Interview zur Bedarfsermittlung?",
+      "options": [
+        "Brauchen Sie 16 GB oder 32 GB RAM?",
+        "Wollen Sie Windows 11 nutzen?",
+        "Beschreiben Sie mir bitte einen typischen Arbeitstag und wo aktuell die größten Zeitfresser liegen.",
+        "Ist Ihnen der Preis wichtiger als die Leistung?"
+      ],
+      "correct": [2],
+      "classification": "apply",
+      "explanation": "Offene W-Fragen ('Beschreiben Sie...', 'Wie läuft...') fördern Informationen zutage, an die man als Techniker vielleicht gar nicht gedacht hat (versteckte Anforderungen)."
+    },
+    {
+      "id": "2_m_5",
+      "question": "Nach der MoSCoW-Methode: Was bedeutet die Kategorie 'Won't have'?",
+      "options": [
+        "Die Anforderung wird sofort gelöscht.",
+        "Sie wird dokumentiert, um klarzustellen, dass sie in DIESEM Projekt-Release explizit NICHT umgesetzt wird.",
+        "Sie wird heimlich doch umgesetzt, um den Kunden zu überraschen.",
+        "Sie wird als 'Must have' für das nächste Projekt markiert."
+      ],
+      "correct": [1],
+      "classification": "theory",
+      "explanation": "Die explizite Abgrenzung (Out-of-Scope) ist wichtig für das Erwartungsmanagement. 'Won't' heißt: Wir haben darüber geredet und uns bewusst *dagegen* entschieden (für jetzt)."
+    },
+    {
+      "id": "2_m_6",
+      "question": "Szenario: Der Kunde fordert eine 'kinderleichte Bedienung'. Wie machst du daraus eine SMARTe Anforderung?",
+      "options": [
+        "Das System soll einfach zu bedienen sein.",
+        "Ein durchschnittlicher Nutzer soll ohne Schulung in unter 5 Minuten eine Rechnung erstellen können.",
+        "Die Bedienung muss Spaß machen.",
+        "Es gibt keine Schulung."
+      ],
+      "correct": [1],
+      "classification": "apply",
+      "explanation": "'Kinderleicht' ist subjektiv. 'In unter 5 Minuten ohne Schulung' ist messbar (Zeit messen, Probandentest)."
+    }
+  ],
+  "fill_blank": [
+    {
+      "id": "2_f_1",
+      "text": "Im [blank] (vom Auftraggeber) steht, WAS gefordert ist. Es dient als Anfragegrundlage. Daraufhin erstellt der Auftragnehmer das [blank], in dem steht, WIE er die Anforderungen technisch lösen will. Dieses Dokument wird oft Teil des [blank].",
+      "blanks": [
+        { "index": 0, "correct": "Lastenheft", "options": ["Pflichtenheft", "Lastenheft", "Angebot"] },
+        { "index": 1, "correct": "Pflichtenheft", "options": ["Lastenheft", "Protokoll", "Pflichtenheft"] },
+        { "index": 2, "correct": "Vertrags", "options": ["Brainstormings", "Vertrags", "Marketings"] }
+      ],
+      "explanation": "Die Kette ist strikt: Lastenheft -> Pflichtenheft -> Vertrag. Merkhilfe: Last = Was drückt den Kunden? Pflicht = Was ist meine Pflicht als ITler?"
+    },
+    {
+      "id": "2_f_2",
+      "text": "Um Anforderungen zu priorisieren, nutzt man die [blank]-Methode. Ein Feature, das für die Gesetzeskonformität (z.B. DSGVO) zwingend nötig ist, erhält die Priorität [blank]. Ein Wunsch wie 'Dunkelmodus', der nett wäre aber nicht kritisch ist, ist eher ein [blank].",
+      "blanks": [
+        { "index": 0, "correct": "MoSCoW", "options": ["SMART", "MoSCoW", "Wasserfall"] },
+        { "index": 1, "correct": "Must have", "options": ["Should have", "Could have", "Must have"] },
+        { "index": 2, "correct": "Could have", "options": ["Must have", "Won't have", "Could have"] }
+      ],
+      "explanation": "Gesetzliche Vorgaben sind IMMER 'Must Have' (Projektstopp bei Nichterfüllung). Komfortfunktionen sind oft 'Could Have' (Nice-to-have)."
+    },
+    {
+      "id": "2_f_3",
+      "text": "In einem SMART-Ziel steht das 'T' für [blank]. Ein Beispiel wäre: 'Das System ist bis zum [blank] betriebsbereit zu installieren.'",
+      "blanks": [
+        { "index": 0, "correct": "Terminiert", "options": ["Teuer", "Terminiert", "Total"] },
+        { "index": 1, "correct": "31.12.2024", "options": ["nächstmöglichen", "31.12.2024", "Ende"] }
+      ],
+      "explanation": "Terminiert heißt: Es gibt ein klares Datum. 'Bald' oder 'demnächst' ist nicht terminiert."
+    }
+  ],
+  "match": [
+    {
+      "id": "2_ma_1",
+      "question": "Welcher Stakeholder hat welches primäre Interesse? Ordne zu.",
+      "left": ["Geschäftsführung", "Betriebsrat", "IT-Administrator", "Endanwender"],
+      "right": ["Investitionssicherheit & ROI", "Keine unnötige Mitarbeiterüberwachung", "Wartbarkeit & Sicherheit", "Einfache Bedienbarkeit (Usability)"],
+      "matches": [
+        { "l": 0, "r": 0 },
+        { "l": 1, "r": 1 },
+        { "l": 2, "r": 2 },
+        { "l": 3, "r": 3 }
+      ],
+      "explanation": "Jeder Stakeholder blickt anders auf das System. Der Betriebsrat (Überwachung) und die GF (Kosten) sind oft die härtesten Kritiker."
+    },
+    {
+      "id": "2_ma_2",
+      "question": "Ordne die Qualitätskriterien für Anforderungen zu.",
+      "left": ["Vollständig", "Widerspruchsfrei", "Prüfbar", "Lösungsneutral"],
+      "right": [
+        "Es fehlen keine notwendigen Infos.",
+        "Anforderung A verbietet nicht Anforderung B.",
+        "Man kann objektiv testen, ob sie erfüllt ist.",
+        "Beschreibt das 'Was', nicht das technische 'Wie'."
+      ],
+      "matches": [
+        { "l": 0, "r": 0 },
+        { "l": 1, "r": 1 },
+        { "l": 2, "r": 2 },
+        { "l": 3, "r": 3 }
+      ],
+      "explanation": "Qualitätskriterien verhindern teure Missverständnisse später im Projekt."
+    }
+  ],
+  "order": [
+    {
+      "id": "2_o_1",
+      "question": "Bringe den idealtypischen Ablauf einer IT-Beschaffung in die richtige Reihenfolge.",
+      "items": [
+        "Bedarf entsteht & Ist-Analyse",
+        "Lastenheft erstellen (Kunde)",
+        "Angebote einholen & vergleichen",
+        "Pflichtenheft erstellen (AN) & Vertrag",
+        "Umsetzung / Lieferung",
+        "Abnahmetest & Übergabe"
+      ],
+      "correctOrder": [0, 1, 2, 3, 4, 5],
+      "explanation": "Erst analysieren, dann Wünsche formulieren (Last), dann Partner suchen, dann Lösung fixieren (Pflicht), dann tun, dann prüfen."
+    }
+  ],
+  "true_false": [
+    {
+      "id": "2_tf_1",
+      "statement": "Eine Anforderung 'Das System soll gut aussehen' ist eine valide SMART-Anforderung.",
+      "answer": "false",
+      "explanation": "'Gut aussehen' ist subjektiv und nicht messbar. Besser: 'CI-Farben #123456 nutzen'."
+    },
+    {
+      "id": "2_tf_2",
+      "statement": "Im Lastenheft sollte man bereits festlegen, welche CPU-Marke verbaut wird, auch wenn es technisch egal ist.",
+      "answer": "false",
+      "explanation": "Das Lastenheft sollte 'Lösungsneutral' sein. Wenn Intel oder AMD egal ist, darf man es nicht einschränken (Wettbewerb!)."
+    },
+     {
+      "id": "2_tf_3",
+      "statement": "Die Beobachtung von Arbeitsabläufen (Shadowing) kann Diskrepanzen zwischen 'Wunsch' und 'Realität' aufdecken.",
+      "answer": "true",
+      "explanation": "Nutzer sagen oft A, tun aber B. Zuschauen hilft, den *echten* Bedarf zu erkennen."
+    },
+    {
+      "id": "2_tf_4",
+      "statement": "Funktionale Anforderungen beschreiben, was das System TUN muss (z.B. 'Rechnung drucken').",
+      "answer": "true",
+      "explanation": "Korrekt. Das Gegenteil sind nicht-funktionale Anforderungen (Qualität, Speed, Sicherheit)."
+    }
+  ]
+}

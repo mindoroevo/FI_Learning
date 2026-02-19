@@ -1,0 +1,188 @@
+{
+  "meta": { "module": "001", "title": "Prüfungsrahmen AP1" },
+  "engine": "mixed",
+  "mcq": [
+    {
+      "id": "001-mcq-1",
+      "type": "single",
+      "question": "Was bedeutet AP1?",
+      "options": [
+        "Abschlussprüfung Teil 1",
+        "Arbeitsplatz 1",
+        "Aufgaben Paket 1",
+        "Allgemeine Prüfung 1"
+      ],
+      "answer": 0,
+      "explanation": "AP1 steht für **Abschlussprüfung Teil 1** – der erste Teil der gestreckten Abschlussprüfung für FIAE."
+    },
+    {
+      "id": "001-mcq-2",
+      "type": "multi",
+      "question": "Welche Handlungen gehören zu AP1? (Mehrfachauswahl)",
+      "options": [
+        "Kundenbedarf ermitteln",
+        "Hard-/Software auswählen",
+        "Projektdokumentation erstellen",
+        "Arbeitsplatz konfigurieren und testen",
+        "Nutzer einweisen"
+      ],
+      "answer": [0, 1, 3, 4],
+      "explanation": "Die Projektdokumentation gehört zu AP2. AP1 umfasst: Bedarfsermittlung, Auswahl, Konfiguration/Test, Einweisung und Protokollierung."
+    },
+    {
+      "id": "001-mcq-3",
+      "type": "single",
+      "question": "Welche Antwortarchitektur ist prüfungsstark?",
+      "options": [
+        "Nur technische Fakten nennen",
+        "Entscheidung + Begründung + Nachweis",
+        "Lange Beschreibung ohne Struktur",
+        "Nur Stichworte"
+      ],
+      "answer": 1,
+      "explanation": "Die 3-Schritt-Architektur **Entscheidung → Begründung → Nachweis** maximiert die Punktzahl."
+    }
+  ],
+  "fill_blank": [
+    {
+      "id": "001-fb-1",
+      "text": "AP1 dauert {{0}} Minuten und bewertet nicht nur {{1}}, sondern auch {{2}}.",
+      "blanks": [
+        {
+          "options": ["60", "90", "120", "180"],
+          "correct": "90"
+        },
+        {
+          "options": ["Wissen", "Erfahrung", "Können", "Geschwindigkeit"],
+          "correct": "Wissen"
+        },
+        {
+          "options": ["Kreativität", "Entscheidungen begründen", "Schnelligkeit", "Schönschrift"],
+          "correct": "Entscheidungen begründen"
+        }
+      ],
+      "explanation": "AP1 ist eine **90-minütige** Prüfung, die **Wissen** und die Fähigkeit, **Entscheidungen zu begründen**, bewertet."
+    },
+    {
+      "id": "001-fb-2",
+      "text": "Der Prüfungsbereich lautet: {{0}}. Die Inhalte decken die ersten {{1}} Monate der Ausbildung ab.",
+      "blanks": [
+        {
+          "options": [
+            "Einrichten eines IT-gestützten Arbeitsplatzes",
+            "Softwareentwicklung",
+            "Netzwerkplanung",
+            "Datenbankverwaltung"
+          ],
+          "correct": "Einrichten eines IT-gestützten Arbeitsplatzes"
+        },
+        {
+          "options": ["12", "18", "24", "36"],
+          "correct": "18"
+        }
+      ],
+      "explanation": "Der Prüfungsbereich ist **Einrichten eines IT-gestützten Arbeitsplatzes** (FIAusbV §9), und AP1 deckt die ersten **18 Monate** ab (FIAusbV §8)."
+    }
+  ],
+  "match": [
+    {
+      "id": "001-match-1",
+      "question": "Ordne die Prüfungsschritte den richtigen Phasen zu:",
+      "left": [
+        "Ausgangslage erfassen",
+        "Maßnahme formulieren",
+        "Test definieren",
+        "Übergabe sichern"
+      ],
+      "right": [
+        "Schritt 1: Verstehen",
+        "Schritt 2: Lösen",
+        "Schritt 3: Validieren",
+        "Schritt 4: Dokumentieren"
+      ],
+      "matches": [
+        "Schritt 1: Verstehen",
+        "Schritt 2: Lösen",
+        "Schritt 3: Validieren",
+        "Schritt 4: Dokumentieren"
+      ],
+      "explanation": "Die 4 Phasen: 1) **Verstehen** → 2) **Lösen** → 3) **Validieren** → 4) **Dokumentieren**"
+    },
+    {
+      "id": "001-match-2",
+      "question": "Ordne die Bewertungsdimensionen den richtigen Beschreibungen zu:",
+      "left": [
+        "Fachliche Korrektheit",
+        "Szenariobezug",
+        "Begründungstiefe",
+        "Nachweis-/Dokumentationsfähigkeit"
+      ],
+      "right": [
+        "Technisch richtige Lösung",
+        "Passt zum konkreten Fall",
+        "Warum diese Entscheidung?",
+        "Wie wird es validiert/übergeben?"
+      ],
+      "matches": [
+        "Technisch richtige Lösung",
+        "Passt zum konkreten Fall",
+        "Warum diese Entscheidung?",
+        "Wie wird es validiert/übergeben?"
+      ],
+      "explanation": "AP1 bewertet alle 4 Dimensionen: **Korrektheit, Szenariobezug, Begründung, Nachweis**."
+    }
+  ],
+  "order": [
+    {
+      "id": "001-order-1",
+      "question": "Bringe die Schritte der 6-Schritt-Architektur in die richtige Reihenfolge:",
+      "items": [
+        "Ausgangslage erfassen",
+        "Muss/Kann-Randbedingungen markieren",
+        "Lösungsvorschlag formulieren",
+        "Sicherheits-/Datenschutzaspekte integrieren",
+        "Test-/Qualitätsnachweise definieren",
+        "Protokoll/Abnahme sichern"
+      ],
+      "correctOrder": [1, 2, 3, 4, 5, 6],
+      "explanation": "Die richtige Reihenfolge ist die **6-Schritt-Architektur**: 1→2→3→4→5→6"
+    },
+    {
+      "id": "001-order-2",
+      "question": "Sortiere die Zeitphasen für die 90-Minuten-Prüfung:",
+      "items": [
+        "Qualitätskontrolle (20 Min)",
+        "Überblick verschaffen (10 Min)",
+        "Bearbeitung (60 Min)"
+      ],
+      "correctOrder": [2, 3, 1],
+      "explanation": "Optimale Aufteilung: **1) Lesen/Markieren 10 Min → 2) Bearbeiten 60 Min → 3) Kontrolle 20 Min**"
+    }
+  ],
+  "true_false": [
+    {
+      "id": "001-tf-1",
+      "statement": "Eine technisch korrekte, aber unbegründete Antwort erhält in AP1 volle Punktzahl.",
+      "answer": "false",
+      "explanation": "**Falsch!** AP1 bewertet nicht nur fachliche Korrektheit, sondern auch die **Begründungstiefe**. Eine unbegründete Antwort verliert Punkte."
+    },
+    {
+      "id": "001-tf-2",
+      "statement": "Die Prüfungszeit von 90 Minuten sollte aufgeteilt werden: 10 Min Lesen, 60 Min Bearbeiten, 20 Min Kontrolle.",
+      "answer": "true",
+      "explanation": "**Richtig!** Diese Zeitaufteilung ist die empfohlene Strategie für AP1."
+    },
+    {
+      "id": "001-tf-3",
+      "statement": "AP1 deckt die Inhalte der gesamten Ausbildung ab.",
+      "answer": "false",
+      "explanation": "**Falsch!** AP1 deckt nur die Inhalte der **ersten 18 Monate** plus passenden Berufsschulstoff ab (FIAusbV §8)."
+    },
+    {
+      "id": "001-tf-4",
+      "statement": "Die 5 Handlungen in AP1 sind: Bedarfsermittlung, Auswahl, Konfiguration/Test, Einweisung und Kontrolle/Protokollierung.",
+      "answer": "true",
+      "explanation": "**Richtig!** Diese 5 Handlungen bilden das Prüfungsgerüst von AP1."
+    }
+  ]
+}

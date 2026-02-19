@@ -1,0 +1,192 @@
+{
+  "meta": {
+    "module": "005",
+    "title": "Netzwerkgrundlagen: OSI, Hardware & Protokolle (Expert)"
+  },
+  "engine": "mixed",
+  "mcq": [
+    {
+      "id": "5_m_1",
+      "question": "Welches Protokoll bildet den '3-Way-Handshake' und wie läuft er ab?",
+      "options": [
+        "TCP: SYN -> SYN-ACK -> ACK",
+        "UDP: SYN -> ACK -> FIN",
+        "TCP: HELLO -> WELCOME -> DATA",
+        "IP: PING -> PONG -> ACK"
+      ],
+      "correct": [0],
+      "explanation": "TCP ist verbindungsorientiert. Der Aufbau erfolgt über SYN (Synchronize), SYN-ACK (Bestätigung + eigener SYN) und ACK (Bestätigung)."
+    },
+    {
+      "id": "5_m_2",
+      "question": "Auf welcher Schicht arbeitet ein Router und welche PDU (Protocol Data Unit) verarbeitet er?",
+      "options": [
+        "Layer 2 (Sicherung) - Frames",
+        "Layer 3 (Vermittlung) - Pakete",
+        "Layer 3 (Vermittlung) - Segmente",
+        "Layer 4 (Transport) - Datagramme"
+      ],
+      "correct": [1],
+      "explanation": "Router arbeiten auf Schicht 3 (Network Layer) und routen 'IP-Pakete'. Segmente gehören zu Layer 4 (TCP/UDP), Frames zu Layer 2 (Ethernet)."
+    },
+    {
+      "id": "5_m_3",
+      "question": "Welche Aussage zu Kollisionsdomänen ist korrekt?",
+      "options": [
+        "Jeder Port an einem Switch ist eine eigene Kollisionsdomäne.",
+        "Ein Hub trennt Kollisionsdomänen.",
+        "Ein ganzes Netzwerk ist immer genau eine Kollisionsdomäne.",
+        "Router leiten Kollisionen weiter."
+      ],
+      "correct": [0],
+      "explanation": "Ein Switch verhindert Kollisionen durch eingebaute Puffer und Vollduplex. Jeder Port ist isoliert. Ein Hub hingegen bildet eine riesige Kollisionsdomäne."
+    },
+    {
+      "id": "5_m_4",
+      "question": "Wofür steht das CIDR-Kürzel /27 bei einer Subnetzmaske?",
+      "options": [
+        "255.255.255.0",
+        "255.255.255.128",
+        "255.255.255.192",
+        "255.255.255.224"
+      ],
+      "correct": [3],
+      "explanation": "/24 = .0; /25 = .128; /26 = .192; /27 = .224. (3 Bits im letzten Oktett gesetzt: 128+64+32 = 224)."
+    },
+    {
+      "id": "5_m_5",
+      "question": "Du hast die IP 192.168.10.10 und die Subnetzmaske 255.255.255.192 (/26). In welchem Subnetz befindet sich der Host?",
+      "options": [
+        "192.168.10.0 - 192.168.10.63",
+        "192.168.10.0 - 192.168.10.127",
+        "192.168.10.64 - 192.168.10.127",
+        "192.168.100.0 - 192.168.100.255"
+      ],
+      "correct": [0],
+      "explanation": "Bei /26 ist die 'Magic Number' 64 (256-192). Die Netze sind: .0, .64, .128, .192. Die IP .10 liegt im ersten Bereich (0-63)."
+    },
+    {
+      "id": "5_m_6",
+      "question": "Ein PC hat die IP 169.254.10.5. Er kommt nicht ins Internet. Was ist das Problem?",
+      "options": [
+        "Das Gateway ist falsch konfiguriert.",
+        "Der DHCP-Server ist nicht erreichbar (APIPA).",
+        "Die DNS-Adresse fehlt.",
+        "Das Kabel ist Cat 5e statt Cat 7."
+      ],
+      "correct": [1],
+      "explanation": "169.254.x.x ist eine APIPA-Adresse (Automatic Private IP Addressing). Windows vergibt sich diese selbst, wenn kein DHCP-Server antwortet."
+    },
+    {
+      "id": "5_m_7",
+      "question": "Ein Switch soll physikalisch 3 Abteilungen trennen, aber es steht nur ein Gerät zur Verfügung. Welche Technik nutzt du?",
+      "options": [
+        "VLAN (Virtual LAN) mit 802.1Q Tagging",
+        "VPN (Virtual Private Network)",
+        "NAT (Network Address Translation)",
+        "Spanning Tree Protocol"
+      ],
+      "correct": [0],
+      "explanation": "VLANs teilen einen physischen Switch in mehrere logische Netze und trennen so Broadcast-Domänen."
+    },
+    {
+      "id": "5_m_8",
+      "question": "Welche Binärdarstellung entspricht der Dezimalzahl 192?",
+      "options": [
+        "11000000",
+        "10000000",
+        "10101010",
+        "11100000"
+      ],
+      "correct": [0],
+      "explanation": "128 + 64 = 192. Die ersten beiden Bits sind 1, der Rest 0."
+    }
+  ],
+  "fill_blank": [
+    {
+      "id": "5_f_1",
+      "text": "Für verschlüsselte Webseiten (HTTPS) wird standardmäßig Port [blank] verwendet. Der unverschlüsselte Vorgänger (HTTP) nutzt Port [blank]. SSH läuft auf Port [blank].",
+      "blanks": [
+        { "index": 0, "correct": "443", "options": ["80", "443", "8080"] },
+        { "index": 1, "correct": "80", "options": ["21", "80", "25"] },
+        { "index": 2, "correct": "22", "options": ["22", "23", "3389"] }
+      ],
+      "explanation": "443=HTTPS, 80=HTTP, 22=SSH. Diese Ports muss jeder ITler auswendig kennen."
+    },
+    {
+      "id": "5_f_3",
+      "text": "Szenario: Gegeben ist das Netz 10.0.0.0/24. Wir brauchen 4 Subnetze. Wir borgen uns [blank] Bits vom Hostanteil. Die neue Subnetzmaske ist /[blank] oder dezimal 255.255.255.[blank].",
+      "blanks": [
+        { "index": 0, "correct": "2", "options": ["1", "2", "3"] },
+        { "index": 1, "correct": "26", "options": ["25", "26", "27"] },
+        { "index": 2, "correct": "192", "options": ["128", "192", "224"] }
+      ],
+      "explanation": "Um 4 Netze zu bilden, brauchen wir 2 Bits (2^2 = 4). Alte Maske /24 + 2 = /26. Dezimal: 128+64 = 192."
+    },
+    {
+      "id": "5_f_2",
+      "text": "Eine MAC-Adresse ist [blank] Bit lang, eine IPv4-Adresse ist [blank] Bit lang und eine IPv6-Adresse ist [blank] Bit lang.",
+      "blanks": [
+        { "index": 0, "correct": "48", "options": ["32", "48", "64"] },
+        { "index": 1, "correct": "32", "options": ["32", "64", "128"] },
+        { "index": 2, "correct": "128", "options": ["64", "128", "256"] }
+      ]
+    }
+  ],
+  "match": [
+    {
+      "id": "5_ma_1",
+      "question": "Ordne die Kabeltypen ihrer maximalen Frequenz/Leistung zu.",
+      "left": ["Cat 5e", "Cat 6A", "Cat 7", "LWL Singlemode"],
+      "right": ["1 Gbit/s", "10 Gbit/s (500 MHz)", "10 Gbit/s (600+ MHz)", "Tbit/s über Kilometer"],
+      "matches": [
+        { "l": 0, "r": 0 },
+        { "l": 1, "r": 1 },
+        { "l": 2, "r": 2 },
+        { "l": 3, "r": 3 }
+      ],
+      "explanation": "Cat 5e ist Gigabit-Standard. Cat 6A/7 für 10G. LWL ist konkurrenzlos bei der Reichweite."
+    },
+    {
+      "id": "5_ma_2",
+      "question": "Welches Protokoll gehört zu welcher Schicht?",
+      "left": ["ICMP", "TCP", "HTTP", "Ethernet"],
+      "right": ["Layer 3 (Network)", "Layer 4 (Transport)", "Layer 7 (Application)", "Layer 2 (Data Link)"],
+      "matches": [
+        { "l": 0, "r": 0 },
+        { "l": 1, "r": 1 },
+        { "l": 2, "r": 2 },
+        { "l": 3, "r": 3 }
+      ]
+    }
+  ],
+  "order": [
+    {
+      "id": "5_o_1",
+      "question": "Bringe die Schritte der Datenkapselung (Sender) in die richtige Reihenfolge (Layer 7 -> 1).",
+      "items": [
+        "Daten (Layer 5-7)",
+        "Segment (Layer 4 - TCP Header)",
+        "Paket (Layer 3 - IP Header)",
+        "Frame (Layer 2 - MAC Header & Trailer)",
+        "Bits (Layer 1)"
+      ],
+      "correctOrder": [0, 1, 2, 3, 4],
+      "explanation": "Beim Senden werden Daten verpackt: Erst TCP-Header, dann IP-Header, dann Ethernet-Frame, schließlich physikalische Bits."
+    }
+  ],
+  "true_false": [
+    {
+      "id": "5_tf_1",
+      "statement": "Private IP-Adressen (z.B. 192.168.0.1) werden im Internet nicht geroutet und benötigen NAT.",
+      "answer": "true",
+      "explanation": "Richtig. Router im Internet verwerfen Pakete mit privaten Absender-IPs (RFC 1918). NAT übersetzt sie."
+    },
+    {
+      "id": "5_tf_2",
+      "statement": "Ein 'Full Mesh' (Vollvermaschung) ist die kostengünstigste Netzwerk-Topologie.",
+      "answer": "false",
+      "explanation": "Falsch! Sie ist die teuerste, da jeder mit jedem verbunden sein muss (n*(n-1)/2 Kabel)."
+    }
+  ]
+}

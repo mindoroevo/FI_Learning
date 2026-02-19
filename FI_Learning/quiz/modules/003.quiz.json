@@ -1,0 +1,166 @@
+{
+  "meta": {
+    "module": "003",
+    "title": "Hardware-Auswahl & Konfiguration"
+  },
+  "engine": "mixed",
+  "mcq": [
+    {
+      "id": "3_m_1",
+      "question": "Ein Server für eine Datenbankanwendung hat eine CPU-Auslastung von nur 20%, aber die Nutzer beschweren sich über massive Wartezeiten bei Abfragen. Die Disk-Queue-Length ist permanent hoch. Was ist das wahrscheinlichste Problem?",
+      "options": [
+        "Die CPU ist zu schwach für die Datenbank.",
+        "Ein I/O-Bottleneck (Flaschenhals) beim Speichersystem.",
+        "Zu wenig RAM, das System swappt (lagert aus).",
+        "Die Netzwerkkarte ist defekt."
+      ],
+      "correct": [1, 2],
+      "classification": "diagnosis",
+      "explanation": "Wenn die CPU sich langweilt, wartet sie auf Daten. Hohe Disk-Queue -> Festplatten kommen nicht hinterher (I/O Wait). Zu wenig RAM führt zu Swapping auf die (langsame) Disk, was ebenfalls wie ein Disk-Problem aussieht."
+    },
+    {
+      "id": "3_m_2",
+      "question": "Warum ist der L1-Cache einer CPU so viel kleiner als der L3-Cache?",
+      "options": [
+        "Weil schneller Speicher extrem teuer und physikalisch groß auf dem Chip ist (SRAM vs DRAM).",
+        "Weil die CPU sonst überhitzen würde.",
+        "Damit Intel/AMD mehr CPUs verkaufen können.",
+        "Der L1-Cache muss mit dem Takt der CPU mithalten (Latenz < 1ns), was bei großen Speichermengen physikalisch unmöglich wird (Signallaufzeiten)."
+      ],
+      "correct": [0, 3],
+      "classification": "theory",
+      "explanation": "L1 ist der schnellste, teuerste Speicher direkt am Kern. Die Physik (Lichtgeschwindigkeit/Signallaufzeit) begrenzt die Größe, da Daten in einem Taktzyklus da sein müssen."
+    },
+    {
+      "id": "3_m_3",
+      "question": "Ein Kunde möchte eine Workstation für 4K-Videoschnitt. Welche Komponente ist am kritischsten für das 'Schrubben' (schnelles Durchscrollen) in der Timeline?",
+      "options": [
+        "Eine High-End Soundkarte.",
+        "Viel RAM und eine sehr schnelle NVMe-SSD (hohe sequenzielle Leseraten).",
+        "Ein 64-Kern Server-Prozessor.",
+        "Eine mechanische 10 TB HDD für das Archiv."
+      ],
+      "correct": [1],
+      "classification": "apply",
+      "explanation": "Beim Timeline-Scrubbing müssen riesige Datenmengen in Echtzeit in den RAM geladen werden. Eine HDD schafft das nicht (Ruckeln). CPU-Kerne helfen beim Rendern, aber RAM/SSD beim Arbeiten."
+    },
+    {
+      "id": "3_m_4",
+      "question": "Was unterscheidet ECC-RAM von normalem Desktop-RAM?",
+      "options": [
+        "Er ist doppelt so schnell.",
+        "Er hat einen zusätzlichen Chip für Paritätsbits/Fehlerkorrektur.",
+        "Er leuchtet bunt (RGB).",
+        "Er passt in jeden Laptop."
+      ],
+      "correct": [1],
+      "classification": "tech",
+      "explanation": "ECC (Error Correcting Code) erkennt und korrigiert Bit-Kipper (z.B. durch kosmische Strahlung). Essenziell für Server/Workstations, wo Datenintegrität wichtiger ist als der letzte Frame beim Gaming."
+    },
+    {
+      "id": "3_m_5",
+      "question": "Welche Aussage zu PCIe-Lanes ist KORREKT?",
+      "options": [
+        "Jedes Gerät bekommt immer 16 Lanes.",
+        "Die Anzahl der Lanes bestimmt die maximale Datenübertragungsrate (Bandbreite) der Verbindung.",
+        "PCIe 4.0 x1 ist schneller als PCIe 3.0 x16.",
+        "Lanes werden dynamisch per Software verteilt."
+      ],
+      "correct": [1],
+      "classification": "theory",
+      "explanation": "Eine Lane ist eine Datenautobahn-Spur. x16 = 16 Spuren. PCIe 4.0 ist pro Spur doppelt so schnell wie 3.0, aber x1 (4.0) ist immer noch langsamer als x16 (3.0)."
+    }
+  ],
+  "fill_blank": [
+    {
+      "id": "3_f_1",
+      "text": "Die [blank] ist die zentrale Recheneinheit. Sie holt sich Befehle aus dem [blank]. Wenn dieser voll ist, wird auf die [blank] ausgelagert, was das System drastisch verlangsamt.",
+      "blanks": [
+        { "index": 0, "correct": "CPU", "options": ["CPU", "GPU", "PSU"] },
+        { "index": 1, "correct": "RAM", "options": ["Cache", "RAM", "BIOS"] },
+        { "index": 2, "correct": "Festplatte", "options": ["Festplatte", "Cloud", "DMA"] }
+      ],
+      "explanation": "Die Speicherhierarchie ist essenziell: CPU Register > Cache > RAM > SSD > HDD > Tape/Cloud. Je weiter weg von der CPU, desto langsamer."
+    },
+    {
+      "id": "3_f_2",
+      "text": "Für Virtualisierung ist es wichtig, dass die CPU [blank]-Erweiterungen (z.B. VT-x / AMD-V) unterstützt. Außerdem benötigt jeder virtuelle Maschine ihren eigenen virtuellen [blank], der vom physischen Host abgezwackt wird.",
+      "blanks": [
+        { "index": 0, "correct": "Hardware", "options": ["Software", "Hardware", "Netzwerk"] },
+        { "index": 1, "correct": "Arbeitsspeicher", "options": ["Grafikchip", "Arbeitsspeicher", "Kühler"] }
+      ],
+      "explanation": "Ohne Hardware-Virtualisierung wäre VM-Betrieb extrem langsam (Software-Emulation). RAM ist oft der begrenzende Faktor bei vielen VMs auf einem Host."
+    }
+  ],
+  "match": [
+    {
+      "id": "3_ma_1",
+      "question": "Ordne die Schnittstelle ihrer typischen Brutto-Datenrate zu (Stand ca. 2024 verbreitet).",
+      "left": ["USB 2.0", "Gigabit Ethernet", "SATA III (SSD)", "PCIe 4.0 x4 (NVMe)"],
+      "right": ["480 Mbit/s", "1000 Mbit/s (1 Gbit/s)", "6 Gbit/s (~600 MB/s)", "~64 Gbit/s (~7-8 GB/s)"],
+      "matches": [
+        { "l": 0, "r": 0 },
+        { "l": 1, "r": 1 },
+        { "l": 2, "r": 2 },
+        { "l": 3, "r": 3 }
+      ],
+      "explanation": "NVMe (PCIe) ist um Faktoren schneller als SATA. USB 2.0 ist heute nur noch für Maus/Tastatur tauglich."
+    },
+    {
+      "id": "3_ma_2",
+      "question": "Welche Kühllösung passt zu welchem Szenario?",
+      "left": ["Passivkühlkörper", "Luftkühler (Aktiv)", "AiO Wasserkühlung", "Custom Loop Wakü"],
+      "right": ["Lautloser Office-PC (wenig Last)", "Standard Gaming/Workstation", "High-End CPU, Platzmangel am Sockel", "Enthusiast/Server mit extremer Abwärme"],
+      "matches": [
+        { "l": 0, "r": 0 },
+        { "l": 1, "r": 1 },
+        { "l": 2, "r": 2 },
+        { "l": 3, "r": 3 }
+      ],
+      "explanation": "Passiv = 0dB aber wenig Leistung. Luft = Standard. Wasser = Teuer, aber transportiert Wärme besser weg."
+    }
+  ],
+  "order": [
+    {
+      "id": "3_o_1",
+      "question": "Sortiere die Speicherarten nach ihrer Zugriffsgeschwindigkeit (Schnellste zuerst!).",
+      "items": [
+        "CPU Register",
+        "L1 Cache",
+        "L3 Cache",
+        "DDR5 RAM",
+        "NVMe SSD",
+        "SATA SSD",
+        "Mechanische HDD"
+      ],
+      "correctOrder": [0, 1, 2, 3, 4, 5, 6],
+      "explanation": "Die wichtigste Pyramide der Informatik. Register (schnell, winzig) -> HDD (langsam, riesig)."
+    }
+  ],
+  "true_false": [
+    {
+      "id": "3_tf_1",
+      "statement": "Mehr CPU-Kerne bedeuten automatisch, dass jedes Programm schneller läuft.",
+      "answer": "false",
+      "explanation": "Falsch! Viele Programme nutzen nur einen Kern (Single-Threaded). Mehr Kerne helfen nur bei Parallelisierung (Multitasking, Rendering)."
+    },
+    {
+      "id": "3_tf_2",
+      "statement": "Ein 32-Bit Betriebssystem kann maximal 4 GB RAM adressieren.",
+      "answer": "true",
+      "explanation": "2^32 Adressen = 4.294.967.296 Byte = 4 GB. Davon geht noch Speicher für Hardware-Mapping ab."
+    },
+    {
+      "id": "3_tf_3",
+      "statement": "SSDs sollten regelmäßig defragmentiert werden, um schnell zu bleiben.",
+      "answer": "false",
+      "explanation": "Tödlich für SSDs! Defrag erzeugt unnötige Schreibzyklen (Verschleiß). SSDs haben keine Suchzeiten wie HDDs, Fragmentierung ist fast egal. TRIM ist der richtige Befehl."
+    },
+     {
+      "id": "3_tf_4",
+      "statement": "Der Formfaktor M.2 sagt automatisch aus, dass die SSD sehr schnell ist (NVMe).",
+      "answer": "false",
+      "explanation": "M.2 ist nur der Stecker! Es gibt M.2 SATA (langsam) und M.2 NVMe (schnell). Vorsicht beim Kauf!"
+    }
+  ]
+}

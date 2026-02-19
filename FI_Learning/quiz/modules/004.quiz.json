@@ -1,0 +1,146 @@
+{
+  "meta": {
+    "module": "004",
+    "title": "Betriebssysteme, Benutzer & Rechte"
+  },
+  "engine": "mixed",
+  "mcq": [
+    {
+      "id": "4_m_1",
+      "question": "Welche der folgenden Dateien eignet sich NICHT als Dateisystem für eine 8 GB große Videodatei?",
+      "options": [
+        "NTFS",
+        "FAT32",
+        "exFAT",
+        "EXT4"
+      ],
+      "correct": [1],
+      "explanation": "FAT32 hat ein hartes Limit von **4 GB** pro Datei. Größere Dateien (wie HD-Videos) können nicht gespeichert werden, selbst wenn die Festplatte noch Platz hat."
+    },
+    {
+      "id": "4_m_2",
+      "question": "Was bedeutet 'Journaling' bei einem Dateisystem (z.B. EXT4, NTFS)?",
+      "options": [
+        "Es speichert Änderungen in einem Protokoll (Journal), bevor sie dauerhaft geschrieben werden, um Inkonsistenzen nach einem Absturz zu verhindern.",
+        "Es verschlüsselt alle Dateien automatisch.",
+        "Es sortiert Dateien nach dem Datum.",
+        "Es ist ein Editor für Tagebucheinträge."
+      ],
+      "correct": [0],
+      "explanation": "Journaling verhindert Datenverlust bei Stromausfall. Nach dem Neustart muss das OS nicht die ganze Platte scannen (fsck/chkdsk), sondern nur das Journal prüfen."
+    },
+    {
+      "id": "4_m_3",
+      "question": "Welches Recht wird durch den Oktalwert 5 dargestellt?",
+      "options": [
+        "Lesen & Schreiben (rw-)",
+        "Schreiben & Ausführen (-wx)",
+        "Lesen & Ausführen (r-x)",
+        "Nur Lesen (r--)"
+      ],
+      "correct": [2],
+      "explanation": "r=4, w=2, x=1. 5 ist 4+1 -> Lesen (Read) + Ausführen (Execute)."
+    },
+    {
+      "id": "4_m_5",
+      "question": "Wozu dient das 'Sticky Bit' bei Verzeichnissen (z.B. /tmp)?",
+      "options": [
+        "Es verhindert, dass Benutzer Dateien anderer Benutzer löschen, auch wenn sie Schreibrechte im Ordner haben.",
+        "Es sorgt dafür, dass Dateien im RAM bleiben ('kleben').",
+        "Es erlaubt jedem, alles zu löschen.",
+        "Es ist ein Virus."
+      ],
+      "correct": [0],
+      "explanation": "Ohne Sticky Bit dürfte jeder, der im Ordner schreiben darf (z.B. User A), auch Dateien von User B löschen. Das Sticky Bit (t) verhindert das."
+    },
+    {
+      "id": "4_m_4",
+      "question": "Was ist der Unterschied zwischen Kernel und Shell?",
+      "options": [
+        "Der Kernel ist die Hardware, die Shell die Software.",
+        "Der Kernel verwaltet die Ressourcen direkt, die Shell nimmt Benutzereingaben entgegen.",
+        "Die Shell ist schneller als der Kernel.",
+        "Nur Windows hat einen Kernel, Linux hat nur eine Shell."
+      ],
+      "correct": [1],
+      "explanation": "Der Kernel läuft abgeschirmt (Ring 0). Die Shell (bash, Explorer, cmd) ist nur ein Programm, das dem Kernel sagt, was er tun soll."
+    }
+  ],
+  "fill_blank": [
+    {
+      "id": "4_f_1",
+      "text": "Um einer Datei volle Rechte für den Besitzer, aber nur Leserechte für alle anderen zu geben, nutze ich den Befehl [blank]. Der Besitzer hat dann rwx (4+2+1=[blank]), die Gruppe r-- (4) und Andere r-- (4).",
+      "blanks": [
+        { "index": 0, "correct": "chmod 744", "options": ["chmod 777", "chmod 744", "chown user"] },
+        { "index": 1, "correct": "7", "options": ["6", "7", "5"] }
+      ],
+      "explanation": "7 (Besitzer) = rwx. 4 (Gruppe) = r--. 4 (Other) = r--. Zusammen: chmod 744."
+    },
+    {
+      "id": "4_f_2",
+      "text": "Der Befehl [blank] ändert den Eigentümer einer Datei. Um Befehle mit Administrator-Rechten auszuführen, stellt man oft [blank] voran.",
+      "blanks": [
+        { "index": 0, "correct": "chown", "options": ["chmod", "chown", "ls"] },
+        { "index": 1, "correct": "sudo", "options": ["admin", "root", "sudo"] }
+      ]
+    }
+  ],
+  "match": [
+    {
+      "id": "4_ma_1",
+      "question": "Ordne die Konzepte ihren Aufgaben zu.",
+      "left": ["Scheduler", "Treiber", "Dateisystem", "Virtual Memory"],
+      "right": ["Prozess-Reihenfolge bestimmen", "Hardware ansprechen", "Daten strukturieren", "RAM erweitern (Swap)"],
+      "matches": [
+        { "l": 0, "r": 0 },
+        { "l": 1, "r": 1 },
+        { "l": 2, "r": 2 },
+        { "l": 3, "r": 3 }
+      ],
+      "explanation": "Der Scheduler entscheidet, wer CPU-Zeit bekommt. Treiber übersetzen OS-Befehle für Hardware. Virtual Memory nutzt die Festplatte als langsamen RAM-Ersatz."
+    },
+    {
+      "id": "4_ma_2",
+      "question": "Ordne die Rechte-Kürzel den Aktionen zu.",
+      "left": ["r--", "-w-", "--x", "rw-"],
+      "right": ["Nur ansehen", "Nur ändern/löschen", "Nur ausführen", "Lesen und Ändern"],
+      "matches": [
+        { "l": 0, "r": 0 },
+        { "l": 1, "r": 1 },
+        { "l": 2, "r": 2 },
+        { "l": 3, "r": 3 }
+      ]
+    }
+  ],
+  "order": [
+    {
+      "id": "4_o_1",
+      "question": "Bringe die Rechte in aufsteigende Reihenfolge (wenigste Rechte zuerst).",
+      "items": [
+        "--- (0)",
+        "--x (1)",
+        "-w- (2)",
+        "r-- (4)",
+        "r-x (5)",
+        "rw- (6)",
+        "rwx (7)"
+      ],
+      "correctOrder": [0, 1, 2, 3, 4, 5, 6],
+      "explanation": "Die Oktal-Logik addiert sich immer weiter auf. 7 ist das Maximum (Vollzugriff)."
+    }
+  ],
+  "true_false": [
+    {
+      "id": "4_tf_1",
+      "statement": "Unter Linux ist 'Datei.txt' und 'datei.txt' die gleiche Datei.",
+      "answer": "false",
+      "explanation": "Falsch! Linux (und Unix generell) ist Case-Sensitive. Windows ist Case-Insensitive."
+    },
+    {
+      "id": "4_tf_2",
+      "statement": "Der Benutzer 'root' darf unter Linux/Unix alles, auch Systemdateien löschen.",
+      "answer": "true",
+      "explanation": "Ja, Root ist der Gott-Modus. 'rm -rf /' als Root löscht das ganze Betriebssystem ohne Nachfrage."
+    }
+  ]
+}
