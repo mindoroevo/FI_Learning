@@ -1,8 +1,10 @@
-const CACHE_NAME = "fiae-app-v1";
+const CACHE_NAME = "fiae-app-v2";
 const ASSETS_TO_CACHE = [
   "./",
   "./index.html",
   "./app.css",
+  "./icons/icon-192.png",
+  "./icons/icon-512.png",
   "./js/app.js",
   "./js/modules.js",
   "./js/state.js",
@@ -20,6 +22,7 @@ self.addEventListener("install", (event) => {
       return cache.addAll(ASSETS_TO_CACHE);
     })
   );
+  self.skipWaiting();
 });
 
 self.addEventListener("fetch", (event) => {
@@ -42,4 +45,5 @@ self.addEventListener("activate", (event) => {
       );
     })
   );
+  self.clients.claim();
 });
