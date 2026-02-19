@@ -732,6 +732,7 @@ html {
 @media (max-width: 1024px) {
   .layout {
     grid-template-columns: 1fr; /* Full width content */
+    min-height: calc(100vh - 56px - 44px);
   }
 
   /* Sidebar as Drawer */
@@ -757,6 +758,9 @@ html {
 
   .mobile-menu-btn {
     display: block;
+    position: sticky;
+    top: 0;
+    z-index: 11;
   }
 }
 
@@ -768,10 +772,12 @@ html {
     padding: 8px 12px;
     gap: 8px;
     flex-wrap: wrap;
+    top: 0;
+    z-index: 20;
   }
 
   .topbar h1 {
-    font-size: 16px;
+    font-size: 15px;
     flex: 1 1 100%;
     white-space: nowrap;
     overflow: hidden;
@@ -780,13 +786,37 @@ html {
 
   .topbar-actions {
     width: 100%;
-    gap: 6px;
+    gap: 8px;
     align-items: center;
+    display: grid;
+    grid-template-columns: 1fr auto;
   }
 
   .topbar-actions input[type="search"] {
-    flex: 1 1 auto;
+    width: 100%;
     min-width: 0;
+    font-size: 16px; /* Prevent iOS zoom on focus */
+  }
+
+  #themeToggle {
+    min-height: 42px;
+    min-width: 60px;
+    font-size: 14px;
+    padding: 8px 10px;
+  }
+
+  .mobile-menu-btn {
+    padding: 11px 12px;
+    font-size: 15px;
+    font-weight: 700;
+    top: 56px;
+  }
+
+  .sidebar {
+    width: 100vw;
+    left: -100vw;
+    padding: 10px;
+    padding-bottom: 80px;
   }
 
   /* Mobile Search Overlay */
@@ -810,6 +840,18 @@ html {
     overflow-wrap: anywhere;
   }
 
+  .markdown-body h1 {
+    font-size: 1.55rem;
+  }
+
+  .markdown-body h2 {
+    font-size: 1.3rem;
+  }
+
+  .markdown-body h3 {
+    font-size: 1.1rem;
+  }
+
   .markdown-body pre {
     overflow-x: auto;
   }
@@ -822,6 +864,14 @@ html {
   .module-hero {
     flex-direction: column;
     align-items: flex-start;
+    padding: 12px;
+    border-radius: 10px;
+  }
+
+  .module-hero h2 {
+    font-size: 1.6rem;
+    line-height: 1.25;
+    overflow-wrap: anywhere;
   }
 
   .module-switch {
@@ -838,13 +888,14 @@ html {
 
   /* Quiz Cards Mobile Optimization */
   .quiz-card {
-    padding: 16px;
+    padding: 12px;
     border-radius: 12px;
   }
 
   .quiz-option {
-    padding: 10px;
-    font-size: 0.95em;
+    padding: 12px 10px;
+    font-size: 0.94em;
+    line-height: 1.45;
   }
 
   .match-row {
@@ -859,6 +910,11 @@ html {
   .order-row {
     grid-template-columns: 50px 1fr;
     font-size: 0.9em;
+  }
+
+  .legal-footer {
+    padding: 8px 10px calc(8px + env(safe-area-inset-bottom));
+    font-size: 14px;
   }
 }
 
@@ -882,7 +938,12 @@ html {
   }
 
   .module-hero {
-    padding: 12px;
+    padding: 10px;
+  }
+
+  .module-item {
+    padding: 12px 12px;
+    border-radius: 10px;
   }
 }
 
