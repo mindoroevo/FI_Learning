@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="de" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0d1117">
+  <link rel="manifest" href="./manifest.json">
+  <link rel="apple-touch-icon" href="./icons/icon-192.png">
+  <title>FIAE AP1 Lernapp</title>
+  <link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+  <header class="topbar">
+    <h1>FIAE AP1 Lernapp</h1>
+    <div class="topbar-actions">
+      <input id="searchInput" type="search" placeholder="Modul suchen..." />
+      <button id="themeToggle" type="button" aria-label="Theme wechseln">🌙 Dark</button>
+    </div>
+  </header>
+
+  <button id="mobileMenuBtn" class="mobile-menu-btn" aria-label="Menü öffnen">☰ Module</button>
+
+  <main class="layout">
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-title">Module</div>
+        <button id="closeSidebarBtn" class="close-sidebar-btn" aria-label="Menü schließen">✕</button>
+      </div>
+      <nav id="moduleList" class="module-list"></nav>
+    </aside>
+    <div id="sidebarOverlay" class="sidebar-overlay"></div>
+
+    <section class="content">
+      <article id="content" class="markdown-body">
+        <p>Lade Modul...</p>
+      </article>
+    </section>
+  </main>
+
+  <script type="module" src="./js/app.js"></script>
+</body>
+</html>
