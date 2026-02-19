@@ -26,6 +26,7 @@ body {
   font-family: Segoe UI, Roboto, Arial, sans-serif;
   background: var(--bg);
   color: var(--text);
+  overflow-x: hidden;
 }
 
 .topbar {
@@ -738,7 +739,7 @@ html {
     position: fixed;
     top: 0;
     left: -100%;
-    width: 280px; /* Drawer width */
+    width: min(86vw, 320px); /* Drawer width */
     height: 100vh;
     z-index: 100;
     transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -766,18 +767,26 @@ html {
   .topbar {
     padding: 8px 12px;
     gap: 8px;
+    flex-wrap: wrap;
   }
 
   .topbar h1 {
     font-size: 16px;
-    flex: 1;
+    flex: 1 1 100%;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
   }
 
   .topbar-actions {
+    width: 100%;
     gap: 6px;
+    align-items: center;
+  }
+
+  .topbar-actions input[type="search"] {
+    flex: 1 1 auto;
+    min-width: 0;
   }
 
   /* Mobile Search Overlay */
@@ -791,7 +800,23 @@ html {
   }
 
   .content {
-    padding: 16px;
+    padding: 12px 12px 76px;
+  }
+
+  .markdown-body {
+    max-width: 100%;
+    font-size: 0.98rem;
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+  }
+
+  .markdown-body pre {
+    overflow-x: auto;
+  }
+
+  .md-table {
+    display: block;
+    overflow-x: auto;
   }
 
   .module-hero {
@@ -831,9 +856,33 @@ html {
     display: none; /* Hide arrow on mobile, clear context from stacking */
   }
 
-.order-row {
+  .order-row {
     grid-template-columns: 50px 1fr;
     font-size: 0.9em;
+  }
+}
+
+@media (max-width: 480px) {
+  .topbar {
+    padding: 8px 10px;
+  }
+
+  .content {
+    padding: 10px 10px 78px;
+  }
+
+  #themeToggle {
+    padding: 8px 8px;
+    font-size: 14px;
+  }
+
+  .mobile-menu-btn {
+    padding: 10px;
+    font-size: 15px;
+  }
+
+  .module-hero {
+    padding: 12px;
   }
 }
 
