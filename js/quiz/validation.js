@@ -150,7 +150,7 @@ export function checkAnswer(questionId) {
   const explanation = inlineMd(String(question.explanation || ""));
   
   if (questionType === "mcq") {
-    const expected = normalizeAnswer(question.correct || question.answer || []);
+    const expected = normalizeAnswer(question.correct ?? question.answer ?? []);
     ok = arraysEqual(userAnswer, expected);
   } else if (questionType === "true_false") {
     ok = String(userAnswer) === String(question.answer);
@@ -179,7 +179,7 @@ export function showSolution(questionId) {
   let solutionText = "";
   
   if (questionType === "mcq") {
-    const expected = normalizeAnswer(question.correct || question.answer || []);
+    const expected = normalizeAnswer(question.correct ?? question.answer ?? []);
     const labels = expected.map((index) => `${index + 1}. ${question.options[index]}`).join("<br>");
     solutionText = `💡 Richtige Lösung:<br>${labels}`;
   } else if (questionType === "true_false") {
