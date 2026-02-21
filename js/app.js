@@ -489,14 +489,21 @@ function renderQuizControls() {
   const concepts = getAvailableConcepts();
   const stats = getQuizStats();
   const metadata = state.currentQuizData._metadata;
-  
-  // Determine active filters for badges
+  const modeMeta = {
+    training: { icon: "Lernen", title: "Training", desc: "Alle aktiven Fragen" },
+    quick: { icon: "Schnell", title: "Schnelltest", desc: "10 zufällige Fragen" },
+    sprint: { icon: "Sprint", title: "Sprint", desc: "5 sehr kurze Fragerunde" },
+    exam: { icon: "Prüfung", title: "Prüfungsmodus", desc: "20 Fragen am Stück" },
+    focus: { icon: "Fokus", title: "Fokus", desc: "Schwere Fragen priorisieren" },
+    warmup: { icon: "Start", title: "Warm-up", desc: "Leicht + Mittel (8 Fragen)" }
+  };
+  const activeMode = modeMeta[state.quizMode] || modeMeta.training;
+
   const hasActiveMode = state.quizMode !== 'training';
   const hasActiveDifficulty = state.difficultyFilter !== 'all';
   const hasActiveType = state.questionTypeFilter !== 'all';
   const hasActiveConcept = state.selectedConcept !== null;
-  
-  // Quiz Mode Section
+
   const modeButtons = `
     <div class="filter-group" data-group="mode">
       <div class="filter-header">
@@ -504,20 +511,35 @@ function renderQuizControls() {
         <h3>Quiz-Modus</h3>
         ${hasActiveMode ? '<span class="filter-badge">●</span>' : ''}
       </div>
-      <div class="filter-buttons">
+      <div class="filter-buttons mode-chip-grid">
         <button type="button" class="filter-btn ${state.quizMode === 'training' ? 'active' : ''}" data-mode="training">
-          <span class="btn-icon">📚</span>
-          <span class="btn-text">Training<small>Alle Fragen, ausführlich</small></span>
+          <span class="btn-icon">${modeMeta.training.icon}</span>
+          <span class="btn-text">${modeMeta.training.title}<small>${modeMeta.training.desc}</small></span>
         </button>
         <button type="button" class="filter-btn ${state.quizMode === 'quick' ? 'active' : ''}" data-mode="quick">
-          <span class="btn-icon">⚡</span>
-          <span class="btn-text">Schnelltest<small>10 zufällige Fragen</small></span>
+          <span class="btn-icon">${modeMeta.quick.icon}</span>
+          <span class="btn-text">${modeMeta.quick.title}<small>${modeMeta.quick.desc}</small></span>
+        </button>
+        <button type="button" class="filter-btn ${state.quizMode === 'sprint' ? 'active' : ''}" data-mode="sprint">
+          <span class="btn-icon">${modeMeta.sprint.icon}</span>
+          <span class="btn-text">${modeMeta.sprint.title}<small>${modeMeta.sprint.desc}</small></span>
+        </button>
+        <button type="button" class="filter-btn ${state.quizMode === 'exam' ? 'active' : ''}" data-mode="exam">
+          <span class="btn-icon">${modeMeta.exam.icon}</span>
+          <span class="btn-text">${modeMeta.exam.title}<small>${modeMeta.exam.desc}</small></span>
+        </button>
+        <button type="button" class="filter-btn ${state.quizMode === 'focus' ? 'active' : ''}" data-mode="focus">
+          <span class="btn-icon">${modeMeta.focus.icon}</span>
+          <span class="btn-text">${modeMeta.focus.title}<small>${modeMeta.focus.desc}</small></span>
+        </button>
+        <button type="button" class="filter-btn ${state.quizMode === 'warmup' ? 'active' : ''}" data-mode="warmup">
+          <span class="btn-icon">${modeMeta.warmup.icon}</span>
+          <span class="btn-text">${modeMeta.warmup.title}<small>${modeMeta.warmup.desc}</small></span>
         </button>
       </div>
     </div>
   `;
-  
-  // Difficulty Filter
+
   const difficultyButtons = metadata?.difficultyDistribution ? `
     <div class="filter-group" data-group="difficulty">
       <div class="filter-header">
@@ -541,12 +563,11 @@ function renderQuizControls() {
       </div>
     </div>
   ` : '';
-  
-  // Question Type Filter
+
   const typeButtons = `
     <div class="filter-group" data-group="type">
       <div class="filter-header">
-        <span class="filter-icon">�</span>
+        <span class="filter-icon">❔</span>
         <h3>Fragetyp</h3>
         ${hasActiveType ? '<span class="filter-badge">●</span>' : ''}
       </div>
@@ -572,8 +593,7 @@ function renderQuizControls() {
         </div>
     </div>
   `;
-  
-  // Concept Filter (only if metadata exists)
+
   const conceptButtons = concepts && concepts.length > 0 ? `
     <div class="filter-group" data-group="concept">
       <div class="filter-header">
@@ -594,8 +614,7 @@ function renderQuizControls() {
         </div>
     </div>
   ` : '';
-  
-  // Stats Display
+
   const statsDisplay = `
     <div class="quiz-stats">
       <div class="stat-item">
@@ -603,6 +622,7 @@ function renderQuizControls() {
         <span class="stat-label">Aktive Fragen:</span>
         <span class="stat-value">${stats.total}</span>
       </div>
+      <div class="stat-mini stat-mode">Modus: ${activeMode.title}</div>
       ${stats.byType.mcq > 0 ? `<div class="stat-mini">MCQ: ${stats.byType.mcq}</div>` : ''}
       ${stats.byType.fill_blank > 0 ? `<div class="stat-mini">Lücken: ${stats.byType.fill_blank}</div>` : ''}
       ${stats.byType.match > 0 ? `<div class="stat-mini">Zuordnung: ${stats.byType.match}</div>` : ''}
@@ -611,7 +631,7 @@ function renderQuizControls() {
       <button type="button" class="reset-filters-btn" id="resetFilters">🔄 Filter zurücksetzen</button>
     </div>
   `;
-  
+
   return `
     <button type="button" class="toggle-filters-btn" id="toggleFilters">
       <span class="toggle-filters-icon">▲</span>
@@ -626,7 +646,6 @@ function renderQuizControls() {
     ${statsDisplay}
   `;
 }
-
 function renderModuleShell({ moduleId, title, tocHtml, theoryHtml, quizCount }) {
   const hasQuiz = quizCount > 0;
   const engineDisp = state.currentQuizData.engine || "mcq";
@@ -848,3 +867,4 @@ function refreshQuiz() {
 
 // Start app
 init();
+

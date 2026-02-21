@@ -15,7 +15,7 @@ export const state = {
   shellCache: {},
   /** @type {string|null} Currently selected concept filter (null = all questions) */
   selectedConcept: null,
-  /** @type {string} Quiz mode: 'training' | 'quick' */
+  /** @type {string} Quiz mode: 'training' | 'quick' | 'sprint' | 'exam' | 'focus' | 'warmup' */
   quizMode: 'training',
   /** @type {string} Difficulty filter: 'all' | 'easy' | 'medium' | 'hard' */
   difficultyFilter: 'all',
@@ -135,27 +135,46 @@ export function getFilteredQuizData() {
     };
   }
   
+  const allQuestions = [
+    ...(data.mcq || []),
+    ...(data.fill_blank || []),
+    ...(data.match || []),
+    ...(data.order || []),
+    ...(data.true_false || [])
+  ];
+
+  const shuffle = (arr) => [...arr].sort(() => Math.random() - 0.5);
+  const limitAndGroup = (selected) => {
+    const grouped = { ...data, mcq: [], fill_blank: [], match: [], order: [], true_false: [] };
+    selected.forEach((q) => {
+      if (q.statement !== undefined) grouped.true_false.push(q);
+      else if (Array.isArray(q.items)) grouped.order.push(q);
+      else if (Array.isArray(q.left) && Array.isArray(q.right)) grouped.match.push(q);
+      else if (Array.isArray(q.blanks)) grouped.fill_blank.push(q);
+      else grouped.mcq.push(q);
+    });
+    return grouped;
+  };
+
   // Apply quiz mode modifications
   if (state.quizMode === 'quick') {
-    // Quick mode: max 10 questions, random selection
-    const allQuestions = [
-      ...(data.mcq || []),
-      ...(data.fill_blank || []),
-      ...(data.match || []),
-      ...(data.order || []),
-      ...(data.true_false || [])
-    ];
-    const shuffled = allQuestions.sort(() => Math.random() - 0.5).slice(0, 10);
-    
-    // Group back by type
-    data = {
-      ...data,
-      mcq: shuffled.filter(q => q.type === 'single' || q.type === 'multi'),
-      fill_blank: shuffled.filter(q => q.blanks),
-      match: shuffled.filter(q => q.left && q.right),
-      order: shuffled.filter(q => q.items),
-      true_false: shuffled.filter(q => q.statement)
-    };
+    data = limitAndGroup(shuffle(allQuestions).slice(0, 10));
+  } else if (state.quizMode === 'sprint') {
+    data = limitAndGroup(shuffle(allQuestions).slice(0, 5));
+  } else if (state.quizMode === 'exam') {
+    data = limitAndGroup(shuffle(allQuestions).slice(0, 20));
+  } else if (state.quizMode === 'focus') {
+    const hard = allQuestions.filter((q) => q.difficulty === 'hard');
+    const medium = allQuestions.filter((q) => q.difficulty === 'medium');
+    const easy = allQuestions.filter((q) => q.difficulty === 'easy');
+    const prioritized = [...shuffle(hard), ...shuffle(medium), ...shuffle(easy)];
+    data = limitAndGroup(prioritized.slice(0, 12));
+  } else if (state.quizMode === 'warmup') {
+    const easy = allQuestions.filter((q) => q.difficulty === 'easy');
+    const medium = allQuestions.filter((q) => q.difficulty === 'medium');
+    const pool = [...shuffle(easy), ...shuffle(medium)];
+    const fallback = pool.length ? pool : shuffle(allQuestions);
+    data = limitAndGroup(fallback.slice(0, 8));
   }
   
   return data;

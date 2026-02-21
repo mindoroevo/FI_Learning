@@ -1,4 +1,4 @@
-﻿:root {
+:root {
   --bg: #0f1220;
   --panel: #171b2e;
   --panel-2: #1f2440;
@@ -577,7 +577,7 @@ button { cursor: pointer; touch-action: manipulation; }
 }
 
 .quiz-controls.visible {
-  max-height: 900px;
+  max-height: 5000px;
   opacity: 1;
   padding: 28px;
   margin-bottom: 32px;
@@ -585,7 +585,7 @@ button { cursor: pointer; touch-action: manipulation; }
 }
 
 .filter-group {
-  margin-bottom: 24px;
+  margin-bottom: 14px;
 }
 
 .filter-group:last-child {
@@ -595,24 +595,24 @@ button { cursor: pointer; touch-action: manipulation; }
 .filter-header {
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 12px 16px;
+  gap: 8px;
+  padding: 8px 10px;
   margin-bottom: 0;
-  border-bottom: 2px solid var(--border);
+  border-bottom: 1px solid var(--border);
   border-radius: 8px 8px 0 0;
 }
 
 .filter-icon {
-  font-size: 1.4rem;
+  font-size: 1.05rem;
 }
 
 .filter-header h3 {
   margin: 0;
-  font-size: 1rem;
+  font-size: 0.78rem;
   font-weight: 600;
   color: var(--text);
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.03em;
 }
 
 /* Removed .toggle-icon - no longer needed */
@@ -642,21 +642,50 @@ button { cursor: pointer; touch-action: manipulation; }
 .filter-buttons {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 12px;
-  padding: 18px;
+  gap: 8px;
+  padding: 10px;
   background: var(--bg);
+}
+
+.mode-chip-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.mode-chip-grid .filter-btn {
+  min-height: 56px;
+  padding: 9px 11px;
+  border-radius: 12px;
+}
+
+.mode-chip-grid .filter-btn .btn-icon {
+  min-width: 46px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.mode-chip-grid .filter-btn.active .btn-icon {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.stat-mini.stat-mode {
+  border-color: color-mix(in srgb, var(--accent) 45%, var(--border));
 }
 
 .filter-btn {
   display: flex;
   align-items: center;
-  gap: 14px;
-  padding: 18px 22px;
-  border: 2px solid var(--border);
-  border-radius: 14px;
+  gap: 10px;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
   background: var(--panel);
   color: var(--text);
-  font-size: 1rem;
+  font-size: 0.9rem;
   font-weight: 500;
   cursor: pointer;
   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
@@ -681,7 +710,7 @@ button { cursor: pointer; touch-action: manipulation; }
 }
 
 .filter-btn .btn-icon {
-  font-size: 1.5rem;
+  font-size: 1.1rem;
   flex-shrink: 0;
 }
 
@@ -692,7 +721,7 @@ button { cursor: pointer; touch-action: manipulation; }
 }
 
 .filter-btn .btn-text small {
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   font-weight: 400;
   color: var(--muted);
 }
@@ -700,8 +729,8 @@ button { cursor: pointer; touch-action: manipulation; }
 .filter-btn:hover {
   border-color: var(--accent);
   background: var(--panel-2);
-  transform: translateY(-3px);
-  box-shadow: 0 6px 20px rgba(79, 70, 229, 0.2);
+  transform: translateY(-1px);
+  box-shadow: 0 3px 10px rgba(79, 70, 229, 0.14);
 }
 
 .filter-btn.active {
@@ -709,8 +738,8 @@ button { cursor: pointer; touch-action: manipulation; }
   color: #ffffff;
   border-color: var(--accent);
   font-weight: 600;
-  box-shadow: 0 6px 24px rgba(79, 70, 229, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.2);
-  transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(79, 70, 229, 0.26), inset 0 1px 1px rgba(255, 255, 255, 0.2);
+  transform: translateY(-1px);
 }
 
 .filter-btn.active::before {
@@ -726,38 +755,41 @@ button { cursor: pointer; touch-action: manipulation; }
 .filter-buttons.filter-compact {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
-  padding: 18px;
+  gap: 8px;
+  padding: 10px;
   background: var(--bg);
 }
 
 .filter-buttons.filter-wrap {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
-  padding: 18px;
+  gap: 8px;
+  padding: 10px;
   background: var(--bg);
 }
 
 .filter-btn-sm {
-  padding: 10px 16px;
-  border: 2px solid var(--border);
-  border-radius: 24px;
+  padding: 7px 12px;
+  border: 1px solid var(--border);
+  border-radius: 16px;
   background: var(--panel);
   color: var(--text);
-  font-size: 0.875rem;
+  font-size: 0.8rem;
   font-weight: 500;
   cursor: pointer;
   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   white-space: nowrap;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
 .filter-btn-sm:hover {
   border-color: var(--accent);
   background: var(--panel-2);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(79, 70, 229, 0.15);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(79, 70, 229, 0.12);
 }
 
 .filter-btn-sm.active {
@@ -765,8 +797,8 @@ button { cursor: pointer; touch-action: manipulation; }
   color: #ffffff;
   border-color: var(--accent);
   font-weight: 600;
-  box-shadow: 0 4px 16px rgba(79, 70, 229, 0.3), inset 0 1px 1px rgba(255, 255, 255, 0.2);
-  transform: translateY(-1px);
+  box-shadow: 0 3px 10px rgba(79, 70, 229, 0.2), inset 0 1px 1px rgba(255, 255, 255, 0.18);
+  transform: none;
 }
 
 /* Quiz Stats Display */
@@ -840,15 +872,55 @@ button { cursor: pointer; touch-action: manipulation; }
 /* Responsive Layout */
 @media (max-width: 768px) {
   .quiz-controls {
-    padding: 16px;
+    padding: 12px;
+  }
+  .quiz-controls.visible {
+    padding: 12px;
+    margin-bottom: 20px;
+    max-height: 9000px;
+  }
+  .filter-group {
+    margin-bottom: 10px;
+  }
+  .filter-header {
+    padding: 6px 8px;
+  }
+  .filter-header h3 {
+    font-size: 0.74rem;
+    letter-spacing: 0.02em;
   }
   
   .filter-buttons {
     grid-template-columns: 1fr;
+    gap: 6px;
+    padding: 8px;
+    background: transparent;
+  }
+  .mode-chip-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 6px;
+  }
+  .mode-chip-grid .filter-btn {
+    min-height: 52px;
+    padding: 8px 9px;
+  }
+  .mode-chip-grid .filter-btn .btn-icon {
+    min-width: 40px;
+    font-size: 0.66rem;
   }
   
-  .filter-btn {
-    padding: 14px 16px;
+  .filter-btn { padding: 9px 10px; font-size: 0.86rem; }
+  .filter-btn .btn-text small { font-size: 0.66rem; }
+  .filter-buttons.filter-compact,
+  .filter-buttons.filter-wrap {
+    gap: 6px;
+    padding: 8px 6px;
+    background: transparent;
+  }
+  .filter-btn-sm {
+    padding: 6px 10px;
+    border-radius: 14px;
+    font-size: 0.76rem;
   }
   
   .quiz-stats {
@@ -861,12 +933,46 @@ button { cursor: pointer; touch-action: manipulation; }
 @media (max-width: 640px) {
   .filter-buttons.filter-compact,
   .filter-buttons.filter-wrap {
-    flex-direction: column;
+    flex-direction: row;
+    flex-wrap: wrap;
   }
   
   .filter-btn-sm {
-    width: 100%;
-    text-align: center;
+    width: auto;
+    text-align: left;
+  }
+}
+
+@media (max-width: 420px) {
+  .quiz-controls.visible {
+    padding: 10px;
+  }
+  .filter-header {
+    padding: 5px 6px;
+  }
+  .filter-icon {
+    font-size: 0.95rem;
+  }
+  .filter-header h3 {
+    font-size: 0.7rem;
+  }
+  .filter-btn-sm {
+    font-size: 0.72rem;
+    padding: 5px 9px;
+  }
+  .mode-chip-grid {
+    display: flex;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    padding-bottom: 4px;
+    scrollbar-width: thin;
+  }
+  .mode-chip-grid .filter-btn {
+    flex: 0 0 170px;
+    min-height: 50px;
+  }
+  .mode-chip-grid .filter-btn .btn-text {
+    gap: 2px;
   }
 }
 
@@ -3167,12 +3273,15 @@ kbd {
   gap: 10px;
   align-items: center;
   margin: 12px 0;
+  width: 100%;
 }
 .bn-bit-group {
   display: flex;
   gap: 6px;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   justify-content: center;
+  width: max-content;
+  margin: 0 auto;
 }
 .bn-bit-separator {
   width: 100%;
@@ -3244,6 +3353,11 @@ kbd {
   font-size: 0.85rem;
   color: var(--muted);
   margin-top: 4px;
+}
+.bn-bitpad-submit {
+  display: block;
+  margin: 4px auto 0;
+  text-align: center;
 }
 .bn-bd-label { color: var(--muted); }
 #bnBdDec, #bnBdHex {
@@ -3382,7 +3496,17 @@ kbd {
 
 /* ── Mobile binary ── */
 @media (max-width: 768px) {
-  .bn-bit-btn { width: 38px; height: 38px; font-size: 1rem; }
+  .bn-bitpad {
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    padding-bottom: 2px;
+  }
+  .bn-bit-group { gap: 4px; }
+  .bn-bit-btn { width: 32px; height: 34px; font-size: 0.95rem; }
+  .bn-bit-pos { font-size: 0.62rem; }
+  .bn-bit-weight { font-size: 0.56rem; }
   .bn-display-input { font-size: 1.6rem; padding: 10px; letter-spacing: 3px; }
   .bn-pad-btn { height: 46px; font-size: 0.95rem; }
   .bn-hexpad { grid-template-columns: repeat(4, 1fr); max-width: 100%; gap: 6px; }

@@ -51,8 +51,17 @@ export function renderCaseLabSection(moduleId) {
 export function renderMixedSection(moduleId) {
   const data = getFilteredQuizData();
   const stats = getQuizStats();
+  const modeLabel = {
+    training: "Training",
+    quick: "Schnelltest",
+    sprint: "Sprint",
+    exam: "Prüfungsmodus",
+    focus: "Fokus",
+    warmup: "Warm-up"
+  };
   
   let filterInfo = "";
+  if (state.quizMode !== "training") filterInfo += ` · ${modeLabel[state.quizMode] || state.quizMode}`;
   if (state.selectedConcept) filterInfo += ` · ${state.selectedConcept}`;
   if (state.difficultyFilter !== 'all') filterInfo += ` · ${state.difficultyFilter}`;
   if (state.questionTypeFilter !== 'all') filterInfo += ` · ${state.questionTypeFilter}`;
@@ -93,3 +102,4 @@ export function renderMixedSection(moduleId) {
   html += `</section>`;
   return html;
 }
+
