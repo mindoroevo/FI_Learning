@@ -139,7 +139,6 @@ Die Engine kennt 3 verschiedene Lernmodi (einstellbar im Quiz-Header):
 | Modus | Key | Verhalten |
 |---|---|---|
 | Training | `training` | Sofortiges Feedback nach jeder Antwort, Lösung anzeigen möglich |
-| Prüfung | `exam` | Kein Feedback während der Fragen, Auswertung erst am Ende |
 | Schnell | `quick` | 5 zufällige Fragen, schnelle Runde |
 
 ---

@@ -1713,6 +1713,24 @@ html {
   color: var(--text);
 }
 
+.footer-donate-btn {
+  color: #e53935 !important;
+  font-weight: 700;
+  font-size: 0.88rem;
+  text-decoration: none !important;
+  background: color-mix(in srgb, #e53935 15%, transparent);
+  padding: 4px 14px;
+  border-radius: 20px;
+  border: 1px solid color-mix(in srgb, #e53935 50%, transparent);
+  transition: background 0.15s, transform 0.1s;
+  letter-spacing: 0.02em;
+}
+.footer-donate-btn:hover {
+  background: color-mix(in srgb, #e53935 28%, transparent) !important;
+  color: #e53935 !important;
+  transform: scale(1.04);
+}
+
 .legal-sep {
   color: var(--muted);
   margin: 0 8px;
@@ -3855,6 +3873,103 @@ kbd {
 .sm-legal-links a { color: var(--muted); text-decoration: underline; }
 .sm-legal-links a:hover { color: var(--text); }
 .sm-legal-sep { margin: 0 8px; opacity: 0.5; }
+
+.sm-donate-wrap {
+  text-align: center;
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
+}
+.sm-donate-btn {
+  display: inline-block;
+  padding: 11px 28px;
+  border-radius: 28px;
+  background: linear-gradient(135deg, #e53935, #c62828);
+  color: #fff !important;
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-decoration: none;
+  box-shadow: 0 4px 14px color-mix(in srgb, #e53935 40%, transparent);
+  transition: box-shadow 0.15s, transform 0.1s;
+  letter-spacing: 0.02em;
+}
+.sm-donate-btn:hover {
+  box-shadow: 0 6px 20px color-mix(in srgb, #e53935 55%, transparent);
+  transform: translateY(-2px);
+}
+
+/* ── Donation Nudge Toast ── */
+.donate-nudge {
+  position: fixed;
+  bottom: calc(var(--footer-height, 44px) + 12px);
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  opacity: 0;
+  z-index: 9999;
+  width: min(420px, calc(100vw - 32px));
+  background: var(--card-bg, #161b22);
+  border: 1px solid color-mix(in srgb, #e53935 40%, var(--border));
+  border-radius: 14px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4), 0 0 0 1px color-mix(in srgb, #e53935 15%, transparent);
+  padding: 16px 18px;
+  transition: opacity 0.35s ease, transform 0.35s ease;
+  pointer-events: none;
+}
+.donate-nudge--visible {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+  pointer-events: auto;
+}
+.donate-nudge-body {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+.donate-nudge-icon {
+  font-size: 1.8rem;
+  line-height: 1;
+  flex-shrink: 0;
+}
+.donate-nudge-body strong {
+  display: block;
+  font-size: 0.95rem;
+  margin-bottom: 4px;
+}
+.donate-nudge-body p {
+  font-size: 0.82rem;
+  color: var(--muted);
+  margin: 0 0 10px;
+  line-height: 1.5;
+}
+.donate-nudge-btn {
+  display: inline-block;
+  padding: 7px 18px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #e53935, #c62828);
+  color: #fff !important;
+  font-weight: 700;
+  font-size: 0.83rem;
+  text-decoration: none;
+  box-shadow: 0 3px 10px color-mix(in srgb, #e53935 35%, transparent);
+  transition: transform 0.1s, box-shadow 0.1s;
+}
+.donate-nudge-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 5px 14px color-mix(in srgb, #e53935 50%, transparent);
+}
+.donate-nudge-close {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  background: none;
+  border: none;
+  color: var(--muted);
+  font-size: 1.2rem;
+  cursor: pointer;
+  line-height: 1;
+  padding: 2px 4px;
+}
+.donate-nudge-close:hover { color: var(--text); }
 .sm-key-display {
   display: flex;
   align-items: center;

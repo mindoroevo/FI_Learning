@@ -15,7 +15,7 @@ export const state = {
   shellCache: {},
   /** @type {string|null} Currently selected concept filter (null = all questions) */
   selectedConcept: null,
-  /** @type {string} Quiz mode: 'training' | 'exam' | 'quick' */
+  /** @type {string} Quiz mode: 'training' | 'quick' */
   quizMode: 'training',
   /** @type {string} Difficulty filter: 'all' | 'easy' | 'medium' | 'hard' */
   difficultyFilter: 'all',

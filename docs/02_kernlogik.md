@@ -82,7 +82,7 @@ Der `state.js` ist unser globales Lesezeichen-Management.
 *   `mdCache`: Bereits geparste Markdown-Inhalte.
 *   `shellCache`: Bereits gerenderte Modul-Shell-HTML-Strings.
 *   `selectedConcept`: Aktiver Konzept-Filter (`null` = alle Fragen).
-*   `quizMode`: Aktueller Lernmodus: `'training'` | `'exam'` | `'quick'`.
+*   `quizMode`: Aktueller Lernmodus: `'training'` | `'quick'`.
 *   `difficultyFilter`: Schwierigkeitsfilter: `'all'` | `'easy'` | `'medium'` | `'hard'`.
 *   `questionTypeFilter`: Fragetypfilter: `'all'` | `'mcq'` | `'fill_blank'` | usw.
 *   `pendingMode`: Gibt an, ob nach dem Laden direkt in den Quiz-Modus gewechselt werden soll.

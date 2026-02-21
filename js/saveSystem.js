@@ -723,6 +723,9 @@ function renderSettings() {
       <span class="sm-legal-sep">·</span>
       <a href="./agb.html" target="_blank" rel="noopener noreferrer">📜 AGB</a>
     </div>
+    <div class="sm-donate-wrap">
+      <a href="https://www.paypal.com/paypalme/mindoroevo" target="_blank" rel="noopener noreferrer" class="sm-donate-btn">❤️ Projekt unterstützen via PayPal</a>
+    </div>
   </div>`;
 }
 

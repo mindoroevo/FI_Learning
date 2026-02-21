@@ -341,6 +341,7 @@
         <li>💾 <strong>Verschlüsseltes Speichersystem</strong> – AES-GCM 256-bit, XP, Erfolge, Lesezeichen</li>
         <li>📱 <strong>PWA</strong> – installierbar, Offline-fähig via Service Worker</li>
         <li>🌙 <strong>Dark / Light Mode</strong> – systemweites Theme-Toggle</li>
+      <li>❤️ <strong>Freiwillige Spenden</strong> – PayPal-Spendenlink im Footer &amp; Einstellungen; dezenter Nudge-Toast nach aktiver Nutzung</li>
       </ul>
     </div>
 
@@ -355,7 +356,7 @@
         <tr><td>Markup</td><td>HTML5</td><td><code>index.html</code> als Single-Page-App Shell</td></tr>
         <tr><td>Kryptografie</td><td>Web Crypto API (Browser-nativ)</td><td>AES-GCM 256-bit, PBKDF2 – kein externes Crypto-Lib</td></tr>
         <tr><td>Datenpersistenz</td><td>localStorage + File System Access API</td><td>Fallback auf Download/Upload bei nicht unterstützten Browsern</td></tr>
-        <tr><td>Offline</td><td>Service Worker</td><td>Cache-First-Strategie, aktuell <code>fiae-app-v21</code></td></tr>
+        <tr><td>Offline</td><td>Service Worker</td><td>Cache-First-Strategie, aktuell <code>fiae-app-v22</code></td></tr>
         <tr><td>Inhalte</td><td>Markdown → HTML</td><td>Eigener Markdown-Parser (<code>js/markdown.js</code>), kein externes Lib</td></tr>
         <tr><td>Tests</td><td>Mocha + Chai</td><td>Nur Entwicklungsumgebung (<code>tests/</code>), kein Produktionscode</td></tr>
         <tr><td>Hosting</td><td>Beliebig (statisch)</td><td>GitHub Pages, lokaler Server oder direkt als Datei</td></tr>
@@ -572,7 +573,6 @@
       <thead><tr><th>Modus</th><th>Key</th><th>Verhalten</th></tr></thead>
       <tbody>
         <tr><td>Training</td><td><code>training</code></td><td>Sofortiges Feedback nach jeder Antwort, Lösung anzeigen möglich</td></tr>
-        <tr><td>Prüfung</td><td><code>exam</code></td><td>Kein Feedback während der Fragen, Auswertung am Ende</td></tr>
         <tr><td>Schnell</td><td><code>quick</code></td><td>5 zufällige Fragen, zeitlich begrenzt</td></tr>
       </tbody>
     </table></div>
@@ -785,7 +785,7 @@
     <h3>Service Worker (<code>sw.js</code>)</h3>
     <ul>
       <li>Strategie: <strong>Cache-First</strong> – App-Ressourcen aus Cache, Netzwerk als Fallback</li>
-      <li>Cache-Name: <code>fiae-app-v21</code> (bei Update: Version erhöhen)</li>
+      <li>Cache-Name: <code>fiae-app-v22</code> (bei Update: Version erhöhen)</li>
       <li>Precached Assets: alle JS-Module, HTML, CSS, Icons, Quiz-JSONs (001–006), Rechtspages</li>
     </ul>
 
@@ -878,6 +878,7 @@ document.<span class="fn">dispatchEvent</span>(<span class="kw">new</span> Custo
         <tr><td><a href="./datenschutz.html">datenschutz.html</a></td><td>DSGVO-konforme Datenschutzerklärung (9 Abschnitte, kein Tracking, localStorage-Transparenz)</td></tr>
         <tr><td><a href="./agb.html">agb.html</a></td><td>Nutzungsbedingungen (§§1–10): Haftungsausschluss, keine Prüfungsgarantie, Urheberrecht</td></tr>
         <tr><td><a href="https://mindoroevo.github.io/mindoro_imp/impressum.html" target="_blank" rel="noopener">Impressum (extern)</a></td><td>Pflichtangaben gemäß § 5 TMG</td></tr>
+        <tr><td>Spenden (PayPal)</td><td>Freiwillige Unterstützung via <a href="https://www.paypal.com/paypalme/mindoroevo" target="_blank" rel="noopener noreferrer">paypal.me/mindoroevo</a> – optionaler Link, kein Vertragsverhältnis, kein Einfluss auf Funktionsumfang</td></tr>
       </tbody>
     </table></div>
 

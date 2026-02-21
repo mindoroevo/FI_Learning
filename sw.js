@@ -1,4 +1,4 @@
-const CACHE_NAME = "fiae-app-v21";
+const CACHE_NAME = "fiae-app-v22";
 const ASSETS_TO_CACHE = [
   "./",
   "./index.html",

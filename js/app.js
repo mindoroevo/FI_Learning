@@ -21,6 +21,10 @@ const contentEl = document.getElementById("content");
 const moduleListEl = document.getElementById("moduleList");
 const themeToggleEl = document.getElementById("themeToggle");
 
+// Donation nudge state
+let _tabSwitchCount = 0;
+const DONATE_NUDGE_KEY = "fiae_donate_nudge_shown";
+
 // Mobile Elements
 const mobileBtn = document.getElementById("modulesBtn");
 const closeBtn = document.getElementById("closeSidebarBtn");
@@ -52,6 +56,7 @@ function init() {
   // Main tab bar
   document.getElementById("tabLernen")?.addEventListener("click", () => {
     setActiveTab("lernen");
+    trackTabSwitch();
     state.pendingMode = null;
     if (contentEl.querySelector(".module-shell")) {
       switchMode("learn");
@@ -63,6 +68,7 @@ function init() {
   });
   document.getElementById("tabQuiz")?.addEventListener("click", () => {
     setActiveTab("quiz");
+    trackTabSwitch();
     state.pendingMode = "quiz";
     if (contentEl.querySelector(".module-shell")) {
       switchMode("quiz");
@@ -245,6 +251,40 @@ function renderModuleList(modules) {
 }
 
 // --- Tab helpers ---
+
+function trackTabSwitch() {
+  if (sessionStorage.getItem(DONATE_NUDGE_KEY)) return;
+  _tabSwitchCount++;
+  if (_tabSwitchCount >= 5) {
+    sessionStorage.setItem(DONATE_NUDGE_KEY, "1");
+    setTimeout(showDonateNudge, 800);
+  }
+}
+
+function showDonateNudge() {
+  if (document.getElementById("donateNudge")) return;
+  const el = document.createElement("div");
+  el.id = "donateNudge";
+  el.className = "donate-nudge";
+  el.innerHTML = `
+    <button class="donate-nudge-close" aria-label="Schließen" id="donateNudgeClose">&times;</button>
+    <div class="donate-nudge-body">
+      <span class="donate-nudge-icon">❤️</span>
+      <div>
+        <strong>Dir gefällt die App?</strong>
+        <p>Sie bleibt kostenlos &amp; wird weiterentwickelt &ndash; über eine kleine Spende würde ich mich sehr freuen!</p>
+        <a href="https://www.paypal.com/paypalme/mindoroevo" target="_blank" rel="noopener noreferrer" class="donate-nudge-btn">Jetzt unterstützen</a>
+      </div>
+    </div>`;
+  document.body.appendChild(el);
+  requestAnimationFrame(() => el.classList.add("donate-nudge--visible"));
+  const close = () => {
+    el.classList.remove("donate-nudge--visible");
+    setTimeout(() => el.remove(), 400);
+  };
+  document.getElementById("donateNudgeClose").addEventListener("click", close);
+  setTimeout(close, 10000);
+}
 
 function setActiveTab(name) {
   document.querySelectorAll(".mtb-tab").forEach(btn => {
@@ -445,10 +485,6 @@ function renderQuizControls() {
         <button type="button" class="filter-btn ${state.quizMode === 'training' ? 'active' : ''}" data-mode="training">
           <span class="btn-icon">📚</span>
           <span class="btn-text">Training<small>Alle Fragen, ausführlich</small></span>
-        </button>
-        <button type="button" class="filter-btn ${state.quizMode === 'exam' ? 'active' : ''}" data-mode="exam">
-          <span class="btn-icon">📝</span>
-          <span class="btn-text">Prüfung<small>Wie die echte AP1</small></span>
         </button>
         <button type="button" class="filter-btn ${state.quizMode === 'quick' ? 'active' : ''}" data-mode="quick">
           <span class="btn-icon">⚡</span>
