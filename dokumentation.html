@@ -30,66 +30,29 @@
       --code-bg: #f0f2f5;
     }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
+    html, body {
       background: var(--bg);
       color: var(--text);
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
       font-size: 0.95rem;
       line-height: 1.75;
+      overflow-x: hidden;
     }
 
     /* ── Layout ── */
-    .layout { display: flex; min-height: 100vh; }
-
-    /* ── Sidebar Nav ── */
-    .doc-nav {
-      width: 250px;
-      min-width: 250px;
-      background: var(--card-bg);
-      border-right: 1px solid var(--border);
-      padding: 24px 0;
-      position: sticky;
-      top: 0;
-      height: 100vh;
-      overflow-y: auto;
-    }
-    .doc-nav .nav-logo {
-      padding: 0 20px 20px;
-      border-bottom: 1px solid var(--border);
-      margin-bottom: 16px;
-    }
-    .doc-nav .nav-logo h1 { font-size: 0.9rem; color: var(--text); }
-    .doc-nav .nav-logo p  { font-size: 0.75rem; color: var(--muted); }
-    .nav-group { margin-bottom: 6px; }
-    .nav-group-title {
-      font-size: 0.7rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--muted);
-      padding: 6px 20px 4px;
-    }
-    .doc-nav a {
-      display: block;
-      padding: 5px 20px;
-      font-size: 0.83rem;
-      color: var(--muted);
-      text-decoration: none;
-      border-left: 2px solid transparent;
-      transition: color 0.15s, border-color 0.15s;
-    }
-    .doc-nav a:hover { color: var(--text); border-left-color: var(--border); }
-    .doc-nav a.active { color: var(--accent); border-left-color: var(--accent); }
+    .layout { display: block; min-height: 100vh; }
+    .doc-nav { display: none; }
 
     /* ── Main Content ── */
     .doc-main {
-      flex: 1;
-      padding: 40px 48px 80px;
-      max-width: 900px;
+      width: 100%;
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 32px 20px 80px;
+      overflow-x: hidden;
     }
-    @media (max-width: 900px) {
-      .doc-nav { display: none; }
-      .doc-main { padding: 24px 18px 60px; }
+    @media (min-width: 640px) {
+      .doc-main { padding: 40px 40px 80px; }
     }
 
     /* ── Typography ── */
@@ -200,17 +163,43 @@
       font-size: 0.82rem;
       line-height: 1.9;
       margin: 14px 0 20px;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
     }
     .filetree .dir  { color: var(--link); font-weight: 600; }
     .filetree .file { color: #abb2bf; }
     .filetree .note { color: var(--muted); font-style: italic; }
 
+    /* ── Code Blocks ── */
+    pre {
+      background: var(--code-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 18px;
+      font-family: "Courier New", monospace;
+      font-size: 0.8rem;
+      line-height: 1.6;
+      margin: 14px 0 20px;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      white-space: pre;
+    }
+    code { font-family: "Courier New", monospace; font-size: 0.85em; }
+    pre code { font-size: inherit; }
+    .kw  { color: #c678dd; }
+    .str { color: #98c379; }
+    .num { color: #d19a66; }
+    .fn  { color: #61afef; }
+    .cmt { color: var(--muted); font-style: italic; }
+
     /* ── Function Table ── */
+    .table-wrap { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 14px 0 22px; }
     table {
       width: 100%;
+      min-width: 460px;
       border-collapse: collapse;
       font-size: 0.84rem;
-      margin: 14px 0 22px;
+      margin: 0;
     }
     th, td { padding: 9px 12px; border: 1px solid var(--border); text-align: left; vertical-align: top; }
     th { background: color-mix(in srgb,var(--accent) 8%,var(--card-bg)); font-weight: 600; font-size: 0.8rem; }
@@ -358,7 +347,7 @@
     <!-- ══════════════════════════════════════════════ -->
     <h2 id="techstack">Tech-Stack</h2>
 
-    <table>
+    <div class="table-wrap"><table>
       <thead><tr><th>Bereich</th><th>Technologie</th><th>Details</th></tr></thead>
       <tbody>
         <tr><td>Sprache</td><td>Vanilla JavaScript ES2022</td><td>ES-Module (<code>import/export</code>), kein Bundler, kein TypeScript</td></tr>
@@ -371,7 +360,7 @@
         <tr><td>Tests</td><td>Mocha + Chai</td><td>Nur Entwicklungsumgebung (<code>tests/</code>), kein Produktionscode</td></tr>
         <tr><td>Hosting</td><td>Beliebig (statisch)</td><td>GitHub Pages, lokaler Server oder direkt als Datei</td></tr>
       </tbody>
-    </table>
+    </table></div>
 
     <div class="info-box">
       <strong>Kein Build-Schritt:</strong> Die App kann direkt im Browser geöffnet werden.
@@ -445,20 +434,20 @@
 
     <h3>Navigation / Tabs</h3>
     <p>Die App hat <strong>3 Haupt-Tabs</strong>:</p>
-    <table>
+    <div class="table-wrap"><table>
       <thead><tr><th>Tab</th><th>ID</th><th>Funktion</th></tr></thead>
       <tbody>
         <tr><td>tabLernen</td><td><code>tabLernen</code></td><td>Modul-Inhalt ansehen (Markdown gerendert)</td></tr>
         <tr><td>tabQuiz</td><td><code>tabQuiz</code></td><td>Quizmodus für das aktuelle Modul</td></tr>
         <tr><td>tabSpiele</td><td><code>tabSpiele</code></td><td>Spiele-Übersichtsseite mit 3 Spielen</td></tr>
       </tbody>
-    </table>
+    </table></div>
 
     <!-- ══════════════════════════════════════════════ -->
     <h2 id="module-js">JavaScript-Module – Übersicht</h2>
 
     <h3 id="state">state.js</h3>
-    <table>
+    <div class="table-wrap"><table>
       <thead><tr><th>Export</th><th>Art</th><th>Beschreibung</th></tr></thead>
       <tbody>
         <tr><td>state</td><td>Objekt</td><td>Globaler App-State (currentModuleId, currentQuizData, Cache-Objekte, Filter, Modi)</td></tr>
@@ -467,10 +456,10 @@
         <tr><td>getAvailableConcepts()</td><td>Funktion</td><td>Liefert Liste aller Konzepte aus den geladenen Fragen</td></tr>
         <tr><td>getQuizStats()</td><td>Funktion</td><td>Berechnet Statistiken (richtig/falsch/unanswered) für aktuelle Session</td></tr>
       </tbody>
-    </table>
+    </table></div>
 
     <h3>utils.js</h3>
-    <table>
+    <div class="table-wrap"><table>
       <thead><tr><th>Export</th><th>Beschreibung</th></tr></thead>
       <tbody>
         <tr><td>escapeHtml(text)</td><td>XSS-Schutz – ersetzt <code>&lt; &gt; &amp;</code></td></tr>
@@ -480,7 +469,7 @@
         <tr><td>shuffleArray(arr)</td><td>Fisher-Yates-Shuffle in-place</td></tr>
         <tr><td>arraysEqual(a, b)</td><td>Tiefenvergleich zweier Arrays (für Reihenfolge-Fragen)</td></tr>
       </tbody>
-    </table>
+    </table></div>
 
     <h3>markdown.js</h3>
     <p>Eigener Markdown → HTML Parser, keine externen Abhängigkeiten. Unterstützt:</p>
@@ -496,7 +485,7 @@
 
     <h3>quiz/sections.js</h3>
     <p>Rendert HTML für jeden Quiz-Fragetyp. Jede Funktion gibt einen HTML-String zurück:</p>
-    <table>
+    <div class="table-wrap"><table>
       <thead><tr><th>Funktion</th><th>Fragetyp</th></tr></thead>
       <tbody>
         <tr><td>renderMcqSection(q)</td><td>Multiple-Choice (Einfach- und Mehrfachauswahl)</td></tr>
@@ -507,16 +496,16 @@
         <tr><td>renderCaseLabSection(q)</td><td>Fallstudie / Labeling (Textpassage + Fragen)</td></tr>
         <tr><td>renderMixedSection(q)</td><td>Gemischter Typ (delegiert an passenden Renderer)</td></tr>
       </tbody>
-    </table>
+    </table></div>
 
     <h3>quiz/validation.js</h3>
-    <table>
+    <div class="table-wrap"><table>
       <thead><tr><th>Funktion</th><th>Beschreibung</th></tr></thead>
       <tbody>
         <tr><td>checkAnswer(btn)</td><td>Wertet die aktuelle Antwort aus, zeigt Feedback, feuert <code>fiae:quizAnswer</code></td></tr>
         <tr><td>showSolution(btn)</td><td>Zeigt die Lösung an (Trainingsmodus)</td></tr>
       </tbody>
-    </table>
+    </table></div>
 
     <!-- ══════════════════════════════════════════════ -->
     <h2 id="lernmodule">Lernmodule (40 Module)</h2>
@@ -579,14 +568,14 @@
     <h2 id="quiz-engine">Quiz-Engine</h2>
 
     <h3>Modi</h3>
-    <table>
+    <div class="table-wrap"><table>
       <thead><tr><th>Modus</th><th>Key</th><th>Verhalten</th></tr></thead>
       <tbody>
         <tr><td>Training</td><td><code>training</code></td><td>Sofortiges Feedback nach jeder Antwort, Lösung anzeigen möglich</td></tr>
         <tr><td>Prüfung</td><td><code>exam</code></td><td>Kein Feedback während der Fragen, Auswertung am Ende</td></tr>
         <tr><td>Schnell</td><td><code>quick</code></td><td>5 zufällige Fragen, zeitlich begrenzt</td></tr>
       </tbody>
-    </table>
+    </table></div>
 
     <h3>Filter</h3>
     <ul>
@@ -617,7 +606,7 @@
 }</code></pre>
 
     <h3>Fragetypen</h3>
-    <table>
+    <div class="table-wrap"><table>
       <thead><tr><th>type</th><th>Beschreibung</th><th>Pflichtfelder</th></tr></thead>
       <tbody>
         <tr><td>mcq</td><td>Multiple Choice (ein oder mehrere korrekte Antworten)</td><td>options, correct[]</td></tr>
@@ -628,7 +617,7 @@
         <tr><td>case_label</td><td>Fallstudie mit Teilfragen</td><td>context, subquestions[]</td></tr>
         <tr><td>mixed</td><td>Gemischter Typ – delegiert intern</td><td>subtype + Felder des Subtyps</td></tr>
       </tbody>
-    </table>
+    </table></div>
 
     <!-- ══════════════════════════════════════════════ -->
     <h2 id="blitzkarten">Spiel: Blitzkarten</h2>
@@ -645,13 +634,13 @@
       <li>Sitzungsstatistiken (richtig/falsch/Gesamt)</li>
       <li>Feuert <code>fiae:gameEnd</code> mit <code>{ game: "blitzkarten", stats }</code> am Ende</li>
     </ul>
-    <table>
+    <div class="table-wrap"><table>
       <thead><tr><th>Export</th><th>Beschreibung</th></tr></thead>
       <tbody>
         <tr><td>launchBlitzkarten(container, onBack)</td><td>Startet das Spiel im angegebenen Container-Element</td></tr>
         <tr><td>cleanupBlitzkarten()</td><td>Entfernt Event-Listener und setzt Spielzustand zurück</td></tr>
       </tbody>
-    </table>
+    </table></div>
 
     <!-- ══════════════════════════════════════════════ -->
     <h2 id="subnetz">Spiel: Subnetz-Trainer</h2>
@@ -669,13 +658,13 @@
       <li>Beststreak und persistente Statistiken (<code>localStorage: fiae_sn_stats</code>)</li>
       <li>Feuert <code>fiae:gameEnd</code> mit <code>{ game: "subnetz", stats }</code></li>
     </ul>
-    <table>
+    <div class="table-wrap"><table>
       <thead><tr><th>Export</th><th>Beschreibung</th></tr></thead>
       <tbody>
         <tr><td>launchSubnetz(container, onBack)</td><td>Startet den Trainer</td></tr>
         <tr><td>cleanupSubnetz()</td><td>Cleanup</td></tr>
       </tbody>
-    </table>
+    </table></div>
 
     <!-- ══════════════════════════════════════════════ -->
     <h2 id="binary">Spiel: Binär-Trainer</h2>
@@ -686,7 +675,7 @@
       3 verschiedenen Eingabe-Pads.
     </p>
     <h3>9 Aufgabentypen</h3>
-    <table>
+    <div class="table-wrap"><table>
       <thead><tr><th>Typ</th><th>Aufgabe</th></tr></thead>
       <tbody>
         <tr><td>dec_to_bin</td><td>Dezimalzahl → Binär</td></tr>
@@ -699,7 +688,7 @@
         <tr><td>bit_or</td><td>Bitweise OR-Operation</td></tr>
         <tr><td>bit_shift</td><td>Bit-Shift (links/rechts)</td></tr>
       </tbody>
-    </table>
+    </table></div>
     <h3>3 Eingabe-Pads</h3>
     <ul>
       <li><strong>Bit-Pad:</strong> Klickbare Bit-Buttons (0/1) für Binäreingabe</li>
@@ -736,7 +725,7 @@
 }</code></pre>
 
     <h3>Öffentliche API</h3>
-    <table>
+    <div class="table-wrap"><table>
       <thead><tr><th>Funktion</th><th>Beschreibung</th></tr></thead>
       <tbody>
         <tr><td>initSaveSystem()</td><td>Initialisiert Schlüssel, lädt letzte Datei, registriert Event-Listener</td></tr>
@@ -746,7 +735,7 @@
         <tr><td>recordQuizAnswer(correct, moduleId)</td><td>Intern: wird via <code>fiae:quizAnswer</code>-Event ausgelöst</td></tr>
         <tr><td>recordGameEnd(game, stats)</td><td>Intern: wird via <code>fiae:gameEnd</code>-Event ausgelöst</td></tr>
       </tbody>
-    </table>
+    </table></div>
 
     <!-- ══════════════════════════════════════════════ -->
     <h2 id="xp-system">XP-System & Erfolge</h2>
@@ -766,7 +755,7 @@
     </div>
 
     <h3>XP-Quellen</h3>
-    <table>
+    <div class="table-wrap"><table>
       <thead><tr><th>Aktion</th><th>XP</th></tr></thead>
       <tbody>
         <tr><td>Erste richtige Quiz-Antwort</td><td>+5</td></tr>
@@ -775,7 +764,7 @@
         <tr><td>Spiele gespielt</td><td>+10–30 je nach Spiel</td></tr>
         <tr><td>Speicherdatei erstellt</td><td>+20</td></tr>
       </tbody>
-    </table>
+    </table></div>
 
     <!-- ══════════════════════════════════════════════ -->
     <h2 id="pwa">PWA & Service Worker</h2>
@@ -882,7 +871,7 @@ document.<span class="fn">dispatchEvent</span>(<span class="kw">new</span> Custo
     <!-- ══════════════════════════════════════════════ -->
     <h2 id="legal">Lizenz & Rechtliches</h2>
 
-    <table>
+    <div class="table-wrap"><table>
       <thead><tr><th>Dokument</th><th>Inhalt</th></tr></thead>
       <tbody>
         <tr><td>LICENSE</td><td>Proprietäre Lizenz, All Rights Reserved, Mindoro Evolution, deutsches Recht</td></tr>
@@ -890,7 +879,7 @@ document.<span class="fn">dispatchEvent</span>(<span class="kw">new</span> Custo
         <tr><td><a href="./agb.html">agb.html</a></td><td>Nutzungsbedingungen (§§1–10): Haftungsausschluss, keine Prüfungsgarantie, Urheberrecht</td></tr>
         <tr><td><a href="https://mindoroevo.github.io/mindoro_imp/impressum.html" target="_blank" rel="noopener">Impressum (extern)</a></td><td>Pflichtangaben gemäß § 5 TMG</td></tr>
       </tbody>
-    </table>
+    </table></div>
 
     <div class="info-box">
       <strong>Keine externen Abhängigkeiten in Produktion:</strong> Die App lädt keinerlei Ressourcen

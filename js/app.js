@@ -76,6 +76,7 @@ function init() {
     setActiveTab("spiele");
     showGamesScreen();
   });
+
   if (overlay) overlay.addEventListener("click", toggleSidebar);
   window.addEventListener("resize", handleViewportChangeDebounced);
   window.addEventListener("orientationchange", () => setTimeout(syncLayoutMetrics, 150));
