@@ -1,146 +1,1069 @@
 {
-  "meta": {
+  "_metadata": {
     "module": "004",
-    "title": "Betriebssysteme, Benutzer & Rechte"
+    "title": "Betriebssysteme, Benutzer & Rechteverwaltung",
+    "questionCount": 65,
+    "estimatedMinutes": "55-70",
+    "difficulty": {
+      "easy": 22,
+      "medium": 28,
+      "hard": 15
+    },
+    "bloomLevels": {
+      "1": 18,
+      "2": 22,
+      "3": 15,
+      "4": 8,
+      "5": 2
+    },
+    "questionTypes": {
+      "multipleChoice": 26,
+      "fillBlank": 10,
+      "matching": 6,
+      "ordering": 6,
+      "trueFalse": 17
+    },
+    "conceptCoverage": {
+      "windows_user_management": {
+        "description": "Windows-Benutzer, Gruppen, Verwaltung",
+        "questionCount": 8,
+        "importance": "high"
+      },
+      "ntfs_permissions": {
+        "description": "NTFS-Berechtigungen, Vererbung, ACLs",
+        "questionCount": 9,
+        "importance": "very_high"
+      },
+      "linux_rights": {
+        "description": "Linux rwx-Modell, chmod, chown, sudo",
+        "questionCount": 9,
+        "importance": "very_high"
+      },
+      "active_directory": {
+        "description": "Active Directory Grundlagen, GPO",
+        "questionCount": 7,
+        "importance": "medium"
+      },
+      "least_privilege": {
+        "description": "Sicherheitsprinzipien, Need-to-Know",
+        "questionCount": 8,
+        "importance": "very_high"
+      },
+      "registry_system": {
+        "description": "Windows Registry, Systemkonfiguration",
+        "questionCount": 6,
+        "importance": "low"
+      },
+      "troubleshooting": {
+        "description": "Fehleranalyse bei Zugriffsproblemen",
+        "questionCount": 8,
+        "importance": "high"
+      },
+      "ap1_preparation": {
+        "description": "AP1-Prüfungsszenarien, Begründungen",
+        "questionCount": 10,
+        "importance": "very_high"
+      }
+    }
   },
-  "engine": "mixed",
-  "mcq": [
+  "questions": [
     {
-      "id": "4_m_1",
-      "question": "Welche der folgenden Dateien eignet sich NICHT als Dateisystem für eine 8 GB große Videodatei?",
+      "id": "004-mcq-001",
+      "type": "multipleChoice",
+      "question": "Ein Marketing-Mitarbeiter benötigt Zugriff auf den Ordner `C:\\Daten\\Marketing`. Welche NTFS-Berechtigung sollte die Gruppe 'Marketing' gemäß dem Least-Privilege-Prinzip erhalten?",
       "options": [
-        "NTFS",
-        "FAT32",
-        "exFAT",
-        "EXT4"
+        "Vollzugriff (Full Control) – damit er alles machen kann",
+        "Ändern (Modify) – Lesen, Schreiben, Löschen von Dateien",
+        "Schreiben (Write) – nur neue Dateien erstellen",
+        "Lesen (Read) – nur Dateien ansehen"
       ],
-      "correct": [1],
-      "explanation": "FAT32 hat ein hartes Limit von **4 GB** pro Datei. Größere Dateien (wie HD-Videos) können nicht gespeichert werden, selbst wenn die Festplatte noch Platz hat."
+      "correctAnswer": 1,
+      "explanation": "**Ändern (Modify)** ist korrekt: Marketing-Mitarbeiter müssen Dateien lesen, bearbeiten, erstellen und löschen können (normale Tätigkeit). Vollzugriff erlaubt zusätzlich Berechtigungs-Änderungen (NICHT nötig für normale Arbeit = Verstoß gegen Least Privilege). 'Schreiben' allein reicht nicht (kann nicht lesen!), 'Lesen' zu restriktiv.",
+      "difficulty": "medium",
+      "bloomLevel": 3,
+      "concept": "ntfs_permissions"
     },
     {
-      "id": "4_m_2",
-      "question": "Was bedeutet 'Journaling' bei einem Dateisystem (z.B. EXT4, NTFS)?",
+      "id": "004-mcq-002",
+      "type": "multipleChoice",
+      "question": "Welcher Linux-Befehl setzt die Berechtigung eines Ordners auf `rwxr-xr-x`?",
       "options": [
-        "Es speichert Änderungen in einem Protokoll (Journal), bevor sie dauerhaft geschrieben werden, um Inkonsistenzen nach einem Absturz zu verhindern.",
-        "Es verschlüsselt alle Dateien automatisch.",
-        "Es sortiert Dateien nach dem Datum.",
-        "Es ist ein Editor für Tagebucheinträge."
+        "chmod 777 ordner",
+        "chmod 755 ordner",
+        "chmod 644 ordner",
+        "chown 755 ordner"
       ],
-      "correct": [0],
-      "explanation": "Journaling verhindert Datenverlust bei Stromausfall. Nach dem Neustart muss das OS nicht die ganze Platte scannen (fsck/chkdsk), sondern nur das Journal prüfen."
+      "correctAnswer": 1,
+      "explanation": "`chmod 755` ist korrekt: rwx = 7 (Owner), r-x = 5 (Group), r-x = 5 (Other). `chmod 777` = rwxrwxrwx (zu offen!), `644` = rw-r--r-- (kein Execute), `chown` ändert Besitzer (nicht Rechte).",
+      "difficulty": "easy",
+      "bloomLevel": 2,
+      "concept": "linux_rights"
     },
     {
-      "id": "4_m_3",
-      "question": "Welches Recht wird durch den Oktalwert 5 dargestellt?",
+      "id": "004-mcq-003",
+      "type": "multipleChoice",
+      "question": "Ein User ist in Gruppe 'Marketing' (Allow: Ändern) UND in Gruppe 'Gesperrt' (Deny: Vollzugriff). Was passiert?",
       "options": [
-        "Lesen & Schreiben (rw-)",
-        "Schreiben & Ausführen (-wx)",
-        "Lesen & Ausführen (r-x)",
-        "Nur Lesen (r--)"
+        "User kann ändern (Allow gewinnt)",
+        "User kann nichts tun (Deny > Allow)",
+        "User kann nur lesen (Kompromiss)",
+        "System fragt nach welche Regel gilt"
       ],
-      "correct": [2],
-      "explanation": "r=4, w=2, x=1. 5 ist 4+1 -> Lesen (Read) + Ausführen (Execute)."
+      "correctAnswer": 1,
+      "explanation": "**Deny > Allow** IMMER! Explizites Deny übersteuert ALLE Allow-Regeln, egal wie viele Gruppen Allow vergeben. User ist komplett blockiert. Deshalb Deny nur für absolute Ausnahmen nutzen!",
+      "difficulty": "medium",
+      "bloomLevel": 2,
+      "concept": "ntfs_permissions"
     },
     {
-      "id": "4_m_5",
-      "question": "Wozu dient das 'Sticky Bit' bei Verzeichnissen (z.B. /tmp)?",
+      "id": "004-mcq-004",
+      "type": "multipleChoice",
+      "question": "Warum sollte man unter Linux NICHT dauerhaft als `root` arbeiten?",
       "options": [
-        "Es verhindert, dass Benutzer Dateien anderer Benutzer löschen, auch wenn sie Schreibrechte im Ordner haben.",
-        "Es sorgt dafür, dass Dateien im RAM bleiben ('kleben').",
-        "Es erlaubt jedem, alles zu löschen.",
-        "Es ist ein Virus."
+        "root-Account ist zu langsam (Performance-Problem)",
+        "Ein Tippfehler kann das gesamte System zerstören (z.B. `rm -rf /`)",
+        "root kann keine normalen Programme starten",
+        "Linux verbietet root-Login aus Sicherheitsgründen"
       ],
-      "correct": [0],
-      "explanation": "Ohne Sticky Bit dürfte jeder, der im Ordner schreiben darf (z.B. User A), auch Dateien von User B löschen. Das Sticky Bit (t) verhindert das."
+      "correctAnswer": 1,
+      "explanation": "**Sicherheitsrisiko**: root hat KEINE Beschränkungen. `rm -rf /` löscht das GESAMTE System unwiderruflich. Malware mit root-Rechten = volle Kontrolle. **Lösung:** Normalen User nutzen, nur bei Bedarf `sudo` für einzelne Admin-Befehle.",
+      "difficulty": "easy",
+      "bloomLevel": 2,
+      "concept": "linux_rights"
     },
     {
-      "id": "4_m_4",
-      "question": "Was ist der Unterschied zwischen Kernel und Shell?",
+      "id": "004-mcq-005",
+      "type": "multipleChoice",
+      "question": "Sie fügen einen User zur Gruppe 'Administratoren' hinzu (Windows). Der User meldet: 'Ich habe immer noch keinen Admin-Zugriff!'. Was ist die wahrscheinlichste Ursache?",
       "options": [
-        "Der Kernel ist die Hardware, die Shell die Software.",
-        "Der Kernel verwaltet die Ressourcen direkt, die Shell nimmt Benutzereingaben entgegen.",
-        "Die Shell ist schneller als der Kernel.",
-        "Nur Windows hat einen Kernel, Linux hat nur eine Shell."
+        "Windows ist defekt, Neuinstallation nötig",
+        "User muss sich ab-/anmelden (Access Token wird nur bei Login erstellt)",
+        "Gruppe 'Administratoren' hat keine Rechte",
+        "User braucht zusätzlich UAC-Rechte"
       ],
-      "correct": [1],
-      "explanation": "Der Kernel läuft abgeschirmt (Ring 0). Die Shell (bash, Explorer, cmd) ist nur ein Programm, das dem Kernel sagt, was er tun soll."
-    }
-  ],
-  "fill_blank": [
-    {
-      "id": "4_f_1",
-      "text": "Um einer Datei volle Rechte für den Besitzer, aber nur Leserechte für alle anderen zu geben, nutze ich den Befehl [blank]. Der Besitzer hat dann rwx (4+2+1=[blank]), die Gruppe r-- (4) und Andere r-- (4).",
-      "blanks": [
-        { "index": 0, "correct": "chmod 744", "options": ["chmod 777", "chmod 744", "chown user"] },
-        { "index": 1, "correct": "7", "options": ["6", "7", "5"] }
-      ],
-      "explanation": "7 (Besitzer) = rwx. 4 (Gruppe) = r--. 4 (Other) = r--. Zusammen: chmod 744."
+      "correctAnswer": 1,
+      "explanation": "**Access Token** wird nur bei LOGIN erstellt! Gruppen-Mitgliedschaften werden in Token geschrieben. Änderung zur Laufzeit = Token bleibt alt. User muss sich **ab-/anmelden**, dann hat Token neue Gruppe. (Trick: `gpupdate /force` + Neustart Explorer hilft manchmal, aber Neuanmeldung sicherer!)",
+      "difficulty": "medium",
+      "bloomLevel": 3,
+      "concept": "windows_user_management"
     },
     {
-      "id": "4_f_2",
-      "text": "Der Befehl [blank] ändert den Eigentümer einer Datei. Um Befehle mit Administrator-Rechten auszuführen, stellt man oft [blank] voran.",
-      "blanks": [
-        { "index": 0, "correct": "chown", "options": ["chmod", "chown", "ls"] },
-        { "index": 1, "correct": "sudo", "options": ["admin", "root", "sudo"] }
-      ]
-    }
-  ],
-  "match": [
-    {
-      "id": "4_ma_1",
-      "question": "Ordne die Konzepte ihren Aufgaben zu.",
-      "left": ["Scheduler", "Treiber", "Dateisystem", "Virtual Memory"],
-      "right": ["Prozess-Reihenfolge bestimmen", "Hardware ansprechen", "Daten strukturieren", "RAM erweitern (Swap)"],
-      "matches": [
-        { "l": 0, "r": 0 },
-        { "l": 1, "r": 1 },
-        { "l": 2, "r": 2 },
-        { "l": 3, "r": 3 }
+      "id": "004-mcq-006",
+      "type": "multipleChoice",
+      "question": "Was bedeutet das Prinzip **'Need-to-Know'** im Kontext von Berechtigungen?",
+      "options": [
+        "Jeder User sollte wissen wie Berechtigungen funktionieren",
+        "User darf nur auf Daten zugreifen die er für seine Arbeit WIRKLICH braucht",
+        "Admin muss wissen welche User welche Rechte haben",
+        "Berechtigungen müssen dokumentiert werden (ISO 27001)"
       ],
-      "explanation": "Der Scheduler entscheidet, wer CPU-Zeit bekommt. Treiber übersetzen OS-Befehle für Hardware. Virtual Memory nutzt die Festplatte als langsamen RAM-Ersatz."
+      "correctAnswer": 1,
+      "explanation": "**Need-to-Know = Minimale Datenzugriffe**: User bekommt NUR Zugriff auf Daten, die er für Job benötigt. Beispiel: Marketing sieht NICHT Gehalts-Daten (braucht er nicht!). DSGVO-Prinzip: Datenminimierung + Zweckbindung. Ergänzt Least Privilege (minimale RECHTE).",
+      "difficulty": "easy",
+      "bloomLevel": 2,
+      "concept": "least_privilege"
     },
     {
-      "id": "4_ma_2",
-      "question": "Ordne die Rechte-Kürzel den Aktionen zu.",
-      "left": ["r--", "-w-", "--x", "rw-"],
-      "right": ["Nur ansehen", "Nur ändern/löschen", "Nur ausführen", "Lesen und Ändern"],
-      "matches": [
-        { "l": 0, "r": 0 },
-        { "l": 1, "r": 1 },
-        { "l": 2, "r": 2 },
-        { "l": 3, "r": 3 }
-      ]
-    }
-  ],
-  "order": [
-    {
-      "id": "4_o_1",
-      "question": "Bringe die Rechte in aufsteigende Reihenfolge (wenigste Rechte zuerst).",
-      "items": [
-        "--- (0)",
-        "--x (1)",
-        "-w- (2)",
-        "r-- (4)",
-        "r-x (5)",
-        "rw- (6)",
-        "rwx (7)"
+      "id": "004-mcq-007",
+      "type": "multipleChoice",
+      "question": "Welches Windows-Feature sorgt dafür, dass bei Admin-Aktionen eine Bestätigung erscheint ('Möchten Sie Änderungen an diesem Gerät zulassen?')?",
+      "options": [
+        "Windows Defender",
+        "User Account Control (UAC)",
+        "BitLocker",
+        "Windows Firewall"
       ],
-      "correctOrder": [0, 1, 2, 3, 4, 5, 6],
-      "explanation": "Die Oktal-Logik addiert sich immer weiter auf. 7 ist das Maximum (Vollzugriff)."
-    }
-  ],
-  "true_false": [
-    {
-      "id": "4_tf_1",
-      "statement": "Unter Linux ist 'Datei.txt' und 'datei.txt' die gleiche Datei.",
-      "answer": "false",
-      "explanation": "Falsch! Linux (und Unix generell) ist Case-Sensitive. Windows ist Case-Insensitive."
+      "correctAnswer": 1,
+      "explanation": "**UAC (User Account Control)** zeigt Bestätigung bei Admin-Aktionen. Verhindert dass Malware lautlos System-Änderungen macht (braucht User-Bestätigung). Kritiker sagen 'nervt', aber: Schützt vor Drive-by-Malware! UAC kann in Stufen konfiguriert werden (Standard = empfohlen).",
+      "difficulty": "easy",
+      "bloomLevel": 1,
+      "concept": "windows_user_management"
     },
     {
-      "id": "4_tf_2",
-      "statement": "Der Benutzer 'root' darf unter Linux/Unix alles, auch Systemdateien löschen.",
-      "answer": "true",
-      "explanation": "Ja, Root ist der Gott-Modus. 'rm -rf /' als Root löscht das ganze Betriebssystem ohne Nachfrage."
+      "id": "004-mcq-008",
+      "type": "multipleChoice",
+      "question": "Sie kopieren einen Ordner von `C:\\Daten` nach `D:\\Backup`. Was passiert mit den NTFS-Berechtigungen?",
+      "options": [
+        "Berechtigungen werden 1:1 mitkopiert",
+        "Berechtigungen gehen verloren, Standard-ACL von D:\\ wird übernommen",
+        "Windows fragt nach ob Berechtigungen kopiert werden sollen",
+        "Berechtigungen werden als .acl-Datei gespeichert"
+      ],
+      "correctAnswer": 1,
+      "explanation": "**Kopieren = Berechtigungen verloren!** Kopierter Ordner erbt ACL vom Ziel-Laufwerk. **Verschieben** (innerhalb gleicher Partition) = Berechtigungen bleiben! **Lösung für Backup:** `robocopy /SEC` kopiert Berechtigungen mit. Oder Backup-Software die ACLs respektiert.",
+      "difficulty": "medium",
+      "bloomLevel": 2,
+      "concept": "ntfs_permissions"
+    },
+    {
+      "id": "004-mcq-009",
+      "type": "multipleChoice",
+      "question": "Ein Shell-Script `deploy.sh` soll ausgeführt werden, aber `./deploy.sh` gibt 'Permission denied'. Was fehlt?",
+      "options": [
+        "Script muss mit `sudo` gestartet werden",
+        "Execute-Bit fehlt (chmod +x deploy.sh)",
+        "Script muss in /bin/ verschoben werden",
+        "Shebang (#!/bin/bash) fehlt"
+      ],
+      "correctAnswer": 1,
+      "explanation": "**Execute-Bit fehlt!** Linux braucht `x` (execute) um Dateien auszuführen. Lösung: `chmod +x deploy.sh` (oder `chmod 755`). Shebang (`#!/bin/bash`) ist Best Practice, aber nicht Pflicht (kann mit `bash deploy.sh` umgangen werden). sudo braucht man nur für root-Aktionen.",
+      "difficulty": "easy",
+      "bloomLevel": 2,
+      "concept": "linux_rights"
+    },
+    {
+      "id": "004-mcq-010",
+      "type": "multipleChoice",
+      "question": "Was bewirkt `chmod 2770` (SetGID-Bit + rwxrwx---) bei einem Ordner?",
+      "options": [
+        "Neue Dateien im Ordner werden automatisch ausführbar",
+        "Neue Dateien im Ordner erben die Gruppe des Ordners (nicht des Erstellers)",
+        "Ordner kann nur von root gelöscht werden",
+        "Ordner wird verschlüsselt"
+      ],
+      "correctAnswer": 1,
+      "explanation": "**SetGID (2xxx)**: Neue Dateien erben GRUPPE des Ordners, nicht Primärgruppe des Users. Praktisch für Team-Ordner: Alle Dateien gehören automatisch Gruppe 'projekt', egal welcher User sie erstellt. `2770` = rwxrwx--- (Owner+Group voll, Other nichts) + SetGID.",
+      "difficulty": "hard",
+      "bloomLevel": 3,
+      "concept": "linux_rights"
+    },
+    {
+      "id": "004-mcq-011",
+      "type": "multipleChoice",
+      "question": "In der AP1-Prüfung sollst du Berechtigungen begründen. Welche Argumentation ist am stärksten?",
+      "options": [
+        "'Marketing-Gruppe bekommt Vollzugriff, weil sie Admin-Rechte braucht.'",
+        "'Marketing-Gruppe bekommt Ändern-Rechte (Lesen+Schreiben+Löschen), da sie eigenständig Kampagnen-Dateien verwaltet. Vollzugriff ist nicht nötig (Least Privilege). Geschäftsführung erhält Read-Only für Kontrolle.'",
+        "'Marketing bekommt Ändern, weil das Standard ist.'",
+        "'Wir geben allen Vollzugriff, dann gibt es keine Probleme.'"
+      ],
+      "correctAnswer": 1,
+      "explanation": "**Option 2 ist AP1-Gold:** Begründung nennt Least Privilege, erklärt WARUM (Arbeitsanforderung), grenzt ab (NICHT Vollzugriff), erwähnt Kontrolle (GF). Prüfer LIEBEN: Fachbegriffe + Nutzenargument + Sicherheitsaspekt. Option 1 = Fehler (Marketing braucht kein Admin!), Option 3/4 = zu oberflächlich/falsch.",
+      "difficulty": "medium",
+      "bloomLevel": 4,
+      "concept": "ap1_preparation"
+    },
+    {
+      "id": "004-mcq-012",
+      "type": "multipleChoice",
+      "question": "Welche Aussage über Windows-Vererbung (Inheritance) ist FALSCH?",
+      "options": [
+        "Unterordner erben standardmäßig Berechtigungen vom Oberordner",
+        "Vererbung kann gezielt deaktiviert werden (z.B. bei sensiblen Ordnern)",
+        "Vererbung gilt nur für Dateien, nicht für Unterordner",
+        "Explizites Deny wird auch an Unterordner vererbt (wenn Vererbung aktiv)"
+      ],
+      "correctAnswer": 2,
+      "explanation": "**Option 3 ist FALSCH!** Vererbung gilt für BEIDES: Dateien (Object Inherit – OI) UND Unterordner (Container Inherit – CI). Typisch: `(OI)(CI)` = alles erbt. Vererbung kann pro Ordner deaktiviert werden (wichtig bei GF-Ordner!). Deny wird auch vererbt (Vorsicht!).",
+      "difficulty": "medium",
+      "bloomLevel": 2,
+      "concept": "ntfs_permissions"
+    },
+    {
+      "id": "004-mcq-013",
+      "type": "multipleChoice",
+      "question": "Was ist der Hauptvorteil von Gruppen-basierter Rechtevergabe gegenüber Einzelbenutzer-Rechten?",
+      "options": [
+        "Gruppen haben mehr Rechte als normale User",
+        "Wartbarkeit: Neuer User → in Gruppe aufnehmen = sofort alle Rechte",
+        "Gruppen können nicht gelöscht werden",
+        "Gruppen umgehen UAC/sudo-Beschränkungen"
+      ],
+      "correctAnswer": 1,
+      "explanation": "**Wartbarkeit + Skalierbarkeit**: 10 Marketing-User → Gruppe 'Marketing' erstellen, Rechte EINMAL setzen. Neuer User → in Gruppe = fertig (5 Min statt 2h einzeln Rechte setzen). WENIGER Fehler (vergessene Rechte). TCO-Argument für AP1: 'Spart 4h/Monat × 50€/h = 2.400€/Jahr'.",
+      "difficulty": "easy",
+      "bloomLevel": 2,
+      "concept": "least_privilege"
+    },
+    {
+      "id": "004-mcq-014",
+      "type": "multipleChoice",
+      "question": "Welcher Linux-Befehl zeigt die effektiven Gruppenmitgliedschaften eines Users an?",
+      "options": [
+        "groups <username>",
+        "whoami /groups",
+        "id -g",
+        "getent passwd"
+      ],
+      "correctAnswer": 0,
+      "explanation": "`groups <username>` zeigt alle Gruppen des Users. `id <username>` zeigt UID + alle GIDs (detaillierter). `whoami /groups` ist Windows-CMD. `id -g` zeigt nur Primärgruppe. `getent passwd` zeigt User-Datenbank (nicht Gruppen).",
+      "difficulty": "easy",
+      "bloomLevel": 1,
+      "concept": "linux_rights"
+    },
+    {
+      "id": "004-mcq-015",
+      "type": "multipleChoice",
+      "question": "Ein Webserver (Apache) zeigt '403 Forbidden' bei Zugriff auf `/var/www/html/index.html`. Die Datei existiert und hat Rechte `rw-r--r--` (644), Besitzer ist `anna`. Was ist das Problem?",
+      "options": [
+        "Datei hat kein Execute-Bit (braucht chmod +x)",
+        "Apache läuft als User www-data, aber Besitzer ist anna (www-data hat nur Read als 'Other' – funktioniert aber!). Problem liegt woanders (z.B. Ordner-Rechte).",
+        "644 ist falsch, muss 755 sein",
+        "Apache braucht root-Rechte zum Lesen"
+      ],
+      "correctAnswer": 1,
+      "explanation": "**Trick-Frage!** `rw-r--r--` (644) = Other darf lesen → www-data (als Other) kann Datei lesen, das ist OK! Problem liegt meist bei **Ordner-Rechten**: Alle Ordner bis `/var/www/html` brauchen `x` (execute) für www-data! Typisch: `/var/www` hat `700` (nur Owner) → www-data kann nicht in Ordner wechseln. Lösung: `chmod 755 /var/www /var/www/html`.",
+      "difficulty": "hard",
+      "bloomLevel": 4,
+      "concept": "troubleshooting"
+    },
+    {
+      "id": "004-mcq-016",
+      "type": "multipleChoice",
+      "question": "Was bedeutet `icacls ordner /inheritance:d` (Windows)?",
+      "options": [
+        "Ordner wird gelöscht (delete)",
+        "Vererbung wird deaktiviert (disable inheritance)",
+        "Ordner wird als 'Standard' markiert (default)",
+        "Duplikate von Berechtigungen werden entfernt"
+      ],
+      "correctAnswer": 1,
+      "explanation": "`/inheritance:d` = **Disable inheritance** (Vererbung deaktivieren). Ordner erbt NICHT mehr Berechtigungen von oben. Wichtig bei sensiblen Ordnern (GF)! Danach: Explizit neue Rechte setzen. Alternative: `/inheritance:r` = Remove (Vererbung aus + geerbte Rechte löschen).",
+      "difficulty": "medium",
+      "bloomLevel": 2,
+      "concept": "ntfs_permissions"
+    },
+    {
+      "id": "004-mcq-017",
+      "type": "multipleChoice",
+      "question": "Welches Kommando ändert den Besitzer UND die Gruppe einer Datei unter Linux?",
+      "options": [
+        "chmod anna:marketing datei.txt",
+        "chown anna:marketing datei.txt",
+        "chgrp anna:marketing datei.txt",
+        "usermod -o anna:marketing datei.txt"
+      ],
+      "correctAnswer": 1,
+      "explanation": "`chown anna:marketing datei.txt` ändert Besitzer (anna) UND Gruppe (marketing). `chmod` = Rechte ändern (nicht Besitzer!). `chgrp` = nur Gruppe ändern. `usermod` = User-Eigenschaften ändern (nicht Dateien).",
+      "difficulty": "easy",
+      "bloomLevel": 1,
+      "concept": "linux_rights"
+    },
+    {
+      "id": "004-mcq-018",
+      "type": "multipleChoice",
+      "question": "Ein User ist Mitglied der Gruppen 'Marketing' (Lesen auf Ordner A) und 'Entwicklung' (Ändern auf Ordner A). Was sind die effektiven Rechte?",
+      "options": [
+        "Nur Lesen (restriktivere Regel gilt)",
+        "Ändern (Rechte werden kumulativ addiert)",
+        "Konflikt, User kann nicht zugreifen",
+        "Windows fragt beim Zugriff welche Gruppe benutzt werden soll"
+      ],
+      "correctAnswer": 1,
+      "explanation": "**Allow-Rechte sind kumulativ!** User hat BEIDE Gruppen-Rechte: Lesen UND Ändern = Effektiv 'Ändern' (höhere Berechtigung). ABER: Ein Deny würde ALLES übersteuern (Deny > Allow). Wichtig: Restriktiver gilt nur bei Freigabe-Rechte vs. NTFS-Rechte (unterschiedliche Ebenen!).",
+      "difficulty": "medium",
+      "bloomLevel": 3,
+      "concept": "ntfs_permissions"
+    },
+    {
+      "id": "004-mcq-019",
+      "type": "multipleChoice",
+      "question": "Was ist der Unterschied zwischen `sudo su` und `sudo -i` unter Linux?",
+      "options": [
+        "Kein Unterschied, beide machen User zu root",
+        "`sudo su` wechselt zu root-Shell mit aktuellem User-Environment, `sudo -i` startet neue root-Login-Shell mit root-Environment",
+        "`sudo su` ist sicherer als `sudo -i`",
+        "`sudo -i` braucht kein Passwort, `sudo su` schon"
+      ],
+      "correctAnswer": 1,
+      "explanation": "`sudo -i` = **Login-Shell** (root-Environment, `/root` als Home, .bashrc wird geladen). `sudo su` = **Non-Login-Shell** (behält User-Environment). Best Practice: `sudo -i` wenn root-Session nötig, `sudo <command>` für einzelne Befehle (kein Shell-Wechsel = sicherer!).",
+      "difficulty": "hard",
+      "bloomLevel": 2,
+      "concept": "linux_rights"
+    },
+    {
+      "id": "004-mcq-020",
+      "type": "multipleChoice",
+      "question": "Welche Aussage über die Windows-Gruppe 'Jeder' (Everyone) ist korrekt?",
+      "options": [
+        "'Jeder' umfasst alle Benutzer inklusive Gäste und anonyme Zugriffe",
+        "'Jeder' umfasst nur angemeldete Benutzer (nicht Gäste)",
+        "'Jeder' ist nur eine Empfehlung, keine echte Gruppe",
+        "'Jeder' = nur lokale Benutzer, keine Domänen-User"
+      ],
+      "correctAnswer": 0,
+      "explanation": "**'Jeder' (Everyone) = ALLE!** Lokale User, Domänen-User, Gäste, anonyme Netzwerkzugriffe. Sehr weit gefasst! Deshalb: VORSICHT bei 'Jeder' auf sensiblen Ordnern. Alternativ: 'Authentifizierte Benutzer' (Authenticated Users) = nur angemeldete User (sicherer!).",
+      "difficulty": "medium",
+      "bloomLevel": 2,
+      "concept": "windows_user_management"
+    },
+    {
+      "id": "004-mcq-021",
+      "type": "multipleChoice",
+      "question": "Sie erstellen ein Backup-Script das als User 'backup' laufen soll. Welche Rechte braucht 'backup' für `/home/anna/dokumente`?",
+      "options": [
+        "Vollzugriff (rwx) auf alles",
+        "Read-Rechte (r--) sind ausreichend für Backup (nur Lesen, nicht Ändern!)",
+        "Write-Rechte (w--) zum Schreiben ins Backup",
+        "Execute (x) zum Ausführen der Dateien"
+      ],
+      "correctAnswer": 1,
+      "explanation": "**Backup braucht nur READ!** Daten werden gelesen + kopiert, nicht geändert. Execute (x) bei Ordnern ist nötig (um Ordner zu betreten), aber nicht bei Dateien. Best Practice: Backup-User in Gruppe 'backup', alle Daten-Ordner bekommen `g+r` für Gruppe 'backup'. Minimale Rechte = Least Privilege!",
+      "difficulty": "medium",
+      "bloomLevel": 3,
+      "concept": "least_privilege"
+    },
+    {
+      "id": "004-mcq-022",
+      "type": "multipleChoice",
+      "question": "Was ist eine GPO (Group Policy Object) im Kontext von Active Directory?",
+      "options": [
+        "Eine Gruppe von Benutzern mit gleichen Rechten",
+        "Eine Regel die zentral Einstellungen auf viele Computer/User verteilt (z.B. Passwort-Policy, Software-Installation)",
+        "Ein verschlüsselter Ordner im Netzwerk",
+        "Ein Backup-Mechanismus für Gruppen"
+      ],
+      "correctAnswer": 1,
+      "explanation": "**GPO = Zentrale Verwaltung von Einstellungen!** Beispiele: Passwort muss 12 Zeichen, Desktop-Hintergrund Firmenlogo, Software-Installation, Browser-Proxy. Wird auf OU (Organizational Unit) angewendet → ALLE Computer/User in OU bekommen Einstellung. Spart Zeit + erzwingt Standards. AP1-Relevanz: Grundverständnis, nicht Administration!",
+      "difficulty": "easy",
+      "bloomLevel": 1,
+      "concept": "active_directory"
+    },
+    {
+      "id": "004-mcq-023",
+      "type": "multipleChoice",
+      "question": "Welche Berechtigungs-Stufe ist zwischen 'Lesen' und 'Vollzugriff' bei NTFS?",
+      "options": [
+        "Schreiben (Write)",
+        "Ändern (Modify)",
+        "Ausführen (Execute)",
+        "Durchlaufen (Traverse)"
+      ],
+      "correctAnswer": 1,
+      "explanation": "**Ändern (Modify)** = Lesen + Schreiben + Löschen (reicht für meiste Arbeiten!). Vollzugriff (Full Control) = zusätzlich Berechtigungen ändern + Besitz übernehmen (nur für Admins!). 'Schreiben' allein = kann nicht lesen (unpraktisch!). Hierarchie: Read < Write < Execute < Modify < Full Control.",
+      "difficulty": "easy",
+      "bloomLevel": 1,
+      "concept": "ntfs_permissions"
+    },
+    {
+      "id": "004-mcq-024",
+      "type": "multipleChoice",
+      "question": "Ein Linux-Ordner hat Rechte `drwxr-x---` (750). Was bedeutet das `d` am Anfang?",
+      "options": [
+        "'denied' – Zugriff verboten",
+        "'directory' – es handelt sich um einen Ordner",
+        "'default' – Standardrechte",
+        "'data' – normale Datei"
+      ],
+      "correctAnswer": 1,
+      "explanation": "`d` = **Directory** (Ordner). Andere: `-` = normale Datei, `l` = Symlink, `c` = Character Device, `b` = Block Device. `rwxr-x---` = Owner (rwx), Group (r-x), Other (---). Ordner brauchen `x` zum Betreten (`cd ordner`)!",
+      "difficulty": "easy",
+      "bloomLevel": 1,
+      "concept": "linux_rights"
+    },
+    {
+      "id": "004-mcq-025",
+      "type": "multipleChoice",
+      "question": "Warum sollten Praktikanten in eine separate Gruppe 'Entwicklung-ReadOnly' statt in 'Entwicklung' aufgenommen werden?",
+      "options": [
+        "Praktikanten sind keine echten Mitarbeiter",
+        "Least Privilege: Praktikanten brauchen nur Lese-Zugriff (können Code nicht versehentlich löschen!)",
+        "Separate Gruppe ist Pflicht laut Arbeitsrecht",
+        "Praktikanten kosten weniger Lizenzgebühren"
+      ],
+      "correctAnswer": 1,
+      "explanation": "**Least Privilege + Risiko-Minimierung:** Praktikanten lernen, brauchen aber nicht vollen Zugriff. Können versehentlich wichtigen Code löschen. Separate Gruppe 'Entwicklung-ReadOnly' mit Read-Rechten = können Code lesen/lernen, aber nicht ändern. Später (Vollzeit): in 'Entwicklung' verschieben = automatisch Vollzugriff. Wartbar + sicher!",
+      "difficulty": "medium",
+      "bloomLevel": 3,
+      "concept": "ap1_preparation"
+    },
+    {
+      "id": "004-mcq-026",
+      "type": "multipleChoice",
+      "question": "Sie sollen Berechtigungen auf einem Linux-Server prüfen. Der Admin sagt: 'umask ist 0022'. Was bewirkt das?",
+      "options": [
+        "Neue Dateien bekommen 0022 als Rechte",
+        "Neue Dateien bekommen 644 (rw-r--r--), neue Ordner 755 (rwxr-xr-x)",
+        "Alle Dateien älter als 22 Tage werden gelöscht",
+        "Benutzer 22 bekommt Vollzugriff"
+      ],
+      "correctAnswer": 1,
+      "explanation": "**umask = Maske die von Standard-Rechten ABGEZOGEN wird!** Standard: Dateien 666, Ordner 777. umask 0022 → Dateien: 666-022=**644** (rw-r--r--), Ordner: 777-022=**755** (rwxr-xr-x). Oktal-Subtraktion: Von Group+Other wird 'write' (2) entfernt. umask wird in `.bashrc` gesetzt.",
+      "difficulty": "hard",
+      "bloomLevel": 3,
+      "concept": "linux_rights"
+    },
+    {
+      "id": "004-fb-001",
+      "type": "fillBlank",
+      "question": "Das Prinzip '________ ________' besagt, dass jeder Benutzer nur die Rechte erhält, die er für seine Arbeit zwingend benötigt.",
+      "correctAnswer": "Least Privilege",
+      "caseSensitive": false,
+      "acceptedVariations": [
+        "Least Privilege",
+        "Minimale Rechte",
+        "Prinzip der minimalen Rechte"
+      ],
+      "explanation": "**Least Privilege** (Prinzip der minimalen Rechte): User bekommt NUR was er WIRKLICH braucht, nicht mehr. Reduziert Schaden bei Fehler/Malware. AP1-Pflichtbegriff!",
+      "difficulty": "easy",
+      "bloomLevel": 1,
+      "concept": "least_privilege"
+    },
+    {
+      "id": "004-fb-002",
+      "type": "fillBlank",
+      "question": "Unter Windows schlägt eine explizite '________'-Berechtigung immer alle 'Allow'-Berechtigungen.",
+      "correctAnswer": "Deny",
+      "caseSensitive": false,
+      "acceptedVariations": [
+        "Deny",
+        "Verweigern"
+      ],
+      "explanation": "**Deny > Allow** (IMMER!). Explizites Verbieten übersteuert alle Erlaubnisse. Nur für Ausnahmen nutzen (z.B. 'User X darf NICHT in sensiblen Ordner, auch wenn in Gruppe').",
+      "difficulty": "easy",
+      "bloomLevel": 1,
+      "concept": "ntfs_permissions"
+    },
+    {
+      "id": "004-fb-003",
+      "type": "fillBlank",
+      "question": "Der Linux-Befehl '________ +x script.sh' macht eine Datei ausführbar.",
+      "correctAnswer": "chmod",
+      "caseSensitive": false,
+      "acceptedVariations": [
+        "chmod"
+      ],
+      "explanation": "`chmod` = **CH**ange **MOD**e (Rechte ändern). `+x` = Execute-Bit setzen. Ohne `x` kann Script nicht mit `./script.sh` gestartet werden (Permission denied).",
+      "difficulty": "easy",
+      "bloomLevel": 1,
+      "concept": "linux_rights"
+    },
+    {
+      "id": "004-fb-004",
+      "type": "fillBlank",
+      "question": "Der PowerShell-Befehl '________ \"C:\\Ordner\" /grant \"Marketing:(OI)(CI)M\"' vergibt Ändern-Rechte an die Marketing-Gruppe.",
+      "correctAnswer": "icacls",
+      "caseSensitive": false,
+      "acceptedVariations": [
+        "icacls",
+        "icacls.exe"
+      ],
+      "explanation": "`icacls` = Windows-Tool zum Setzen von NTFS-Berechtigungen (Kommandozeile). `/grant` = Berechtigung hinzufügen. `(OI)(CI)` = Object+Container Inherit (alles erbt). `M` = Modify.",
+      "difficulty": "medium",
+      "bloomLevel": 2,
+      "concept": "ntfs_permissions"
+    },
+    {
+      "id": "004-fb-005",
+      "type": "fillBlank",
+      "question": "Das Windows-Feature '________' (Abkürzung) sorgt dafür, dass bei Admin-Aktionen eine Bestätigung erscheint.",
+      "correctAnswer": "UAC",
+      "caseSensitive": false,
+      "acceptedVariations": [
+        "UAC",
+        "User Account Control",
+        "Benutzerkontensteuerung"
+      ],
+      "explanation": "**UAC** (User Account Control / Benutzerkontensteuerung): Prompt bei Admin-Aktionen. Verhindert lautlose Malware-Installation. Kann in Stufen konfiguriert werden (Standard = empfohlen).",
+      "difficulty": "easy",
+      "bloomLevel": 1,
+      "concept": "windows_user_management"
+    },
+    {
+      "id": "004-fb-006",
+      "type": "fillBlank",
+      "question": "Der Linux-Befehl '________' zeigt die Gruppenmitgliedschaften eines Benutzers an.",
+      "correctAnswer": "groups",
+      "caseSensitive": false,
+      "acceptedVariations": [
+        "groups",
+        "id"
+      ],
+      "explanation": "`groups <username>` zeigt alle Gruppen. `id <username>` zeigt UID + GIDs (detaillierter). Wichtig bei Troubleshooting: Ist User wirklich in Gruppe?",
+      "difficulty": "easy",
+      "bloomLevel": 1,
+      "concept": "linux_rights"
+    },
+    {
+      "id": "004-fb-007",
+      "type": "fillBlank",
+      "question": "Nach dem Hinzufügen eines Users zu einer Gruppe muss dieser sich ________, damit die Änderung wirksam wird.",
+      "correctAnswer": "ab- und anmelden",
+      "caseSensitive": false,
+      "acceptedVariations": [
+        "abmelden",
+        "ab- und anmelden",
+        "neu anmelden",
+        "neuanmelden",
+        "ausloggen",
+        "logout"
+      ],
+      "explanation": "**Access Token** wird nur bei LOGIN erstellt! Gruppen-Mitgliedschaften werden in Token geschrieben. Änderung zur Laufzeit = Token bleibt alt. User muss sich ab-/anmelden (Windows + Linux!).",
+      "difficulty": "medium",
+      "bloomLevel": 2,
+      "concept": "troubleshooting"
+    },
+    {
+      "id": "004-fb-008",
+      "type": "fillBlank",
+      "question": "Der Linux-Befehl '________ anna:marketing datei.txt' ändert Besitzer und Gruppe einer Datei.",
+      "correctAnswer": "chown",
+      "caseSensitive": false,
+      "acceptedVariations": [
+        "chown",
+        "sudo chown"
+      ],
+      "explanation": "`chown` = **CH**ange **OWN**er (Besitzer ändern). `user:group` = Besitzer UND Gruppe. Nur root/sudo kann chown ausführen (Sicherheit!).",
+      "difficulty": "easy",
+      "bloomLevel": 1,
+      "concept": "linux_rights"
+    },
+    {
+      "id": "004-fb-009",
+      "type": "fillBlank",
+      "question": "Unter Windows wird eine Berechtigungsliste genannt: ________ (3 Buchstaben, Abkürzung).",
+      "correctAnswer": "ACL",
+      "caseSensitive": false,
+      "acceptedVariations": [
+        "ACL",
+        "Access Control List"
+      ],
+      "explanation": "**ACL** (Access Control List) = Liste aller Berechtigungseinträge (wer darf was). NTFS speichert ACLs für jeden Ordner/Datei. Sichtbar in 'Eigenschaften → Sicherheit'.",
+      "difficulty": "easy",
+      "bloomLevel": 1,
+      "concept": "ntfs_permissions"
+    },
+    {
+      "id": "004-fb-010",
+      "type": "fillBlank",
+      "question": "Bei Linux bedeutet 'rwxr-xr-x' in Oktalschreibweise: ________.",
+      "correctAnswer": "755",
+      "caseSensitive": false,
+      "acceptedVariations": [
+        "755",
+        "0755"
+      ],
+      "explanation": "rwx = 7 (4+2+1), r-x = 5 (4+0+1), r-x = 5 → **755**. Typisch für Ordner (Owner voll, Group+Other lesen+betreten).",
+      "difficulty": "medium",
+      "bloomLevel": 2,
+      "concept": "linux_rights"
+    },
+    {
+      "id": "004-match-001",
+      "type": "matching",
+      "question": "Ordne die Windows-NTFS-Berechtigungen ihrer Bedeutung zu:",
+      "pairs": [
+        {
+          "left": "Read (R)",
+          "right": "Datei öffnen, Ordnerinhalt sehen"
+        },
+        {
+          "left": "Modify (M)",
+          "right": "Lesen + Schreiben + Löschen (Standard für Teams)"
+        },
+        {
+          "left": "Full Control (F)",
+          "right": "Alles + Berechtigungen ändern (nur Admins!)"
+        },
+        {
+          "left": "Write (W)",
+          "right": "Neue Dateien erstellen, nicht lesen"
+        }
+      ],
+      "explanation": "**Read** = Basis-Zugriff. **Modify** = für normale Arbeit (Marketing-Ordner). **Full Control** = nur Admins (können ACL ändern!). **Write** allein ist unpraktisch (kann nicht lesen, nur schreiben!).",
+      "difficulty": "easy",
+      "bloomLevel": 2,
+      "concept": "ntfs_permissions"
+    },
+    {
+      "id": "004-match-002",
+      "type": "matching",
+      "question": "Ordne die Linux-Rechte-Symbole ihrer Bedeutung zu:",
+      "pairs": [
+        {
+          "left": "r (read)",
+          "right": "Datei lesen / Ordnerinhalt listen"
+        },
+        {
+          "left": "w (write)",
+          "right": "Datei schreiben / Dateien in Ordner erstellen/löschen"
+        },
+        {
+          "left": "x (execute)",
+          "right": "Datei ausführen / In Ordner wechseln (cd)"
+        },
+        {
+          "left": "- (kein Recht)",
+          "right": "Zugriff verweigert für diese Aktion"
+        }
+      ],
+      "explanation": "**r** = Lesen (4). **w** = Schreiben (2). **x** = Ausführen (1) – bei Ordnern zum Betreten nötig! `-` = Recht fehlt. Kombination: `rwx` = 7, `r-x` = 5, `r--` = 4.",
+      "difficulty": "easy",
+      "bloomLevel": 1,
+      "concept": "linux_rights"
+    },
+    {
+      "id": "004-match-003",
+      "type": "matching",
+      "question": "Ordne die Sicherheitsprinzipien ihrer Definition zu:",
+      "pairs": [
+        {
+          "left": "Least Privilege",
+          "right": "User bekommt nur minimal nötige Rechte"
+        },
+        {
+          "left": "Need-to-Know",
+          "right": "User darf nur auf Daten zugreifen die er für Job braucht"
+        },
+        {
+          "left": "Separation of Duties",
+          "right": "Aufgaben trennen (4-Augen-Prinzip)"
+        },
+        {
+          "left": "Deny > Allow",
+          "right": "Explizites Verbieten übersteuert alle Erlaubnisse"
+        }
+      ],
+      "explanation": "**Least Privilege** = minimale RECHTE. **Need-to-Know** = minimale DATEN-Zugriffe. **Separation of Duties** = Aufgabentrennung (Betrugsschutz). **Deny > Allow** = Windows-Regel bei Konflikten.",
+      "difficulty": "medium",
+      "bloomLevel": 2,
+      "concept": "least_privilege"
+    },
+    {
+      "id": "004-match-004",
+      "type": "matching",
+      "question": "Ordne die Windows-Tools ihrer Funktion zu:",
+      "pairs": [
+        {
+          "left": "icacls",
+          "right": "NTFS-Berechtigungen per Kommandozeile setzen"
+        },
+        {
+          "left": "lusrmgr.msc",
+          "right": "Lokale Benutzer und Gruppen verwalten (GUI)"
+        },
+        {
+          "left": "UAC",
+          "right": "Bestätigung bei Admin-Aktionen"
+        },
+        {
+          "left": "Get-Acl",
+          "right": "PowerShell: Berechtigungen anzeigen"
+        }
+      ],
+      "explanation": "`icacls` = CMD-Tool für NTFS. `lusrmgr.msc` = GUI für lokale User/Gruppen. `UAC` = Sicherheitsprompt. `Get-Acl` = PowerShell-Cmdlet zum Auslesen von ACLs.",
+      "difficulty": "medium",
+      "bloomLevel": 2,
+      "concept": "windows_user_management"
+    },
+    {
+      "id": "004-match-005",
+      "type": "matching",
+      "question": "Ordne die Linux-Befehle ihrer Funktion zu:",
+      "pairs": [
+        {
+          "left": "chmod",
+          "right": "Dateiberechtigungen ändern (rwx)"
+        },
+        {
+          "left": "chown",
+          "right": "Besitzer und Gruppe ändern"
+        },
+        {
+          "left": "sudo",
+          "right": "Befehl mit root-Rechten ausführen"
+        },
+        {
+          "left": "groups",
+          "right": "Gruppenmitgliedschaften anzeigen"
+        }
+      ],
+      "explanation": "`chmod` = Rechte (Mode). `chown` = Besitzer (Owner). `sudo` = Temporär root. `groups` = Gruppen-Abfrage. Alle essentiell für Linux-Administration!",
+      "difficulty": "easy",
+      "bloomLevel": 1,
+      "concept": "linux_rights"
+    },
+    {
+      "id": "004-match-006",
+      "type": "matching",
+      "question": "Ordne die Oktal-Werte (chmod) ihrer rwx-Darstellung zu:",
+      "pairs": [
+        {
+          "left": "7",
+          "right": "rwx (Lesen + Schreiben + Ausführen)"
+        },
+        {
+          "left": "6",
+          "right": "rw- (Lesen + Schreiben)"
+        },
+        {
+          "left": "5",
+          "right": "r-x (Lesen + Ausführen)"
+        },
+        {
+          "left": "4",
+          "right": "r-- (Nur Lesen)"
+        }
+      ],
+      "explanation": "Oktal-Werte: r=4, w=2, x=1. Addition: 7=4+2+1 (rwx), 6=4+2 (rw-), 5=4+1 (r-x), 4=4 (r--). Typisch: 755 (Ordner), 644 (Dateien), 700 (Secrets).",
+      "difficulty": "medium",
+      "bloomLevel": 2,
+      "concept": "linux_rights"
+    },
+    {
+      "id": "004-order-001",
+      "type": "ordering",
+      "question": "Sortiere die NTFS-Berechtigungen von den WENIGSTEN zu den MEISTEN Rechten:",
+      "correctOrder": [
+        "Kein Zugriff",
+        "Lesen (Read)",
+        "Schreiben (Write)",
+        "Ändern (Modify)",
+        "Vollzugriff (Full Control)"
+      ],
+      "explanation": "Hierarchie: **Kein Zugriff** (nichts) < **Lesen** (nur ansehen) < **Schreiben** (erstellen, nicht lesen!) < **Ändern** (Lesen+Schreiben+Löschen) < **Vollzugriff** (alles + Berechtigungen ändern). Modify = Standard für Teams, Full Control nur Admins!",
+      "difficulty": "easy",
+      "bloomLevel": 2,
+      "concept": "ntfs_permissions"
+    },
+    {
+      "id": "004-order-002",
+      "type": "ordering",
+      "question": "Sortiere die Schritte zum Troubleshooting von Zugriffsproblemen in der richtigen Reihenfolge:",
+      "correctOrder": [
+        "1. Symptom präzise erfassen (welche Datei, welche Aktion?)",
+        "2. Effektive Rechte des Users prüfen",
+        "3. Gruppenmitgliedschaft prüfen (ist User in richtiger Gruppe?)",
+        "4. Vererbungskette analysieren (Deny in Oberordner?)",
+        "5. Besitzer prüfen (Linux: gehört Datei dem richtigen User?)"
+      ],
+      "explanation": "**5-Schritte-Prozess:** 1) Was ist Problem? 2) Was darf User WIRKLICH (Effektive Rechte)? 3) Ist er in Gruppen? 4) Blockiert Vererbung/Deny? 5) Stimmt Besitzer (Linux)? Systematisch = schnelle Lösung!",
+      "difficulty": "medium",
+      "bloomLevel": 3,
+      "concept": "troubleshooting"
+    },
+    {
+      "id": "004-order-003",
+      "type": "ordering",
+      "question": "Sortiere die Schritte zum Erstellen eines sicheren Dateiserver-Berechtigungs-Konzepts:",
+      "correctOrder": [
+        "1. Gruppen erstellen (z.B. Marketing, Entwicklung, GF)",
+        "2. Ordnerstruktur anlegen",
+        "3. Vererbung bei sensiblen Ordnern deaktivieren",
+        "4. NTFS-Berechtigungen für Gruppen setzen (Least Privilege!)",
+        "5. Benutzer zu Gruppen hinzufügen"
+      ],
+      "explanation": "**Best Practice:** Erst Gruppen → Ordner → Vererbung prüfen/anpassen → Rechte setzen → User zuordnen. NICHT andersrum (User zuerst = mühsam + fehleranfällig)! Gruppen = Grundlage für Wartbarkeit.",
+      "difficulty": "medium",
+      "bloomLevel": 4,
+      "concept": "ap1_preparation"
+    },
+    {
+      "id": "004-order-004",
+      "type": "ordering",
+      "question": "Sortiere die Linux-Rechtestufen von RESTRIKTIV zu OFFEN (für einen Ordner):",
+      "correctOrder": [
+        "700 (rwx------) Nur Owner",
+        "750 (rwxr-x---) Owner voll, Group lesen+betreten",
+        "755 (rwxr-xr-x) Owner voll, alle lesen+betreten",
+        "775 (rwxrwxr-x) Owner+Group voll, Other lesen+betreten",
+        "777 (rwxrwxrwx) JEDER darf alles"
+      ],
+      "explanation": "**700** = Maximum Security (nur Owner). **755** = Standard für Ordner (Owner arbeitet, Rest liest). **777** = Security-Albtraum (JEDER darf löschen!). Faustregel: 755 Ordner, 644 Dateien, 700 für Secrets.",
+      "difficulty": "medium",
+      "bloomLevel": 2,
+      "concept": "linux_rights"
+    },
+    {
+      "id": "004-order-005",
+      "type": "ordering",
+      "question": "Sortiere die Schritte zum Hinzufügen eines Users zu einer Gruppe unter Linux:",
+      "correctOrder": [
+        "1. Gruppe erstellen (sudo groupadd <gruppe>)",
+        "2. User zu Gruppe hinzufügen (sudo usermod -aG <gruppe> <user>)",
+        "3. User informieren: Neuanmeldung nötig",
+        "4. Nach Neuanmeldung: Mitgliedschaft prüfen (groups <user>)"
+      ],
+      "explanation": "**Workflow:** Gruppe erstellen → User hinzufügen (`-aG` = append!) → User muss sich ab-/anmelden (Token!) → Prüfen mit `groups`. OHNE Neuanmeldung = Gruppe nicht aktiv!",
+      "difficulty": "easy",
+      "bloomLevel": 2,
+      "concept": "linux_rights"
+    },
+    {
+      "id": "004-order-006",
+      "type": "ordering",
+      "question": "Sortiere die Schritte beim Setzen von NTFS-Berechtigungen für einen neuen Abteilungsordner (Windows):",
+      "correctOrder": [
+        "1. Ordner erstellen (z.B. D:\\Daten\\Marketing)",
+        "2. Vererbung deaktivieren (icacls /inheritance:d)",
+        "3. Standard-Rechte löschen (außer Admin+System)",
+        "4. Abteilungs-Gruppe hinzufügen (icacls /grant 'Marketing:(OI)(CI)M')",
+        "5. Geschäftsführung Read-Only hinzufügen (Kontrolle)"
+      ],
+      "explanation": "**Sauberer Ansatz:** Ordner → Vererbung aus (verhindert ungewollte Rechte) → Alte Rechte weg → Neue Rechte explizit setzen → GF-Kontrolle. Ergebnis: Klare ACL, keine geerbten Altlasten!",
+      "difficulty": "hard",
+      "bloomLevel": 4,
+      "concept": "ap1_preparation"
+    },
+    {
+      "id": "004-tf-001",
+      "type": "trueFalse",
+      "question": "Ein User sollte dauerhaft mit Administrator-Rechten arbeiten, damit er keine UAC-Prompts bekommt.",
+      "correctAnswer": false,
+      "explanation": "**FALSCH!** Dauerhaft Admin = Sicherheitsrisiko! Malware hat volle Kontrolle, Tippfehler können System zerstören. **Richtig:** Normaler User für Alltag, Admin nur bei echtem Bedarf (Least Privilege). UAC nervt, aber schützt!",
+      "difficulty": "easy",
+      "bloomLevel": 2,
+      "concept": "least_privilege"
+    },
+    {
+      "id": "004-tf-002",
+      "type": "trueFalse",
+      "question": "Unter Linux bedeutet `chmod 777 ordner`, dass der Ordner maximale Sicherheit hat.",
+      "correctAnswer": false,
+      "explanation": "**FALSCH!** `777` = rwxrwxrwx = JEDER (Owner, Group, Other) darf ALLES (auch löschen!). **Minimale Sicherheit!** Typischer Anfängerfehler. **Richtig:** 755 (Owner voll, Rest lesen+betreten) oder 700 (nur Owner).",
+      "difficulty": "easy",
+      "bloomLevel": 2,
+      "concept": "linux_rights"
+    },
+    {
+      "id": "004-tf-003",
+      "type": "trueFalse",
+      "question": "Wenn ein User zu einer neuen Gruppe hinzugefügt wird, sind die Rechte sofort aktiv (keine Neuanmeldung nötig).",
+      "correctAnswer": false,
+      "explanation": "**FALSCH!** Access Token wird nur bei LOGIN erstellt. Gruppen-Mitgliedschaften werden in Token geschrieben. Änderung → User MUSS sich ab-/anmelden, sonst keine Wirkung (Windows + Linux!).",
+      "difficulty": "medium",
+      "bloomLevel": 2,
+      "concept": "troubleshooting"
+    },
+    {
+      "id": "004-tf-004",
+      "type": "trueFalse",
+      "question": "Explizites 'Deny' übersteuert alle 'Allow'-Berechtigungen bei NTFS.",
+      "correctAnswer": true,
+      "explanation": "**RICHTIG!** Deny > Allow (IMMER). User kann in 10 Gruppen mit Allow sein – ein Deny blockiert alles. Deshalb Deny nur für Ausnahmen! Best Practice: Gruppen-Struktur überarbeiten statt Deny nutzen.",
+      "difficulty": "easy",
+      "bloomLevel": 1,
+      "concept": "ntfs_permissions"
+    },
+    {
+      "id": "004-tf-005",
+      "type": "trueFalse",
+      "question": "Der Linux-Befehl `chown` ändert die Dateiberechtigungen (rwx).",
+      "correctAnswer": false,
+      "explanation": "**FALSCH!** `chown` = Change Owner (Besitzer + Gruppe ändern). Für Rechte (rwx) ist `chmod` zuständig. Verwechslung häufig in Prüfungen!",
+      "difficulty": "easy",
+      "bloomLevel": 1,
+      "concept": "linux_rights"
+    },
+    {
+      "id": "004-tf-006",
+      "type": "trueFalse",
+      "question": "Vererbung sollte bei sensiblen Ordnern (z.B. Geschäftsführung) deaktiviert werden.",
+      "correctAnswer": true,
+      "explanation": "**RICHTIG!** Vererbung kann dazu führen dass Abteilungs-Gruppen ungewollt Zugriff auf GF-Daten erben. Deaktivieren (`/inheritance:d`) + explizit neue Rechte setzen = maximale Kontrolle!",
+      "difficulty": "medium",
+      "bloomLevel": 2,
+      "concept": "ntfs_permissions"
+    },
+    {
+      "id": "004-tf-007",
+      "type": "trueFalse",
+      "question": "Beim Kopieren eines Ordners (Windows) werden die NTFS-Berechtigungen automatisch mitkopiert.",
+      "correctAnswer": false,
+      "explanation": "**FALSCH!** Kopieren = Berechtigungen gehen verloren, ACL vom Ziel wird übernommen. **Verschieben** (innerhalb gleicher Partition) = Berechtigungen bleiben. **Lösung für Backup:** `robocopy /SEC` kopiert Berechtigungen mit.",
+      "difficulty": "medium",
+      "bloomLevel": 2,
+      "concept": "ntfs_permissions"
+    },
+    {
+      "id": "004-tf-008",
+      "type": "trueFalse",
+      "question": "Ein Linux-Ordner braucht das 'execute'-Bit (x), damit man mit `cd` in ihn wechseln kann.",
+      "correctAnswer": true,
+      "explanation": "**RICHTIG!** Ordner: `r` = Inhalt listen (ls), `w` = Dateien erstellen/löschen, `x` = in Ordner wechseln (cd). Ohne `x` → 'Permission denied' bei `cd ordner`. Ordner IMMER mit `x`!",
+      "difficulty": "medium",
+      "bloomLevel": 2,
+      "concept": "linux_rights"
+    },
+    {
+      "id": "004-tf-009",
+      "type": "trueFalse",
+      "question": "Das Prinzip 'Least Privilege' bedeutet, dass man jedem User Admin-Rechte gibt (dann ist er am wenigsten eingeschränkt).",
+      "correctAnswer": false,
+      "explanation": "**FALSCH!** Least Privilege = MINIMALE Rechte (nicht maximale!). User bekommt NUR was er für Job braucht, nicht mehr. Reduziert Schaden bei Fehler/Hack. Das Gegenteil von 'allen alles geben'!",
+      "difficulty": "easy",
+      "bloomLevel": 2,
+      "concept": "least_privilege"
+    },
+    {
+      "id": "004-tf-010",
+      "type": "trueFalse",
+      "question": "Die Windows-Gruppe 'Jeder' (Everyone) umfasst auch Gäste und anonyme Netzwerkzugriffe.",
+      "correctAnswer": true,
+      "explanation": "**RICHTIG!** 'Jeder' = wirklich ALLE (lokale User, Domänen-User, Gäste, anonym). Sehr weit! Bei sensiblen Ordnern besser 'Authentifizierte Benutzer' nutzen (nur angemeldete User).",
+      "difficulty": "medium",
+      "bloomLevel": 2,
+      "concept": "windows_user_management"
+    },
+    {
+      "id": "004-tf-011",
+      "type": "trueFalse",
+      "question": "Gruppen-basierte Rechtevergabe spart Zeit und reduziert Fehler im Vergleich zu Einzelbenutzer-Rechten.",
+      "correctAnswer": true,
+      "explanation": "**RICHTIG!** Gruppe 'Marketing' → Rechte EINMAL setzen. Neuer User → in Gruppe = fertig (5 Min statt 2h). Weniger Fehler (vergessene Rechte). TCO-Argument: Spart 2.400€/Jahr (4h/Monat × 50€/h × 12).",
+      "difficulty": "easy",
+      "bloomLevel": 2,
+      "concept": "ap1_preparation"
+    },
+    {
+      "id": "004-tf-012",
+      "type": "trueFalse",
+      "question": "`sudo` unter Linux erlaubt es, dauerhaft als root zu arbeiten.",
+      "correctAnswer": false,
+      "explanation": "**FALSCH!** `sudo <command>` führt EINEN Befehl als root aus, dann zurück zu normalem User. Für dauerhafte root-Shell: `sudo -i` oder `sudo su` (aber nicht empfohlen!). sudo = temporär = sicherer!",
+      "difficulty": "easy",
+      "bloomLevel": 1,
+      "concept": "linux_rights"
+    },
+    {
+      "id": "004-tf-013",
+      "type": "trueFalse",
+      "question": "Bei NTFS werden Allow-Berechtigungen kumulativ addiert (User in Gruppe A und B = beide Rechte).",
+      "correctAnswer": true,
+      "explanation": "**RICHTIG!** Allow-Rechte sind kumulativ. User in 'Marketing' (Lesen) UND 'Entwicklung' (Ändern) = Effektiv 'Ändern' (höhere Berechtigung). ABER: Ein Deny übersteuert ALLES (Deny > Allow)!",
+      "difficulty": "medium",
+      "bloomLevel": 2,
+      "concept": "ntfs_permissions"
+    },
+    {
+      "id": "004-tf-014",
+      "type": "trueFalse",
+      "question": "Die umask 0022 sorgt dafür, dass neue Dateien 644 (rw-r--r--) und neue Ordner 755 (rwxr-xr-x) bekommen.",
+      "correctAnswer": true,
+      "explanation": "**RICHTIG!** umask = Maske die ABGEZOGEN wird. Standard: Dateien 666, Ordner 777. umask 0022 → Dateien: 666-022=**644**, Ordner: 777-022=**755**. Von Group+Other wird Write entfernt.",
+      "difficulty": "hard",
+      "bloomLevel": 3,
+      "concept": "linux_rights"
+    },
+    {
+      "id": "004-tf-015",
+      "type": "trueFalse",
+      "question": "GPO (Group Policy Object) ermöglicht es, zentral Einstellungen auf viele Computer/User zu verteilen.",
+      "correctAnswer": true,
+      "explanation": "**RICHTIG!** GPO = Zentrale Verwaltung (Active Directory). Beispiele: Passwort-Policy, Desktop-Hintergrund, Software-Installation, Browser-Einstellungen. Auf OU angewendet → alle Computer/User in OU bekommen Einstellung. Zeitersparnis!",
+      "difficulty": "easy",
+      "bloomLevel": 1,
+      "concept": "active_directory"
+    },
+    {
+      "id": "004-tf-016",
+      "type": "trueFalse",
+      "question": "Ein Webserver (Apache als www-data) braucht Vollzugriff (rwx) auf alle Web-Dateien.",
+      "correctAnswer": false,
+      "explanation": "**FALSCH!** Webserver braucht nur READ (r--) für statische Dateien (HTML, CSS, JS). Bei Upload-Ordner: `rw-` (Read+Write, kein Execute). Vollzugriff (rwx) = Sicherheitsrisiko (Webserver könnte Malware ausführen!). Least Privilege!",
+      "difficulty": "medium",
+      "bloomLevel": 3,
+      "concept": "least_privilege"
+    },
+    {
+      "id": "004-tf-017",
+      "type": "trueFalse",
+      "question": "In der AP1-Prüfung reicht es, Berechtigungen zu setzen – eine Begründung ist nicht nötig.",
+      "correctAnswer": false,
+      "explanation": "**FALSCH!** Begründung ist PFLICHT (oft 40% der Punkte!). Prüfer wollen: WARUM diese Berechtigung? Sicherheit? Wartbarkeit? Least Privilege? TCO? **Ohne Begründung = maximale Punktabzug!**",
+      "difficulty": "easy",
+      "bloomLevel": 2,
+      "concept": "ap1_preparation"
     }
   ]
 }

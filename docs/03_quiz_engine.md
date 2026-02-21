@@ -103,19 +103,56 @@ Wir haben extra eine Hilfsfunktion `arraysEqual` geschrieben, die Zahl für Zahl
 
 ## Fragetypen im Detail
 
-### 1. Multiple Choice (MCQ)
-*   **Typ:** `radio` (eine Antwort) oder `checkbox` (mehrere).
+### 1. Multiple Choice (MCQ) – `type: "mcq"`
+*   **Eingabe:** Radio-Button (eine Antwort) oder Checkbox (mehrere).
 *   **Prüfung:** Vergleicht Arrays von Indizes (z.B. `[0, 2]` vs `[0, 2]`).
 
-### 2. Lückentext (Fill-Blank)
-*   **Typ:** `<select>` Dropdowns im Text.
-*   **Besonderheit:** Der Text enthält Platzhalter wie `[blank]`. Diese werden beim Rendern durch HTML ersetzt.
-*   **Prüfung:** Vergleicht Text-Werte (Strings).
+### 2. Lückentext (Fill-Blank) – `type: "fill_blank"`
+*   **Eingabe:** Texteingabefelder direkt im Satz.
+*   **Prüfung:** Vergleicht Text-Werte (Strings, Groß-/Kleinschreibung ignoriert).
 
-### 3. Zuordnung (Match)
-*   **Typ:** Links steht ein Begriff, rechts ein Dropdown.
-*   **Prüfung:** Die Reihenfolge der Dropdowns muss stimmen.
+### 3. Zuordnung (Match) – `type: "match"`
+*   **Eingabe:** Linke Seite (Begriff) ↔ Rechte Seite (Dropdown zur Zuordnung).
+*   **Prüfung:** Alle Zuordnungen müssen stimmen.
 
-### 4. Reihenfolge (Order)
-*   **Typ:** Dropdowns mit Zahlen (1., 2., 3...).
-*   **Prüfung:** Die Liste der *gewählten* Positionen muss der `correctOrder` ensprechen.
+### 4. Reihenfolge (Order) – `type: "order"`
+*   **Eingabe:** Buttons zum Hoch-/Runtersortieren oder Nummerierung.
+*   **Prüfung:** Die Reihenfolge der Elemente muss `correctOrder` entsprechen. Nutzt `arraysEqual()`.
+
+### 5. Wahr / Falsch (True-False) – `type: "true_false"`
+*   **Eingabe:** Für jede Aussage ein Wahr/Falsch-Toggle.
+*   **Prüfung:** Jede Aussage wird einzeln geprüft, alle müssen stimmen.
+
+### 6. Fallstudie (Case-Label) – `type: "case_label"`
+*   **Eingabe:** Textpassage oben, darunter mehrere Teilfragen (können verschiedene Typen sein).
+*   **Prüfung:** Jede Teilfrage wird separat ausgewertet.
+
+### 7. Gemischt (Mixed) – `type: "mixed"`
+*   Gibt den Typ an den passenden Renderer weiter. Kein eigener Frageinhalt.
+
+---
+
+## 3.5 Die Quiz-Modi
+
+Die Engine kennt 3 verschiedene Lernmodi (einstellbar im Quiz-Header):
+
+| Modus | Key | Verhalten |
+|---|---|---|
+| Training | `training` | Sofortiges Feedback nach jeder Antwort, Lösung anzeigen möglich |
+| Prüfung | `exam` | Kein Feedback während der Fragen, Auswertung erst am Ende |
+| Schnell | `quick` | 5 zufällige Fragen, schnelle Runde |
+
+---
+
+## 3.6 Das Event nach jeder Antwort
+
+Nach jeder geprüften Antwort feuert `validation.js` ein Custom Event:
+
+```javascript
+document.dispatchEvent(new CustomEvent("fiae:quizAnswer", {
+  detail: { correct: true, moduleId: "005" }
+}));
+```
+
+Das Speichersystem (`saveSystem.js`) hört darauf und aktualisiert automatisch XP, Statistiken und Erfolge – ohne dass `validation.js` etwas über das Speichersystem wissen muss. Das nennt man **lose Kopplung**.
+

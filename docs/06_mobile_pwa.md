@@ -61,3 +61,23 @@ In `js/app.js` reagieren wir auf Touch-Events:
 *   Ein Klick auf den "Hamburger-Button" (☰) öffnet das Menü.
 *   Ein Klick auf den dunklen Hintergrund (`overlay`) schließt es wieder.
 *   Wird ein Modul angeklickt, schließt sich das Menü automatisch, damit man den Inhalt sieht.
+
+---
+
+## 6.4 Die Tab-Leiste (Mobile Navigation)
+
+Auf Mobilgeräten ist das Hauptnavigationselement eine **fixierte Tab-Leiste am unteren Bildschirmrand** (`class="main-tab-bar"`).
+
+Sie hat 3 Tabs:
+
+| Tab | Icon | Funktion |
+|---|---|---|
+| Lernen | 📖 | Modul-Inhalt (Markdown-Text) |
+| Quiz | 🧠 | Quiz-Modus für das aktuelle Modul |
+| Spiele | 🎮 | Spiele-Übersicht (Blitzkarten, Subnetz, Binär) |
+
+Die Leiste ist `position: fixed; bottom: 0` und liegt **über dem normalen Inhalt**.
+Der restliche Content bekommt deshalb ein `padding-bottom`, damit er nicht hinter der Leiste verschwindet.
+
+Auf dem **Desktop** (ab ~1024px Breite) ist die Tab-Leiste ausgeblendet – dort navigiert der Nutzer über die Sidebar.
+

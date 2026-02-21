@@ -1,0 +1,916 @@
+<!doctype html>
+<html lang="de" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Dokumentation – FIAE AP1 Lernapp</title>
+  <style>
+    :root {
+      --bg:       #0d1117;
+      --text:     #e6edf3;
+      --muted:    #8b949e;
+      --border:   #30363d;
+      --card-bg:  #161b22;
+      --accent:   #6366f1;
+      --green:    #22c55e;
+      --yellow:   #f59e0b;
+      --red:      #ef4444;
+      --link:     #58a6ff;
+      --code-bg:  #1e2432;
+    }
+    [data-theme="light"] {
+      --bg:      #f6f8fa;
+      --text:    #1f2328;
+      --muted:   #656d76;
+      --border:  #d0d7de;
+      --card-bg: #ffffff;
+      --accent:  #5b5fc7;
+      --link:    #0969da;
+      --code-bg: #f0f2f5;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      font-size: 0.95rem;
+      line-height: 1.75;
+    }
+
+    /* ── Layout ── */
+    .layout { display: flex; min-height: 100vh; }
+
+    /* ── Sidebar Nav ── */
+    .doc-nav {
+      width: 250px;
+      min-width: 250px;
+      background: var(--card-bg);
+      border-right: 1px solid var(--border);
+      padding: 24px 0;
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow-y: auto;
+    }
+    .doc-nav .nav-logo {
+      padding: 0 20px 20px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 16px;
+    }
+    .doc-nav .nav-logo h1 { font-size: 0.9rem; color: var(--text); }
+    .doc-nav .nav-logo p  { font-size: 0.75rem; color: var(--muted); }
+    .nav-group { margin-bottom: 6px; }
+    .nav-group-title {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding: 6px 20px 4px;
+    }
+    .doc-nav a {
+      display: block;
+      padding: 5px 20px;
+      font-size: 0.83rem;
+      color: var(--muted);
+      text-decoration: none;
+      border-left: 2px solid transparent;
+      transition: color 0.15s, border-color 0.15s;
+    }
+    .doc-nav a:hover { color: var(--text); border-left-color: var(--border); }
+    .doc-nav a.active { color: var(--accent); border-left-color: var(--accent); }
+
+    /* ── Main Content ── */
+    .doc-main {
+      flex: 1;
+      padding: 40px 48px 80px;
+      max-width: 900px;
+    }
+    @media (max-width: 900px) {
+      .doc-nav { display: none; }
+      .doc-main { padding: 24px 18px 60px; }
+    }
+
+    /* ── Typography ── */
+    h1.page-title {
+      font-size: 2rem;
+      margin-bottom: 6px;
+      border-bottom: 2px solid var(--accent);
+      padding-bottom: 10px;
+    }
+    .page-subtitle { color: var(--muted); font-size: 0.9rem; margin-bottom: 40px; }
+    h2 {
+      font-size: 1.35rem;
+      margin: 48px 0 16px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+      color: var(--text);
+      scroll-margin-top: 24px;
+    }
+    h2:first-of-type { margin-top: 0; border-top: none; padding-top: 0; }
+    h3 {
+      font-size: 1.05rem;
+      margin: 28px 0 10px;
+      color: var(--text);
+      scroll-margin-top: 24px;
+    }
+    p { margin-bottom: 12px; font-size: 0.92rem; }
+    p:last-child { margin-bottom: 0; }
+    ul, ol { padding-left: 22px; margin-bottom: 14px; font-size: 0.92rem; }
+    li { margin-bottom: 6px; }
+    a { color: var(--link); }
+    strong { color: var(--text); }
+
+    /* ── Code ── */
+    code {
+      font-family: "Courier New", Consolas, monospace;
+      font-size: 0.82rem;
+      background: var(--code-bg);
+      border: 1px solid var(--border);
+      padding: 1px 6px;
+      border-radius: 4px;
+      color: #e06c75;
+    }
+    pre {
+      background: var(--code-bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 18px 20px;
+      overflow-x: auto;
+      margin: 14px 0 20px;
+      font-size: 0.82rem;
+      line-height: 1.6;
+    }
+    pre code {
+      background: none;
+      border: none;
+      padding: 0;
+      color: #abb2bf;
+    }
+    .kw  { color: #c678dd; }
+    .str { color: #98c379; }
+    .cmt { color: #5c6370; font-style: italic; }
+    .num { color: #d19a66; }
+    .fn  { color: #61afef; }
+
+    /* ── Badges ── */
+    .badge {
+      display: inline-block;
+      padding: 2px 10px;
+      border-radius: 20px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      margin: 0 3px 3px 0;
+      vertical-align: middle;
+    }
+    .badge-green  { background: color-mix(in srgb,var(--green)  15%,var(--card-bg)); border:1px solid var(--green);  color:var(--green);  }
+    .badge-yellow { background: color-mix(in srgb,var(--yellow) 15%,var(--card-bg)); border:1px solid var(--yellow); color:var(--yellow); }
+    .badge-red    { background: color-mix(in srgb,var(--red)    15%,var(--card-bg)); border:1px solid var(--red);    color:var(--red);    }
+    .badge-accent { background: color-mix(in srgb,var(--accent) 15%,var(--card-bg)); border:1px solid var(--accent); color:var(--accent); }
+    .badge-muted  { background: color-mix(in srgb,var(--muted)  10%,var(--card-bg)); border:1px solid var(--border); color:var(--muted);  }
+
+    /* ── Cards / Boxes ── */
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 18px 22px;
+      margin-bottom: 16px;
+    }
+    .card h4 { font-size: 0.95rem; margin-bottom: 8px; }
+    .info-box {
+      background: color-mix(in srgb,var(--accent) 8%,var(--card-bg));
+      border-left: 3px solid var(--accent);
+      border-radius: 0 8px 8px 0;
+      padding: 12px 16px;
+      font-size: 0.87rem;
+      margin: 14px 0;
+      color: var(--muted);
+    }
+    .info-box strong { color: var(--text); }
+
+    /* ── File Tree ── */
+    .filetree {
+      background: var(--code-bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 18px 22px;
+      font-family: "Courier New", monospace;
+      font-size: 0.82rem;
+      line-height: 1.9;
+      margin: 14px 0 20px;
+    }
+    .filetree .dir  { color: var(--link); font-weight: 600; }
+    .filetree .file { color: #abb2bf; }
+    .filetree .note { color: var(--muted); font-style: italic; }
+
+    /* ── Function Table ── */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.84rem;
+      margin: 14px 0 22px;
+    }
+    th, td { padding: 9px 12px; border: 1px solid var(--border); text-align: left; vertical-align: top; }
+    th { background: color-mix(in srgb,var(--accent) 8%,var(--card-bg)); font-weight: 600; font-size: 0.8rem; }
+    td:first-child { font-family: "Courier New", monospace; font-size: 0.78rem; color: #e06c75; white-space: nowrap; }
+
+    /* ── Module Grid ── */
+    .module-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 10px;
+      margin: 14px 0 22px;
+    }
+    .module-tile {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 10px 14px;
+      font-size: 0.82rem;
+    }
+    .module-tile .mod-id { color: var(--accent); font-family: monospace; font-size: 0.78rem; }
+    .module-tile .mod-name { color: var(--text); font-weight: 500; font-size: 0.83rem; margin-top: 2px; }
+    .module-tile.has-quiz { border-color: color-mix(in srgb,var(--green) 35%,var(--border)); }
+    .module-tile.has-quiz .mod-id::after { content: " ✓"; color: var(--green); }
+
+    /* ── Level Table ── */
+    .level-list { display: flex; flex-direction: column; gap: 6px; margin: 14px 0 20px; }
+    .level-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 8px 14px;
+      font-size: 0.84rem;
+    }
+    .level-item .lv-icon { font-size: 1.1rem; width: 24px; text-align: center; }
+    .level-item .lv-name { flex: 1; font-weight: 600; }
+    .level-item .lv-xp { color: var(--muted); font-size: 0.78rem; font-family: monospace; }
+
+    /* ── Back link ── */
+    footer {
+      text-align: center;
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-top: 48px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+    }
+    footer a { color: var(--link); }
+  </style>
+</head>
+<body>
+<div class="layout">
+
+  <!-- ── Sidebar Navigation ── -->
+  <nav class="doc-nav">
+    <div class="nav-logo">
+      <h1>📚 FIAE AP1</h1>
+      <p>Technische Dokumentation</p>
+    </div>
+
+    <div class="nav-group">
+      <div class="nav-group-title">Einführung</div>
+      <a href="#ueberblick">Projektüberblick</a>
+      <a href="#techstack">Tech-Stack</a>
+      <a href="#dateistruktur">Dateistruktur</a>
+    </div>
+
+    <div class="nav-group">
+      <div class="nav-group-title">Architektur</div>
+      <a href="#architektur">Architektur & Flow</a>
+      <a href="#module-js">JS-Module</a>
+      <a href="#state">State-Management</a>
+    </div>
+
+    <div class="nav-group">
+      <div class="nav-group-title">Lernsystem</div>
+      <a href="#lernmodule">Lernmodule (40)</a>
+      <a href="#quiz-engine">Quiz-Engine</a>
+      <a href="#quiz-format">Quiz-JSON-Format</a>
+    </div>
+
+    <div class="nav-group">
+      <div class="nav-group-title">Spiele</div>
+      <a href="#blitzkarten">Blitzkarten</a>
+      <a href="#subnetz">Subnetz-Trainer</a>
+      <a href="#binary">Binär-Trainer</a>
+    </div>
+
+    <div class="nav-group">
+      <div class="nav-group-title">System</div>
+      <a href="#savesystem">Speichersystem</a>
+      <a href="#xp-system">XP & Erfolge</a>
+      <a href="#pwa">PWA & Service Worker</a>
+    </div>
+
+    <div class="nav-group">
+      <div class="nav-group-title">Erweiterung</div>
+      <a href="#modul-erstellen">Modul erstellen</a>
+      <a href="#quiz-erstellen">Quiz erstellen</a>
+      <a href="#spiel-erstellen">Spiel hinzufügen</a>
+    </div>
+
+    <div class="nav-group">
+      <div class="nav-group-title">Rechtliches</div>
+      <a href="#legal">Lizenz & Recht</a>
+    </div>
+  </nav>
+
+  <!-- ── Main Content ── -->
+  <main class="doc-main">
+    <h1 class="page-title">FIAE AP1 Lernapp</h1>
+    <p class="page-subtitle">
+      Technische Dokumentation &bull; Mindoro Evolution &bull; Stand: 21. Februar 2026 &bull;
+      <span class="badge badge-accent">v21</span>
+      <span class="badge badge-green">PWA</span>
+      <span class="badge badge-muted">Vanilla JS</span>
+    </p>
+
+    <!-- ══════════════════════════════════════════════ -->
+    <h2 id="ueberblick">Projektüberblick</h2>
+
+    <p>
+      Die <strong>FIAE AP1 Lernapp</strong> ist eine vollständig clientseitige Progressive Web App
+      zur Prüfungsvorbereitung auf die <strong>Abschlussprüfung Teil 1 (AP1)</strong> für
+      Fachinformatiker/-innen (FIAE). Sie läuft ohne Backend, ohne Build-Schritt und ohne
+      externe Abhängigkeiten im Browser.
+    </p>
+
+    <div class="card">
+      <h4>Kernfunktionen</h4>
+      <ul>
+        <li>📖 <strong>40 Lernmodule</strong> mit Markdown-gerendertem Inhalt und Inhaltsverzeichnis</li>
+        <li>🧠 <strong>Quiz-Engine</strong> mit 7 Fragetypen, 3 Lernmodi und Filtern</li>
+        <li>🃏 <strong>Blitzkarten-Spiel</strong> – Karteikarten mit Flip-Animation und Streak-System</li>
+        <li>🌐 <strong>Subnetz-Trainer</strong> – interaktive IPv4-Subnetting-Übungen</li>
+        <li>⚡ <strong>Binär-Trainer</strong> – 9 Aufgabentypen, 3 Eingabe-Pads, Timer-Modus</li>
+        <li>💾 <strong>Verschlüsseltes Speichersystem</strong> – AES-GCM 256-bit, XP, Erfolge, Lesezeichen</li>
+        <li>📱 <strong>PWA</strong> – installierbar, Offline-fähig via Service Worker</li>
+        <li>🌙 <strong>Dark / Light Mode</strong> – systemweites Theme-Toggle</li>
+      </ul>
+    </div>
+
+    <!-- ══════════════════════════════════════════════ -->
+    <h2 id="techstack">Tech-Stack</h2>
+
+    <table>
+      <thead><tr><th>Bereich</th><th>Technologie</th><th>Details</th></tr></thead>
+      <tbody>
+        <tr><td>Sprache</td><td>Vanilla JavaScript ES2022</td><td>ES-Module (<code>import/export</code>), kein Bundler, kein TypeScript</td></tr>
+        <tr><td>Styling</td><td>CSS3 (Single File)</td><td>CSS Custom Properties, <code>app.css</code> (~3900 Zeilen), kein Framework</td></tr>
+        <tr><td>Markup</td><td>HTML5</td><td><code>index.html</code> als Single-Page-App Shell</td></tr>
+        <tr><td>Kryptografie</td><td>Web Crypto API (Browser-nativ)</td><td>AES-GCM 256-bit, PBKDF2 – kein externes Crypto-Lib</td></tr>
+        <tr><td>Datenpersistenz</td><td>localStorage + File System Access API</td><td>Fallback auf Download/Upload bei nicht unterstützten Browsern</td></tr>
+        <tr><td>Offline</td><td>Service Worker</td><td>Cache-First-Strategie, aktuell <code>fiae-app-v21</code></td></tr>
+        <tr><td>Inhalte</td><td>Markdown → HTML</td><td>Eigener Markdown-Parser (<code>js/markdown.js</code>), kein externes Lib</td></tr>
+        <tr><td>Tests</td><td>Mocha + Chai</td><td>Nur Entwicklungsumgebung (<code>tests/</code>), kein Produktionscode</td></tr>
+        <tr><td>Hosting</td><td>Beliebig (statisch)</td><td>GitHub Pages, lokaler Server oder direkt als Datei</td></tr>
+      </tbody>
+    </table>
+
+    <div class="info-box">
+      <strong>Kein Build-Schritt:</strong> Die App kann direkt im Browser geöffnet werden.
+      Kein <code>npm install</code>, kein Webpack, kein Transpiling. Alle Abhängigkeiten sind
+      Browser-nativ.
+    </div>
+
+    <!-- ══════════════════════════════════════════════ -->
+    <h2 id="dateistruktur">Dateistruktur</h2>
+
+    <div class="filetree">
+<span class="dir">/</span> (Workspace-Root)<br>
+├── <span class="file">index.html</span>         <span class="note">← App-Shell (SPA), einziger HTML-Einstiegspunkt</span><br>
+├── <span class="file">app.css</span>            <span class="note">← Alle Styles (~3900 Zeilen), CSS Custom Properties</span><br>
+├── <span class="file">sw.js</span>              <span class="note">← Service Worker, Cache-First, v21</span><br>
+├── <span class="file">manifest.json</span>      <span class="note">← PWA-Manifest (Name, Icons, Farben)</span><br>
+├── <span class="file">datenschutz.html</span>   <span class="note">← DSGVO Datenschutzerklärung (standalone)</span><br>
+├── <span class="file">agb.html</span>           <span class="note">← Nutzungsbedingungen / Haftungsausschluss</span><br>
+├── <span class="file">dokumentation.html</span> <span class="note">← Diese Dokumentation</span><br>
+├── <span class="file">LICENSE</span>            <span class="note">← Proprietär, All Rights Reserved (Mindoro Evolution)</span><br>
+├── <span class="dir">js/</span><br>
+│   ├── <span class="file">app.js</span>         <span class="note">← Haupt-Controller (791 Zeilen): Navigation, Rendering, Events</span><br>
+│   ├── <span class="file">modules.js</span>     <span class="note">← MODULES-Array: 40 Einträge [id, name, mdPath, hasQuiz]</span><br>
+│   ├── <span class="file">state.js</span>       <span class="note">← Globaler State, loadQuizData(), getQuizStats()</span><br>
+│   ├── <span class="file">markdown.js</span>    <span class="note">← Eigener Markdown→HTML-Parser + TOC-Generator</span><br>
+│   ├── <span class="file">utils.js</span>       <span class="note">← escapeHtml, shuffleArray, inlineMd, generateTocId …</span><br>
+│   ├── <span class="file">saveSystem.js</span>  <span class="note">← AES-GCM Speicher, XP, Erfolge, Modal-UI (869 Zeilen)</span><br>
+│   ├── <span class="dir">quiz/</span><br>
+│   │   ├── <span class="file">sections.js</span>    <span class="note">← HTML-Renderer für 7 Fragetypen</span><br>
+│   │   ├── <span class="file">renderers.js</span>   <span class="note">← Quiz-Header, Fortschrittsbar, Ergebnis-Screen</span><br>
+│   │   └── <span class="file">validation.js</span>  <span class="note">← checkAnswer(), showSolution(), fiae:quizAnswer-Event</span><br>
+│   └── <span class="dir">games/</span><br>
+│       ├── <span class="file">blitzkarten.js</span> <span class="note">← Karteikarten-Spiel (launchBlitzkarten, cleanupBlitzkarten)</span><br>
+│       ├── <span class="file">subnetz.js</span>     <span class="note">← IPv4-Subnetting-Trainer (launchSubnetz, cleanupSubnetz)</span><br>
+│       └── <span class="file">binary.js</span>      <span class="note">← Binär/Hex-Trainer, 9 Typen (launchBinary, cleanupBinary)</span><br>
+├── <span class="dir">FI_Learning/</span><br>
+│   ├── <span class="dir">module_001_014/</span>    <span class="note">← 14 Markdown-Lerndateien (001–014)</span><br>
+│   ├── <span class="dir">module_015_040/</span>    <span class="note">← 26 Markdown-Lerndateien (015–040)</span><br>
+│   └── <span class="dir">quiz/modules/</span>      <span class="note">← Quiz-JSON-Dateien: 001.quiz.json … 006.quiz.json</span><br>
+├── <span class="dir">icons/</span>               <span class="note">← PWA-Icons (icon_192.png, icon_512.png)</span><br>
+├── <span class="dir">docs/</span>               <span class="note">← Interne Markdown-Architekturdokumente</span><br>
+└── <span class="dir">tests/</span>              <span class="note">← Entwicklertests (Mocha+Chai, nicht in Produktion)</span>
+    </div>
+
+    <!-- ══════════════════════════════════════════════ -->
+    <h2 id="architektur">Architektur & Datenfluss</h2>
+
+    <p>
+      Die App folgt einer einfachen <strong>Controller-View-Architektur</strong> ohne Framework.
+      <code>app.js</code> ist der einzige Controller – er lauscht auf Events, holt Daten über
+      <code>state.js</code> und rendert HTML direkt in das DOM.
+    </p>
+
+    <pre><code><span class="cmt">// Vereinfachter Datenfluss</span>
+
+<span class="fn">Nutzerinteraktion</span>
+  → <span class="fn">handleGlobalClick()</span>           <span class="cmt">// app.js – globaler Delegate</span>
+  → <span class="fn">loadModule(moduleId)</span>          <span class="cmt">// app.js – holt MD + Quiz</span>
+    → <span class="fn">loadQuizData(moduleId)</span>        <span class="cmt">// state.js – fetch + Cache</span>
+    → <span class="fn">markdownToHtml(mdText)</span>        <span class="cmt">// markdown.js – Parser</span>
+    → <span class="fn">renderModuleShell()</span>           <span class="cmt">// app.js – DOM schreiben</span>
+
+<span class="fn">Quiz-Antwort</span>
+  → <span class="fn">checkAnswer()</span>                 <span class="cmt">// validation.js</span>
+  → <span class="str">CustomEvent("fiae:quizAnswer")</span> <span class="cmt">// → saveSystem.js hört zu</span>
+  → <span class="fn">recordQuizAnswer()</span>            <span class="cmt">// saveSystem.js – XP + Stats</span>
+
+<span class="fn">Spiel-Ende</span>
+  → <span class="str">CustomEvent("fiae:gameEnd")</span>    <span class="cmt">// → saveSystem.js hört zu</span>
+  → <span class="fn">recordGameEnd()</span>               <span class="cmt">// saveSystem.js – Stats + Erfolge</span></code></pre>
+
+    <h3>Navigation / Tabs</h3>
+    <p>Die App hat <strong>3 Haupt-Tabs</strong>:</p>
+    <table>
+      <thead><tr><th>Tab</th><th>ID</th><th>Funktion</th></tr></thead>
+      <tbody>
+        <tr><td>tabLernen</td><td><code>tabLernen</code></td><td>Modul-Inhalt ansehen (Markdown gerendert)</td></tr>
+        <tr><td>tabQuiz</td><td><code>tabQuiz</code></td><td>Quizmodus für das aktuelle Modul</td></tr>
+        <tr><td>tabSpiele</td><td><code>tabSpiele</code></td><td>Spiele-Übersichtsseite mit 3 Spielen</td></tr>
+      </tbody>
+    </table>
+
+    <!-- ══════════════════════════════════════════════ -->
+    <h2 id="module-js">JavaScript-Module – Übersicht</h2>
+
+    <h3 id="state">state.js</h3>
+    <table>
+      <thead><tr><th>Export</th><th>Art</th><th>Beschreibung</th></tr></thead>
+      <tbody>
+        <tr><td>state</td><td>Objekt</td><td>Globaler App-State (currentModuleId, currentQuizData, Cache-Objekte, Filter, Modi)</td></tr>
+        <tr><td>QUIZ_BASE_PATH</td><td>Konstante</td><td>Basispfad für Quiz-JSON-Dateien</td></tr>
+        <tr><td>loadQuizData(id)</td><td>async Funktion</td><td>Lädt und cachet Quiz-JSON; gibt Fallback bei Fehler zurück</td></tr>
+        <tr><td>getAvailableConcepts()</td><td>Funktion</td><td>Liefert Liste aller Konzepte aus den geladenen Fragen</td></tr>
+        <tr><td>getQuizStats()</td><td>Funktion</td><td>Berechnet Statistiken (richtig/falsch/unanswered) für aktuelle Session</td></tr>
+      </tbody>
+    </table>
+
+    <h3>utils.js</h3>
+    <table>
+      <thead><tr><th>Export</th><th>Beschreibung</th></tr></thead>
+      <tbody>
+        <tr><td>escapeHtml(text)</td><td>XSS-Schutz – ersetzt <code>&lt; &gt; &amp;</code></td></tr>
+        <tr><td>escapeAttr(text)</td><td>Wie <code>escapeHtml</code> + escapte Anführungszeichen</td></tr>
+        <tr><td>inlineMd(text)</td><td>Rendert Inline-Markdown (fett, kursiv, code) in HTML</td></tr>
+        <tr><td>generateTocId(text)</td><td>Erzeugt URL-freundliche Anker-IDs aus Überschriften</td></tr>
+        <tr><td>shuffleArray(arr)</td><td>Fisher-Yates-Shuffle in-place</td></tr>
+        <tr><td>arraysEqual(a, b)</td><td>Tiefenvergleich zweier Arrays (für Reihenfolge-Fragen)</td></tr>
+      </tbody>
+    </table>
+
+    <h3>markdown.js</h3>
+    <p>Eigener Markdown → HTML Parser, keine externen Abhängigkeiten. Unterstützt:</p>
+    <ul>
+      <li>Überschriften H1–H4 inklusive automatischem TOC-Generierung mit Anker-Links</li>
+      <li>Fett, Kursiv, Inline-Code, Links</li>
+      <li>Ungeordnete und geordnete Listen (auch verschachtelt)</li>
+      <li>Code-Blöcke (dreifache Backticks) mit optionaler Sprachmarkierung</li>
+      <li>Tabellen (GFM-Stil)</li>
+      <li>Blockquotes</li>
+      <li>Horizontale Trennlinien</li>
+    </ul>
+
+    <h3>quiz/sections.js</h3>
+    <p>Rendert HTML für jeden Quiz-Fragetyp. Jede Funktion gibt einen HTML-String zurück:</p>
+    <table>
+      <thead><tr><th>Funktion</th><th>Fragetyp</th></tr></thead>
+      <tbody>
+        <tr><td>renderMcqSection(q)</td><td>Multiple-Choice (Einfach- und Mehrfachauswahl)</td></tr>
+        <tr><td>renderFillBlankSection(q)</td><td>Lückentexte mit Texteingabe</td></tr>
+        <tr><td>renderMatchSection(q)</td><td>Zuordnungsaufgaben (links ↔ rechts)</td></tr>
+        <tr><td>renderOrderSection(q)</td><td>Reihenfolge-Aufgaben (Drag-ähnlich per Buttons)</td></tr>
+        <tr><td>renderTrueFalseSection(q)</td><td>Wahr/Falsch-Aussagen</td></tr>
+        <tr><td>renderCaseLabSection(q)</td><td>Fallstudie / Labeling (Textpassage + Fragen)</td></tr>
+        <tr><td>renderMixedSection(q)</td><td>Gemischter Typ (delegiert an passenden Renderer)</td></tr>
+      </tbody>
+    </table>
+
+    <h3>quiz/validation.js</h3>
+    <table>
+      <thead><tr><th>Funktion</th><th>Beschreibung</th></tr></thead>
+      <tbody>
+        <tr><td>checkAnswer(btn)</td><td>Wertet die aktuelle Antwort aus, zeigt Feedback, feuert <code>fiae:quizAnswer</code></td></tr>
+        <tr><td>showSolution(btn)</td><td>Zeigt die Lösung an (Trainingsmodus)</td></tr>
+      </tbody>
+    </table>
+
+    <!-- ══════════════════════════════════════════════ -->
+    <h2 id="lernmodule">Lernmodule (40 Module)</h2>
+
+    <p>
+      Jedes Modul ist ein Eintrag im <strong>MODULES-Array</strong> in <code>js/modules.js</code>
+      im Format <code>[id, name, mdPfad, hatQuiz]</code>.
+      Module mit <span class="badge badge-green">✓ Quiz</span> haben eine zugehörige
+      <code>.quiz.json</code>-Datei unter <code>FI_Learning/quiz/modules/</code>.
+    </p>
+
+    <div class="module-grid">
+      <div class="module-tile has-quiz"><div class="mod-id">001</div><div class="mod-name">Prüfungsrahmen AP1</div></div>
+      <div class="module-tile has-quiz"><div class="mod-id">002</div><div class="mod-name">Bedarfsermittlung & Anforderungsanalyse</div></div>
+      <div class="module-tile has-quiz"><div class="mod-id">003</div><div class="mod-name">Hardware & Kompatibilität</div></div>
+      <div class="module-tile has-quiz"><div class="mod-id">004</div><div class="mod-name">OS, Benutzer, Rechte</div></div>
+      <div class="module-tile has-quiz"><div class="mod-id">005</div><div class="mod-name">Netzwerkgrundlagen</div></div>
+      <div class="module-tile has-quiz"><div class="mod-id">006</div><div class="mod-name">IPv4 & Subnetting</div></div>
+      <div class="module-tile"><div class="mod-id">007</div><div class="mod-name">IT-Sicherheit</div></div>
+      <div class="module-tile"><div class="mod-id">008</div><div class="mod-name">Datenschutz & DSGVO</div></div>
+      <div class="module-tile"><div class="mod-id">009</div><div class="mod-name">Wirtschaftlichkeit & Beschaffung</div></div>
+      <div class="module-tile"><div class="mod-id">010</div><div class="mod-name">Qualität, Test, Fehleranalyse</div></div>
+      <div class="module-tile"><div class="mod-id">011</div><div class="mod-name">Kundeneinweisung & Protokoll</div></div>
+      <div class="module-tile"><div class="mod-id">012</div><div class="mod-name">UML-Klassendiagramme</div></div>
+      <div class="module-tile"><div class="mod-id">013</div><div class="mod-name">Prüfungstaktik 90 Minuten</div></div>
+      <div class="module-tile"><div class="mod-id">014</div><div class="mod-name">Lernplanung</div></div>
+      <div class="module-tile"><div class="mod-id">015</div><div class="mod-name">Datenbanken & SQL Grundlagen</div></div>
+      <div class="module-tile"><div class="mod-id">016</div><div class="mod-name">Backup & Recovery-Strategien</div></div>
+      <div class="module-tile"><div class="mod-id">017</div><div class="mod-name">RAID-Systeme</div></div>
+      <div class="module-tile"><div class="mod-id">018</div><div class="mod-name">Virtualisierung Grundlagen</div></div>
+      <div class="module-tile"><div class="mod-id">019</div><div class="mod-name">Cloud Computing (IaaS, PaaS, SaaS)</div></div>
+      <div class="module-tile"><div class="mod-id">020</div><div class="mod-name">Active Directory & Domänen</div></div>
+      <div class="module-tile"><div class="mod-id">021</div><div class="mod-name">Server-Client-Architekturen</div></div>
+      <div class="module-tile"><div class="mod-id">022</div><div class="mod-name">Netzwerkprotokolle (DNS, DHCP)</div></div>
+      <div class="module-tile"><div class="mod-id">023</div><div class="mod-name">Firewall & VPN</div></div>
+      <div class="module-tile"><div class="mod-id">024</div><div class="mod-name">Storage-Technologien (SAN, NAS)</div></div>
+      <div class="module-tile"><div class="mod-id">025</div><div class="mod-name">Lizenzmodelle & Urheberrecht</div></div>
+      <div class="module-tile"><div class="mod-id">026</div><div class="mod-name">Projektmanagement</div></div>
+      <div class="module-tile"><div class="mod-id">027</div><div class="mod-name">IT-Service-Management (ITIL)</div></div>
+      <div class="module-tile"><div class="mod-id">028</div><div class="mod-name">Monitoring & Logging</div></div>
+      <div class="module-tile"><div class="mod-id">029</div><div class="mod-name">Scripting Grundlagen</div></div>
+      <div class="module-tile"><div class="mod-id">030</div><div class="mod-name">Troubleshooting-Methoden</div></div>
+      <div class="module-tile"><div class="mod-id">031</div><div class="mod-name">Softwareentwicklung Grundlagen</div></div>
+      <div class="module-tile"><div class="mod-id">032</div><div class="mod-name">IPv6 Grundlagen</div></div>
+      <div class="module-tile"><div class="mod-id">033</div><div class="mod-name">Green IT & Energieeffizienz</div></div>
+      <div class="module-tile"><div class="mod-id">034</div><div class="mod-name">Ticketsysteme & Support-Prozesse</div></div>
+      <div class="module-tile"><div class="mod-id">035</div><div class="mod-name">Change Management</div></div>
+      <div class="module-tile"><div class="mod-id">036</div><div class="mod-name">IT-Dokumentation</div></div>
+      <div class="module-tile"><div class="mod-id">037</div><div class="mod-name">Kosten-Nutzen-Analyse</div></div>
+      <div class="module-tile"><div class="mod-id">038</div><div class="mod-name">Service Level Agreements (SLA)</div></div>
+      <div class="module-tile"><div class="mod-id">039</div><div class="mod-name">Systemintegration</div></div>
+      <div class="module-tile"><div class="mod-id">040</div><div class="mod-name">Migration & Rollout</div></div>
+    </div>
+    <p style="font-size:0.8rem;color:var(--muted);">
+      <span class="badge badge-green">✓ Quiz</span> = Quiz-JSON vorhanden &nbsp;
+      Weiß umrandet = Inhalt vorhanden, Quiz in Planung
+    </p>
+
+    <!-- ══════════════════════════════════════════════ -->
+    <h2 id="quiz-engine">Quiz-Engine</h2>
+
+    <h3>Modi</h3>
+    <table>
+      <thead><tr><th>Modus</th><th>Key</th><th>Verhalten</th></tr></thead>
+      <tbody>
+        <tr><td>Training</td><td><code>training</code></td><td>Sofortiges Feedback nach jeder Antwort, Lösung anzeigen möglich</td></tr>
+        <tr><td>Prüfung</td><td><code>exam</code></td><td>Kein Feedback während der Fragen, Auswertung am Ende</td></tr>
+        <tr><td>Schnell</td><td><code>quick</code></td><td>5 zufällige Fragen, zeitlich begrenzt</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Filter</h3>
+    <ul>
+      <li><strong>Konzept-Filter:</strong> Filtert Fragen nach <code>concept</code>-Tag</li>
+      <li><strong>Schwierigkeitsfilter:</strong> <code>easy</code> / <code>medium</code> / <code>hard</code></li>
+      <li><strong>Fragetypfilter:</strong> <code>mcq</code> / <code>fill_blank</code> / <code>match</code> / <code>order</code> / <code>true_false</code></li>
+    </ul>
+
+    <h3 id="quiz-format">Quiz-JSON-Format</h3>
+    <pre><code>{
+  <span class="str">"meta"</span>: {
+    <span class="str">"module"</span>: <span class="str">"001"</span>,
+    <span class="str">"title"</span>: <span class="str">"Prüfungsrahmen AP1"</span>,
+    <span class="str">"version"</span>: <span class="num">1</span>
+  },
+  <span class="str">"questions"</span>: [
+    {
+      <span class="str">"id"</span>: <span class="str">"001_q01"</span>,          <span class="cmt">// Eindeutige ID</span>
+      <span class="str">"type"</span>: <span class="str">"mcq"</span>,           <span class="cmt">// Fragetyp (siehe unten)</span>
+      <span class="str">"difficulty"</span>: <span class="str">"easy"</span>,  <span class="cmt">// easy | medium | hard</span>
+      <span class="str">"concept"</span>: <span class="str">"Grundlagen"</span>, <span class="cmt">// Konzept-Tag für Filter</span>
+      <span class="str">"question"</span>: <span class="str">"Frage..."</span>,
+      <span class="str">"options"</span>: [<span class="str">"A"</span>, <span class="str">"B"</span>, <span class="str">"C"</span>, <span class="str">"D"</span>],
+      <span class="str">"correct"</span>: [<span class="num">0</span>],          <span class="cmt">// Index(e) der richtigen Antwort(en)</span>
+      <span class="str">"explanation"</span>: <span class="str">"..."</span>   <span class="cmt">// Optionale Erklärung</span>
+    }
+  ]
+}</code></pre>
+
+    <h3>Fragetypen</h3>
+    <table>
+      <thead><tr><th>type</th><th>Beschreibung</th><th>Pflichtfelder</th></tr></thead>
+      <tbody>
+        <tr><td>mcq</td><td>Multiple Choice (ein oder mehrere korrekte Antworten)</td><td>options, correct[]</td></tr>
+        <tr><td>fill_blank</td><td>Lückentext mit Freitexteingabe</td><td>blanks[], answers[]</td></tr>
+        <tr><td>match</td><td>Zuordnung: linke Seite ↔ rechte Seite</td><td>left[], right[], pairs[]</td></tr>
+        <tr><td>order</td><td>Reihenfolge herstellen</td><td>items[], correctOrder[]</td></tr>
+        <tr><td>true_false</td><td>Wahr/Falsch-Aussagen</td><td>statements[], answers[]</td></tr>
+        <tr><td>case_label</td><td>Fallstudie mit Teilfragen</td><td>context, subquestions[]</td></tr>
+        <tr><td>mixed</td><td>Gemischter Typ – delegiert intern</td><td>subtype + Felder des Subtyps</td></tr>
+      </tbody>
+    </table>
+
+    <!-- ══════════════════════════════════════════════ -->
+    <h2 id="blitzkarten">Spiel: Blitzkarten</h2>
+
+    <p>Datei: <code>js/games/blitzkarten.js</code></p>
+    <p>
+      Klassisches Karteikarten-Spiel. Zeigt Vorderseite der Karte (Frage/Begriff),
+      der Nutzer tippt auf die Karte zum Umdrehen und bewertet sich selbst mit
+      „Gewusst" / „Nicht gewusst".
+    </p>
+    <ul>
+      <li>Nutzt Quiz-Fragen des gewählten Moduls als Karteninhalt</li>
+      <li>Streak-System mit Feuer-Emoji bei Serientreffer</li>
+      <li>Sitzungsstatistiken (richtig/falsch/Gesamt)</li>
+      <li>Feuert <code>fiae:gameEnd</code> mit <code>{ game: "blitzkarten", stats }</code> am Ende</li>
+    </ul>
+    <table>
+      <thead><tr><th>Export</th><th>Beschreibung</th></tr></thead>
+      <tbody>
+        <tr><td>launchBlitzkarten(container, onBack)</td><td>Startet das Spiel im angegebenen Container-Element</td></tr>
+        <tr><td>cleanupBlitzkarten()</td><td>Entfernt Event-Listener und setzt Spielzustand zurück</td></tr>
+      </tbody>
+    </table>
+
+    <!-- ══════════════════════════════════════════════ -->
+    <h2 id="subnetz">Spiel: Subnetz-Trainer</h2>
+
+    <p>Datei: <code>js/games/subnetz.js</code></p>
+    <p>
+      Interaktiver IPv4-Networking-Trainer. Zufällig generierte Aufgaben zu
+      Subnetting, IP-Klassen, Netzadressen und Broadcast.
+    </p>
+    <ul>
+      <li><strong>4 Aufgabentypen:</strong> Netzadresse, Broadcast, Anzahl Hosts, IP-Klasse</li>
+      <li>4 separate Eingabefelder für Oktette (korrekte IPv4-Eingabe)</li>
+      <li>Hinweissystem mit schrittweisen Hilfen</li>
+      <li>Timer-Modus (optional)</li>
+      <li>Beststreak und persistente Statistiken (<code>localStorage: fiae_sn_stats</code>)</li>
+      <li>Feuert <code>fiae:gameEnd</code> mit <code>{ game: "subnetz", stats }</code></li>
+    </ul>
+    <table>
+      <thead><tr><th>Export</th><th>Beschreibung</th></tr></thead>
+      <tbody>
+        <tr><td>launchSubnetz(container, onBack)</td><td>Startet den Trainer</td></tr>
+        <tr><td>cleanupSubnetz()</td><td>Cleanup</td></tr>
+      </tbody>
+    </table>
+
+    <!-- ══════════════════════════════════════════════ -->
+    <h2 id="binary">Spiel: Binär-Trainer</h2>
+
+    <p>Datei: <code>js/games/binary.js</code></p>
+    <p>
+      Trainer für Binär- und Hexadezimalrechnung mit 3 Schwierigkeitsstufen und
+      3 verschiedenen Eingabe-Pads.
+    </p>
+    <h3>9 Aufgabentypen</h3>
+    <table>
+      <thead><tr><th>Typ</th><th>Aufgabe</th></tr></thead>
+      <tbody>
+        <tr><td>dec_to_bin</td><td>Dezimalzahl → Binär</td></tr>
+        <tr><td>bin_to_dec</td><td>Binär → Dezimalzahl</td></tr>
+        <tr><td>dec_to_hex</td><td>Dezimalzahl → Hexadezimal</td></tr>
+        <tr><td>hex_to_dec</td><td>Hexadezimal → Dezimalzahl</td></tr>
+        <tr><td>bin_to_hex</td><td>Binär → Hexadezimal</td></tr>
+        <tr><td>hex_to_bin</td><td>Hexadezimal → Binär</td></tr>
+        <tr><td>bit_and</td><td>Bitweise AND-Operation</td></tr>
+        <tr><td>bit_or</td><td>Bitweise OR-Operation</td></tr>
+        <tr><td>bit_shift</td><td>Bit-Shift (links/rechts)</td></tr>
+      </tbody>
+    </table>
+    <h3>3 Eingabe-Pads</h3>
+    <ul>
+      <li><strong>Bit-Pad:</strong> Klickbare Bit-Buttons (0/1) für Binäreingabe</li>
+      <li><strong>Hex-Pad:</strong> Hexadezimaltasten (0–9, A–F)</li>
+      <li><strong>Num-Pad:</strong> Numerisches Tastenfeld für Dezimaleingabe</li>
+    </ul>
+    <p>Statistiken werden in <code>localStorage: fiae_bn_stats</code> gespeichert. Feuert <code>fiae:gameEnd</code>.</p>
+
+    <!-- ══════════════════════════════════════════════ -->
+    <h2 id="savesystem">Speichersystem</h2>
+
+    <p>Datei: <code>js/saveSystem.js</code> (869 Zeilen)</p>
+
+    <h3>Verschlüsselung</h3>
+    <ul>
+      <li><strong>Algorithmus:</strong> AES-GCM 256-bit (Web Crypto API, browser-nativ)</li>
+      <li><strong>Schlüssel:</strong> Gerätespezifisch, zufällig generiert, gespeichert in <code>localStorage: fiae_device_key_v1</code></li>
+      <li><strong>Dateiformat:</strong> Header <code>FIAE_SAVE_V1\n</code> + Base64(IV + Ciphertext)</li>
+      <li><strong>Autosave:</strong> Debounced nach 800 ms bei jeder Datenänderung</li>
+      <li><strong>Fallback:</strong> localStorage-Backup (<code>fiae_save_backup_v1</code>) falls keine Datei geöffnet</li>
+    </ul>
+
+    <h3>Gespeicherte Daten</h3>
+    <pre><code>{
+  <span class="str">"profile"</span>: { <span class="str">"name"</span>: <span class="str">"Max"</span>, <span class="str">"xp"</span>: <span class="num">420</span>, <span class="str">"createdAt"</span>: <span class="str">"ISO-Date"</span> },
+  <span class="str">"achievements"</span>: { <span class="str">"quiz_first"</span>: <span class="kw">true</span>, <span class="str">"quiz_10"</span>: <span class="kw">true</span>, ... },
+  <span class="str">"bookmarks"</span>: [<span class="str">"001"</span>, <span class="str">"005"</span>],
+  <span class="str">"stats"</span>: {
+    <span class="str">"quizAnswered"</span>: <span class="num">150</span>,
+    <span class="str">"quizCorrect"</span>: <span class="num">120</span>,
+    <span class="str">"gamesPlayed"</span>: { <span class="str">"blitzkarten"</span>: <span class="num">5</span>, <span class="str">"subnetz"</span>: <span class="num">3</span>, <span class="str">"binary"</span>: <span class="num">8</span> }
+  },
+  <span class="str">"lastSaved"</span>: <span class="str">"ISO-Date"</span>
+}</code></pre>
+
+    <h3>Öffentliche API</h3>
+    <table>
+      <thead><tr><th>Funktion</th><th>Beschreibung</th></tr></thead>
+      <tbody>
+        <tr><td>initSaveSystem()</td><td>Initialisiert Schlüssel, lädt letzte Datei, registriert Event-Listener</td></tr>
+        <tr><td>openSaveManager(tab?)</td><td>Öffnet das Modal auf dem angegebenen Tab (profile/bookmarks/achievements/stats/settings)</td></tr>
+        <tr><td>toggleBookmark(moduleId)</td><td>Setzt/entfernt Lesezeichen für ein Modul</td></tr>
+        <tr><td>hasBookmark(moduleId)</td><td>Gibt <code>true</code> zurück wenn Modul als Lesezeichen markiert</td></tr>
+        <tr><td>recordQuizAnswer(correct, moduleId)</td><td>Intern: wird via <code>fiae:quizAnswer</code>-Event ausgelöst</td></tr>
+        <tr><td>recordGameEnd(game, stats)</td><td>Intern: wird via <code>fiae:gameEnd</code>-Event ausgelöst</td></tr>
+      </tbody>
+    </table>
+
+    <!-- ══════════════════════════════════════════════ -->
+    <h2 id="xp-system">XP-System & Erfolge</h2>
+
+    <h3>Level</h3>
+    <div class="level-list">
+      <div class="level-item"><div class="lv-icon">🌱</div><div class="lv-name">Neuling</div><div class="lv-xp">ab 0 XP</div></div>
+      <div class="level-item"><div class="lv-icon">📖</div><div class="lv-name">Lernender</div><div class="lv-xp">ab 100 XP</div></div>
+      <div class="level-item"><div class="lv-icon">🔍</div><div class="lv-name">Entdecker</div><div class="lv-xp">ab 300 XP</div></div>
+      <div class="level-item"><div class="lv-icon">⚙️</div><div class="lv-name">Praktiker</div><div class="lv-xp">ab 600 XP</div></div>
+      <div class="level-item"><div class="lv-icon">💡</div><div class="lv-name">Fortgeschrittener</div><div class="lv-xp">ab 1.000 XP</div></div>
+      <div class="level-item"><div class="lv-icon">🎯</div><div class="lv-name">Experte</div><div class="lv-xp">ab 1.600 XP</div></div>
+      <div class="level-item"><div class="lv-icon">🏅</div><div class="lv-name">Spezialist</div><div class="lv-xp">ab 2.500 XP</div></div>
+      <div class="level-item"><div class="lv-icon">🚀</div><div class="lv-name">Profi</div><div class="lv-xp">ab 3.600 XP</div></div>
+      <div class="level-item"><div class="lv-icon">🧠</div><div class="lv-name">Meister</div><div class="lv-xp">ab 5.000 XP</div></div>
+      <div class="level-item"><div class="lv-icon">🏆</div><div class="lv-name">Großmeister</div><div class="lv-xp">ab 7.000 XP</div></div>
+    </div>
+
+    <h3>XP-Quellen</h3>
+    <table>
+      <thead><tr><th>Aktion</th><th>XP</th></tr></thead>
+      <tbody>
+        <tr><td>Erste richtige Quiz-Antwort</td><td>+5</td></tr>
+        <tr><td>Richtige Quiz-Antwort</td><td>+2 pro Antwort</td></tr>
+        <tr><td>Serienerfolge (Achievements)</td><td>+5 bis +100</td></tr>
+        <tr><td>Spiele gespielt</td><td>+10–30 je nach Spiel</td></tr>
+        <tr><td>Speicherdatei erstellt</td><td>+20</td></tr>
+      </tbody>
+    </table>
+
+    <!-- ══════════════════════════════════════════════ -->
+    <h2 id="pwa">PWA & Service Worker</h2>
+
+    <p>
+      Die App ist als <strong>Progressive Web App</strong> konfiguriert und kann auf Mobilgeräten
+      und Desktops installiert werden.
+    </p>
+
+    <h3>manifest.json</h3>
+    <ul>
+      <li>Name: <em>FIAE AP1 Lernapp</em></li>
+      <li>Anzeige-Modus: <code>standalone</code></li>
+      <li>Icons: <code>icon_192.png</code>, <code>icon_512.png</code></li>
+      <li>Theme-Farbe: passend zum Dark Mode</li>
+    </ul>
+
+    <h3>Service Worker (<code>sw.js</code>)</h3>
+    <ul>
+      <li>Strategie: <strong>Cache-First</strong> – App-Ressourcen aus Cache, Netzwerk als Fallback</li>
+      <li>Cache-Name: <code>fiae-app-v21</code> (bei Update: Version erhöhen)</li>
+      <li>Precached Assets: alle JS-Module, HTML, CSS, Icons, Quiz-JSONs (001–006), Rechtspages</li>
+    </ul>
+
+    <pre><code><span class="cmt">// SW-Version erhöhen bei App-Update:</span>
+<span class="kw">const</span> CACHE_NAME = <span class="str">"fiae-app-v22"</span>; <span class="cmt">// ← Zahl erhöhen</span></code></pre>
+
+    <div class="info-box">
+      <strong>Wichtig:</strong> Jedes Mal wenn neue Dateien zum Projekt hinzukommen, müssen sie
+      auch in <code>ASSETS_TO_CACHE</code> in <code>sw.js</code> eingetragen und die Version
+      erhöht werden, damit der alte Cache invalidiert wird.
+    </div>
+
+    <!-- ══════════════════════════════════════════════ -->
+    <h2 id="modul-erstellen">Erweiterung: Neues Lernmodul</h2>
+
+    <p><strong>Schritt 1 – Markdown-Datei erstellen</strong></p>
+    <pre><code><span class="cmt">// Datei anlegen, z.B.:</span>
+FI_Learning/module_015_040/041_neues_thema.md</code></pre>
+
+    <p><strong>Schritt 2 – In modules.js eintragen</strong></p>
+    <pre><code><span class="cmt">// js/modules.js</span>
+<span class="kw">export const</span> MODULES = [
+  <span class="cmt">// ... bestehende Einträge ...</span>
+  [<span class="str">"041"</span>, <span class="str">"Neues Thema"</span>, <span class="str">"./FI_Learning/module_015_040/041_neues_thema.md"</span>, <span class="kw">false</span>],
+  <span class="cmt">//  ↑ id   ↑ Anzeigename          ↑ Pfad zur MD-Datei            ↑ hatQuiz</span>
+];</code></pre>
+
+    <!-- ══════════════════════════════════════════════ -->
+    <h2 id="quiz-erstellen">Erweiterung: Quiz für Modul erstellen</h2>
+
+    <p><strong>Schritt 1 – JSON-Datei anlegen</strong></p>
+    <pre><code>FI_Learning/quiz/modules/041.quiz.json</code></pre>
+
+    <p><strong>Schritt 2 – Grundstruktur</strong></p>
+    <pre><code>{
+  <span class="str">"meta"</span>: { <span class="str">"module"</span>: <span class="str">"041"</span>, <span class="str">"title"</span>: <span class="str">"Neues Thema"</span>, <span class="str">"version"</span>: <span class="num">1</span> },
+  <span class="str">"questions"</span>: [
+    {
+      <span class="str">"id"</span>: <span class="str">"041_q01"</span>,
+      <span class="str">"type"</span>: <span class="str">"mcq"</span>,
+      <span class="str">"difficulty"</span>: <span class="str">"easy"</span>,
+      <span class="str">"concept"</span>: <span class="str">"Grundlagen"</span>,
+      <span class="str">"question"</span>: <span class="str">"Wie lautet die Frage?"</span>,
+      <span class="str">"options"</span>: [<span class="str">"Antwort A"</span>, <span class="str">"Antwort B"</span>, <span class="str">"Antwort C"</span>, <span class="str">"Antwort D"</span>],
+      <span class="str">"correct"</span>: [<span class="num">0</span>],
+      <span class="str">"explanation"</span>: <span class="str">"Erklärung warum A richtig ist."</span>
+    }
+  ]
+}</code></pre>
+
+    <p><strong>Schritt 3 – hasQuiz auf true setzen in modules.js</strong></p>
+    <pre><code>[<span class="str">"041"</span>, <span class="str">"Neues Thema"</span>, <span class="str">"./..."</span>, <span class="kw">true</span>]
+<span class="cmt">//                                          ↑ true aktiviert den Quiz-Tab</span></code></pre>
+
+    <p><strong>Schritt 4 – SW-Version erhöhen</strong> und neue Datei in ASSETS_TO_CACHE eintragen.</p>
+
+    <!-- ══════════════════════════════════════════════ -->
+    <h2 id="spiel-erstellen">Erweiterung: Neues Spiel hinzufügen</h2>
+
+    <p>Jedes Spiel folgt demselben Muster:</p>
+    <pre><code><span class="cmt">// js/games/meinspiel.js</span>
+
+<span class="kw">let</span> _container = <span class="kw">null</span>;
+
+<span class="kw">export function</span> <span class="fn">launchMeinSpiel</span>(container, onBack) {
+  _container = container;
+  container.innerHTML = <span class="str">`&lt;div class="game-wrap"&gt;...&lt;/div&gt;`</span>;
+  <span class="cmt">// Event-Listener registrieren</span>
+}
+
+<span class="kw">export function</span> <span class="fn">cleanupMeinSpiel</span>() {
+  <span class="cmt">// Event-Listener entfernen, Timer stoppen</span>
+  _container = <span class="kw">null</span>;
+}
+
+<span class="cmt">// Am Spielende Stats feuern:</span>
+document.<span class="fn">dispatchEvent</span>(<span class="kw">new</span> CustomEvent(<span class="str">"fiae:gameEnd"</span>, {
+  detail: { game: <span class="str">"meinspiel"</span>, stats: { played: <span class="num">1</span>, correct: <span class="num">1</span> } }
+}));</code></pre>
+
+    <p>Dann in <code>app.js</code> importieren und in <code>init()</code> einen Button-Handler hinzufügen, analog zu <code>blitzkartenBtn</code> / <code>subnetzBtn</code> / <code>binaryBtn</code>.</p>
+
+    <!-- ══════════════════════════════════════════════ -->
+    <h2 id="legal">Lizenz & Rechtliches</h2>
+
+    <table>
+      <thead><tr><th>Dokument</th><th>Inhalt</th></tr></thead>
+      <tbody>
+        <tr><td>LICENSE</td><td>Proprietäre Lizenz, All Rights Reserved, Mindoro Evolution, deutsches Recht</td></tr>
+        <tr><td><a href="./datenschutz.html">datenschutz.html</a></td><td>DSGVO-konforme Datenschutzerklärung (9 Abschnitte, kein Tracking, localStorage-Transparenz)</td></tr>
+        <tr><td><a href="./agb.html">agb.html</a></td><td>Nutzungsbedingungen (§§1–10): Haftungsausschluss, keine Prüfungsgarantie, Urheberrecht</td></tr>
+        <tr><td><a href="https://mindoroevo.github.io/mindoro_imp/impressum.html" target="_blank" rel="noopener">Impressum (extern)</a></td><td>Pflichtangaben gemäß § 5 TMG</td></tr>
+      </tbody>
+    </table>
+
+    <div class="info-box">
+      <strong>Keine externen Abhängigkeiten in Produktion:</strong> Die App lädt keinerlei Ressourcen
+      von Drittanbietern. Alle Skripte, Styles und Assets sind lokal. Die Testumgebung
+      (<code>tests/</code>) ist davon ausgenommen und für Endnutzer nicht erreichbar.
+    </div>
+
+    <footer>
+      <p>© 2026 Mindoro Evolution &bull; Alle Rechte vorbehalten</p>
+      <p style="margin-top:6px;">
+        <a href="./index.html">← Zurück zur App</a>
+        &nbsp;|&nbsp;
+        <a href="https://mindoroevo.github.io/mindoro_imp/impressum.html" target="_blank" rel="noopener noreferrer">Impressum</a>
+        &nbsp;|&nbsp;
+        <a href="./datenschutz.html">Datenschutz</a>
+        &nbsp;|&nbsp;
+        <a href="./agb.html">AGB</a>
+      </p>
+    </footer>
+  </main>
+</div>
+</body>
+</html>

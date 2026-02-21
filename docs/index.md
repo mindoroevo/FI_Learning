@@ -44,6 +44,28 @@ Wie die App auf jedem Gerät läuft.
 *   Service Worker für Offline-Nutzung.
 *   Responsive Design (Smartphone vs. PC).
 
+### 7. [Das Speichersystem](./07_speichersystem.md)
+Verschlüsselte Datenpersistenz und Spielmechaniken.
+*   AES-GCM 256-bit Verschlüsselung (Web Crypto API).
+*   XP-System, 10 Level-Stufen, 15 Erfolge.
+*   Lesezeichen und Modal-UI.
+*   Das Event-System (`fiae:quizAnswer` / `fiae:gameEnd`).
+
+### 8. [Die Spiele](./08_spiele.md)
+Alle drei interaktiven Lernspiele im Detail.
+*   Blitzkarten – Karteikarten mit Flip-Animation und Streak.
+*   Subnetz-Trainer – IPv4-Subnetting interaktiv üben.
+*   Binär-Trainer – 9 Aufgabentypen, 3 Eingabe-Pads, Timer-Modus.
+*   Anleitung: Neues Spiel selbst hinzufügen.
+
+### 9. [Rechtliches & Compliance](./09_rechtliches.md)
+Lizenz, Datenschutz und rechtliche Absicherung.
+*   Proprietäre Lizenz (All Rights Reserved).
+*   Privacy-by-Design-Architektur.
+*   DSGVO-Rechtsgrundlagen.
+*   Übersicht aller rechtlichen Dokumente.
+*   Checkliste vor dem ersten öffentlichen Release.
+
 ---
 
 ## Schnellstart für Code-Leser
@@ -54,7 +76,11 @@ Wenn Sie direkt in den Code springen wollen, hier eine Orientierungshilfe:
 | :--- | :--- | :--- |
 | `js/app.js` | Hauptsteuerung | Der **Regisseur**, der sagt, was wann passiert. |
 | `js/state.js` | Datenspeicher | Das **Kurzzeitgedächtnis**, das sich merkt, welches Quiz gerade offen ist. |
-| `sw.js` | Service Worker | Der **Hausmeister**, der alles putzt und offline speichert. |
+| `js/saveSystem.js` | Speichersystem | Der **Tresor**, der alles verschlüsselt sichert. |
+| `sw.js` | Service Worker | Der **Hausmeister**, der alles offline verfügbar macht. |
 | `js/quiz/renderers.js` | HTML-Erzeuger | Der **Maler**, der die Daten hübsch auf den Bildschirm pinselt. |
 | `js/quiz/validation.js` | Prüf-Logik | Der **Lehrer**, der die Antworten der Schüler korrigiert. |
+| `js/games/blitzkarten.js` | Blitzkarten-Spiel | Die **Karteikarte**, die auf Knopfdruck umdreht. |
+| `js/games/subnetz.js` | Subnetz-Trainer | Der **Netzwerkrechner**, der IPv4-Aufgaben stellt. |
+| `js/games/binary.js` | Binär-Trainer | Das **Übungsblatt** für Zahlenumrechnungen. |
 | `js/utils.js` | Hilfsfunktionen | Der **Werkzeugkasten** mit Schraubendreher und Hammer. |

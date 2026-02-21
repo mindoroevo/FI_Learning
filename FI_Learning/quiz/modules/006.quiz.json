@@ -1,0 +1,1009 @@
+{
+  "meta": {
+    "module": "006",
+    "title": "IPv4-Subnetting",
+    "totalQuestions": 63,
+    "estimatedTime": "75 Minuten",
+    "concepts": [
+      "IPv4-Grundlagen & Binär-Notation",
+      "Subnetzmaske & CIDR-Notation",
+      "Subnetz-Berechnung (Netz, Broadcast, Hosts)",
+      "Private Adressen & RFC 1918",
+      "DHCP, Default Gateway & Netzwerkkonfiguration",
+      "Fehleranalyse & Troubleshooting"
+    ]
+  },
+  "engine": "mixed",
+  "mcq": [
+    {
+      "id": "006-mcq-1",
+      "type": "single",
+      "difficulty": "easy",
+      "bloomLevel": 1,
+      "concept": "IPv4-Grundlagen & Binär-Notation",
+      "question": "Aus wie vielen Bits besteht eine IPv4-Adresse?",
+      "options": [
+        "16 Bit",
+        "32 Bit",
+        "64 Bit",
+        "128 Bit"
+      ],
+      "answer": 1,
+      "explanation": "Eine **IPv4-Adresse** besteht aus genau **32 Bit**, dargestellt als 4 Gruppen à 8 Bit (Oktette) in Dezimalschreibweise, z.B. 192.168.1.1. IPv6 hat 128 Bit."
+    },
+    {
+      "id": "006-mcq-2",
+      "type": "single",
+      "difficulty": "easy",
+      "bloomLevel": 1,
+      "concept": "IPv4-Grundlagen & Binär-Notation",
+      "question": "Welcher Dezimalwert entspricht dem Binärwert 11000000?",
+      "options": [
+        "128",
+        "160",
+        "192",
+        "224"
+      ],
+      "answer": 2,
+      "explanation": "**11000000₂ = 192₁₀**: Die ersten zwei Bits von links sind gesetzt: 2^7 + 2^6 = 128 + 64 = **192**. Dieser Wert ist besonders wichtig, da er im letzten Oktett der Subnetzmaske bei einem /26-Netz vorkommt (255.255.255.192)."
+    },
+    {
+      "id": "006-mcq-3",
+      "type": "multi",
+      "difficulty": "medium",
+      "bloomLevel": 2,
+      "concept": "IPv4-Grundlagen & Binär-Notation",
+      "question": "Welche der folgenden Werte sind gültige Werte im letzten Oktett einer CIDR-Subnetzmaske? (Mehrfachauswahl)",
+      "options": [
+        "0",
+        "130",
+        "192",
+        "240",
+        "253"
+      ],
+      "answer": [0, 2, 3],
+      "explanation": "Gültige Subnetzmasken-Werte im letzten Oktett: **0, 128, 192, 224, 240, 248, 252, 254, 255** – diese entsprechen Binärwerten mit zusammenhängenden Einsen von links (z.B. 11000000 = 192). **130** (10000010) und **253** (11111101) sind ungültig, da die Einsen nicht zusammenhängend sind."
+    },
+    {
+      "id": "006-mcq-4",
+      "type": "single",
+      "difficulty": "medium",
+      "bloomLevel": 2,
+      "concept": "IPv4-Grundlagen & Binär-Notation",
+      "question": "Welcher Adressklasse gehört die IP-Adresse 172.20.5.10 an?",
+      "options": [
+        "Klasse A (1–126)",
+        "Klasse B (128–191)",
+        "Klasse C (192–223)",
+        "Klasse D (224–239)"
+      ],
+      "answer": 1,
+      "explanation": "Das erste Oktett ist **172**, das liegt im Bereich 128–191 → **Klasse B**. Klasse A: 1–126, Klasse B: 128–191, Klasse C: 192–223. Außerdem: 172.20.x.x ist ein privater Bereich nach RFC 1918 (172.16.0.0 – 172.31.255.255)."
+    },
+    {
+      "id": "006-mcq-5",
+      "type": "single",
+      "difficulty": "easy",
+      "bloomLevel": 1,
+      "concept": "Subnetzmaske & CIDR-Notation",
+      "question": "Was bedeutet die CIDR-Notation /24?",
+      "options": [
+        "Das Netz hat 24 Hosts",
+        "Die ersten 24 Bits der IP-Adresse bilden den Netzwerkteil",
+        "Die Subnetzmaske ist 255.0.0.0",
+        "Es gibt 24 mögliche Subnetze"
+      ],
+      "answer": 1,
+      "explanation": "Bei **/24** sind die ersten **24 Bits** die Netzwerk-Bits (Netzwerkteil), die restlichen 8 Bits sind der Hostteil. Die entsprechende Subnetzmaske ist 255.255.255.0 (24 Einsen, dann 8 Nullen). Es hat nichts mit der Anzahl der Hosts oder Subnetze zu tun."
+    },
+    {
+      "id": "006-mcq-6",
+      "type": "single",
+      "difficulty": "easy",
+      "bloomLevel": 2,
+      "concept": "Subnetzmaske & CIDR-Notation",
+      "question": "Welche Subnetzmaske entspricht dem CIDR-Präfix /26?",
+      "options": [
+        "255.255.255.0",
+        "255.255.255.128",
+        "255.255.255.192",
+        "255.255.255.224"
+      ],
+      "answer": 2,
+      "explanation": "**/26** = 26 Netzwerk-Bits. Die ersten 24 Bits sind 255.255.255, die restlichen 2 Bits im letzten Oktett: 11000000₂ = **192**. Damit: **255.255.255.192**. /25 → .128 (10000000), /27 → .224 (11100000)."
+    },
+    {
+      "id": "006-mcq-7",
+      "type": "single",
+      "difficulty": "medium",
+      "bloomLevel": 2,
+      "concept": "Subnetzmaske & CIDR-Notation",
+      "question": "Was ist der CIDR-Präfix der Subnetzmaske 255.255.255.240?",
+      "options": [
+        "/26",
+        "/27",
+        "/28",
+        "/29"
+      ],
+      "answer": 2,
+      "explanation": "240 = 11110000₂ → **4 Einsen** im letzten Oktett. Gesamt: 24 (für die ersten drei Oktette) + 4 = **/28**. Schnell-Check: 255.255.255.0 = /24, jede weitere gesetzte Bit-Folge: 128→/25, 192→/26, 224→/27, **240→/28**."
+    },
+    {
+      "id": "006-mcq-8",
+      "type": "single",
+      "difficulty": "medium",
+      "bloomLevel": 3,
+      "concept": "Subnetzmaske & CIDR-Notation",
+      "question": "Wie viele Subnetze entstehen, wenn 192.168.5.0/24 in /26-Netze aufgeteilt wird?",
+      "options": [
+        "2",
+        "4",
+        "8",
+        "16"
+      ],
+      "answer": 1,
+      "explanation": "Geliehene Bits = 26 − 24 = **2 Bits**. Anzahl Subnetze = 2^2 = **4**. Jedes /26-Subnetz hat 64 Adressen (62 nutzbar). 4 × 64 = 256 = 2^8 – passt genau in ein /24."
+    },
+    {
+      "id": "006-mcq-9",
+      "type": "single",
+      "difficulty": "hard",
+      "bloomLevel": 3,
+      "concept": "Subnetzmaske & CIDR-Notation",
+      "question": "Firma NovaTech braucht 5 Subnetze aus 10.0.0.0/24, jedes mit mind. 25 nutzbaren Hosts. Welcher Präfix ist der kleinstmögliche (sparsamste)?",
+      "options": [
+        "/25 (126 Hosts, ergibt 2 Subnetze – reicht nicht)",
+        "/26 (62 Hosts, ergibt 4 Subnetze – reicht nicht für 5)",
+        "/27 (30 Hosts, ergibt 8 Subnetze – ausreichend)",
+        "/28 (14 Hosts – zu wenig für 25 Hosts)"
+      ],
+      "answer": 2,
+      "explanation": "**/27** liefert **30 nutzbare Hosts** (≥ 25 ✓) und 2^3 = **8 Subnetze** (≥ 5 ✓). /26 hätte 62 Hosts, aber nur 4 Subnetze (zu wenig). /28 hat nur 14 Hosts (zu wenig). /27 ist der sparsamste Präfix der alle Anforderungen erfüllt."
+    },
+    {
+      "id": "006-mcq-10",
+      "type": "single",
+      "difficulty": "easy",
+      "bloomLevel": 2,
+      "concept": "Subnetz-Berechnung (Netz, Broadcast, Hosts)",
+      "question": "Wie viele nutzbare Hostadressen hat ein /28-Netz?",
+      "options": [
+        "8",
+        "14",
+        "16",
+        "30"
+      ],
+      "answer": 1,
+      "explanation": "**/28**: Host-Bits = 32 − 28 = 4. Gesamtadressen = 2^4 = 16. Nutzbare Hosts = 16 − 2 = **14** (−2 für Netzwerkadresse + Broadcastadresse). Merke: **immer −2**!"
+    },
+    {
+      "id": "006-mcq-11",
+      "type": "single",
+      "difficulty": "medium",
+      "bloomLevel": 3,
+      "concept": "Subnetz-Berechnung (Netz, Broadcast, Hosts)",
+      "question": "Welches Subnetz enthält die IP-Adresse 192.168.1.130/25?",
+      "options": [
+        "192.168.1.0/25 (Adressen .0–.127)",
+        "192.168.1.128/25 (Adressen .128–.255)",
+        "192.168.1.64/25",
+        "192.168.1.100/25"
+      ],
+      "answer": 1,
+      "explanation": "**/25**: Blockgröße = 2^7 = 128. Zwei Blöcke: 0–127 und 128–255. 130 ≥ 128 → zweiter Block → Netzwerkadresse **192.168.1.128/25**. Broadcast: 192.168.1.255. Hosts: 192.168.1.129–.254 (126 Hosts)."
+    },
+    {
+      "id": "006-mcq-12",
+      "type": "single",
+      "difficulty": "medium",
+      "bloomLevel": 3,
+      "concept": "Subnetz-Berechnung (Netz, Broadcast, Hosts)",
+      "question": "Was ist die Broadcastadresse des Netzes 10.10.10.200/28?",
+      "options": [
+        "10.10.10.207",
+        "10.10.10.255",
+        "10.10.10.200",
+        "10.10.10.215"
+      ],
+      "answer": 0,
+      "explanation": "**/28**: Blockgröße = 2^4 = 16. 200 ÷ 16 = 12,5 → abrunden auf 12 → 12 × 16 = 192. Netzwerkadresse: **10.10.10.192**. Broadcast = 192 + 16 − 1 = **10.10.10.207**. Hosts: .193–.206 (14 Hosts)."
+    },
+    {
+      "id": "006-mcq-13",
+      "type": "single",
+      "difficulty": "hard",
+      "bloomLevel": 4,
+      "concept": "Subnetz-Berechnung (Netz, Broadcast, Hosts)",
+      "question": "Welche der folgenden Angaben sind für das Netz 172.16.4.0/23 korrekt?",
+      "options": [
+        "Broadcast: 172.16.4.255, 254 Hosts",
+        "Broadcast: 172.16.5.255, 510 Hosts",
+        "Broadcast: 172.16.3.255, 512 Hosts",
+        "Broadcast: 172.16.5.255, 254 Hosts"
+      ],
+      "answer": 1,
+      "explanation": "**/23** = Host-Bits im drittletzten Oktett: 23 − 16 = 7 Bits für den Hostteil (8+7=15... nein, /23: 3. Oktett hat 23−16=7 Bit Netz, 1 Bit Host + volles 4. Oktett = 9 Host-Bits). Blockgröße im 3. Oktett = 2^1 = 2. 4 ÷ 2 = 2 → Block: 4–5. Netzwerk: 172.16.4.0, Broadcast: **172.16.5.255**. Hosts: 2^9 − 2 = **510**."
+    },
+    {
+      "id": "006-mcq-14",
+      "type": "multi",
+      "difficulty": "hard",
+      "bloomLevel": 4,
+      "concept": "Subnetz-Berechnung (Netz, Broadcast, Hosts)",
+      "question": "Welche Aussagen über das Netz 192.168.0.0/26 sind korrekt? (Mehrfachauswahl)",
+      "options": [
+        "Es gibt 62 nutzbare Hostadressen",
+        "Die Broadcastadresse ist 192.168.0.63",
+        "Die erste nutzbare Hostadresse ist 192.168.0.0",
+        "Die Subnetzmaske lautet 255.255.255.192"
+      ],
+      "answer": [0, 1, 3],
+      "explanation": "**Korrekt:** A: 2^6−2 = 62 Hosts ✓. B: Netzwerk .0, Broadcast .0+64−1 = **.63** ✓. D: /26 → 255.255.255.192 ✓. **Falsch:** C: .0 ist die Netzwerkadresse (reserviert), die erste nutzbare Hostadresse ist **.1**!"
+    },
+    {
+      "id": "006-mcq-15",
+      "type": "single",
+      "difficulty": "easy",
+      "bloomLevel": 1,
+      "concept": "Private Adressen & RFC 1918",
+      "question": "Welcher der folgenden IP-Adressbereiche ist eine private Adresse laut RFC 1918?",
+      "options": [
+        "200.168.0.0",
+        "172.32.0.0",
+        "10.0.0.0",
+        "192.169.0.0"
+      ],
+      "answer": 2,
+      "explanation": "**10.0.0.0/8** ist privat (RFC 1918, Klasse A). **172.32.x.x** ist NICHT privat – privat ist nur 172.16.0.0 bis 172.31.255.255. **192.169.x.x** ist öffentlich (nicht 192.168). **200.x.x.x** ist Klasse C, aber öffentlich."
+    },
+    {
+      "id": "006-mcq-16",
+      "type": "single",
+      "difficulty": "medium",
+      "bloomLevel": 2,
+      "concept": "Private Adressen & RFC 1918",
+      "question": "Was bedeutet die IP-Adresse 169.254.88.10 auf einem PC?",
+      "options": [
+        "Der PC hat eine statische private IP konfiguriert",
+        "Der PC hat keine Antwort vom DHCP-Server erhalten und sich selbst eine APIPA-Adresse vergeben",
+        "Der PC ist im Internet direkt erreichbar",
+        "Der PC ist mit einem VPN verbunden"
+      ],
+      "answer": 1,
+      "explanation": "**169.254.x.x** ist eine **APIPA-Adresse** (Automatic Private IP Addressing, RFC 3927). Windows vergibt sie sich automatisch, wenn kein DHCP-Server antwortet. Diese Adresse ermöglicht **keine Internetverbindung** und kein Routing in andere Netze."
+    },
+    {
+      "id": "006-mcq-17",
+      "type": "multi",
+      "difficulty": "medium",
+      "bloomLevel": 2,
+      "concept": "Private Adressen & RFC 1918",
+      "question": "Welche der folgenden IP-Adressen sind private Adressen gemäß RFC 1918? (Mehrfachauswahl)",
+      "options": [
+        "10.250.100.5",
+        "172.15.0.1",
+        "172.31.255.254",
+        "192.168.255.1",
+        "192.169.0.1"
+      ],
+      "answer": [0, 2, 3],
+      "explanation": "**Privat (RFC 1918):** A: 10.x.x.x ✓, C: 172.31.x.x liegt in 172.16–31.x.x ✓, D: 192.168.x.x ✓. **Öffentlich:** B: 172.15.x.x liegt AUSSERHALB 172.16–31 (zu niedrig!), E: 192.169.x.x ist nicht 192.168.x.x."
+    },
+    {
+      "id": "006-mcq-18",
+      "type": "single",
+      "difficulty": "easy",
+      "bloomLevel": 1,
+      "concept": "DHCP, Default Gateway & Netzwerkkonfiguration",
+      "question": "Was liefert ein DHCP-Server einem Client automatisch? (Wähle die vollständigste Antwort)",
+      "options": [
+        "Nur die IP-Adresse",
+        "IP-Adresse und Subnetzmaske",
+        "IP-Adresse, Subnetzmaske, Default Gateway und DNS-Server",
+        "IP-Adresse, MAC-Adresse und Hostname"
+      ],
+      "answer": 2,
+      "explanation": "Ein vollständiger **DHCP-Offer** enthält: **IP-Adresse** (für den Client), **Subnetzmaske** (Netzgrenzen), **Default Gateway** (Router-IP) und **DNS-Server** (Namensauflösung). MAC-Adressen werden nicht per DHCP vergeben – sie sind in der Hardware fest."
+    },
+    {
+      "id": "006-mcq-19",
+      "type": "single",
+      "difficulty": "medium",
+      "bloomLevel": 2,
+      "concept": "DHCP, Default Gateway & Netzwerkkonfiguration",
+      "question": "Welches Transportprotokoll und welche Ports verwendet DHCP?",
+      "options": [
+        "TCP, Port 80 (Client) und 443 (Server)",
+        "UDP, Port 67 (Server) und 68 (Client)",
+        "TCP, Port 53 (Server) und 1024 (Client)",
+        "UDP, Port 22 (Server) und 68 (Client)"
+      ],
+      "answer": 1,
+      "explanation": "**DHCP verwendet UDP** (keine zuverlässige Verbindung nötig, Broadcasts möglich). **Port 67** ist der DHCP-Server, **Port 68** der DHCP-Client. Bei der Discover-Nachricht kennt der Client noch keine IP → Broadcast über UDP sinnvoll."
+    },
+    {
+      "id": "006-mcq-20",
+      "type": "single",
+      "difficulty": "medium",
+      "bloomLevel": 3,
+      "concept": "DHCP, Default Gateway & Netzwerkkonfiguration",
+      "question": "PC Müller hat die IP 192.168.1.50/24. Als Default Gateway ist 192.168.2.1 eingetragen. Warum kann er nicht ins Internet?",
+      "options": [
+        "Die IP-Adresse ist falsch konfiguriert",
+        "Das Default Gateway liegt in einem anderen Subnetz als der PC – er kann den Router nicht direkt erreichen",
+        "DNS ist nicht konfiguriert",
+        "Die Subnetzmaske /24 ist zu groß"
+      ],
+      "answer": 1,
+      "explanation": "Der PC ist in 192.168.1.0/24, das Gateway 192.168.2.1 liegt in 192.168.2.0/24 – **ein anderes Netz**. Ein PC kann Pakete nur direkt (Layer 2) an Geräte im gleichen Subnetz senden. Das Gateway muss im **gleichen Subnetz** liegen. Deshalb: kein Internetzugang."
+    },
+    {
+      "id": "006-mcq-21",
+      "type": "single",
+      "difficulty": "hard",
+      "bloomLevel": 4,
+      "concept": "DHCP, Default Gateway & Netzwerkkonfiguration",
+      "question": "Ein DHCP-Pool ist 192.168.0.100–192.168.0.200. Der Router hat IP 192.168.0.1. Ein Drucker soll immer die gleiche IP haben, aber per DHCP verwaltet werden. Welche Methode ist richtig?",
+      "options": [
+        "IP 192.168.0.150 manuell am Drucker eintragen (innerhalb des Pools)",
+        "IP 192.168.0.50 manuell am Drucker eintragen (außerhalb des Pools)",
+        "DHCP-Reservation: MAC-Adresse des Druckers → feste IP 192.168.0.50",
+        "Den Drucker einfach immer als erstes einschalten, dann bekommt er immer .100"
+      ],
+      "answer": 2,
+      "explanation": "**DHCP-Reservation** (auch DHCP-Static-Binding): Der DHCP-Server wird konfiguriert, dass er für eine bestimmte MAC-Adresse immer die gleiche IP vergibt. Vorteil: Zentral verwaltet, keine Doppelvergabe möglich. Manuell innerhalb des Pools wäre gefährlich (DHCP könnte dieselbe IP an anderen Client vergeben)."
+    },
+    {
+      "id": "006-mcq-22",
+      "type": "single",
+      "difficulty": "medium",
+      "bloomLevel": 3,
+      "concept": "Fehleranalyse & Troubleshooting",
+      "question": "Mitarbeiterin Klein hat 169.254.5.40 als IP-Adresse. Was ist der erste Diagnoseschritt?",
+      "options": [
+        "DNS-Server neu starten",
+        "Netzwerkkabel prüfen und `ipconfig /renew` ausführen",
+        "Windows neu installieren",
+        "Den Browser-Cache leeren"
+      ],
+      "answer": 1,
+      "explanation": "**169.254.x.x = APIPA** → DHCP hat nicht geantwortet. Erste Schritte: 1) Physisches Kabel prüfen (gesteckt? Linklight?), 2) `ipconfig /release` und `ipconfig /renew`. Erst dann prüfen, ob DHCP-Dienst läuft. DNS oder Browser haben mit diesem Problem nichts zu tun."
+    },
+    {
+      "id": "006-mcq-23",
+      "type": "single",
+      "difficulty": "hard",
+      "bloomLevel": 4,
+      "concept": "Fehleranalyse & Troubleshooting",
+      "question": "PC: 192.168.10.100/24, Gateway: 192.168.10.1. `ping 192.168.10.1` klappt. `ping 8.8.8.8` schlägt fehl. Was ist das wahrscheinlichste Problem?",
+      "options": [
+        "Falsche Subnetzmaske am PC",
+        "Falsches Default Gateway am PC",
+        "Problem am Router oder beim ISP (Internet-Anschluss)",
+        "DNS-Server nicht erreichbar"
+      ],
+      "answer": 2,
+      "explanation": "**Analyse:** Gateway erreichbar = PC im Netz korrekt konfiguriert. Internet (8.8.8.8) nicht erreichbar = Problem liegt beim Router oder jenseits (ISP, WAN-Seite des Routers). Subnetzmaske und Gateway am PC sind offensichtlich korrekt. DNS-Problem würde anders aussehen (IP-Ping klappt, Namensauflösung nicht)."
+    },
+    {
+      "id": "006-mcq-24",
+      "type": "single",
+      "difficulty": "medium",
+      "bloomLevel": 3,
+      "concept": "Fehleranalyse & Troubleshooting",
+      "question": "Zwei PCs sollen im gleichen Netz kommunizieren: PC1: 192.168.1.70/26, PC2: 192.168.1.130/26. Können sie direkt kommunizieren?",
+      "options": [
+        "Ja, beide haben 192.168.1.x und sind im gleichen /26",
+        "Nein, 192.168.1.70/26 liegt im Netz 192.168.1.64/26 und 192.168.1.130/26 liegt im Netz 192.168.1.128/26",
+        "Ja, weil beide dieselbe Subnetzmaske /26 haben",
+        "Nein, weil 192.168.1.x immer /24 ist"
+      ],
+      "answer": 1,
+      "explanation": "**/26 Blockgröße = 64**. PC1: 70 → Block 64–127 (Netz 192.168.1.64/26). PC2: 130 → Block 128–191 (Netz 192.168.1.128/26). **Verschiedene Subnetze** → direkte Kommunikation nicht möglich, Pakete müssen über einen Router (Layer 3). Häufiger Fehler: gleiche Basis-IP ≠ gleicher Adressraum!"
+    }
+  ],
+  "fill_blank": [
+    {
+      "id": "006-fb-1",
+      "concept": "Subnetz-Berechnung (Netz, Broadcast, Hosts)",
+      "text": "Die Formel für nutzbare Hosts ist 2 hoch {{0}} minus {{1}}. Bei einem /24-Netz gibt es also {{2}} nutzbare Hostadressen.",
+      "blanks": [
+        {
+          "options": ["(32 minus Präfix)", "Präfix", "(Präfix minus 24)"],
+          "correct": "(32 minus Präfix)"
+        },
+        {
+          "options": ["1", "2", "4"],
+          "correct": "2"
+        },
+        {
+          "options": ["256", "254", "252"],
+          "correct": "254"
+        }
+      ],
+      "explanation": "Formel: **2^(32−Präfix) − 2**. Die −2 kommt davon, dass Netzwerkadresse (Hostteil = 0) und Broadcastadresse (Hostteil = 1) reserviert sind. Bei /24: 2^8 − 2 = 256 − 2 = **254**."
+    },
+    {
+      "id": "006-fb-2",
+      "concept": "Subnetzmaske & CIDR-Notation",
+      "text": "Die Subnetzmaske für /25 lautet 255.255.255.{{0}}. Für /27 lautet sie 255.255.255.{{1}}. Für /29 lautet sie 255.255.255.{{2}}.",
+      "blanks": [
+        {
+          "options": ["128", "192", "224"],
+          "correct": "128"
+        },
+        {
+          "options": ["192", "224", "240"],
+          "correct": "224"
+        },
+        {
+          "options": ["240", "248", "252"],
+          "correct": "248"
+        }
+      ],
+      "explanation": "**/25 = 10000000₂ = 128**, /27 = 11100000₂ = **224**, /29 = 11111000₂ = **248**. Merkhilfe: 128→192→224→240→248→252→255, jeder Schritt fügt eine 1-Bit weiter hinzu."
+    },
+    {
+      "id": "006-fb-3",
+      "concept": "Subnetz-Berechnung (Netz, Broadcast, Hosts)",
+      "text": "Gegeben: 192.168.10.70/26. Die Blockgröße beträgt {{0}}. Die Netzwerkadresse ist 192.168.10.{{1}} und die Broadcastadresse ist 192.168.10.{{2}}.",
+      "blanks": [
+        {
+          "options": ["32", "64", "128"],
+          "correct": "64"
+        },
+        {
+          "options": ["0", "64", "70"],
+          "correct": "64"
+        },
+        {
+          "options": ["126", "127", "128"],
+          "correct": "127"
+        }
+      ],
+      "explanation": "/26 → 2^6 = **64** Blockgröße. 70 ÷ 64 = 1,09 → Block startet bei 1×64 = **64**. Broadcast: 64 + 64 − 1 = **127**. Hosts: .65–.126 (62 Hosts)."
+    },
+    {
+      "id": "006-fb-4",
+      "concept": "Private Adressen & RFC 1918",
+      "text": "RFC 1918 definiert drei private Bereiche: {{0}}.0.0.0/8 für Klasse A, 172.16.0.0 bis 172.{{1}}.255.255 für Klasse B und 192.{{2}}.0.0/16 für Klasse C.",
+      "blanks": [
+        {
+          "options": ["10", "172", "192"],
+          "correct": "10"
+        },
+        {
+          "options": ["24", "31", "32"],
+          "correct": "31"
+        },
+        {
+          "options": ["168", "169", "167"],
+          "correct": "168"
+        }
+      ],
+      "explanation": "**RFC 1918 private Bereiche:** Klasse A: **10**.0.0.0/8 (10.0.0.0–10.255.255.255), Klasse B: 172.16.0.0–172.**31**.255.255, Klasse C: 192.**168**.0.0/16. Wichtig: 172.32 ist nicht mehr privat!"
+    },
+    {
+      "id": "006-fb-5",
+      "concept": "Private Adressen & RFC 1918",
+      "text": "Die Loopback-Adresse ist {{0}} und liegt im {{1}}.0.0.0/8-Netz. Eine 169.254.x.x-Adresse wird automatisch vergeben, wenn kein {{2}} erreichbar ist.",
+      "blanks": [
+        {
+          "options": ["192.168.0.1", "127.0.0.1", "0.0.0.0"],
+          "correct": "127.0.0.1"
+        },
+        {
+          "options": ["10", "127", "169"],
+          "correct": "127"
+        },
+        {
+          "options": ["DNS-Server", "DHCP-Server", "Default Gateway"],
+          "correct": "DHCP-Server"
+        }
+      ],
+      "explanation": "**127.0.0.1** ist die Loopback-Adresse (Ping auf sich selbst). Das gesamte **127.x.x.x/8-Netz** ist für Loopback reserviert. **169.254.x.x** (APIPA) wird automatisch vergeben, wenn kein **DHCP-Server** antwortet."
+    },
+    {
+      "id": "006-fb-6",
+      "concept": "Subnetz-Berechnung (Netz, Broadcast, Hosts)",
+      "text": "Das Netz 10.0.0.0/24 wird in /27-Subnetze aufgeteilt. Es entstehen {{0}} Subnetze, jedes mit {{1}} Adressen gesamt und {{2}} nutzbaren Hosts.",
+      "blanks": [
+        {
+          "options": ["4", "8", "16"],
+          "correct": "8"
+        },
+        {
+          "options": ["16", "32", "64"],
+          "correct": "32"
+        },
+        {
+          "options": ["28", "30", "32"],
+          "correct": "30"
+        }
+      ],
+      "explanation": "/27 aus /24: geliehene Bits = 27−24 = 3, **2^3 = 8 Subnetze**. Blockgröße = 2^(32−27) = 2^5 = **32 Adressen**. Nutzbare Hosts = 32−2 = **30**."
+    },
+    {
+      "id": "006-fb-7",
+      "concept": "DHCP, Default Gateway & Netzwerkkonfiguration",
+      "text": "DHCP verwendet {{0}} als Transportprotokoll. Der Discover wird an die Adresse {{1}} gesendet. Im letzten Schritt bestätigt der Server mit einem {{2}}.",
+      "blanks": [
+        {
+          "options": ["TCP", "UDP", "ICMP"],
+          "correct": "UDP"
+        },
+        {
+          "options": ["0.0.0.0", "255.255.255.255", "192.168.0.1"],
+          "correct": "255.255.255.255"
+        },
+        {
+          "options": ["Offer", "Request", "Acknowledge"],
+          "correct": "Acknowledge"
+        }
+      ],
+      "explanation": "DHCP nutzt **UDP** (kein Verbindungsaufbau nötig). Discover geht als Broadcast an **255.255.255.255** (da der Client noch keine IP-Adresse hat). Der letzte Schritt ist **Acknowledge** (Bestätigung, DORA steht für Discover-Offer-Request-**A**cknowledge)."
+    },
+    {
+      "id": "006-fb-8",
+      "concept": "Fehleranalyse & Troubleshooting",
+      "text": "Mit `ipconfig /{{0}}` gebe ich meine DHCP-Adresse frei. Mit `ipconfig /{{1}}` fordere ich eine neue an. Mit `ipconfig /{{2}}` leere ich den DNS-Cache.",
+      "blanks": [
+        {
+          "options": ["release", "renew", "flushdns"],
+          "correct": "release"
+        },
+        {
+          "options": ["release", "renew", "flushdns"],
+          "correct": "renew"
+        },
+        {
+          "options": ["release", "renew", "flushdns"],
+          "correct": "flushdns"
+        }
+      ],
+      "explanation": "**`ipconfig /release`** gibt die aktuelle DHCP-Adresse frei. **`ipconfig /renew`** fordert eine neue IP vom DHCP-Server. **`ipconfig /flushdns`** leert den DNS-Cache (hilfreich wenn DNS-Einträge veraltet sind)."
+    },
+    {
+      "id": "006-fb-9",
+      "concept": "Subnetz-Berechnung (Netz, Broadcast, Hosts)",
+      "text": "Die IP 172.16.5.200 mit Maske 255.255.255.248 hat die Netzwerkadresse 172.16.5.{{0}}, die Broadcastadresse 172.16.5.{{1}} und {{2}} nutzbare Hosts.",
+      "blanks": [
+        {
+          "options": ["192", "200", "196"],
+          "correct": "200"
+        },
+        {
+          "options": ["207", "207", "208"],
+          "correct": "207"
+        },
+        {
+          "options": ["4", "6", "8"],
+          "correct": "6"
+        }
+      ],
+      "explanation": "255.255.255.248 = /29, Blockgröße = 8. 200 ÷ 8 = 25 → Block: 25×8 = **200**. Netzwerkadresse: 172.16.5.**200**. Broadcast: 200+8−1 = **207**. Nutzbare Hosts: 8−2 = **6** (Hosts: .201–.206)."
+    },
+    {
+      "id": "006-fb-10",
+      "concept": "DHCP, Default Gateway & Netzwerkkonfiguration",
+      "text": "Bei der Netzwerkkonfiguration einer Workstation sind drei Pflichtangaben nötig: {{0}} (Adresse des Geräts), {{1}} (Netzgrenzen) und {{2}} (Adresse des Routers).",
+      "blanks": [
+        {
+          "options": ["IP-Adresse", "MAC-Adresse", "DNS-Server"],
+          "correct": "IP-Adresse"
+        },
+        {
+          "options": ["Subnetzmaske", "VLAN-ID", "Hostname"],
+          "correct": "Subnetzmaske"
+        },
+        {
+          "options": ["DNS-Server", "Default Gateway", "DHCP-Server"],
+          "correct": "Default Gateway"
+        }
+      ],
+      "explanation": "Pflichtangaben für jede IP-Konfiguration: **IP-Adresse** (eindeutige Adresse des Geräts), **Subnetzmaske** (definiert Netzwerkgrenzen), **Default Gateway** (Router-Adresse für alle Verbindungen außerhalb des Subnetzes). DNS-Server ist optionally, aber praktisch immer notwendig."
+    }
+  ],
+  "match": [
+    {
+      "id": "006-match-1",
+      "concept": "Subnetzmaske & CIDR-Notation",
+      "question": "Ordne den CIDR-Präfixen die richtige Subnetzmaske zu:",
+      "left": [
+        "/25",
+        "/26",
+        "/27",
+        "/28"
+      ],
+      "right": [
+        "255.255.255.128",
+        "255.255.255.192",
+        "255.255.255.224",
+        "255.255.255.240"
+      ],
+      "matches": [
+        "255.255.255.128",
+        "255.255.255.192",
+        "255.255.255.224",
+        "255.255.255.240"
+      ],
+      "explanation": "**/25** = 10000000₂ = 128 → .128. **/26** = 11000000₂ = 192 → .192. **/27** = 11100000₂ = 224 → .224. **/28** = 11110000₂ = 240 → .240. Merke: Jeder Schritt fügt eine weitere führende 1 hinzu."
+    },
+    {
+      "id": "006-match-2",
+      "concept": "Private Adressen & RFC 1918",
+      "question": "Ordne die Adressklassen den korrekten privaten Bereichen (RFC 1918) zu:",
+      "left": [
+        "Klasse A (privat)",
+        "Klasse B (privat)",
+        "Klasse C (privat)",
+        "Sonderadresse APIPA"
+      ],
+      "right": [
+        "10.0.0.0 – 10.255.255.255",
+        "172.16.0.0 – 172.31.255.255",
+        "192.168.0.0 – 192.168.255.255",
+        "169.254.0.0 – 169.254.255.255"
+      ],
+      "matches": [
+        "10.0.0.0 – 10.255.255.255",
+        "172.16.0.0 – 172.31.255.255",
+        "192.168.0.0 – 192.168.255.255",
+        "169.254.0.0 – 169.254.255.255"
+      ],
+      "explanation": "**RFC 1918:** Klasse A = **10.0.0.0/8**, Klasse B = **172.16.0.0/12** (172.16–31), Klasse C = **192.168.0.0/16**. APIPA (169.254.x.x) ist kein RFC-1918-Bereich, sondern link-local nach RFC 3927 – aber prüfungsrelevant."
+    },
+    {
+      "id": "006-match-3",
+      "concept": "Subnetz-Berechnung (Netz, Broadcast, Hosts)",
+      "question": "Ordne den Parametern des Netzes 192.168.1.0/27 den richtigen Wert zu:",
+      "left": [
+        "Blockgröße",
+        "Broadcastadresse",
+        "Nutzbare Hosts",
+        "Erste Hostadresse"
+      ],
+      "right": [
+        "32",
+        "192.168.1.31",
+        "30",
+        "192.168.1.1"
+      ],
+      "matches": [
+        "32",
+        "192.168.1.31",
+        "30",
+        "192.168.1.1"
+      ],
+      "explanation": "**/27**: Blockgröße = 2^5 = **32**. Broadcast = 0+32−1 = **.31**. Nutzbare Hosts = 32−2 = **30**. Erste Hostadresse = Netzwerk+1 = **.1**."
+    },
+    {
+      "id": "006-match-4",
+      "concept": "DHCP, Default Gateway & Netzwerkkonfiguration",
+      "question": "Ordne den DHCP-DORA-Schritten die korrekte Beschreibung zu:",
+      "left": [
+        "Discover",
+        "Offer",
+        "Request",
+        "Acknowledge"
+      ],
+      "right": [
+        "Client sendet Broadcast: Suche DHCP-Server",
+        "Server bietet IP-Adresse an",
+        "Client bestätigt gewünschte IP",
+        "Server bestätigt und reserviert IP"
+      ],
+      "matches": [
+        "Client sendet Broadcast: Suche DHCP-Server",
+        "Server bietet IP-Adresse an",
+        "Client bestätigt gewünschte IP",
+        "Server bestätigt und reserviert IP"
+      ],
+      "explanation": "**DORA-Ablauf:** Discover (Client sucht) → Offer (Server bietet) → Request (Client wählt) → Acknowledge (Server bestätigt + Lease-Zeit startet). Discover und Request laufen als Broadcasts (da Client anfangs keine IP hat)."
+    },
+    {
+      "id": "006-match-5",
+      "concept": "Fehleranalyse & Troubleshooting",
+      "question": "Ordne den Diagnosebefehlen ihre Funktion zu:",
+      "left": [
+        "ipconfig",
+        "ping 127.0.0.1",
+        "ping 8.8.8.8",
+        "nslookup google.de"
+      ],
+      "right": [
+        "IP, Subnetzmaske, Gateway anzeigen",
+        "Lokalen Netzwerk-Stack testen",
+        "Internet-Erreichbarkeit (IP-Ebene) testen",
+        "DNS-Namensauflösung testen"
+      ],
+      "matches": [
+        "IP, Subnetzmaske, Gateway anzeigen",
+        "Lokalen Netzwerk-Stack testen",
+        "Internet-Erreichbarkeit (IP-Ebene) testen",
+        "DNS-Namensauflösung testen"
+      ],
+      "explanation": "Diagnosestrategie Layer für Layer: **ipconfig** → Konfiguration prüfen. **ping 127.0.0.1** → Netzwerkkarte/Stack. **ping 8.8.8.8** → Internet/Routing. **nslookup** → DNS. Dieser Ablauf erlaubt systematisches Eingrenzen des Fehlers."
+    }
+  ],
+  "order": [
+    {
+      "id": "006-order-1",
+      "concept": "DHCP, Default Gateway & Netzwerkkonfiguration",
+      "question": "Bringe die DHCP-DORA-Schritte in die richtige Reihenfolge:",
+      "items": [
+        "Client sendet DHCP-Discover (Broadcast)",
+        "Server sendet DHCP-Offer mit IP-Angebot",
+        "Client sendet DHCP-Request (nimmt Angebot an)",
+        "Server sendet DHCP-Acknowledge (bestätigt)"
+      ],
+      "correctOrder": [1, 2, 3, 4],
+      "explanation": "**DORA** = Discover → Offer → Request → Acknowledge. Erst sucht der Client (Broadcast), dann bietet der Server, dann akzeptiert der Client explizit, dann bestätigt der Server. **Wichtig:** Warum nochmal Request nach Offer? Es könnten mehrere DHCP-Server antworten – mit dem Request wählt der Client einen und informiert alle anderen, dass er ein anderes Angebot angenommen hat."
+    },
+    {
+      "id": "006-order-2",
+      "concept": "Subnetz-Berechnung (Netz, Broadcast, Hosts)",
+      "question": "Bringe die Schritte der Subnetzberechnung in die richtige Reihenfolge (für beliebige IP/CIDR):",
+      "items": [
+        "Blockgröße berechnen: 2^(32 − Präfix)",
+        "Subnetz-Block finden: letztes Oktett durch Blockgröße teilen, abrunden, zurückmultiplizieren",
+        "Netzwerkadresse aufschreiben",
+        "Broadcastadresse: Netzwerkadresse + Blockgröße − 1",
+        "Hosts: Netzwerkadresse+1 bis Broadcastadresse−1"
+      ],
+      "correctOrder": [1, 2, 3, 4, 5],
+      "explanation": "**Rechenschema:** 1) Blockgröße (aus Präfix). 2) Block-Start (Division + Abrunden). 3) Netzwerkadresse = Block-Start. 4) Broadcast = Block-Start + Blockgröße − 1. 5) Hosts = Netzwerk+1 bis Broadcast−1. Dieser Ablauf funktioniert für jedes /25 bis /30 ohne Binärrechnung."
+    },
+    {
+      "id": "006-order-3",
+      "concept": "Fehleranalyse & Troubleshooting",
+      "question": "Ein PC hat IP 169.254.x.x. Bringe die Troubleshooting-Schritte in die richtige Reihenfolge:",
+      "items": [
+        "ipconfig prüfen – erkennen: APIPA-Adresse (169.254.x.x)",
+        "Physisches Kabel/WLAN-Verbindung prüfen",
+        "`ipconfig /release` ausführen",
+        "`ipconfig /renew` ausführen",
+        "DHCP-Server-Dienst auf dem Server prüfen, falls Schritt 4 fehlschlägt"
+      ],
+      "correctOrder": [1, 2, 3, 4, 5],
+      "explanation": "**Systematisches Vorgehen:** Erst APIPA erkennen → physische Verbindung ist immer Schritt 2 (keine Software kann ein loses Kabel reparieren) → Release/Renew erzwingt neues DHCP → wenn das scheitert, liegt das Problem beim DHCP-Server selbst."
+    },
+    {
+      "id": "006-order-4",
+      "concept": "Subnetzmaske & CIDR-Notation",
+      "question": "Bringe die Schritte in die richtige Reihenfolge, um 192.168.0.0/24 in /27-Blöcke aufzuteilen:",
+      "items": [
+        "Blockgröße berechnen: 2^(32−27) = 32",
+        "Anzahl Subnetze berechnen: 2^(27−24) = 8",
+        "Erste Netzwerkadresse: 192.168.0.0, Broadcast: .31",
+        "Nächste Netzwerkadresse: 192.168.0.32, Broadcast: .63",
+        "Alle acht Blöcke auflisten (bis 192.168.0.224/27)"
+      ],
+      "correctOrder": [1, 2, 3, 4, 5],
+      "explanation": "**Vorgehen für Subnetz-Aufteilung:** Erst Blockgröße (32), dann Anzahl (8 Subnetze). Dann systematisch von 0 in 32er-Schritten: 0, 32, 64, 96, 128, 160, 192, 224. Jedes endet jeweils bei Block-Start+31."
+    }
+  ],
+  "true_false": [
+    {
+      "id": "006-tf-1",
+      "statement": "Eine IPv4-Adresse besteht aus 4 Oktetten mit jeweils 8 Bit, also insgesamt 32 Bit.",
+      "answer": "true",
+      "difficulty": "easy",
+      "bloomLevel": 1,
+      "concept": "IPv4-Grundlagen & Binär-Notation",
+      "explanation": "**Richtig!** IPv4: 4 × 8 Bit = 32 Bit. Jedes Oktett kann Werte von 0 bis 255 annehmen (2^8 = 256 Möglichkeiten). IPv6 dagegen hat 128 Bit."
+    },
+    {
+      "id": "006-tf-2",
+      "statement": "Der Wert 255 in einem Oktett entspricht dem Binärwert 11111111.",
+      "answer": "true",
+      "difficulty": "easy",
+      "bloomLevel": 1,
+      "concept": "IPv4-Grundlagen & Binär-Notation",
+      "explanation": "**Richtig!** 11111111₂ = 128+64+32+16+8+4+2+1 = 255₁₀. Das ist der maximal mögliche Wert in einem Oktett (alle 8 Bits gesetzt). Merke: 2^8 − 1 = 255."
+    },
+    {
+      "id": "006-tf-3",
+      "statement": "Die Subnetzmaske 255.255.130.0 ist eine gültige CIDR-Subnetzmaske.",
+      "answer": "false",
+      "difficulty": "medium",
+      "bloomLevel": 2,
+      "concept": "IPv4-Grundlagen & Binär-Notation",
+      "explanation": "**Falsch!** CIDR-Subnetzmasken müssen aus einer zusammenhängenden Folge von Einsen gefolgt von Nullen bestehen. 130 = 10000010₂ – die Bits sind nicht zusammenhängend (1, dann 0, dann 1). Gültige Werte im dritten Oktett einer Maske: nur 0, 128, 192, 224, 240, 248, 252, 254, 255."
+    },
+    {
+      "id": "006-tf-4",
+      "statement": "Die Subnetzmaske für /26 ist 255.255.255.192.",
+      "answer": "true",
+      "difficulty": "easy",
+      "bloomLevel": 1,
+      "concept": "Subnetzmaske & CIDR-Notation",
+      "explanation": "**Richtig!** /26 = 26 Netzwerk-Bits. Die ersten 24 ergeben 255.255.255, und 2 weitere Bits im letzten Oktett: 11000000₂ = 192. Also: **255.255.255.192**."
+    },
+    {
+      "id": "006-tf-5",
+      "statement": "Ein /28-Netz hat 16 nutzbare Hostadressen.",
+      "answer": "false",
+      "difficulty": "easy",
+      "bloomLevel": 2,
+      "concept": "Subnetzmaske & CIDR-Notation",
+      "explanation": "**Falsch!** /28 hat 2^4 = 16 **Gesamtadressen**, aber nur 16 − 2 = **14 nutzbare Hosts** (−2 für Netzwerkadresse und Broadcastadresse). Häufigster Fehler bei Subnetting!"
+    },
+    {
+      "id": "006-tf-6",
+      "statement": "Aus einem /24-Netz lassen sich durch Teilen in /26-Netze genau 4 Subnetze erstellen.",
+      "answer": "true",
+      "difficulty": "easy",
+      "bloomLevel": 2,
+      "concept": "Subnetzmaske & CIDR-Notation",
+      "explanation": "**Richtig!** Geliehene Bits: 26 − 24 = 2. Anzahl Subnetze: 2^2 = **4**. Jedes /26 hat 64 Adressen (62 Hosts). 4 × 64 = 256 = komplettes /24-Netz."
+    },
+    {
+      "id": "006-tf-7",
+      "statement": "Die Netzwerkadresse eines Subnetzes kann als reguläre Hostadresse verwendet werden.",
+      "answer": "false",
+      "difficulty": "easy",
+      "bloomLevel": 1,
+      "concept": "Subnetz-Berechnung (Netz, Broadcast, Hosts)",
+      "explanation": "**Falsch!** Die Netzwerkadresse (alle Hostbits = 0) ist **reserviert** und identifiziert das Netz selbst. Sie kann keinem Host zugewiesen werden. Ebenso ist die Broadcastadresse reserviert. Deshalb −2 in der Formel."
+    },
+    {
+      "id": "006-tf-8",
+      "statement": "Im Netz 192.168.1.0/25 ist 192.168.1.128 die Broadcastadresse.",
+      "answer": "false",
+      "difficulty": "medium",
+      "bloomLevel": 3,
+      "concept": "Subnetz-Berechnung (Netz, Broadcast, Hosts)",
+      "explanation": "**Falsch!** /25: Blockgröße = 128. Erstes Subnetz: Netzwerk .0, Broadcast **.127**. 192.168.1.128 ist die **Netzwerkadresse des zweiten Subnetzes** (128–255). Broadcast des zweiten Subnetzes ist 192.168.1.255."
+    },
+    {
+      "id": "006-tf-9",
+      "statement": "Das Netz 10.20.0.0/23 umfasst Adressen von 10.20.0.0 bis 10.20.1.255.",
+      "answer": "true",
+      "difficulty": "hard",
+      "bloomLevel": 3,
+      "concept": "Subnetz-Berechnung (Netz, Broadcast, Hosts)",
+      "explanation": "**Richtig!** /23 bedeutet, dass das dritte Oktett 1 Bit zum Hostteil beiträgt. Blockgröße im 3. Oktett: 2^1 = 2. 10.20.0.0/23 umfasst also die Subblöcke 10.20.**0**.x und 10.20.**1**.x → Adressen 10.20.0.0 bis **10.20.1.255** (512 Adressen)."
+    },
+    {
+      "id": "006-tf-10",
+      "statement": "Die Broadcastadresse des Netzes 10.0.0.64/26 ist 10.0.0.127.",
+      "answer": "true",
+      "difficulty": "medium",
+      "bloomLevel": 3,
+      "concept": "Subnetz-Berechnung (Netz, Broadcast, Hosts)",
+      "explanation": "**Richtig!** /26: Blockgröße = 64. Netzwerkadresse: 10.0.0.64 (Startwert: 64 ÷ 64 = 1 → 1×64 = 64). Broadcast: 64 + 64 − 1 = **127**. ✓"
+    },
+    {
+      "id": "006-tf-11",
+      "statement": "10.0.0.0 bis 10.255.255.255 ist ein privater Adressbereich gemäß RFC 1918.",
+      "answer": "true",
+      "difficulty": "easy",
+      "bloomLevel": 1,
+      "concept": "Private Adressen & RFC 1918",
+      "explanation": "**Richtig!** Das gesamte **10.0.0.0/8**-Netz ist privat nach RFC 1918. Es hat über 16 Millionen Adressen und wird oft in großen Unternehmensnetzwerken genutzt."
+    },
+    {
+      "id": "006-tf-12",
+      "statement": "Die IP-Adresse 172.32.0.1 ist eine private Adresse gemäß RFC 1918.",
+      "answer": "false",
+      "difficulty": "medium",
+      "bloomLevel": 2,
+      "concept": "Private Adressen & RFC 1918",
+      "explanation": "**Falsch!** RFC 1918 definiert den privaten Klasse-B-Bereich als **172.16.0.0 bis 172.31.255.255**. 172.32 liegt einen Block höher und ist damit eine **öffentliche** Adresse. Häufige Prüfungsfalle!"
+    },
+    {
+      "id": "006-tf-13",
+      "statement": "Eine Adresse 169.254.x.x auf einem PC bedeutet, dass DHCP erfolgreich eine IP vergeben hat.",
+      "answer": "false",
+      "difficulty": "easy",
+      "bloomLevel": 2,
+      "concept": "Private Adressen & RFC 1918",
+      "explanation": "**Falsch!** 169.254.x.x ist eine **APIPA-Adresse** – der PC hat sie sich **selbst** vergeben, weil der **DHCP-Server nicht erreichbar** war. Es bedeutet das Gegenteil: DHCP hat NICHT funktioniert. Diagnose: Kabel, DHCP-Dienst, Pool prüfen."
+    },
+    {
+      "id": "006-tf-14",
+      "statement": "Ein `ping 127.0.0.1` testet die physische Netzwerkverbindung zum Router.",
+      "answer": "false",
+      "difficulty": "medium",
+      "bloomLevel": 2,
+      "concept": "Private Adressen & RFC 1918",
+      "explanation": "**Falsch!** `ping 127.0.0.1` testet den **lokalen TCP/IP-Stack** (Betriebssystem-Netzwerkimplementierung), aber **nicht** die physische Verbindung, Netzwerkkarte oder den Router. Für den Router: `ping [Gateway-IP]`."
+    },
+    {
+      "id": "006-tf-15",
+      "statement": "DHCP verwendet TCP als Transportprotokoll, weil die IP-Vergabe zuverlässig sein muss.",
+      "answer": "false",
+      "difficulty": "medium",
+      "bloomLevel": 2,
+      "concept": "DHCP, Default Gateway & Netzwerkkonfiguration",
+      "explanation": "**Falsch!** DHCP verwendet **UDP** (Port 67/68). Der Grund: Ein Client ohne IP kann keine TCP-Verbindung aufbauen (TCP benötigt bei Verbindungsaufbau eine Source-IP). UDP erlaubt Broadcasts, was für Discover notwendig ist."
+    },
+    {
+      "id": "006-tf-16",
+      "statement": "Das Default Gateway muss sich im gleichen IP-Subnetz befinden wie der Host, der es nutzt.",
+      "answer": "true",
+      "difficulty": "easy",
+      "bloomLevel": 2,
+      "concept": "DHCP, Default Gateway & Netzwerkkonfiguration",
+      "explanation": "**Richtig!** Der Host muss das Gateway auf Layer 2 (ARP) direkt erreichen können – das ist nur im gleichen Subnetz möglich. Liegt das Gateway in einem anderen Subnetz, kann der Host keine Pakete dorthin senden (kein Layer-2-Pfad)."
+    },
+    {
+      "id": "006-tf-17",
+      "statement": "Der Befehl `ipconfig /renew` veranlasst den PC, eine neue IP-Adresse per DHCP anzufordern.",
+      "answer": "true",
+      "difficulty": "easy",
+      "bloomLevel": 1,
+      "concept": "DHCP, Default Gateway & Netzwerkkonfiguration",
+      "explanation": "**Richtig!** `ipconfig /renew` startet den DHCP-DORA-Prozess neu und fordert eine frische IP-Adresse an. Oft kombiniert mit `ipconfig /release` (erst freigeben, dann erneuern). Hilft bei APIPA-Problemen."
+    },
+    {
+      "id": "006-tf-18",
+      "statement": "Wenn `ping 8.8.8.8` funktioniert, aber `ping google.de` nicht, liegt das Problem an der Subnetzmaske.",
+      "answer": "false",
+      "difficulty": "medium",
+      "bloomLevel": 4,
+      "concept": "Fehleranalyse & Troubleshooting",
+      "explanation": "**Falsch!** Wenn IP-Pings (8.8.8.8) funktionieren, ist die Netzwerkkonfiguration inklusive Subnetzmaske korrekt. Das Problem bei `ping google.de` ist die **DNS-Auflösung** (Domainname → IP-Adresse). Lösung: DNS-Server prüfen (`nslookup google.de`)."
+    },
+    {
+      "id": "006-tf-19",
+      "statement": "Zwei PCs mit IPs 192.168.1.60/27 und 192.168.1.70/27 können direkt miteinander kommunizieren.",
+      "answer": "false",
+      "difficulty": "hard",
+      "bloomLevel": 4,
+      "concept": "Fehleranalyse & Troubleshooting",
+      "explanation": "**Falsch!** /27: Blockgröße = 32. PC1: 60 → Block 32–63 (Netz 192.168.1.32/27). PC2: 70 → Block 64–95 (Netz 192.168.1.64/27). **Verschiedene Subnetze!** Sie brauchen einen Router (Layer 3). Häufige Prüfungsfalle: gleiche Subnetzmaske ≠ gleiches Subnetz."
+    },
+    {
+      "id": "006-tf-20",
+      "statement": "Die Broadcastadresse und die Netzwerkadresse eines Subnetzes zählen zu den nutzbaren Hostadressen.",
+      "answer": "false",
+      "difficulty": "easy",
+      "bloomLevel": 1,
+      "concept": "Subnetz-Berechnung (Netz, Broadcast, Hosts)",
+      "explanation": "**Falsch!** Netzwerkadresse (alle Hostbits = 0) und Broadcastadresse (alle Hostbits = 1) sind **reserviert** und können keinem Host zugewiesen werden. Deshalb ergibt sich die Formel: nutzbare Hosts = 2^n − **2**."
+    }
+  ],
+  "_metadata": {
+    "conceptCoverage": {
+      "IPv4-Grundlagen & Binär-Notation": {
+        "questionIds": ["006-mcq-1", "006-mcq-2", "006-mcq-3", "006-mcq-4", "006-fb-1", "006-tf-1", "006-tf-2", "006-tf-3"],
+        "count": 8,
+        "difficulty": {"easy": 5, "medium": 3, "hard": 0}
+      },
+      "Subnetzmaske & CIDR-Notation": {
+        "questionIds": ["006-mcq-5", "006-mcq-6", "006-mcq-7", "006-mcq-8", "006-mcq-9", "006-fb-2", "006-match-1", "006-order-4", "006-tf-4", "006-tf-5", "006-tf-6"],
+        "count": 11,
+        "difficulty": {"easy": 4, "medium": 4, "hard": 3}
+      },
+      "Subnetz-Berechnung (Netz, Broadcast, Hosts)": {
+        "questionIds": ["006-mcq-10", "006-mcq-11", "006-mcq-12", "006-mcq-13", "006-mcq-14", "006-fb-3", "006-fb-6", "006-fb-9", "006-match-3", "006-order-2", "006-tf-7", "006-tf-8", "006-tf-9", "006-tf-10", "006-tf-20"],
+        "count": 15,
+        "difficulty": {"easy": 3, "medium": 6, "hard": 6}
+      },
+      "Private Adressen & RFC 1918": {
+        "questionIds": ["006-mcq-15", "006-mcq-16", "006-mcq-17", "006-fb-4", "006-fb-5", "006-match-2", "006-tf-11", "006-tf-12", "006-tf-13", "006-tf-14"],
+        "count": 10,
+        "difficulty": {"easy": 5, "medium": 5, "hard": 0}
+      },
+      "DHCP, Default Gateway & Netzwerkkonfiguration": {
+        "questionIds": ["006-mcq-18", "006-mcq-19", "006-mcq-20", "006-mcq-21", "006-fb-7", "006-fb-8", "006-fb-10", "006-match-4", "006-order-1", "006-tf-15", "006-tf-16", "006-tf-17"],
+        "count": 12,
+        "difficulty": {"easy": 5, "medium": 5, "hard": 2}
+      },
+      "Fehleranalyse & Troubleshooting": {
+        "questionIds": ["006-mcq-22", "006-mcq-23", "006-mcq-24", "006-match-5", "006-order-3", "006-tf-18", "006-tf-19"],
+        "count": 7,
+        "difficulty": {"easy": 1, "medium": 4, "hard": 2}
+      }
+    },
+    "totalConcepts": 6,
+    "averageQuestionsPerConcept": 10.5,
+    "difficultyDistribution": {
+      "easy": 23,
+      "medium": 27,
+      "hard": 13
+    }
+  }
+}

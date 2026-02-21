@@ -5,7 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#0d1117">
   <link rel="manifest" href="./manifest.json">
-  <link rel="apple-touch-icon" href="./icons/icon-192.png">
+  <link rel="apple-touch-icon" href="./icons/icon_192.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="./icons/icon_192.png">
   <title>FIAE AP1 Lernapp</title>
   <link rel="stylesheet" href="./app.css" />
 </head>
@@ -13,19 +14,62 @@
   <header class="topbar">
     <h1>FIAE AP1 Lernapp</h1>
     <div class="topbar-actions">
-      <input id="searchInput" type="search" placeholder="Modul suchen..." />
-      <button id="themeToggle" type="button" aria-label="Theme wechseln">🌙 Dark</button>
+      <button id="saveBtn" type="button" class="topbar-save-btn" aria-label="Speicherprofil öffnen" title="Speicherprofil">💾</button>
+      <button id="modulesBtn" type="button" class="modules-icon-btn" aria-label="Module öffnen">☰</button>
+      <button id="themeToggle" type="button" aria-label="Theme wechseln">🌙</button>
     </div>
   </header>
 
-  <button id="mobileMenuBtn" class="mobile-menu-btn" aria-label="Menü öffnen">☰ Module</button>
+  <button id="mobileMenuBtn" class="mobile-menu-btn" aria-label="Menü öffnen" aria-controls="sidebar" aria-expanded="false" style="display:none">☰ Module</button>
+
+  <nav class="main-tab-bar" id="mainTabBar" aria-label="Hauptnavigation">
+    <button class="mtb-tab mtb-active" id="tabLernen" data-tab="lernen">
+      <span class="mtb-icon">📖</span><span class="mtb-label">Lernen</span>
+    </button>
+    <button class="mtb-tab" id="tabQuiz" data-tab="quiz">
+      <span class="mtb-icon">🧠</span><span class="mtb-label">Quiz</span>
+    </button>
+    <button class="mtb-tab" id="tabSpiele" data-tab="spiele">
+      <span class="mtb-icon">🎮</span><span class="mtb-label">Spiele</span>
+    </button>
+  </nav>
 
   <main class="layout">
     <aside class="sidebar" id="sidebar">
       <div class="sidebar-header">
-        <div class="sidebar-title">Module</div>
+        <div class="sidebar-title">Menü</div>
         <button id="closeSidebarBtn" class="close-sidebar-btn" aria-label="Menü schließen">✕</button>
       </div>
+      <div class="sidebar-games" id="sidebarGames">
+        <button class="sidebar-games-toggle" id="sidebarGamesToggle" type="button" aria-expanded="true">
+          <span>Spiele</span>
+          <span class="sgt-arrow">▾</span>
+        </button>
+        <div class="sidebar-game-tiles">
+          <button id="blitzkartenBtn" type="button" class="sidebar-game-tile" aria-label="Blitz-Karten Lernspiel">
+            <span class="sgt-icon">⚡</span>
+            <span class="sgt-text">
+              <span class="sgt-label">Blitz-Karten</span>
+              <span class="sgt-desc">Schnelles Abfrage-Training</span>
+            </span>
+          </button>
+          <button id="subnetzBtn" type="button" class="sidebar-game-tile" aria-label="Subnetz-Trainer">
+            <span class="sgt-icon">🌐</span>
+            <span class="sgt-text">
+              <span class="sgt-label">Subnetz-Trainer</span>
+              <span class="sgt-desc">IPv4-Subnetting üben</span>
+            </span>
+          </button>
+          <button id="binaryBtn" type="button" class="sidebar-game-tile" aria-label="Binär-Trainer">
+            <span class="sgt-icon sgt-icon-mono">01</span>
+            <span class="sgt-text">
+              <span class="sgt-label">Binär-Trainer</span>
+              <span class="sgt-desc">Zahlensysteme meistern</span>
+            </span>
+          </button>
+        </div>
+      </div>
+      <div class="sidebar-modules-title">Module</div>
       <nav id="moduleList" class="module-list"></nav>
     </aside>
     <div id="sidebarOverlay" class="sidebar-overlay"></div>
@@ -39,6 +83,10 @@
 
   <footer class="legal-footer">
     <a href="https://mindoroevo.github.io/mindoro_imp/impressum.html" target="_blank" rel="noopener noreferrer">Impressum</a>
+    <span class="legal-sep">·</span>
+    <a href="./datenschutz.html">Datenschutz</a>
+    <span class="legal-sep">·</span>
+    <a href="./agb.html">AGB</a>
   </footer>
 
   <script type="module" src="./js/app.js"></script>

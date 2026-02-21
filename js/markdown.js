@@ -13,7 +13,7 @@ function renderTable(rows) {
   const headerCells = parseRow(rows[0]);
   const bodyRows = rows.slice(2);
 
-  let html = '<table class="md-table"><thead><tr>';
+  let html = '<div class="md-table-wrap"><table class="md-table"><thead><tr>';
   for (const cell of headerCells) {
     html += `<th>${inlineMd(cell)}</th>`;
   }
@@ -28,7 +28,7 @@ function renderTable(rows) {
     html += "</tr>";
   }
 
-  html += "</tbody></table>";
+  html += "</tbody></table></div>";
   return html;
 }
 

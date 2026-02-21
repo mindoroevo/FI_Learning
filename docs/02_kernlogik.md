@@ -10,38 +10,58 @@ Die Datei `js/app.js` ist der **Regisseur** (oder Hauptverantwortliche). Sie ist
 
 #### Was passiert beim Start?
 
-1.  **Laden der Module (`init()`)**: 
-    Der Browser ruft beim Seitenaufruf automatisch die Funktion `init()` auf.
-    *   Sucht im HTML nach der Liste für die Module.
-    *   Schreibt dort Links hinein: `href="#001"`, `href="#002"`, usw.
+1.  **`init()` wird aufgerufen**:  
+    Die Funktion `init()` ist der einzige Einstiegspunkt. Sie richtet alles ein.
 
-2.  **Der Klick (`loadModule()`)**:
-    Wenn ein Link geklickt wird, ruft der Browser NICHT eine neue Seite, sondern ändert nur den Hash (`#002`).
-    Ein Event-Listener (Lauscher) merkt das und ruft `loadModule("002")`.
+2.  **Tab-Navigation registrieren**:  
+    Die App hat 3 Haupt-Tabs in der unteren Leiste:
+    *   `tabLernen` → Modul-Inhalt anzeigen
+    *   `tabQuiz` → Quiz-Modus aktivieren
+    *   `tabSpiele` → Spieleübersicht anzeigen
 
-3.  **Die Lade-Routine**:
-    *   Zeigt Text "Lade Inhalte..." an.
-    *   Holt parallel:
-        *   Den Theorie-Text (Markdown).
-        *   Die Quiz-Fragen (JSON).
-    *   Wartet, bis beides da ist (`Promise.all`).
-    *   Ruft dann den **Renderer** (`renderers.js`), um HTML zu bauen.
+3.  **Spiele-Buttons registrieren**:  
+    In der Sidebar gibt es 3 Spiel-Buttons:
+    *   `blitzkartenBtn` → startet `launchBlitzkarten()`
+    *   `subnetzBtn` → startet `launchSubnetz()`
+    *   `binaryBtn` → startet `launchBinary()`
 
-**Code-Beispiel:**
+4.  **Speichersystem starten**:  
+    `initSaveSystem()` wird aufgerufen – lädt den Geräteschlüssel,
+    stellt die letzte Speicherdatei wieder her und registriert die Event-Listener
+    für `fiae:quizAnswer` und `fiae:gameEnd`.
+
+5.  **Lesezeichen-Navigation**:  
+    Ein Listener auf `fiae:navigateMod` erlaubt es dem Modal, direkt zu einem
+    Modul zu springen wenn der Nutzer ein Lesezeichen anklickt.
+
+6.  **Modul laden oder Willkommen zeigen**:  
+    Wenn ein `#hash` in der URL steht, wird das passende Modul direkt geladen.
+    Ansonsten erscheint der Willkommens-Bildschirm.
+
+**Code-Beispiel (vereinfacht):**
 
 ```javascript
-// app.js (vereinfacht)
+// app.js
 
-async function loadModule(moduleId) {
-  // 1. Zeige Lade-Nachricht
-  content.innerHTML = "Lade...";
-  
-  // 2. Hole Daten (Text & Quiz)
-  const theory = await fetchMarkdown(moduleId);
-  const quiz = await loadQuizData(moduleId);
-  
-  // 3. Wenn alles da ist: Zeichne HTML
-  renderContent(theory, quiz);
+function init() {
+  renderModuleList(MODULES);        // Sidebar befüllen
+  registerServiceWorker();          // PWA aktivieren
+
+  // Tab-Navigation
+  document.getElementById("tabLernen")?.addEventListener("click", ...);
+  document.getElementById("tabQuiz")?.addEventListener("click", ...);
+  document.getElementById("tabSpiele")?.addEventListener("click", () => showGamesScreen());
+
+  // Spiele
+  document.getElementById("blitzkartenBtn")?.addEventListener("click", () =>
+    launchBlitzkarten(contentEl, onBack)
+  );
+
+  // Speichersystem
+  initSaveSystem();
+
+  // Start
+  showWelcomeMessage();
 }
 ```
 
@@ -56,15 +76,16 @@ Der `state.js` ist unser globales Lesezeichen-Management.
 
 #### Was wird gespeichert?
 
-*   `currentModuleId`: Welches Kapitel lesen wir gerade? (z.B. "003")
-*   `currentQuizData`: Welche Quizfragen gehören dazu? (z.B. Fragen über RAM und CPU)
-*   `quizCache`: Ein cleverer Trick.
-    **Der Cache (Zwischenspeicher)** merkt sich bereits geladene Fragen.
-    *   Sie öffnen Modul 1. Der Browser lädt es aus dem Internet.
-    *   Sie wechseln zu Modul 2.
-    *   Sie gehen zurück zu Modul 1.
-    *   **Der Cache sagt:** "Halt! Ich habe Modul 1 noch im Kopf. Ich muss nicht nochmal ins Internet."
-    *   **Vorteil:** Die App reagiert sofort und spart Datenvolumen.
+*   `currentModuleId`: Welches Kapitel lesen wir gerade? (z.B. `"003"`)
+*   `currentQuizData`: Welche Quizfragen gehören dazu?
+*   `quizCache`: Bereits geladene Quiz-JSON-Dateien (Zwischenspeicher – kein doppeltes Netzwerk-Request).
+*   `mdCache`: Bereits geparste Markdown-Inhalte.
+*   `shellCache`: Bereits gerenderte Modul-Shell-HTML-Strings.
+*   `selectedConcept`: Aktiver Konzept-Filter (`null` = alle Fragen).
+*   `quizMode`: Aktueller Lernmodus: `'training'` | `'exam'` | `'quick'`.
+*   `difficultyFilter`: Schwierigkeitsfilter: `'all'` | `'easy'` | `'medium'` | `'hard'`.
+*   `questionTypeFilter`: Fragetypfilter: `'all'` | `'mcq'` | `'fill_blank'` | usw.
+*   `pendingMode`: Gibt an, ob nach dem Laden direkt in den Quiz-Modus gewechselt werden soll.
 
 **Code-Beispiel:**
 

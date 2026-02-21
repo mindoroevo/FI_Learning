@@ -1,10 +1,27 @@
 {
-  "meta": { "module": "001", "title": "Prüfungsrahmen AP1" },
+  "meta": { 
+    "module": "001", 
+    "title": "Prüfungsrahmen AP1",
+    "totalQuestions": 61,
+    "estimatedTime": "80 Minuten",
+    "concepts": [
+      "Was ist AP1?",
+      "Die 5 Handlungen nach FIAusbV §9",
+      "Bewertungsdimensionen",
+      "Antwortarchitektur (3-Schritt & 6-Schritt)",
+      "Zeitmanagement (10/60/20)",
+      "Häufige Fehler",
+      "Muss/Kann-Anforderungen",
+      "TCO & Wirtschaftlichkeit"
+    ]
+  },
   "engine": "mixed",
   "mcq": [
     {
       "id": "001-mcq-1",
       "type": "single",
+      "difficulty": "easy",
+      "concept": "Was ist AP1?",
       "question": "Was bedeutet AP1?",
       "options": [
         "Abschlussprüfung Teil 1",
@@ -17,8 +34,55 @@
     },
     {
       "id": "001-mcq-2",
+      "type": "single",
+      "difficulty": "easy",
+      "concept": "Was ist AP1?",
+      "question": "Wie viel Prozent der Gesamtnote macht AP1 aus?",
+      "options": [
+        "10%",
+        "20%",
+        "30%",
+        "50%"
+      ],
+      "answer": 1,
+      "explanation": "AP1 zählt **20% der Gesamtnote**. Das kann den Unterschied zwischen den Noten ausmachen!"
+    },
+    {
+      "id": "001-mcq-3",
+      "type": "single",
+      "difficulty": "medium",
+      "concept": "Was ist AP1?",
+      "question": "Welcher Prüfungsbereich wird in AP1 für FIAE geprüft (laut FIAusbV §9)?",
+      "options": [
+        "Softwareentwicklung und Programmierung",
+        "Einrichten eines IT-gestützten Arbeitsplatzes",
+        "Projektmanagement und Datenbanken",
+        "Netzwerkadministration"
+      ],
+      "answer": 1,
+      "explanation": "Der offizielle Prüfungsbereich laut **FIAusbV §9** lautet: **\"Einrichten eines IT-gestützten Arbeitsplatzes\"**."
+    },
+    {
+      "id": "001-mcq-4",
+      "type": "single",
+      "difficulty": "medium",
+      "concept": "Was ist AP1?",
+      "question": "Ein Azubi besteht AP1 nicht. Was passiert?",
+      "options": [
+        "Er darf trotzdem zu AP2, AP1 wird einfach nachgeholt",
+        "Er kann nicht zur AP2 zugelassen werden",
+        "AP1 zählt nicht, nur AP2 ist wichtig",
+        "Er muss die gesamte Ausbildung wiederholen"
+      ],
+      "answer": 1,
+      "explanation": "Wer AP1 nicht besteht, **kann nicht zur AP2 zugelassen werden**. AP1 ist also nicht optional!"
+    },
+    {
+      "id": "001-mcq-5",
       "type": "multi",
-      "question": "Welche Handlungen gehören zu AP1? (Mehrfachauswahl)",
+      "concept": "Die 5 Handlungen nach FIAusbV §9",
+      "difficulty": "medium",
+      "question": "Welche Handlungen gehören zu den 5 Pflicht-Handlungen in AP1? (Mehrfachauswahl)",
       "options": [
         "Kundenbedarf ermitteln",
         "Hard-/Software auswählen",
@@ -27,12 +91,91 @@
         "Nutzer einweisen"
       ],
       "answer": [0, 1, 3, 4],
-      "explanation": "Die Projektdokumentation gehört zu AP2. AP1 umfasst: Bedarfsermittlung, Auswahl, Konfiguration/Test, Einweisung und Protokollierung."
+      "explanation": "Die **5 Handlungen** sind: 1) Bedarf ermitteln, 2) Auswählen, 3) Konfigurieren/Testen, 4) Einweisen, 5) Kontrollieren/Protokollieren. **Projektdokumentation gehört zu AP2!**"
     },
     {
-      "id": "001-mcq-3",
+      "id": "001-mcq-6",
       "type": "single",
-      "question": "Welche Antwortarchitektur ist prüfungsstark?",
+      "difficulty": "easy",
+      "concept": "Die 5 Handlungen nach FIAusbV §9",
+      "question": "Was bedeutet 'zielgruppengerecht' bei der Bedarfsermittlung?",
+      "options": [
+        "Für jede Person gleich fragen",
+        "Die Sprache an den Gesprächspartner anpassen (GF: Kosten, Admin: Technik)",
+        "Nur Fachbegriffe verwenden",
+        "Immer dieselbe Checkliste abarbeiten"
+      ],
+      "answer": 1,
+      "explanation": "**Zielgruppengerecht** heißt: Mit dem GF über **Kosten/Zeitrahmen**, mit Admins über **Technik/Kompatibilität**, mit Nutzern über **Funktionen/Bedienung** sprechen."
+    },
+    {
+      "id": "001-mcq-7",
+      "type": "single",
+      "difficulty": "medium",
+      "concept": "Muss/Kann-Anforderungen",
+      "question": "Ein Außendienst-Mitarbeiter 'wünscht sich' ein leichtes Notebook mit 10h Akkulaufzeit. Ist das eine Muss- oder Kann-Anforderung?",
+      "options": [
+        "Kann-Anforderung (nur Wunsch)",
+        "Muss-Anforderung (er ist täglich unterwegs!)",
+        "Weder noch (irrelevant)",
+        "Kommt auf das Budget an"
+      ],
+      "answer": 1,
+      "explanation": "Für **Außendienst** ist Mobilität + lange Akkulaufzeit eine **Muss-Anforderung**, weil er sonst seine Arbeit nicht erledigen kann! 'Wünschen' im Text ist ein Hinweis, aber du musst kritisch hinterfragen."
+    },
+    {
+      "id": "001-mcq-8",
+      "type": "multi",
+      "difficulty": "hard",
+      "concept": "Muss/Kann-Anforderungen",
+      "question": "Welche dieser Anforderungen sind 'Muss' für einen Buchhaltungs-Arbeitsplatz mit personenbezogenen Gehaltsdaten? (Mehrfachauswahl)",
+      "options": [
+        "BitLocker-Verschlüsselung",
+        "RGB-Beleuchtung am PC",
+        "Standardkonto ohne Admin-Rechte",
+        "Zweiter Monitor",
+        "Backup der Daten"
+      ],
+      "answer": [0, 2, 4],
+      "explanation": "**Muss:** Verschlüsselung (DSGVO!), Standardkonto (Sicherheit), Backup (Datenverlust vermeiden). **Kann:** Zweiter Monitor (Produktivität), RGB (Nice-to-have)."
+    },
+    {
+      "id": "001-mcq-9",
+      "type": "single",
+      "difficulty": "hard",
+      "concept": "TCO & Wirtschaftlichkeit",
+      "question": "Laptop A kostet 800€ mit 3 Jahren Garantie. Laptop B kostet 700€ mit 1 Jahr Garantie. Nach TCO-Prinzip, welcher ist langfristig günstiger?",
+      "options": [
+        "Laptop B (billiger Anschaffungspreis)",
+        "Laptop A (TCO berücksichtigt Support/Garantie)",
+        "Beide gleich",
+        "Kann man nicht sagen ohne Stromverbrauch"
+      ],
+      "answer": 1,
+      "explanation": "**TCO = Total Cost of Ownership**. Laptop A ist langfristig günstiger, weil nach Jahr 1 bei B teure Reparaturen anfallen könnten. TCO berücksichtigt **gesamte Lebenskosten**, nicht nur Kaufpreis!"
+    },
+    {
+      "id": "001-mcq-10",
+      "type": "multi",
+      "difficulty": "medium",
+      "concept": "TCO & Wirtschaftlichkeit",
+      "question": "Welche Kostenarten gehören zum TCO? (Mehrfachauswahl)",
+      "options": [
+        "Anschaffungspreis",
+        "Stromkosten über Lebensdauer",
+        "Schulung der Mitarbeiter",
+        "Parkplatzkosten",
+        "Wartung und Support"
+      ],
+      "answer": [0, 1, 2, 4],
+      "explanation": "**TCO umfasst**: Anschaffung, Energie, Lizenzen, Wartung/Support, Schulung, Entsorgung. **Parkplatzkosten sind irrelevant für IT-Hardware!**"
+    },
+    {
+      "id": "001-mcq-11",
+      "type": "single",
+      "difficulty": "easy",
+      "concept": "Antwortarchitektur (3-Schritt & 6-Schritt)",
+      "question": "Welche Antwortarchitektur ist prüfungsstark für AP1?",
       "options": [
         "Nur technische Fakten nennen",
         "Entscheidung + Begründung + Nachweis",
@@ -40,12 +183,211 @@
         "Nur Stichworte"
       ],
       "answer": 1,
-      "explanation": "Die 3-Schritt-Architektur **Entscheidung → Begründung → Nachweis** maximiert die Punktzahl."
+      "explanation": "Die **3-Schritt-Architektur** (Entscheidung → Begründung → Nachweis) maximiert die Punktzahl, weil sie alle Bewertungsdimensionen abdeckt."
+    },
+    {
+      "id": "001-mcq-12",
+      "type": "single",
+      "difficulty": "medium",
+      "concept": "Antwortarchitektur (3-Schritt & 6-Schritt)",
+      "question": "In der 6-Schritt-Architektur: Wann kommt 'Sicherheit/Datenschutz'?",
+      "options": [
+        "Schritt 1 (am Anfang)",
+        "Schritt 4 (nach der Lösungsformulierung)",
+        "Schritt 6 (am Ende)",
+        "Nur wenn explizit gefragt"
+      ],
+      "answer": 1,
+      "explanation": "**Schritt 4** in der 6-Schritt-Architektur: Nach dem Lösungsvorschlag (Schritt 3) integrierst du Sicherheits-/Datenschutzaspekte. Das zeigt, dass du mitdenkst!"
+    },
+    {
+      "id": "001-mcq-13",
+      "type": "single",
+      "difficulty": "hard",
+      "concept": "Antwortarchitektur (3-Schritt & 6-Schritt)",
+      "question": "Ein Azubi antwortet: 'Ich installiere Windows 11 und Office 365.' Was fehlt für volle Punktzahl?",
+      "options": [
+        "Nichts, das reicht",
+        "Begründung (Warum W11 Pro statt Home?) + Test/Dokumentation",
+        "Nur der Preis fehlt",
+        "Nur die Installationszeit"
+      ],
+      "answer": 1,
+      "explanation": "Es fehlen: **Begründung** (Warum diese Version?), **Sicherheit** (BitLocker? Updates?), **Test** (Wie prüfst du?), **Dokumentation** (Testprotokoll!). Nur die Technik nennen = halbe Punkte!"
+    },
+    {
+      "id": "001-mcq-14",
+      "type": "single",
+      "difficulty": "easy",
+      "concept": "Bewertungsdimensionen",
+      "question": "Welche Bewertungsdimension fehlt, wenn du sagst 'Ich wähle 16 GB RAM' ohne weitere Erklärung?",
+      "options": [
+        "Fachliche Korrektheit",
+        "Begründungstiefe",
+        "Szenariobezug",
+        "Nachweis"
+      ],
+      "answer": 1,
+      "explanation": "Die Dimension **Begründungstiefe** fehlt. Du musst erklären **WARUM** 16 GB (z.B. 'weil der Nutzer Office, Browser und CRM parallel nutzt')."
+    },
+    {
+      "id": "001-mcq-15",
+      "type": "multi",
+      "difficulty": "medium",
+      "concept": "Bewertungsdimensionen",
+      "question": "Welche Bewertungsdimensionen gibt es in AP1? (Mehrfachauswahl)",
+      "options": [
+        "Fachliche Korrektheit",
+        "Szenariobezug",
+        "Begründungstiefe",
+        "Handschrift-Schönheit",
+        "Nachweis-/Dokumentationsfähigkeit"
+      ],
+      "answer": [0, 1, 2, 4],
+      "explanation": "Die **5 Dimensionen** sind: 1) Fachlich korrekt, 2) Szenariobezug, 3) Begründung, 4) Struktur, 5) Nachweis/Dokumentation. **Schönheit zählt nicht** (solange lesbar)."
+    },
+    {
+      "id": "001-mcq-16",
+      "type": "single",
+      "difficulty": "medium",
+      "concept": "Zeitmanagement (10/60/20)",
+      "question": "Warum solltest du die ersten 10 Minuten NUR lesen und markieren?",
+      "options": [
+        "Weil die Prüfer das so wollen",
+        "Um die GESAMTE Aufgabe zu verstehen und Zeitfallen zu erkennen",
+        "Um Zeit zu verschwenden",
+        "Weil man sonst disqualifiziert wird"
+      ],
+      "answer": 1,
+      "explanation": "In den ersten **10 Minuten** verschaffst du dir einen **Überblick**: Wie viele Fragen? Wo sind Muss-Anforderungen? Wo Zeitfallen (komplexe Berechnungen)? So kannst du strategisch vorgehen!"
+    },
+    {
+      "id": "001-mcq-17",
+      "type": "single",
+      "difficulty": "hard",
+      "concept": "Zeitmanagement (10/60/20)",
+      "question": "Es sind noch 25 Minuten übrig, du hast 2 von 5 Fragen beantwortet. Was machst du?",
+      "options": [
+        "Weiter an Frage 3 arbeiten (Perfektionismus)",
+        "Sofort in Kontrollphase wechseln",
+        "Antworten für Frage 3-5 SCHNELL skizzieren, dann Kontrolle",
+        "Aufgeben und abgeben"
+      ],
+      "answer": 2,
+      "explanation": "**Strategisch:** Lieber alle Fragen mit 60% Qualität als 2 perfekt und 3 leer! Skizziere die restlichen Antworten (Stichworte reichen), dann Kontrolle. **Leere Fragen = 0 Punkte!**"
+    },
+    {
+      "id": "001-mcq-18",
+      "type": "multi",
+      "difficulty": "easy",
+      "concept": "Zeitmanagement (10/60/20)",
+      "question": "Was markierst du in der 10-Minuten-Lesephase? (Mehrfachauswahl)",
+      "options": [
+        "Akteure (Geschäftsführer, Mitarbeiter)",
+        "Muss-Anforderungen (Budget, Zeitrahmen)",
+        "Schöne Formulierungen",
+        "Sicherheitsaspekte (DSGVO, Kundendaten)",
+        "Alle Nomen"
+      ],
+      "answer": [0, 1, 3],
+      "explanation": "Markiere: **Akteure** (wer?), **Randbedingungen** (Budget/Zeit/Tech), **Sicherheit** (DSGVO/Daten). **Nomen und schöne Formulierungen sind irrelevant!**"
+    },
+    {
+      "id": "001-mcq-19",
+      "type": "single",
+      "difficulty": "medium",
+      "concept": "Häufige Fehler",
+      "question": "Was ist Fehler Nr. 1 laut Statistik in AP1?",
+      "options": [
+        "Rechtschreibfehler",
+        "Nur Technik nennen, aber kein Test/Dokumentation",
+        "Zu langsame Handschrift",
+        "Falsche Hardware auswählen"
+      ],
+      "answer": 1,
+      "explanation": "Der **häufigste Fehler**: Azubis nennen nur die technische Lösung ('Ich installiere X'), aber vergessen **Test, Dokumentation und Begründung** → Punktverlust!"
+    },
+    {
+      "id": "001-mcq-20",
+      "type": "multi",
+      "difficulty": "medium",
+      "concept": "Häufige Fehler",
+      "question": "Welche Fehler kosten am meisten Punkte? (Mehrfachauswahl)",
+      "options": [
+        "Sicherheit/DSGVO vergessen (-3 Punkte)",
+        "Begründung fehlt (-2 Punkte)",
+        "Komma-Fehler (-0 Punkte)",
+        "Kein Testprotokoll/Nachweis (-2 Punkte)",
+        "Zeitmanagement: Fragen leer gelassen (-5+ Punkte)"
+      ],
+      "answer": [0, 1, 3, 4],
+      "explanation": "**Top-Punktfresser:** Sicherheit vergessen, Begründung fehlt, Nachweis fehlt, Zeitnot (leere Fragen). **Rechtschreibung** kostet keine Punkte (solange lesbar)!"
+    },
+    {
+      "id": "001-mcq-21",
+      "type": "single",
+      "difficulty": "hard",
+      "concept": "Häufige Fehler",
+      "question": "Ein Azubi antwortet zu allgemein: 'Er braucht einen Computer.' Welche Dimension fehlt?",
+      "options": [
+        "Fachliche Korrektheit",
+        "Szenariobezug",
+        "Begründungstiefe",
+        "Struktur"
+      ],
+      "answer": 1,
+      "explanation": "Die Dimension **Szenariobezug** fehlt! Besser: 'Da der Mitarbeiter mobil arbeitet, braucht er ein **Notebook** mit **8h Akkulaufzeit**.' → konkret auf den Fall bezogen!"
+    },
+    {
+      "id": "001-mcq-22",
+      "type": "single",
+      "difficulty": "medium",
+      "concept": "Die 5 Handlungen nach FIAusbV §9",
+      "question": "Was gehört zu Handlung 3 'Arbeitsplatz konfigurieren und testen'?",
+      "options": [
+        "Nur Windows installieren",
+        "Installation + Benutzerkonten + Rechte + Sicherheit + TEST + Testprotokoll",
+        "Nur Software installieren",
+        "Nur testen, nicht dokumentieren"
+      ],
+      "answer": 1,
+      "explanation": "Handlung 3 umfasst den **kompletten Prozess**: Installation, Konfiguration (Konten, Rechte, Sicherheit), **Test** UND **Testprotokoll**! Nur installieren reicht nicht."
+    },
+    {
+      "id": "001-mcq-23",
+      "type": "single",
+      "difficulty": "medium",
+      "concept": "Die 5 Handlungen nach FIAusbV §9",
+      "question": "Wofür ist das Übergabeprotokoll (Handlung 4: Einweisung) wichtig?",
+      "options": [
+        "Nur für die Prüfung",
+        "Als Beweis, dass der Nutzer alles erhalten und verstanden hat",
+        "Für die Buchhaltung",
+        "Ist unwichtig"
+      ],
+      "answer": 1,
+      "explanation": "Das **Übergabeprotokoll** (unterschrieben!) ist **Beweis**: Der Nutzer hat Hardware erhalten, Einweisung bekommen und bestätigt. **Schützt dich** bei späteren Reklamationen!"
+    },
+    {
+      "id": "001-mcq-24",
+      "type": "single",
+      "difficulty": "hard",
+      "concept": "Die 5 Handlungen nach FIAusbV §9",
+      "question": "Handlung 5 'Leistung kontrollieren und protokollieren': Was prüfst du hier?",
+      "options": [
+        "Nur ob der PC läuft",
+        "Ob die Lösung das Problem gelöst hat + Nutzerfeedback + Nachbesserungen dokumentieren",
+        "Nur die Geschwindigkeit messen",
+        "Ob der Nutzer zufrieden aussieht"
+      ],
+      "answer": 1,
+      "explanation": "Handlung 5 ist **Qualitätssicherung**: Funktioniert alles wie gewünscht? Ist der Nutzer zufrieden? Gab es Probleme? **Dokumentiere** alles (auch Nachbesserungen)!"
     }
   ],
   "fill_blank": [
     {
       "id": "001-fb-1",
+      "concept": "Was ist AP1?",
       "text": "AP1 dauert {{0}} Minuten und bewertet nicht nur {{1}}, sondern auch {{2}}.",
       "blanks": [
         {
@@ -65,6 +407,7 @@
     },
     {
       "id": "001-fb-2",
+      "concept": "Was ist AP1?",
       "text": "Der Prüfungsbereich lautet: {{0}}. Die Inhalte decken die ersten {{1}} Monate der Ausbildung ab.",
       "blanks": [
         {
@@ -82,11 +425,140 @@
         }
       ],
       "explanation": "Der Prüfungsbereich ist **Einrichten eines IT-gestützten Arbeitsplatzes** (FIAusbV §9), und AP1 deckt die ersten **18 Monate** ab (FIAusbV §8)."
+    },
+    {
+      "id": "001-fb-3",
+      "concept": "Die 5 Handlungen nach FIAusbV §9",
+      "text": "Die 5 Handlungen in AP1 sind: 1) {{0}} ermitteln, 2) Hard-/Software {{1}}, 3) Arbeitsplatz {{2}} und testen, 4) Nutzer {{3}}, 5) Leistung {{4}} und protokollieren.",
+      "blanks": [
+        {
+          "options": ["Kundenbedarf", "Netzwerk", "Budget"],
+          "correct": "Kundenbedarf"
+        },
+        {
+          "options": ["programmieren", "auswählen", "verkaufen"],
+          "correct": "auswählen"
+        },
+        {
+          "options": ["verkaufen", "konfigurieren", "entsorgen"],
+          "correct": "konfigurieren"
+        },
+        {
+          "options": ["entlassen", "einweisen", "einstellen"],
+          "correct": "einweisen"
+        },
+        {
+          "options": ["ignorieren", "kontrollieren", "vergessen"],
+          "correct": "kontrollieren"
+        }
+      ],
+      "explanation": "Die **5 Pflicht-Handlungen** aus FIAusbV §9: Ermitteln, Auswählen, Konfigurieren/Testen, Einweisen, Kontrollieren/Protokollieren."
+    },
+    {
+      "id": "001-fb-4",
+      "concept": "Antwortarchitektur (3-Schritt & 6-Schritt)",
+      "text": "Die 3-Schritt-Antwort besteht aus: 1) {{0}}, 2) {{1}}, 3) {{2}}.",
+      "blanks": [
+        {
+          "options": ["Entscheidung", "Vermutung", "Frage"],
+          "correct": "Entscheidung"
+        },
+        {
+          "options": ["Begründung", "Ausrede", "Statistik"],
+          "correct": "Begründung"
+        },
+        {
+          "options": ["Nachweis", "Hoffnung", "Zufall"],
+          "correct": "Nachweis"
+        }
+      ],
+      "explanation": "Die **3-Schritt-Architektur**: **Entscheidung** (Was?) + **Begründung** (Warum?) + **Nachweis** (Wie testest/dokumentierst du?)."
+    },
+    {
+      "id": "001-fb-5",
+      "concept": "Zeitmanagement (10/60/20)",
+      "text": "Die 90-Minuten-Strategie: {{0}} Minuten Lesen/Markieren, {{1}} Minuten Bearbeiten, {{2}} Minuten Kontrolle.",
+      "blanks": [
+        {
+          "options": ["5", "10", "15", "20"],
+          "correct": "10"
+        },
+        {
+          "options": ["45", "60", "70", "80"],
+          "correct": "60"
+        },
+        {
+          "options": ["10", "15", "20", "25"],
+          "correct": "20"
+        }
+      ],
+      "explanation": "Die **10/60/20-Strategie**: 10 Min (Überblick), 60 Min (Bearbeiten), 20 Min (Kontrolle). Wie eine Telefonnummer!"
+    },
+    {
+      "id": "001-fb-6",
+      "concept": "TCO & Wirtschaftlichkeit",
+      "text": "TCO steht für {{0}} und umfasst nicht nur den {{1}}, sondern auch {{2}}, Wartung, Lizenzen und Entsorgung.",
+      "blanks": [
+        {
+          "options": ["Total Cost of Ownership", "Technical Computer Options", "Time Control Office"],
+          "correct": "Total Cost of Ownership"
+        },
+        {
+          "options": ["Kaufpreis", "Zeitaufwand", "Platzbedarf"],
+          "correct": "Kaufpreis"
+        },
+        {
+          "options": ["Verpackung", "Stromkosten", "Farbe"],
+          "correct": "Stromkosten"
+        }
+      ],
+      "explanation": "**TCO** = Total Cost of Ownership (Gesamtkosten des Besitzes): Kaufpreis + Strom + Wartung + Lizenzen + Entsorgung."
+    },
+    {
+      "id": "001-fb-7",
+      "concept": "Bewertungsdimensionen",
+      "text": "Die 5 Bewertungsdimensionen in AP1 sind: 1) {{0}} Korrektheit, 2) {{1}}, 3) Begründungstiefe, 4) {{2}}, 5) Nachweis-/Dokumentationsfähigkeit.",
+      "blanks": [
+        {
+          "options": ["Fachliche", "Persönliche", "Kreative"],
+          "correct": "Fachliche"
+        },
+        {
+          "options": ["Handschrift", "Szenariobezug", "Geschwindigkeit"],
+          "correct": "Szenariobezug"
+        },
+        {
+          "options": ["Preis", "Struktur", "Farbe"],
+          "correct": "Struktur"
+        }
+      ],
+      "explanation": "Die **5 Dimensionen**: Fachlich korrekt, Szenariobezug, Begründung, Struktur, Nachweis/Dokumentation."
+    },
+    {
+      "id": "001-fb-8",
+      "concept": "Häufige Fehler",
+      "text": "Der häufigste Fehler in AP1 ist: {{0}} nennen, aber {{1}} und {{2}} vergessen.",
+      "blanks": [
+        {
+          "options": ["Nur Technik", "Nur Kosten", "Nur Zeit"],
+          "correct": "Nur Technik"
+        },
+        {
+          "options": ["Begründung", "Preis", "Namen"],
+          "correct": "Begründung"
+        },
+        {
+          "options": ["Test/Dokumentation", "Farbe", "Größe"],
+          "correct": "Test/Dokumentation"
+        }
+      ],
+      "explanation": "**Top-Fehler:** Nur die technische Lösung nennen ('Ich installiere X'), aber **Begründung + Test/Dokumentation** fehlen → Punktverlust!"
     }
   ],
   "match": [
     {
       "id": "001-match-1",
+      "concept": "Antwortarchitektur (3-Schritt & 6-Schritt)",
       "question": "Ordne die Prüfungsschritte den richtigen Phasen zu:",
       "left": [
         "Ausgangslage erfassen",
@@ -106,10 +578,11 @@
         "Schritt 3: Validieren",
         "Schritt 4: Dokumentieren"
       ],
-      "explanation": "Die 4 Phasen: 1) **Verstehen** → 2) **Lösen** → 3) **Validieren** → 4) **Dokumentieren**"
+      "explanation": "Die 4 Phasen: 1) **Verstehen** (Was ist das Problem?) → 2) **Lösen** (Was machst du?) → 3) **Validieren** (Wie testest du?) → 4) **Dokumentieren** (Wie hältst du es fest?)"
     },
     {
       "id": "001-match-2",
+      "concept": "Bewertungsdimensionen",
       "question": "Ordne die Bewertungsdimensionen den richtigen Beschreibungen zu:",
       "left": [
         "Fachliche Korrektheit",
@@ -129,12 +602,88 @@
         "Warum diese Entscheidung?",
         "Wie wird es validiert/übergeben?"
       ],
-      "explanation": "AP1 bewertet alle 4 Dimensionen: **Korrektheit, Szenariobezug, Begründung, Nachweis**."
+      "explanation": "AP1 bewertet alle 4 Dimensionen: **1) Korrektheit** (stimmt technisch?), **2) Szenariobezug** (passt zum Fall?), **3) Begründung** (warum so?), **4) Nachweis** (wie prüfbar?)."
+    },
+    {
+      "id": "001-match-3",
+      "concept": "Die 5 Handlungen nach FIAusbV §9",
+      "question": "Ordne die Handlungen den richtigen Beschreibungen zu:",
+      "left": [
+        "Handlung 1",
+        "Handlung 2",
+        "Handlung 3",
+        "Handlung 4",
+        "Handlung 5"
+      ],
+      "right": [
+        "Kundenbedarf ermitteln",
+        "Hard-/Software auswählen",
+        "Arbeitsplatz konfigurieren/testen",
+        "Nutzer einweisen",
+        "Leistung kontrollieren/protokollieren"
+      ],
+      "matches": [
+        "Kundenbedarf ermitteln",
+        "Hard-/Software auswählen",
+        "Arbeitsplatz konfigurieren/testen",
+        "Nutzer einweisen",
+        "Leistung kontrollieren/protokollieren"
+      ],
+      "explanation": "Die **5 Handlungen** (FIAusbV §9): 1) **Ermitteln** → 2) **Auswählen** → 3) **Konfigurieren/Testen** → 4) **Einweisen** → 5) **Kontrollieren/Protokollieren**."
+    },
+    {
+      "id": "001-match-4",
+      "concept": "Antwortarchitektur (3-Schritt & 6-Schritt)",
+      "question": "Ordne die 6-Schritt-Architektur in der richtigen Reihenfolge:",
+      "left": [
+        "Schritt 1",
+        "Schritt 2",
+        "Schritt 3",
+        "Schritt 4"
+      ],
+      "right": [
+        "Ausgangslage erfassen",
+        "Muss/Kann-Randbedingungen",
+        "Lösungsvorschlag",
+        "Sicherheit/Datenschutz"
+      ],
+      "matches": [
+        "Ausgangslage erfassen",
+        "Muss/Kann-Randbedingungen",
+        "Lösungsvorschlag",
+        "Sicherheit/Datenschutz"
+      ],
+      "explanation": "Die **6-Schritt-Architektur**: 1) **Ausgangslage** → 2) **Muss/Kann** → 3) **Lösung** → 4) **Sicherheit** → 5) Test → 6) Dokumentation."
+    },
+    {
+      "id": "001-match-5",
+      "concept": "Häufige Fehler",
+      "question": "Ordne die Fehler den Punktverlusten zu:",
+      "left": [
+        "Sicherheit/DSGVO vergessen",
+        "Begründung fehlt",
+        "Kein Testprotokoll",
+        "Zeit läuft weg (Fragen leer)"
+      ],
+      "right": [
+        "-3 Punkte",
+        "-2 Punkte",
+        "-2 Punkte",
+        "-5+ Punkte"
+      ],
+      "matches": [
+        "-3 Punkte",
+        "-2 Punkte",
+        "-2 Punkte",
+        "-5+ Punkte"
+      ],
+      "explanation": "**Punktverluste**: Sicherheit vergessen = -3, keine Begründung = -2, kein Nachweis = -2, leere Fragen = -5+. **Zeitmanagement ist kritisch!**"
     }
   ],
   "order": [
     {
       "id": "001-order-1",
+      "concept": "Antwortarchitektur (3-Schritt & 6-Schritt)",
       "question": "Bringe die Schritte der 6-Schritt-Architektur in die richtige Reihenfolge:",
       "items": [
         "Ausgangslage erfassen",
@@ -145,10 +694,11 @@
         "Protokoll/Abnahme sichern"
       ],
       "correctOrder": [1, 2, 3, 4, 5, 6],
-      "explanation": "Die richtige Reihenfolge ist die **6-Schritt-Architektur**: 1→2→3→4→5→6"
+      "explanation": "Die richtige Reihenfolge ist die **6-Schritt-Architektur**: 1→2→3→4→5→6. **Merksatz:** 'Alle Menschen Lieben Sichere Tests Dokumentiert'"
     },
     {
       "id": "001-order-2",
+      "concept": "Zeitmanagement (10/60/20)",
       "question": "Sortiere die Zeitphasen für die 90-Minuten-Prüfung:",
       "items": [
         "Qualitätskontrolle (20 Min)",
@@ -156,33 +706,219 @@
         "Bearbeitung (60 Min)"
       ],
       "correctOrder": [2, 3, 1],
-      "explanation": "Optimale Aufteilung: **1) Lesen/Markieren 10 Min → 2) Bearbeiten 60 Min → 3) Kontrolle 20 Min**"
+      "explanation": "Optimale Aufteilung: **1) Lesen/Markieren 10 Min → 2) Bearbeiten 60 Min → 3) Kontrolle 20 Min**. Die **10/60/20-Formel**!"
+    },
+    {
+      "id": "001-order-3",
+      "concept": "Die 5 Handlungen nach FIAusbV §9",
+      "question": "Sortiere die 5 Handlungen von AP1 in der richtigen Reihenfolge:",
+      "items": [
+        "Nutzer einweisen",
+        "Kundenbedarf ermitteln",
+        "Hard-/Software auswählen",
+        "Leistung kontrollieren/protokollieren",
+        "Arbeitsplatz konfigurieren/testen"
+      ],
+      "correctOrder": [2, 3, 5, 1, 4],
+      "explanation": "Die **logische Reihe**: 1) **Ermitteln** (Bedarf) → 2) **Auswählen** (Hardware/Software) → 3) **Konfigurieren/Testen** → 4) **Einweisen** → 5) **Kontrollieren/Protokollieren**."
+    },
+    {
+      "id": "001-order-4",
+      "concept": "Antwortarchitektur (3-Schritt & 6-Schritt)",
+      "question": "Sortiere die Elemente einer vollständigen Prüfungsantwort:",
+      "items": [
+        "Kontrolle (Testprotokoll)",
+        "Begründung (Warum?)",
+        "Sicherheit (Risiken minimieren)",
+        "Entscheidung (Was machst du?)"
+      ],
+      "correctOrder": [4, 2, 3, 1],
+      "explanation": "**Korrekte Reihenfolge:** 1) **Entscheidung** (Was?) → 2) **Begründung** (Warum?) → 3) **Sicherheit** (Risiken?) → 4) **Test/Nachweis** (Kontrolle)."
     }
   ],
   "true_false": [
     {
       "id": "001-tf-1",
+      "concept": "Was ist AP1?",
       "statement": "Eine technisch korrekte, aber unbegründete Antwort erhält in AP1 volle Punktzahl.",
       "answer": "false",
-      "explanation": "**Falsch!** AP1 bewertet nicht nur fachliche Korrektheit, sondern auch die **Begründungstiefe**. Eine unbegründete Antwort verliert Punkte."
+      "explanation": "**Falsch!** AP1 bewertet nicht nur fachliche Korrektheit, sondern auch die **Begründungstiefe**. Eine unbegründete Antwort verliert ca. 2 Punkte!"
     },
     {
       "id": "001-tf-2",
+      "concept": "Zeitmanagement (10/60/20)",
       "statement": "Die Prüfungszeit von 90 Minuten sollte aufgeteilt werden: 10 Min Lesen, 60 Min Bearbeiten, 20 Min Kontrolle.",
       "answer": "true",
-      "explanation": "**Richtig!** Diese Zeitaufteilung ist die empfohlene Strategie für AP1."
+      "explanation": "**Richtig!** Diese **10/60/20-Strategie** ist die empfohlene Zeitaufteilung für AP1."
     },
     {
       "id": "001-tf-3",
+      "concept": "Was ist AP1?",
       "statement": "AP1 deckt die Inhalte der gesamten Ausbildung ab.",
       "answer": "false",
-      "explanation": "**Falsch!** AP1 deckt nur die Inhalte der **ersten 18 Monate** plus passenden Berufsschulstoff ab (FIAusbV §8)."
+      "explanation": "**Falsch!** AP1 deckt nur die Inhalte der **ersten 18 Monate** plus passenden Berufsschulstoff ab (FIAusbV §8). AP2 kommt am Ende!"
     },
     {
       "id": "001-tf-4",
+      "concept": "Die 5 Handlungen nach FIAusbV §9",
       "statement": "Die 5 Handlungen in AP1 sind: Bedarfsermittlung, Auswahl, Konfiguration/Test, Einweisung und Kontrolle/Protokollierung.",
       "answer": "true",
-      "explanation": "**Richtig!** Diese 5 Handlungen bilden das Prüfungsgerüst von AP1."
+      "explanation": "**Richtig!** Diese 5 Handlungen (FIAusbV §9) bilden das Prüfungsgerüst von AP1."
+    },
+    {
+      "id": "001-tf-5",
+      "concept": "Was ist AP1?",
+      "statement": "AP1 ist nur eine Wissensprüfung, es reicht Fakten auswendig zu lernen.",
+      "answer": "false",
+      "explanation": "**Falsch!** AP1 ist eine **Handlungsprüfung**. Du musst zeigen, dass du Probleme lösen, Entscheidungen treffen und begründen kannst!"
+    },
+    {
+      "id": "001-tf-6",
+      "concept": "Was ist AP1?",
+      "statement": "Wer AP1 nicht besteht, kann trotzdem zur AP2 zugelassen werden.",
+      "answer": "false",
+      "explanation": "**Falsch!** Wer AP1 nicht besteht, **kann NICHT zur AP2 zugelassen werden**. AP1 ist also keine optionale Übung!"
+    },
+    {
+      "id": "001-tf-7",
+      "concept": "Muss/Kann-Anforderungen",
+      "statement": "Für einen Außendienst-Mitarbeiter ist eine lange Akkulaufzeit eine Kann-Anforderung.",
+      "answer": "false",
+      "explanation": "**Falsch!** Für **Außendienst** ist lange Akkulaufzeit (8h+) eine **Muss-Anforderung**, weil er sonst unterwegs nicht arbeiten kann!"
+    },
+    {
+      "id": "001-tf-8",
+      "concept": "TCO & Wirtschaftlichkeit",
+      "statement": "TCO berücksichtigt nur den Anschaffungspreis von Hardware.",
+      "answer": "false",
+      "explanation": "**Falsch!** **TCO = Total Cost of Ownership** umfasst: Anschaffung + Strom + Wartung + Lizenzen + Ersatzteile + Entsorgung!"
+    },
+    {
+      "id": "001-tf-9",
+      "concept": "TCO & Wirtschaftlichkeit",
+      "statement": "Ein Gerät mit höherem Kaufpreis kann durch niedrigere Folgekosten (Garantie, Strom) langfristig günstiger sein.",
+      "answer": "true",
+      "explanation": "**Richtig!** Das ist das **TCO-Prinzip**: Ein 800€-Laptop mit 3 Jahren Garantie ist oft günstiger als ein 700€-Laptop mit nur 1 Jahr Garantie (Reparaturkosten!)."
+    },
+    {
+      "id": "001-tf-10",
+      "concept": "Bewertungsdimensionen",
+      "statement": "Die 5 Bewertungsdimensionen in AP1 sind: Korrektheit, Szenariobezug, Begründung, Struktur, Nachweis.",
+      "answer": "true",
+      "explanation": "**Richtig!** Diese **5 Dimensionen** fließen alle in die Bewertung ein. Nur eine Dimension zu erfüllen reicht nicht!"
+    },
+    {
+      "id": "001-tf-11",
+      "concept": "Bewertungsdimensionen",
+      "statement": "Die Handschrift muss perfekt schön sein, sonst gibt es Punktabzug.",
+      "answer": "false",
+      "explanation": "**Falsch!** Die Handschrift muss nur **lesbar** sein. Schönheit zählt nicht! Aber: Wenn der Prüfer es nicht lesen kann, kann er keine Punkte geben."
+    },
+    {
+      "id": "001-tf-12",
+      "concept": "Antwortarchitektur (3-Schritt & 6-Schritt)",
+      "statement": "Die 3-Schritt-Antwort besteht aus: Entscheidung, Begründung und Nachweis.",
+      "answer": "true",
+      "explanation": "**Richtig!** Die **3-Schritt-Architektur**: Was machst du? (Entscheidung) + Warum? (Begründung) + Wie prüfst du? (Nachweis)."
+    },
+    {
+      "id": "001-tf-13",
+      "concept": "Antwortarchitektur (3-Schritt & 6-Schritt)",
+      "statement": "In der 6-Schritt-Architektur kommt Sicherheit/Datenschutz als Schritt 4, direkt nach der Lösungsformulierung.",
+      "answer": "true",
+      "explanation": "**Richtig!** **Schritt 4** der 6-Schritt-Architektur: Nach dem Lösungsvorschlag (Schritt 3) integrierst du Sicherheits- und Datenschutzaspekte."
+    },
+    {
+      "id": "001-tf-14",
+      "concept": "Häufige Fehler",
+      "statement": "Der häufigste Fehler in AP1 ist: Nur die technische Lösung nennen, aber Test und Dokumentation vergessen.",
+      "answer": "true",
+      "explanation": "**Richtig!** **Fehler Nr. 1**: Azubis schreiben 'Ich installiere X', aber vergessen **Begründung, Test, Testprotokoll, Übergabe** → große Punktverluste!"
+    },
+    {
+      "id": "001-tf-15",
+      "concept": "Häufige Fehler",
+      "statement": "Wenn personenbezogene Daten im Szenario vorkommen, muss ich IMMER Sicherheitsmaßnahmen nennen.",
+      "answer": "true",
+      "explanation": "**Richtig!** Sobald **Kundendaten, DSGVO, Personaldaten** im Text stehen, MUSST du Sicherheit erwähnen (Verschlüsselung, Zugriffschuts, Backup) – sonst -3 Punkte!"
+    },
+    {
+      "id": "001-tf-16",
+      "concept": "Häufige Fehler",
+      "statement": "Rechtschreibfehler führen zu massiven Punktverlusten in AP1.",
+      "answer": "false",
+      "explanation": "**Falsch!** Rechtschreibfehler kosten **keine** Punkte (solange der Text lesbar ist). AP1 ist keine Deutsch-Prüfung! Aber: Fachbegriffe sollten korrekt sein."
+    },
+    {
+      "id": "001-tf-17",
+      "concept": "Zeitmanagement (10/60/20)",
+      "statement": "In der 10-Minuten-Lesephase sollte ich bereits mit dem Schreiben beginnen, um Zeit zu sparen.",
+      "answer": "false",
+      "explanation": "**Falsch!** In den ersten 10 Min NUR lesen und markieren! Sonst überliest du Zeitfallen oder Muss-Anforderungen → strategischer Nachteil!"
+    },
+    {
+      "id": "001-tf-18",
+      "concept": "Zeitmanagement (10/60/20)",
+      "statement": "Wenn die Zeit knapp wird, ist es besser alle Fragen mit 60% Qualität zu beantworten als 2 perfekt und 3 leer.",
+      "answer": "true",
+      "explanation": "**Richtig!** **Leere Fragen = 0 Punkte**. Lieber alle Fragen skizzieren (Stichworte) als Perfektionismus. 60% × 5 Fragen > 100% × 2 Fragen!"
+    },
+    {
+      "id": "001-tf-19",
+      "concept": "Die 5 Handlungen nach FIAusbV §9",
+      "statement": "Das Übergabeprotokoll (Handlung 4) ist optional und nur für die Prüfung wichtig.",
+      "answer": "false",
+      "explanation": "**Falsch!** Das **Übergabeprotokoll** (unterschrieben!) ist im echten Betrieb **essenziell**: Beweis, dass Hardware übergeben und Einweisung erfolgt ist. Schützt dich rechtlich!"
+    },
+    {
+      "id": "001-tf-20",
+      "concept": "Die 5 Handlungen nach FIAusbV §9",
+      "statement": "Handlung 5 'Leistung kontrollieren' bedeutet nur, dass der PC läuft.",
+      "answer": "false",
+      "explanation": "**Falsch!** Handlung 5 ist **Qualitätssicherung**: Löst die Lösung das Problem? Ist der Nutzer zufrieden? Gab es Probleme? **Alles dokumentieren** (auch Nachbesserungen)!"
     }
-  ]
+  ],
+  "_metadata": {
+    "conceptCoverage": {
+      "Was ist AP1?": {
+        "questionIds": ["001-mcq-1", "001-mcq-2", "001-mcq-3", "001-mcq-4", "001-fb-1", "001-fb-2", "001-tf-1", "001-tf-3", "001-tf-5", "001-tf-6"],
+        "count": 10
+      },
+      "Die 5 Handlungen nach FIAusbV §9": {
+        "questionIds": ["001-mcq-5", "001-mcq-6", "001-mcq-22", "001-mcq-23", "001-mcq-24", "001-fb-3", "001-match-3", "001-order-3", "001-tf-4", "001-tf-19", "001-tf-20"],
+        "count": 11
+      },
+      "Bewertungsdimensionen": {
+        "questionIds": ["001-mcq-14", "001-mcq-15", "001-fb-7", "001-match-2", "001-tf-10", "001-tf-11"],
+        "count": 6
+      },
+      "Antwortarchitektur (3-Schritt & 6-Schritt)": {
+        "questionIds": ["001-mcq-11", "001-mcq-12", "001-mcq-13", "001-fb-4", "001-match-1", "001-match-4", "001-order-1", "001-order-4", "001-tf-12", "001-tf-13"],
+        "count": 10
+      },
+      "Zeitmanagement (10/60/20)": {
+        "questionIds": ["001-mcq-16", "001-mcq-17", "001-mcq-18", "001-fb-5", "001-order-2", "001-tf-2", "001-tf-17", "001-tf-18"],
+        "count": 8
+      },
+      "Häufige Fehler": {
+        "questionIds": ["001-mcq-19", "001-mcq-20", "001-mcq-21", "001-fb-8", "001-match-5", "001-tf-14", "001-tf-15", "001-tf-16"],
+        "count": 8
+      },
+      "Muss/Kann-Anforderungen": {
+        "questionIds": ["001-mcq-7", "001-mcq-8", "001-tf-7"],
+        "count": 3
+      },
+      "TCO & Wirtschaftlichkeit": {
+        "questionIds": ["001-mcq-9", "001-mcq-10", "001-fb-6", "001-tf-8", "001-tf-9"],
+        "count": 5
+      }
+    },
+    "totalConcepts": 8,
+    "averageQuestionsPerConcept": 7.6,
+    "difficultyDistribution": {
+      "easy": 20,
+      "medium": 29,
+      "hard": 12
+    }
+  }
 }

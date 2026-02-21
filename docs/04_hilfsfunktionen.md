@@ -73,3 +73,45 @@ Der Parser (`markdownToHtml`) übersetzt das.
     *   ```` ``` ``` ```` -> `<pre><code>...</code></pre>`
 
 Der Parser baut auch automatisch ein **Inhaltsverzeichnis (TOC)**. Er sammelt alle `<h2>` Überschriften und erstellt eine Sprungmarken-Liste am Anfang der Seite.
+
+---
+
+## 4.4 Inline-Markdown (`inlineMd`)
+
+Während `markdown.js` komplette Seiten parst, gibt es die Funktion `inlineMd()` für kleine Textstellen –
+z.B. Quiz-Fragetext, der fett, kursiv oder mit Code formatiert sein kann.
+
+```javascript
+inlineMd("Das ist **wichtig** und `code`")
+// → "Das ist <strong>wichtig</strong> und <code>code</code>"
+```
+
+Sie kombiniert `escapeHtml()` (Sicherheit) mit Inline-Regex-Ersetzungen. Wird überall im Quiz-Rendering genutzt.
+
+---
+
+## 4.5 Anker-IDs erzeugen (`generateTocId`)
+
+Für das automatische Inhaltsverzeichnis braucht jede Überschrift eine eindeutige, URL-freundliche ID.
+
+```javascript
+generateTocId("2.1 Der Start & Initialisierung!")
+// → "21-der-start--initialisierung"
+```
+
+Die Funktion wandelt Großbuchstaben in Kleinbuchstaben um, ersetzt Leerzeichen durch `-` und entfernt Sonderzeichen. Deutsche Umlaute (ä, ö, ü, ß) bleiben erhalten.
+
+---
+
+## 4.6 Arrays vergleichen (`arraysEqual`)
+
+Bei der Validierung von **Reihenfolge-Fragen** (`order`-Typ) muss geprüft werden, ob der Nutzer
+die Elemente in exakt der richtigen Reihenfolge angeordnet hat. `===` reicht dafür nicht.
+
+```javascript
+arraysEqual([1, 2, 3], [1, 2, 3])  // → true
+arraysEqual([1, 3, 2], [1, 2, 3])  // → false
+```
+
+Die Funktion vergleicht Länge und jeden Wert an jeder Position.
+

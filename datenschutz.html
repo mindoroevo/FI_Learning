@@ -1,0 +1,432 @@
+<!doctype html>
+<html lang="de" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Datenschutzerklärung – FIAE AP1 Lernapp</title>
+  <style>
+    :root {
+      --bg:        #0d1117;
+      --text:      #e6edf3;
+      --muted:     #8b949e;
+      --border:    #30363d;
+      --card-bg:   #161b22;
+      --accent:    #6366f1;
+      --link:      #58a6ff;
+    }
+    [data-theme="light"] {
+      --bg:      #f6f8fa;
+      --text:    #1f2328;
+      --muted:   #656d76;
+      --border:  #d0d7de;
+      --card-bg: #ffffff;
+      --accent:  #5b5fc7;
+      --link:    #0969da;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      font-size: 1rem;
+      line-height: 1.75;
+      padding: 0 0 80px;
+    }
+    header {
+      background: var(--card-bg);
+      border-bottom: 1px solid var(--border);
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    header a {
+      color: var(--link);
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+    header a:hover { text-decoration: underline; }
+    header h1 { font-size: 1rem; color: var(--text); }
+    .container {
+      max-width: 780px;
+      margin: 40px auto;
+      padding: 0 24px;
+    }
+    .hero {
+      border-left: 4px solid var(--accent);
+      padding: 20px 24px;
+      background: var(--card-bg);
+      border-radius: 0 12px 12px 0;
+      margin-bottom: 40px;
+    }
+    .hero h2 { font-size: 1.6rem; margin-bottom: 6px; }
+    .hero p  { color: var(--muted); font-size: 0.9rem; }
+    .badge {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      background: color-mix(in srgb, #22c55e 15%, var(--card-bg));
+      border: 1px solid #22c55e;
+      color: #22c55e;
+      margin-top: 10px;
+    }
+    section {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px 28px;
+      margin-bottom: 24px;
+    }
+    section h3 {
+      font-size: 1.05rem;
+      color: var(--text);
+      margin-bottom: 14px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border);
+    }
+    section h3 .sec-icon { margin-right: 8px; }
+    p { margin-bottom: 12px; color: var(--text); font-size: 0.92rem; }
+    p:last-child { margin-bottom: 0; }
+    ul, ol {
+      padding-left: 22px;
+      margin-bottom: 12px;
+      font-size: 0.92rem;
+    }
+    li { margin-bottom: 6px; }
+    strong { color: var(--text); }
+    code {
+      font-family: "Courier New", monospace;
+      font-size: 0.82rem;
+      background: color-mix(in srgb, var(--accent) 12%, var(--card-bg));
+      border: 1px solid var(--border);
+      padding: 1px 6px;
+      border-radius: 4px;
+    }
+    .info-box {
+      background: color-mix(in srgb, #6366f1 10%, var(--card-bg));
+      border: 1px solid color-mix(in srgb, #6366f1 40%, var(--border));
+      border-radius: 8px;
+      padding: 12px 16px;
+      font-size: 0.85rem;
+      margin-bottom: 14px;
+      color: var(--muted);
+    }
+    .info-box strong { color: var(--text); }
+    .good-box {
+      background: color-mix(in srgb, #22c55e 8%, var(--card-bg));
+      border: 1px solid color-mix(in srgb, #22c55e 40%, var(--border));
+      border-radius: 8px;
+      padding: 12px 16px;
+      font-size: 0.85rem;
+      margin-bottom: 14px;
+    }
+    .good-box strong { color: #22c55e; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+      margin-bottom: 12px;
+    }
+    th, td {
+      padding: 9px 12px;
+      border: 1px solid var(--border);
+      text-align: left;
+    }
+    th { background: color-mix(in srgb, var(--accent) 10%, var(--card-bg)); font-weight: 600; }
+    td:first-child { font-family: "Courier New", monospace; font-size: 0.78rem; color: var(--accent); }
+    a { color: var(--link); }
+    .placeholder {
+      background: color-mix(in srgb, #f59e0b 10%, var(--card-bg));
+      border: 1px dashed #f59e0b;
+      border-radius: 6px;
+      padding: 8px 14px;
+      font-size: 0.85rem;
+      color: #f59e0b;
+      margin: 10px 0;
+    }
+    footer {
+      text-align: center;
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-top: 40px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+    }
+    @media (max-width: 600px) {
+      .container { padding: 0 14px; }
+      section { padding: 16px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🔐 Datenschutzerklärung</h1>
+    <a href="./index.html">← Zurück zur App</a>
+  </header>
+
+  <div class="container">
+    <div class="hero">
+      <h2>Datenschutzerklärung</h2>
+      <p>FIAE AP1 Lernapp &bull; Stand: 21. Februar 2026</p>
+      <span class="badge">✅ Kein Tracking · Keine externen Server · 100 % lokal</span>
+    </div>
+
+    <!-- 1. Verantwortlicher -->
+    <section>
+      <h3><span class="sec-icon">👤</span>1. Verantwortlicher (Art. 13 DSGVO)</h3>
+      <p>
+        Verantwortlicher im Sinne der Datenschutz-Grundverordnung (DSGVO) und anderer
+        nationaler Datenschutzgesetze sowie sonstiger datenschutzrechtlicher Bestimmungen ist
+        <strong>Mindoro Evolution</strong>.
+      </p>
+      <p>
+        Die vollständigen Kontaktdaten (Anschrift, E-Mail, Telefon) sind im
+        <a href="https://mindoroevo.github.io/mindoro_imp/impressum.html" target="_blank" rel="noopener noreferrer">Impressum</a>
+        hinterlegt.
+      </p>
+    </section>
+
+    <!-- 2. Überblick -->
+    <section>
+      <h3><span class="sec-icon">📋</span>2. Überblick der Datenverarbeitung</h3>
+      <div class="good-box">
+        <strong>✅ Kurzzusammenfassung:</strong> Diese Anwendung verarbeitet ausschließlich Daten
+        lokal auf Ihrem Gerät. Es werden keine personenbezogenen Daten an Server übertragen,
+        gespeichert oder analysiert. Es existieren kein Tracking, keine Werbung und keine
+        Analyse-Werkzeuge.
+      </div>
+      <p>
+        Die FIAE AP1 Lernapp ist eine vollständig clientseitige Webanwendung (Progressive Web App),
+        die ausschließlich im Browser des Nutzers ausgeführt wird. Alle Datenverarbeitung erfolgt
+        lokal auf dem Endgerät des Nutzers.
+      </p>
+    </section>
+
+    <!-- 3. Welche Daten -->
+    <section>
+      <h3><span class="sec-icon">💾</span>3. Verarbeitete Daten und Speicherorte</h3>
+      <p>Die App speichert folgende Daten ausschließlich lokal im Browser (localStorage des Endgeräts):</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Schlüssel (localStorage)</th>
+            <th>Inhalt</th>
+            <th>Zweck</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>fiae_device_key_v1</td>
+            <td>AES-GCM-256-Bit-Schlüssel (Base64)</td>
+            <td>Gerätespezifischer Verschlüsselungsschlüssel für die Speicherdatei</td>
+          </tr>
+          <tr>
+            <td>fiae_save_backup_v1</td>
+            <td>Lernfortschritt (verschlüsselt, JSON)</td>
+            <td>Backup des Lernstands: XP, Erfolge, Statistiken, Lesezeichen, Profilname</td>
+          </tr>
+          <tr>
+            <td>fiae_sn_stats</td>
+            <td>Spielstatistiken Subnetz-Trainer (JSON)</td>
+            <td>Rundenanzahl, Trefferquote, Beststreaks</td>
+          </tr>
+          <tr>
+            <td>fiae_bn_stats</td>
+            <td>Spielstatistiken Binär-Trainer (JSON)</td>
+            <td>Rundenanzahl, Trefferquote, Beststreaks</td>
+          </tr>
+          <tr>
+            <td>fiae-app-v*</td>
+            <td>App-Ressourcen (Cache Storage)</td>
+            <td>Offline-Nutzung der App via Service Worker</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>
+        <strong>Optionale Speicherdatei:</strong> Wenn der Nutzer über die Einstellungen eine
+        <code>.fiae</code>-Datei anlegt, wird der Lernstand verschlüsselt in einer
+        vom Nutzer selbst gewählten lokalen Datei gespeichert. Diese Datei verlässt das Gerät
+        nicht automatisch – der Nutzer kann sie manuell sichern oder teilen.
+      </p>
+      <div class="info-box">
+        <strong>Technische Information:</strong> Die Verschlüsselung erfolgt mit AES-GCM 256-Bit
+        über die Web Crypto API des Browsers. Der Schlüssel wird gerätespezifisch generiert und
+        verlässt den Browser nicht. Weder der Verantwortliche noch Dritte können ohne den
+        Geräteschlüssel auf die gesicherten Daten zugreifen.
+      </div>
+    </section>
+
+    <!-- 4. Keine Server -->
+    <section>
+      <h3><span class="sec-icon">🌐</span>4. Keine Datenübertragung an Server</h3>
+      <p>
+        Diese App kommuniziert <strong>ausschließlich mit dem Gerät des Nutzers selbst</strong>.
+        Es findet keinerlei Übertragung von Nutzerdaten an externe Server, Dienste oder Dritte statt.
+      </p>
+      <p>Konkret bedeutet das:</p>
+      <ul>
+        <li><strong>Kein Backend / API-Server:</strong> Es existiert kein Applikationsserver, der Anfragen entgegennimmt.</li>
+        <li><strong>Kein Analytics / Tracking:</strong> Es sind keine Analyse-, Tracking- oder Werbedienste eingebunden
+          (kein Google Analytics, kein Matomo, kein Facebook Pixel, keine ähnlichen Dienste).</li>
+        <li><strong>Keine Cookies:</strong> Die App setzt keine HTTP-Cookies. Zur lokalen Datenspeicherung
+          wird ausschließlich die Browser-API <code>localStorage</code> verwendet.</li>
+        <li><strong>Keine Drittanbieter in der App:</strong> Die Haupt-App bindet keine externen JavaScripts,
+          Schriftarten, Bilder oder sonstige Ressourcen von Drittanbietern ein.</li>
+        <li><strong>Netzwerkanfragen:</strong> Die einzigen Netzwerkanfragen im laufenden Betrieb
+          dienen dem Laden der eigenen App-Dateien (Quiz-JSON-Dateien) vom gleichen Server/Gerät.</li>
+      </ul>
+      <div class="info-box">
+        <strong>Hinweis zum Hosting:</strong> Wenn die App über einen Webserver (z. B. GitHub Pages,
+        eigener Webserver) ausgeliefert wird, können im Rahmen des normalen HTTP-Protokolls
+        <strong>Server-Zugriffsprotokolle</strong> des Hosting-Anbieters entstehen (IP-Adresse,
+        Zeitstempel, abgerufene Ressource). Dies liegt in der Verantwortung des jeweiligen
+        Hosting-Anbieters und ist nicht beeinflussbar durch diese App.
+        Wenn Sie diese App lokal auf Ihrem eigenen Gerät betreiben, entstehen keine solchen Daten.
+      </div>
+    </section>
+
+    <!-- 5. Service Worker -->
+    <section>
+      <h3><span class="sec-icon">⚙️</span>5. Service Worker und Offline-Nutzung</h3>
+      <p>
+        Die App nutzt einen <strong>Service Worker</strong> (eine Browsertechnologie), um
+        App-Ressourcen lokal im <strong>Cache Storage</strong> des Browsers zu speichern.
+        Dies ermöglicht die Nutzung der App ohne Internetverbindung (Offline-Betrieb).
+      </p>
+      <p>Der Cache enthält ausschließlich:</p>
+      <ul>
+        <li>Die App-eigenen HTML-, CSS- und JavaScript-Dateien</li>
+        <li>App-Icons</li>
+        <li>Quiz-Inhalte (JSON-Dateien)</li>
+      </ul>
+      <p>
+        Der Cache enthält keine personenbezogenen Nutzerdaten. Er kann jederzeit über die
+        Browser-Einstellungen gelöscht werden (<em>Einstellungen → Datenschutz → Browserdaten löschen</em>).
+      </p>
+    </section>
+
+    <!-- 6. Rechtsgrundlage -->
+    <section>
+      <h3><span class="sec-icon">⚖️</span>6. Rechtsgrundlage der Verarbeitung</h3>
+      <p>
+        Soweit eine Rechtsgrundlage für die lokale Speicherung erforderlich ist, stützt sich
+        die Verarbeitung auf:
+      </p>
+      <ul>
+        <li>
+          <strong>Art. 6 Abs. 1 lit. b DSGVO</strong> (Vertragserfüllung): Die Speicherung des
+          Lernfortschritts ist für die Erbringung der App-Funktionen technisch notwendig und
+          entspricht dem primären Nutzungszweck der App.
+        </li>
+        <li>
+          <strong>Art. 6 Abs. 1 lit. f DSGVO</strong> (Berechtigte Interessen): Die technisch
+          notwendige Speicherung (Service Worker Cache) dient dem reibungslosen, offline-fähigen
+          Betrieb der Anwendung und liegt im berechtigten Interesse des Nutzers.
+        </li>
+      </ul>
+      <p>
+        Da alle Daten ausschließlich auf dem Endgerät des Nutzers verbleiben und nicht an den
+        Verantwortlichen übermittelt werden, ist der Verantwortliche in der Regel nicht in der Lage,
+        auf diese Daten zuzugreifen oder sie zu verarbeiten.
+      </p>
+    </section>
+
+    <!-- 7. Betroffenenrechte -->
+    <section>
+      <h3><span class="sec-icon">🧑‍⚖️</span>7. Ihre Rechte als betroffene Person (Art. 15–22 DSGVO)</h3>
+      <p>Sie haben gegenüber dem Verantwortlichen folgende Rechte:</p>
+      <ul>
+        <li><strong>Recht auf Auskunft (Art. 15 DSGVO):</strong> Sie können Auskunft darüber verlangen,
+          ob und welche personenbezogenen Daten verarbeitet werden.</li>
+        <li><strong>Recht auf Berichtigung (Art. 16 DSGVO):</strong> Sie können die Berichtigung
+          unrichtiger Daten verlangen.</li>
+        <li><strong>Recht auf Löschung (Art. 17 DSGVO):</strong> Sie können die Löschung Ihrer Daten
+          verlangen (soweit keine gesetzliche Aufbewahrungspflicht entgegensteht).</li>
+        <li><strong>Recht auf Einschränkung (Art. 18 DSGVO):</strong> Sie können die Einschränkung
+          der Verarbeitung verlangen.</li>
+        <li><strong>Recht auf Datenübertragbarkeit (Art. 20 DSGVO):</strong> Sie können Ihre Daten
+          in einem maschinenlesbaren Format erhalten.</li>
+        <li><strong>Widerspruchsrecht (Art. 21 DSGVO):</strong> Sie können der Verarbeitung Ihrer
+          Daten widersprechen.</li>
+      </ul>
+      <p>
+        <strong>Praktischer Hinweis:</strong> Da alle Daten lokal in Ihrem Browser gespeichert werden,
+        können Sie Ihre Daten jederzeit selbst löschen:
+      </p>
+      <ul>
+        <li><strong>In der App:</strong> Einstellungen-Tab → „Lernstand zurücksetzen"</li>
+        <li><strong>Im Browser:</strong> Entwicklertools → Application → Local Storage → Einträge
+          mit Präfix <code>fiae_</code> löschen</li>
+        <li><strong>Über Browser-Einstellungen:</strong> Websitedaten / Browserdaten löschen</li>
+      </ul>
+      <p>
+        Zur Geltendmachung Ihrer Rechte gegenüber dem Verantwortlichen wenden Sie sich an die
+        oben genannte Kontaktadresse.
+      </p>
+    </section>
+
+    <!-- 8. Beschwerderecht -->
+    <section>
+      <h3><span class="sec-icon">🏛️</span>8. Recht auf Beschwerde bei einer Aufsichtsbehörde</h3>
+      <p>
+        Unbeschadet anderweitiger Rechtsbehelfe haben Sie das Recht auf Beschwerde bei einer
+        Datenschutz-Aufsichtsbehörde, insbesondere in dem Mitgliedstaat Ihres Aufenthaltsorts,
+        Ihres Arbeitsplatzes oder des Orts des mutmaßlichen Verstoßes, wenn Sie der Ansicht sind,
+        dass die Verarbeitung der Sie betreffenden personenbezogenen Daten gegen die DSGVO verstößt.
+      </p>
+      <p>Zuständige Aufsichtsbehörde für Deutschland (exemplarisch, je nach Bundesland des Sitzes):</p>
+      <ul>
+        <li>Bundesbeauftragte für den Datenschutz und die Informationsfreiheit:
+          <a href="https://www.bfdi.bund.de" target="_blank" rel="noopener noreferrer">www.bfdi.bund.de</a></li>
+        <li>Datenschutzkonferenz (Übersicht aller Landesbehörden):
+          <a href="https://www.datenschutzkonferenz-online.de" target="_blank" rel="noopener noreferrer">www.datenschutzkonferenz-online.de</a></li>
+      </ul>
+    </section>
+
+    <!-- 9. Entwickler-Testumgebung -->
+    <section>
+      <h3><span class="sec-icon">🧪</span>9. Entwicklungs- und Testumgebung</h3>
+      <p>
+        Im Verzeichnis <code>/tests/</code> befindet sich eine Entwickler-Testumgebung, die bei
+        Ausführung JavaScript-Bibliotheken (<em>Chai, Mocha</em>) von
+        <code>unpkg.com</code> (Drittanbieter-CDN) nachlädt. Diese Testumgebung ist
+        <strong>kein Bestandteil der Produktions-App</strong> und wird nicht über die reguläre
+        App-URL ausgeliefert oder durch den Service Worker gecacht.
+      </p>
+      <p>
+        Endnutzer kommen mit dieser Testumgebung nicht in Berührung.
+      </p>
+    </section>
+
+    <!-- 10. Änderungen -->
+    <section>
+      <h3><span class="sec-icon">🔄</span>10. Aktualität und Änderungen dieser Datenschutzerklärung</h3>
+      <p>
+        Diese Datenschutzerklärung ist aktuell gültig und hat den Stand: <strong>21. Februar 2026</strong>.
+      </p>
+      <p>
+        Durch die Weiterentwicklung der App oder aufgrund geänderter gesetzlicher bzw. behördlicher
+        Vorgaben kann es notwendig werden, diese Datenschutzerklärung anzupassen. Die jeweils aktuelle
+        Datenschutzerklärung ist stets unter dieser URL abrufbar.
+      </p>
+    </section>
+
+    <footer>
+      <p>© 2026 Mindoro Evolution &bull; Alle Rechte vorbehalten</p>
+      <p style="margin-top:6px;">
+        <a href="./index.html">← Zurück zur App</a>
+        &nbsp;|&nbsp;
+        <a href="https://mindoroevo.github.io/mindoro_imp/impressum.html" target="_blank" rel="noopener noreferrer">Impressum</a>
+        &nbsp;|&nbsp;
+        <a href="./agb.html">AGB</a>
+      </p>
+    </footer>
+  </div>
+</body>
+</html>

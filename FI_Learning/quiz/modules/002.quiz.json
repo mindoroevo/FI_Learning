@@ -1,193 +1,1019 @@
 {
-  "meta": {
-    "module": "002",
-    "title": "Bedarfsermittlung & Anforderungsanalyse"
+  "meta": { 
+    "module": "002", 
+    "title": "Bedarfsermittlung & Anforderungsanalyse",
+    "totalQuestions": 64,
+    "estimatedTime": "45-60 Minuten"
   },
   "engine": "mixed",
   "mcq": [
     {
-      "id": "2_m_1",
-      "question": "Ein Kunde sagt im Interview: 'Das neue System muss viel schneller sein als das alte.' Wie gehst Du als Anforderungsanalytiker damit um?",
+      "id": "002-mcq-1",
+      "type": "single",
+      "difficulty": "easy",
+      "bloomLevel": 1,
+      "question": "Die Firma 'TechPro GmbH' fragt an: 'Wir brauchen neue Computer für die Buchhaltung'. Was ist deine erste Aktion als Anforderungsanalytiker?",
       "options": [
-        "Ich notiere 'Hohe Performance' als Anforderung.",
-        "Ich frage nach einer konkreten Metrik (z.B. 'Maximale Ladezeit unter 2 Sekunden bei 50 gleichzeitigen Nutzern').",
-        "Ich empfehle pauschal die teuerste Hardware, um auf der sicheren Seite zu sein.",
-        "Ich ignoriere die Aussage, da sie subjektiv ist."
+        "Ich empfehle sofort die teuersten Business-PCs aus dem Katalog.",
+        "Ich frage nach konkret: Welche Software nutzen Sie? Wie viele Nutzer? Welches Budget?",
+        "Ich sage: 'Computer ist Computer, da kann man nichts falsch machen'.",
+        "Ich bestelle 10 Gaming-Laptops, die sind ja besonders schnell."
       ],
-      "correct": [1],
-      "classification": "apply",
-      "explanation": "Subjektive Begriffe wie 'schnell' oder 'benutzerfreundlich' sind im Streitfall juristisch wertlos. Anforderungen müssen **SMART** (Spezifisch, Messbar, Akzeptiert, Realistisch, Terminiert) sein."
+      "answer": 1,
+      "explanation": "**Richtig ist B**: Anforderungsanalyse beginnt IMMER mit Fragen! 'Computer' ist zu unspezifisch. **A ist falsch**: Over-Engineering kostet unnötig Geld. **C ist falsch**: Jeder Arbeitsplatz hat andere Anforderungen. **D ist falsch**: Gaming-Laptops sind für Business ungeeignet (laut, schwer, Windows Home). **AP1-Kontext**: In jeder Prüfung musst du aus schwammigen Angaben präzise Anforderungen ableiten!"
     },
     {
-      "id": "2_m_2",
-      "question": "Welches Dokument ist rechtlich bindend für die *konkrete Umsetzung* und wird oft Vertragsbestandteil?",
+      "id": "002-mcq-2",
+      "type": "single",
+      "difficulty": "easy",
+      "bloomLevel": 2,
+      "question": "Was ist der Hauptunterschied zwischen Lastenheft und Pflichtenheft?",
       "options": [
-        "Das Lastenheft des Auftraggebers",
-        "Das Protokoll des ersten Kennenlern-Meetings",
-        "Das Pflichtenheft des Auftragnehmers",
-        "Die Powerpoint-Präsentation vom Vertrieb"
+        "Lastenheft ist für kleine Projekte, Pflichtenheft für große.",
+        "Lastenheft kommt vom Kunden (WAS), Pflichtenheft vom Dienstleister (WIE).",
+        "Lastenheft ist technisch, Pflichtenheft ist kaufmännisch.",
+        "Es gibt keinen Unterschied, sind nur zwei Namen für dasselbe Dokument."
       ],
-      "correct": [2],
-      "classification": "legal",
-      "explanation": "Das **Pflichtenheft** beschreibt detailliert, WIE der Auftragnehmer die Wünsche umsetzt. Nach Unterschrift ist es die Basis für die Abnahme und Vergütung. Das Lastenheft ist nur der Wunschzettel."
+      "answer": 1,
+      "explanation": "**Richtig ist B**: **Lastenheft** = Kunde beschreibt sein Problem/Wunsch (WAS will ich?). **Pflichtenheft** = Du beschreibst deine Lösung (WIE setze ich es um?). **A/C/D sind falsch**: Die Unterscheidung hat nichts mit Projektgröße oder Fachabteilung zu tun. **Eselsbrücke**: **L**ast des Kunden, **P**flicht des Profis. **AP1-Relevanz**: Wird in fast jeder Prüfung gefragt oder vorausgesetzt!"
     },
     {
-      "id": "2_m_3",
-      "question": "Was versteht man unter 'Scope Creep' in einem IT-Projekt?",
+      "id": "002-mcq-3",
+      "type": "single",
+      "difficulty": "medium",
+      "bloomLevel": 3,
+      "question": "Ein Außendienstler sagt: 'Ich brauche einen Laptop, mit dem ich auch im Auto arbeiten kann'. Welche Anforderung leitest du daraus AB (die er NICHT explizit genannt hat)?",
       "options": [
-        "Den schleichenden Zuwachs neuer Anforderungen während des Projekts, ohne dass Budget oder Deadline angepasst werden.",
-        "Einen Hardware-Defekt, der sich langsam im Netzwerk ausbreitet.",
-        "Die langsame Einarbeitung neuer Mitarbeiter in das Projektteam.",
-        "Eine spezielle agile Methode zur Projektsteuerung."
+        "Gaming-Grafikkarte für 3D-Spiele im Auto",
+        "LTE/5G-Modem für Internet ohne WLAN + ausreichende Akkulaufzeit",
+        "Mechanische Tastatur mit RGB-Beleuchtung",
+        "Wasserkühlung für CPU"
       ],
-      "correct": [0],
-      "classification": "theory",
-      "explanation": "**Scope Creep** (Umfangsschleichung) ist gefährlich: Der Kunde will 'nur noch kurz' ein kleines Feature mehr. Viele kleine 'nur noch kurz' führen oft zum Scheitern von Projekten (Budget/Zeit überschritten)."
+      "answer": 1,
+      "explanation": "**Richtig ist B**: 'Im Auto arbeiten' bedeutet: Kein WLAN verfügbar → **Mobilfunk-Modem nötig** (LTE/5G). Außerdem: Keine Steckdose → **Akku muss lange halten**. Das ist eine **versteckte Anforderung** (Eisberg-Modell!). **A/C/D sind absurd**: Gaming, RGB, Wasserkühlung haben nichts mit mobilem Arbeiten zu tun. **AP1-Tipp**: Signalwörter wie 'unterwegs', 'Außendienst', 'Zug', 'Café' → IMMER an LTE + Akku + Blickschutz denken!"
     },
     {
-      "id": "2_m_4",
-      "question": "Welche Frage eignet sich am besten für ein offenes Interview zur Bedarfsermittlung?",
+      "id": "002-mcq-4",
+      "type": "single",
+      "difficulty": "medium",
+      "bloomLevel": 3,
+      "question": "Die Marketing-Abteilung sagt: 'Wir bearbeiten oft große Photoshop-Dateien (500 MB) und es wird sehr langsam'. Was ist die wahrscheinlichste Ursache?",
       "options": [
-        "Brauchen Sie 16 GB oder 32 GB RAM?",
-        "Wollen Sie Windows 11 nutzen?",
-        "Beschreiben Sie mir bitte einen typischen Arbeitstag und wo aktuell die größten Zeitfresser liegen.",
-        "Ist Ihnen der Preis wichtiger als die Leistung?"
+        "Zu wenig Festplattenspeicher (nur noch 10 GB frei)",
+        "Zu wenig RAM (Arbeitsspeicher), z.B. nur 8 GB statt 32 GB",
+        "Monitor hat zu geringe Auflösung",
+        "Internetverbindung ist zu langsam"
       ],
-      "correct": [2],
-      "classification": "apply",
-      "explanation": "Offene W-Fragen ('Beschreiben Sie...', 'Wie läuft...') fördern Informationen zutage, an die man als Techniker vielleicht gar nicht gedacht hat (versteckte Anforderungen)."
+      "answer": 1,
+      "explanation": "**Richtig ist B**: Photoshop lädt große Dateien **in den RAM** (Arbeitsspeicher). Bei 500-MB-Dateien + Ebenen können schnell 6-8 GB Speicher belegt werden. Wenn nur 8 GB RAM verbaut sind, muss das System auf die langsame Festplatte auslagern (Paging) → extrem langsam! **A ist falsch**: Freier Festplattenspeicher beeinflusst die Performance nicht direkt (außer <10% frei). **C/D sind irrelevant**: Monitor und Internet spielen keine Rolle bei lokaler Bildbearbeitung. **Hardware-Transfer**: 'Große Dateien' + 'mehrere Programme' = **RAM aufrüsten**!"
     },
     {
-      "id": "2_m_5",
-      "question": "Nach der MoSCoW-Methode: Was bedeutet die Kategorie 'Won't have'?",
+      "id": "002-mcq-5",
+      "type": "single",
+      "difficulty": "medium",
+      "bloomLevel": 4,
+      "question": "Ein Architekturbüro beschwert sich: 'Der neue Laptop ruckelt bei 3D-Architektur-Software (ArchiCAD)'. Welche Diagnose ist am wahrscheinlichsten?",
       "options": [
-        "Die Anforderung wird sofort gelöscht.",
-        "Sie wird dokumentiert, um klarzustellen, dass sie in DIESEM Projekt-Release explizit NICHT umgesetzt wird.",
-        "Sie wird heimlich doch umgesetzt, um den Kunden zu überraschen.",
-        "Sie wird als 'Must have' für das nächste Projekt markiert."
+        "CPU ist zu langsam, Intel Celeron statt i7",
+        "Keine dedizierte Grafikkarte vorhanden, nur Onboard-Chip (Intel UHD)",
+        "Monitor ist zu klein (nur 13 Zoll)",
+        "Windows ist nicht aktiviert"
       ],
-      "correct": [1],
-      "classification": "theory",
-      "explanation": "Die explizite Abgrenzung (Out-of-Scope) ist wichtig für das Erwartungsmanagement. 'Won't' heißt: Wir haben darüber geredet und uns bewusst *dagegen* entschieden (für jetzt)."
+      "answer": 1,
+      "explanation": "**Richtig ist B**: 3D/CAD-Software braucht **dedizierte GPU** (z.B. NVIDIA Quadro/RTX oder AMD Radeon Pro). Onboard-Grafikchips (Intel UHD, AMD Vega) sind für 2D-Büroarbeit okay, aber für 3D katastrophal langsam. **A ist teilweise richtig**: CPU hilft, aber GPU ist bei 3D wichtiger! **C/D sind Unfug**: Monitorgröße und Windows-Aktivierung haben null Einfluss auf 3D-Performance. **Signalwort-Regel**: 'CAD', '3D', 'Rendering', 'Modellierung' → **IMMER dedizierte GPU** empfehlen! **AP1-Klassiker**, wird oft gefragt!"
     },
     {
-      "id": "2_m_6",
-      "question": "Szenario: Der Kunde fordert eine 'kinderleichte Bedienung'. Wie machst du daraus eine SMARTe Anforderung?",
+      "id": "002-mcq-6",
+      "type": "single",
+      "difficulty": "hard",
+      "bloomLevel": 4,
+      "question": "Bei der Anforderungsanalyse für eine neue ERP-Software sagt der Betriebsrat: 'Wir wollen verhindern, dass Mitarbeiter überwacht werden'. Welche technische Anforderung leitest du daraus ab?",
       "options": [
-        "Das System soll einfach zu bedienen sein.",
-        "Ein durchschnittlicher Nutzer soll ohne Schulung in unter 5 Minuten eine Rechnung erstellen können.",
-        "Die Bedienung muss Spaß machen.",
-        "Es gibt keine Schulung."
+        "Keine Firewall installieren",
+        "Keine Keylogger/Screen-Recording-Software einsetzen + transparente Protokollierung dokumentieren",
+        "Alle Mitarbeiter bekommen Admin-Rechte",
+        "WLAN komplett abschalten"
       ],
-      "correct": [1],
-      "classification": "apply",
-      "explanation": "'Kinderleicht' ist subjektiv. 'In unter 5 Minuten ohne Schulung' ist messbar (Zeit messen, Probandentest)."
+      "answer": 1,
+      "explanation": "**Richtig ist B**: Betriebsrat schützt Arbeitnehmerrechte (§87 BetrVG: Mitbestimmung bei Überwachung). **Technisch bedeutet das**: (1) Keine Keylogger, (2) Kein Screen-Recording ohne Zustimmung, (3) Protokollierung nur zweckgebunden (z.B. Fehleranalyse), (4) Datenschutzerklärung für Mitarbeiter. **A/C/D sind absurd**: Sicherheit darf nicht komplett aufgegeben werden! **Stakeholder-Analyse**: Betriebsrat ≠ Geschäftsführung ≠ IT-Admin → Jeder hat andere 'Brille'! **AP1-Relevanz**: Wird gerne als Zusatzfrage genutzt ('Berücksichtigen Sie alle Stakeholder')."
+    },
+    {
+      "id": "002-mcq-7",
+      "type": "multi",
+      "difficulty": "medium",
+      "bloomLevel": 3,
+      "question": "Die Geschäftsführung fordert: 'Wir wollen 20 neue Laptops kaufen, Nutzungsdauer mind. 5 Jahre, wirtschaftlich soll es sein'. Welche Maßnahmen unterstützen diese Anforderung? (Mehrfachauswahl)",
+      "options": [
+        "Standardisierung: Alle Laptops vom gleichen Modell, damit Ersatzteile/Support einfacher",
+        "Energieeffiziente Geräte (niedrige TDP), spart Stromkosten über 5 Jahre",
+        "Jedem Mitarbeiter individuelles Wunschmodell kaufen",
+        "Geräte mit guter Reparierbarkeit wählen (z.B. ThinkPad mit modularen Komponenten)"
+      ],
+      "answer": [0, 1, 3],
+      "explanation": "**Richtig: A, B, D**. **A (Standardisierung)**: Reduziert Support-Aufwand, Ersatzteile lagerbar, Mengenrabatt möglich. **B (Energieeffizienz)**: 20 Laptops à 45W vs. 90W über 5 Jahre = erhebliche Kostendifferenz! **D (Reparierbarkeit)**: ThinkPads lassen sich leicht öffnen, RAM/SSD tauschbar → längere Lebensdauer. **C ist FALSCH**: Individualwünsche = Support-Hölle + kein Mengenrabatt. **TCO (Total Cost of Ownership)** = Kaufpreis + Betriebskosten + Wartung. **AP1-Buzzword**: 'Wirtschaftlichkeit' bedeutet IMMER: TCO erwähnen!"
+    },
+    {
+      "id": "002-mcq-8",
+      "type": "single",
+      "difficulty": "easy",
+      "bloomLevel": 2,
+      "question": "Was bedeutet das 'M' in der MoSCoW-Methode?",
+      "options": [
+        "Machbar (Feasibility)",
+        "Must have (Zwingende Anforderung)",
+        "Möglich (Possible)",
+        "Messbar (Measurable)"
+      ],
+      "answer": 1,
+      "explanation": "**Richtig ist B**: MoSCoW = **M**ust have, **S**hould have, **C**ould have, **W**on't have. 'Must have' = Ohne diese Funktion ist das System nutzlos oder illegal (z.B. DSGVO-Konformität, Grundfunktion). **A/C/D verwechseln** es mit SMART-Zielen (Spezifisch, **M**essbar, Akzeptiert, Realistisch, Terminiert). **Eselsbrücke**: **M**ama **S**agt: **C**hippendales **W**aren gestern! **AP1-Relevanz**: MoSCoW ist DAS Standard-Tool für Priorisierung in Prüfungsaufgaben!"
+    },
+    {
+      "id": "002-mcq-9",
+      "type": "single",
+      "difficulty": "medium",
+      "bloomLevel": 3,
+      "question": "Ein Kunde sagt: 'Die Software muss schnell sein'. Was ist deine beste Reaktion?",
+      "options": [
+        "Ich notiere: 'Anforderung: Hohe Performance'.",
+        "Ich frage nach: 'Was genau meinen Sie mit schnell? Wie lange darf ein Ladevorgang maximal dauern?'",
+        "Ich empfehle den schnellsten Server am Markt.",
+        "Ich ignoriere die Aussage, 'schnell' ist subjektiv."
+      ],
+      "answer": 1,
+      "explanation": "**Richtig ist B**: 'Schnell' ist subjektiv und NICHT messbar! Du musst es quantifizieren: 'Maximale Ladezeit 2 Sekunden bei 50 gleichzeitigen Nutzern' → SMART-Anforderung (Spezifisch, **Messbar**, Akzeptiert, Realistisch, Terminiert). **A ist schwach**: Zu vage für Entwickler/Tester. **C ist Unfug**: Over-Engineering ohne Bedarfsanalyse. **D ist falsch**: Anforderung ist relevant, nur nicht präzise genug formuliert. **Prüfungstrick**: Aus schwammigen Wünschen messbare Anforderungen machen = Kernkompetenz!"
+    },
+    {
+      "id": "002-mcq-10",
+      "type": "single",
+      "difficulty": "hard",
+      "bloomLevel": 5,
+      "question": "Vergleiche: Ein Startup will Laptops kaufen. Budget: 800€/Stück. Zwei Optionen: (A) Business-Laptop (Lenovo ThinkPad) mit i5, 16GB RAM, 3 Jahre Garantie. (B) Gaming-Laptop (MSI) mit i7, 32GB RAM, RTX 3060, 1 Jahr Garantie. Beide kosten 800€. Was empfiehlst du?",
+      "options": [
+        "B, weil mehr Leistung (i7, 32GB, GPU)",
+        "A, weil Business-Geräte langlebiger, leiser, bessere Garantie, Windows Pro",
+        "Beide sind gleichwertig, egal welches",
+        "Keins von beiden, Startup braucht Macs"
+      ],
+      "answer": 1,
+      "explanation": "**Richtig ist A (ThinkPad)**. **Warum?** (1) **3 Jahre Garantie** = niedrigere TCO (Total Cost of Ownership). (2) **Leiser** (wichtig im Büro). (3) **Professionelles Design** (Kundentermine!). (4) Oft **Windows Pro** (Domänenbeitritt möglich). (5) **Besser reparierbar** (modulare Komponenten). **Gaming-Laptop (B) hat Nachteile**: (1) Laut (Lüfter), (2) kurze Akkulaufzeit, (3) schwer, (4) meist Windows Home (keine Domäne), (5) oft RGB-Beleuchtung (unprofessionell). **Performance**: i5 + 16GB reichen für Büroarbeit völlig! i7 + 32GB wäre Over-Engineering. **AP1-Prinzip**: Nicht 'mehr ist besser', sondern 'passgenau ist besser'!"
+    },
+    {
+      "id": "002-mcq-11",
+      "type": "single",
+      "difficulty": "medium",
+      "bloomLevel": 3,
+      "question": "Ein Grafiker beschwert sich: 'Die Farben auf dem neuen Monitor sehen komisch aus, nicht wie am alten Mac'. Was ist die wahrscheinlichste Ursache?",
+      "options": [
+        "Monitor ist defekt, zurückschicken",
+        "Grafiktreiber ist veraltet",
+        "Monitor hat falschen Farbraum (nur sRGB statt Adobe RGB) und ist nicht kalibriert",
+        "Windows ist schuld, nur Mac kann Farben korrekt darstellen"
+      ],
+      "answer": 2,
+      "explanation": "**Richtig ist C**: Professionelle Bildbearbeitung braucht **Adobe RGB Farbraum** (breiter als sRGB). Günstige Monitore haben oft nur 72% NTSC ≈ 99% sRGB, aber nur ~70% Adobe RGB → Farben wirken 'flach'. Zusätzlich: Monitore MÜSSEN kalibriert werden (mit X-Rite o.ä.). **A ist voreilig**: Defekt ist selten, meist Fehlkonfiguration. **B hilft selten**: Treiber ändert Farbraum nicht. **D ist Mythos**: Windows kann genauso präzise Farben anzeigen wie macOS, wenn Hardware + Kalibrierung stimmt. **Anforderungs-Fehler**: Bei 'Grafik/Foto/Video' wurde Farbraum-Anforderung übersehen! **AP1-Lesson**: Spezielle Berufe (Grafik/CAD/Video) haben Hardware-Sonderanforderungen!"
+    },
+    {
+      "id": "002-mcq-12",
+      "type": "multi",
+      "difficulty": "medium",
+      "bloomLevel": 3,
+      "question": "Welche Aussagen zur Stakeholder-Analyse sind korrekt? (Mehrfachauswahl)",
+      "options": [
+        "Die Geschäftsführung fokussiert sich meist auf Wirtschaftlichkeit und ROI (Return on Investment)",
+        "Der Betriebsrat will verhindern, dass Mitarbeiter durch IT-Systeme überwacht werden können",
+        "Die IT-Abteilung will möglichst viele verschiedene exotische Geräte, um Abwechslung zu haben",
+        "Stakeholder können widersprüchliche Interessen haben (z.B. Kosten vs. Performance)"
+      ],
+      "answer": [0, 1, 3],
+      "explanation": "**Richtig: A, B, D**. **A**: Geschäftsführung = Geld-Brille (TCO, Budget, Abschreibung). **B**: Betriebsrat = Arbeitnehmer-Schutz (§87 BetrVG, keine Keylogger). **D**: Konflikte sind normal! GF will billig, Fachabteilung will leistungsstark → Dein Job: Kompromiss finden. **C ist FALSCH**: IT-Admin will das Gegenteil! **Standardisierung** (gleiche Modelle) reduziert Support-Aufwand massiv. **AP1-Strategie**: In der Prüfung ALLE Stakeholder erwähnen, deren Interessen benennen → zeigt 'Großes Ganzes'-Denken!"
+    },
+    {
+      "id": "002-mcq-13",
+      "type": "single",
+      "difficulty": "easy",
+      "bloomLevel": 1,
+      "question": "Was ist ein 'funktionale Anforderung'?",
+      "options": [
+        "Eine Anforderung, die beschreibt, WAS das System TUN muss (z.B. 'Rechnung drucken')",
+        "Eine Anforderung, die beschreibt, WIE SCHNELL das System sein muss",
+        "Eine Anforderung an die Serienausstattung",
+        "Eine juristische Anforderung aus dem Vertrag"
+      ],
+      "answer": 0,
+      "explanation": "**Richtig ist A**: **Funktionale Anforderung** = Beschreibt FUNKTIONEN/FEATURES. Beispiel: 'Nutzer kann Rechnungen als PDF exportieren'. **Nicht-funktionale Anforderung** = Beschreibt QUALITÄT. Beispiel: 'Export dauert max. 2 Sekunden' (Performance), 'Daten sind verschlüsselt' (Sicherheit). **B ist nicht-funktional** (Performance). **C/D sind keine Standardbegriffe**. **Eselsbrücke**: Funktional = Was kann das System? / Nicht-funktional = Wie gut kann es das? **AP1-Hinweis**: Unterscheidung wird selten explizit gefragt, aber implizit immer vorausgesetzt!"
+    },
+    {
+      "id": "002-mcq-14",
+      "type": "single",
+      "difficulty": "hard",
+      "bloomLevel": 4,
+      "question": "Ein Server-Raum überhitzt ständig, obwohl eine Klimaanlage läuft. Was ist die wahrscheinlichste Ursache in der Anforderungsermittlung?",
+      "options": [
+        "Die Klimaanlage ist kaputt",
+        "Die Kühlleistung (BTU/h) wurde falsch berechnet: Server produzieren mehr Abwärme (TDP) als die Klimaanlage abführen kann",
+        "Es ist Sommer, da kann man nichts machen",
+        "Die Tür stand offen"
+      ],
+      "answer": 1,
+      "explanation": "**Richtig ist B**: Klassischer **Anforderungs-Fehler**! Man vergisst, die **Abwärme zu berechnen**. Beispiel: 10 Server à 300W TDP = 3000W = ~10.000 BTU/h Abwärme. Wenn Klimaanlage nur 8.000 BTU/h schafft → Raum heizt sich auf. **Richtige Anforderung wäre gewesen**: 'Klimaanlage mit mind. 12.000 BTU/h (20% Reserve) für 10 Server mit je 300W TDP'. **A ist voreilig**: Klimaanlage läuft, ist nur zu schwach. **C ist Defätismus**: Richtige Auslegung klappt auch im Sommer. **D ist Ablenkung**. **AP1-Transferwissen**: Bei 'Server/Hardware' IMMER an Stromverbrauch + Kühlung + USV denken!"
+    },
+    {
+      "id": "002-mcq-15",
+      "type": "single",
+      "difficulty": "medium",
+      "bloomLevel": 3,
+      "question": "Ein Mitarbeiter im Großraumbüro beschwert sich: 'Mein neuer PC ist so laut, ich kann mich nicht konzentrieren'. Was wurde bei der Anforderungsermittlung vergessen?",
+      "options": [
+        "Die Lautstärke-Anforderung (max. Dezibel im Leerlauf/Last)",
+        "Die CPU-Leistung",
+        "Die Monitorgröße",
+        "Das Betriebssystem"
+      ],
+      "answer": 0,
+      "explanation": "**Richtig ist A**: Bei 'Großraumbüro' ist **Lautstärke kritisch**! **Anforderung**: 'Lüfter max. 25 dB(A) im Leerlauf, max. 35 dB(A) unter Last' ODER 'Passive Kühlung' (lüfterlos). Dann hätte man PC mit leisen Lüftern oder Fanless-Systeme gewählt. **B/C/D** haben nichts mit Lautstärke zu tun. **Stakeholder**: Hier wäre der **Betriebsrat** relevant (Ergonomie am Arbeitsplatz)! **AP1-Strategie**: 'Arbeitsumgebung' (Großraum vs. Einzelbüro vs. Baustelle) → Anforderungen an Lautstärke, Robustheit, Ergonomie ableiten!"
+    },
+    {
+      "id": "002-mcq-16",
+      "type": "single",
+      "difficulty": "easy",
+      "bloomLevel": 2,
+      "question": "Was bedeutet 'TCO' im Kontext der Wirtschaftlichkeit?",
+      "options": [
+        "Total Cost of Ownership (Gesamtkosten über Lebensdauer)",
+        "Technical Configuration Online",
+        "Time Consumption Optimization",
+        "Top Customer Offer"
+      ],
+      "answer": 0,
+      "explanation": "**Richtig ist A**: **TCO** = Total Cost of Ownership = **Kaufpreis + Betriebskosten + Wartung + Entsorgung** über die gesamte Nutzungsdauer. Beispiel: Laptop A kostet 800€, hält 3 Jahre. Laptop B kostet 1200€, hält 6 Jahre. TCO von B ist niedriger (200€/Jahr vs. 267€/Jahr). **Weitere TCO-Faktoren**: Stromkosten, Reparaturen, Software-Lizenzen, Support-Aufwand. **B/C/D sind erfunden**. **AP1-Buzzword**: Wenn 'Wirtschaftlichkeit' in der Aufgabe steht, MUSS 'TCO' in deiner Antwort vorkommen!"
+    },
+    {
+      "id": "002-mcq-17",
+      "type": "multi",
+      "difficulty": "hard",
+      "bloomLevel": 4,
+      "question": "Ein Tablet wird für Außendienst-Techniker angefragt. IT-Admin sagt: 'Muss in unsere Windows-Domäne' (Active Directory). Kundenservice sagt: 'Muss Unterschriften digital aufnehmen'. Welche Probleme siehst du? (Mehrfachauswahl)",
+      "options": [
+        "Viele Tablets laufen mit Android/iOS, die können nicht in Windows-Domäne (braucht Windows Pro)",
+        "Stift-Eingabe ist bei Tablets Standard, kein Problem",
+        "Tablets haben oft nur WLAN, kein LTE → Außendienst kann nicht arbeiten ohne WLAN",
+        "Tablets sind zu teuer, geht nicht"
+      ],
+      "answer": [0, 2],
+      "explanation": "**Richtig: A, C**. **A**: **Großes Problem!** Windows-Domäne braucht Windows Pro/Enterprise. Android/iOS können nicht beitreten. Viele Tablets haben aber kein 'echtes' Windows (sondern Windows 10 S-Mode oder ARM-Variante). → Anforderungs-Konflikt! Lösung: Surface Pro oder ähnliche Windows-Tablets. **B ist FALSCH**: Stift ist kein Problem, stimmt. **C**: **Häufig übersehen!** Außendienst ohne LTE/5G = nutzlos ohne WLAN. → Tablet MUSS Mobilfunk-Modem haben. **D ist Unsinn**: Es gibt günstige Business-Tablets. **AP1-Lesson**: Anforderungen können sich widersprechen → Du musst Kompromiss finden oder Anforderung anpassen!"
+    },
+    {
+      "id": "002-mcq-18",
+      "type": "single",
+      "difficulty": "medium",
+      "bloomLevel": 3,
+      "question": "Was ist das 'Eisberg-Problem' in der Anforderungsermittlung?",
+      "options": [
+        "Der Kunde friert, wenn die Klimaanlage zu kalt ist",
+        "Nur ~10% der Anforderungen werden vom Kunden explizit genannt, 90% musst du durch Nachfragen herausfinden",
+        "IT-Systeme sind wie Eisberge: groß und gefährlich",
+        "Anforderungen schmelzen mit der Zeit"
+      ],
+      "answer": 1,
+      "explanation": "**Richtig ist B**: Das **Eisberg-Modell** besagt: Was der Kunde sagt ('Ich brauche einen Computer') ist nur die **Spitze** (10%). **Unter der Wasserlinie** (90%) liegen die versteckten/impliziten Anforderungen: Budget? Mobilität? Software? Sicherheit? Netzwerk? Ergonomie? **Dein Job**: Durch gezielte Fragen die 90% ans Licht bringen! **A/C/D sind Unfug**. **AP1-Praxis**: In Prüfungsszenarien steht oft nur 'Firma X braucht neue Arbeitsplätze' → DU musst die restlichen 90% aus dem Kontext ableiten (z.B. '3D-Software' → GPU, 'Außendienst' → LTE)!"
+    },
+    {
+      "id": "002-mcq-19",
+      "type": "single",
+      "difficulty": "medium",
+      "bloomLevel": 2,
+      "question": "Welche dieser Anforderungen ist lösungsneutral formuliert (gehört ins Lastenheft)?",
+      "options": [
+        "Es muss ein Dell Optiplex 7090 mit Intel i7-12700 verbaut werden",
+        "Das System muss 200 Datensätze pro Sekunde verarbeiten können",
+        "Wir installieren einen Apache-Webserver auf Ubuntu 22.04 LTS",
+        "Die Datenbank ist eine MySQL 8.0 mit InnoDB-Engine"
+      ],
+      "answer": 1,
+      "explanation": "**Richtig ist B**: **Lösungsneutral** = Beschreibt das ZIEL, nicht die konkrete Technik. '200 Datensätze/Sekunde' ist messbar, aber nicht auf eine Technik festgelegt. **A/C/D sind NICHT lösungsneutral**: Nennen konkrete Produkte/Technologien (Dell, Apache, MySQL) → gehört ins Pflichtenheft (vom Auftragnehmer). **Warum ist das wichtig?** (1) **Vergaberecht**: Öffentliche Ausschreibungen müssen lösungsneutral sein (keine Bevorzugung). (2) **Kreativität**: Auftragnehmer können bessere Alternativen vorschlagen. **AP1-Trick**: Lastenheft = 'Was will ich erreichen?', Pflichtenheft = 'Wie setze ich es um?'."
+    },
+    {
+      "id": "002-mcq-20",
+      "type": "single",
+      "difficulty": "hard",
+      "bloomLevel": 5,
+      "question": "Szenario: Ein VPN zum Firmennetzwerk verbindet nicht. Der Außendienstler ist im Hotel-WLAN. Was ist die wahrscheinlichste Ursache (aus Anforderungs-Sicht)?",
+      "options": [
+        "VPN-Software ist veraltet",
+        "Hotel-Firewall blockiert VPN-Protokoll (z.B. IPSec Port 500/UDP) → Bei Anforderungsermittlung vergessen, Port-Alternativen zu prüfen",
+        "WLAN-Passwort ist falsch",
+        "Laptop ist defekt"
+      ],
+      "answer": 1,
+      "explanation": "**Richtig ist B**: **Häufiges Problem bei mobilen Arbeitern!** Viele Hotel-/Café-Firewalls blockieren VPN-Ports (IPSec: 500/UDP, 4500/UDP; OpenVPN: 1194/UDP). **Anforderungs-Fehler**: Man hat nicht geprüft, ob VPN auch über **Fallback-Methoden** funktioniert (z.B. OpenVPN über TCP Port 443 = sieht aus wie HTTPS → geht fast überall durch). **A ist möglich**, aber weniger wahrscheinlich. **C würde bedeuten**: Kein Internet überhaupt (aber Text sagt 'WLAN funktioniert'). **D ist Ablenkung**. **AP1-Transferwissen**: Bei 'Außendienst' + 'Firmenzugriff' IMMER an Firewall-Kompatibilität denken!"
+    },
+    {
+      "id": "002-mcq-21",
+      "type": "single",
+      "difficulty": "easy",
+      "bloomLevel": 1,
+      "question": "Was sind die '3 Ebenen der Anforderungen'?",
+      "options": [
+        "Hardware, Software, Netzwerk",
+        "Business (Warum?), User (Was tut der Nutzer?), System (Welche Technik?)",
+        "Billig, Mittel, Teuer",
+        "Leicht, Mittel, Schwer"
+      ],
+      "answer": 1,
+      "explanation": "**Richtig ist B**: Die **3 Ebenen** helfen, systematisch vorzugehen. **Ebene 1 (Business)**: Geschäftsziel (Warum machen wir das? → 'Umsatz steigern'). **Ebene 2 (User)**: Was muss der Mitarbeiter tun? → 'Kunden vor Ort beraten + Vertrag digital unterschreiben'. **Ebene 3 (System)**: Welche Technik braucht er dafür? → 'Tablet mit Stift-Eingabe + VPN-Zugriff'. **A ist zu technisch**, fehlt Business-Perspektive. **C/D sind Unfug**. **AP1-Strategie**: In Prüfungstexten erkennst du oft Ebene 1+2 ('Firma will X', 'Mitarbeiter macht Y') → DU musst Ebene 3 (Technik) ableiten!"
+    },
+    {
+      "id": "002-mcq-22",
+      "type": "multi",
+      "difficulty": "medium",
+      "bloomLevel": 3,
+      "question": "Welche dieser 'Signalwörter' deuten auf spezifische Hardware-Anforderungen hin? (Mehrfachauswahl)",
+      "options": [
+        "'Arbeitet mit großen Datenbanken' → Viel RAM + schnelle SSD (NVMe)",
+        "'Erstellt CAD-Zeichnungen' → Dedizierte Grafikkarte",
+        "'Schreibt E-Mails' → 64 GB RAM + RTX 4090",
+        "'Oft in Videokonferenzen' → Gute Webcam + Mikrofon/Headset"
+      ],
+      "answer": [0, 1, 3],
+      "explanation": "**Richtig: A, B, D**. **A**: 'Große Datenbanken' = viele Daten im RAM + schnelles Lesen/Schreiben → **NVMe-SSD** (nicht SATA!). **B**: 'CAD/3D' = GPU-lastig → **NVIDIA Quadro/RTX** oder AMD Radeon Pro. **D**: 'Videokonferenz' = **Full-HD-Webcam + Noise-Cancelling-Headset** (integrierte Laptop-Mikros sind oft mies). **C ist absurd**: E-Mails brauchen ~2 GB RAM, RTX 4090 ist Over-Engineering! **AP1-Übung**: Erstelle dir eine mentale 'Signalwort-Tabelle', die du auswendig kennst!"
+    },
+    {
+      "id": "002-mcq-23",
+      "type": "single",
+      "difficulty": "hard",
+      "bloomLevel": 4,
+      "question": "Eine Finanzbuchhaltung will neue Software kaufen. Beim Installieren erscheint: 'Administrator-Rechte erforderlich'. Die Mitarbeiter haben aber aus Sicherheitsgründen KEINE Admin-Rechte. Was ist schiefgelaufen?",
+      "options": [
+        "Windows ist defekt",
+        "Bei der Anforderungsermittlung wurde nicht geprüft, ob Software ohne Admin-Rechte lauffähig ist vs. Firmen-Policy (Standard-User)",
+        "Mitarbeiter lügen, sie haben heimlich doch Admin-Rechte",
+        "Software ist illegal"
+      ],
+      "answer": 1,
+      "explanation": "**Richtig ist B**: **Anforderungs-Konflikt** zwischen Sicherheit (Prinzip der geringsten Rechte) und Software-Design (manche alte Software braucht Admin). **Richtige Anforderung wäre**: 'Software muss ohne Admin-Rechte lauffähig sein ODER Installations-Service durch IT-Admin'. **Lösung**: (1) IT-Admin installiert einmalig (MSI-Paket zentral ausrollen via GPO), (2) Alternative Software suchen (moderne Apps brauchen oft kein Admin), (3) Ausnahme-Regelung (Risiko!). **A/C/D sind Unsinn**. **AP1-Lesson**: **Nicht-funktionale Anforderung** 'Sicherheit' kann mit funktionaler Anforderung 'Software X nutzen' kollidieren!"
+    },
+    {
+      "id": "002-mcq-24",
+      "type": "single",
+      "difficulty": "medium",
+      "bloomLevel": 3,
+      "question": "Ein Kunde sagt: 'Das neue System soll benutzerfreundlich sein'. Wie machst du daraus eine SMART-Anforderung?",
+      "options": [
+        "'Das System soll schön aussehen'",
+        "'Ein durchschnittlicher Nutzer soll ohne Schulung in max. 10 Minuten eine Rechnung erstellen können (gemessen im Usability-Test mit 10 Probanden)'",
+        "'Das System muss Spaß machen'",
+        "'Benutzerfreundlich' ist Anforderung genug"
+      ],
+      "answer": 1,
+      "explanation": "**Richtig ist B**: **SMART** = **S**pezifisch, **M**essbar, **A**kzeptiert, **R**ealistisch, **T**erminiert. 'Benutzerfreundlich' ist subjektiv! **B ist messbar**: Stoppuhr + 10 Testpersonen → klare Ja/Nein-Aussage. **A/C sind auch subjektiv** ('schön', 'Spaß'). **D ist falsch**: Zu vage → Entwickler/Tester können nichts damit anfangen. **Weitere Beispiele für SMART**: 'Max. 3 Klicks zum Ziel', 'Fehlermeldungen in verständlichem Deutsch', 'System Usability Scale (SUS) Score >80'. **AP1-Praxis**: Aus jedem schwammigen Begriff eine messbare Anforderung formulieren!"
+    },
+    {
+      "id": "002-mcq-25",
+      "type": "single",
+      "difficulty": "medium",
+      "bloomLevel": 2,
+      "question": "Was ist 'Scope Creep'?",
+      "options": [
+        "Ein Software-Bug, der sich schleichend ausbreitet",
+        "Der schleichende Zuwachs neuer Anforderungen ohne Anpassung von Budget/Deadline (führt oft zum Projektscheitern)",
+        "Eine Methode zur agilen Entwicklung",
+        "Ein Sicherheitsleck im Netzwerk"
+      ],
+      "answer": 1,
+      "explanation": "**Richtig ist B**: **Scope Creep** (auch: Requirements Creep) = Kunde will ständig 'nur noch kurz' Kleinigkeiten dazu. Einzeln klingt jede harmlos, aber summiert → **Projekt sprengt Budget/Zeit**. **Beispiel**: 'Könnten wir nicht auch noch...', 'Wenn wir schon dabei sind...', 'Das ist doch schnell gemacht...'. **Gegenmaßnahme**: **Change-Request-Prozess** (jede neue Anforderung wird bewertet → neue Kosten/Zeit ausgehandelt → Unterschrift). **A/C/D sind falsch**. **AP1-Relevanz**: Wird nicht direkt gefragt, aber zeigt Praxis-Verständnis, wenn du es erwähnst ('Um Scope Creep zu vermeiden, dokumentieren wir alle Anforderungen im Pflichtenheft')."
+    },
+    {
+      "id": "002-mcq-26",
+      "type": "single",
+      "difficulty": "easy",
+      "bloomLevel": 1,
+      "question": "Welcher Stakeholder hat typischerweise das größte Interesse an DSGVO-Konformität?",
+      "options": [
+        "Marketing-Abteilung",
+        "Datenschutzbeauftragter",
+        "Hausmeister",
+        "Vertrieb"
+      ],
+      "answer": 1,
+      "explanation": "**Richtig ist B**: Der **Datenschutzbeauftragte** (DSB) ist gesetzlich verpflichtet (DSGVO Art. 37-39), Datenschutz zu überwachen. Bei Verstößen drohen Bußgelder bis 20 Mio. € oder 4% des Jahresumsatzes! **A/D** (Marketing/Vertrieb) wollen oft MEHR Daten sammeln → Interessenkonflikt mit DSB. **C ist Ablenkung**. **Weitere Stakeholder bei Datenschutz**: Geschäftsführung (haftet!), IT-Admin (setzt technisch um), Betriebsrat (bei Mitarbeiterdaten). **AP1-Kontext**: Wenn 'personenbezogene Daten' oder 'Kundendaten' im Text → DSGVO-Anforderungen nennen (Verschlüsselung, Backup, Löschkonzept)!"
     }
   ],
   "fill_blank": [
     {
-      "id": "2_f_1",
-      "text": "Im [blank] (vom Auftraggeber) steht, WAS gefordert ist. Es dient als Anfragegrundlage. Daraufhin erstellt der Auftragnehmer das [blank], in dem steht, WIE er die Anforderungen technisch lösen will. Dieses Dokument wird oft Teil des [blank].",
+      "id": "002-fb-1",
+      "difficulty": "easy",
+      "bloomLevel": 2,
+      "text": "Im {{0}} (vom Auftraggeber) steht, WAS gefordert ist. Daraufhin erstellt der Auftragnehmer das {{1}}, in dem steht, WIE er die Anforderungen lösen will. Dieses Dokument wird Teil des {{2}}.",
       "blanks": [
-        { "index": 0, "correct": "Lastenheft", "options": ["Pflichtenheft", "Lastenheft", "Angebot"] },
-        { "index": 1, "correct": "Pflichtenheft", "options": ["Lastenheft", "Protokoll", "Pflichtenheft"] },
-        { "index": 2, "correct": "Vertrags", "options": ["Brainstormings", "Vertrags", "Marketings"] }
+        {
+          "options": ["Pflichtenheft", "Lastenheft", "Angebot"],
+          "correct": "Lastenheft"
+        },
+        {
+          "options": ["Lastenheft", "Protokoll", "Pflichtenheft"],
+          "correct": "Pflichtenheft"
+        },
+        {
+          "options": ["Brainstormings", "Vertrags", "Marketings"],
+          "correct": "Vertrags"
+        }
       ],
-      "explanation": "Die Kette ist strikt: Lastenheft -> Pflichtenheft -> Vertrag. Merkhilfe: Last = Was drückt den Kunden? Pflicht = Was ist meine Pflicht als ITler?"
+      "explanation": "Die Kette ist: **Lastenheft** (Kunde beschreibt Problem) → **Pflichtenheft** (Dienstleister beschreibt Lösung) → **Vertrag** (rechtlich bindend). **Eselsbrücke**: **L**ast des Kunden, **P**flicht des Profis. Nach Vertrags-Unterschrift beginnt die Umsetzung."
     },
     {
-      "id": "2_f_2",
-      "text": "Um Anforderungen zu priorisieren, nutzt man die [blank]-Methode. Ein Feature, das für die Gesetzeskonformität (z.B. DSGVO) zwingend nötig ist, erhält die Priorität [blank]. Ein Wunsch wie 'Dunkelmodus', der nett wäre aber nicht kritisch ist, ist eher ein [blank].",
+      "id": "002-fb-2",
+      "difficulty": "easy",
+      "bloomLevel": 2,
+      "text": "Um Anforderungen zu priorisieren nutzt man die {{0}}-Methode. Ein Feature, das für DSGVO-Konformität nötig ist, erhält Priorität {{1}}. Ein 'Dunkelmodus' (nett, aber nicht kritisch) ist ein {{2}}.",
       "blanks": [
-        { "index": 0, "correct": "MoSCoW", "options": ["SMART", "MoSCoW", "Wasserfall"] },
-        { "index": 1, "correct": "Must have", "options": ["Should have", "Could have", "Must have"] },
-        { "index": 2, "correct": "Could have", "options": ["Must have", "Won't have", "Could have"] }
+        {
+          "options": ["SMART", "MoSCoW", "Wasserfall"],
+          "correct": "MoSCoW"
+        },
+        {
+          "options": ["Should have", "Could have", "Must have"],
+          "correct": "Must have"
+        },
+        {
+          "options": ["Must have", "Won't have", "Could have"],
+          "correct": "Could have"
+        }
       ],
-      "explanation": "Gesetzliche Vorgaben sind IMMER 'Must Have' (Projektstopp bei Nichterfüllung). Komfortfunktionen sind oft 'Could Have' (Nice-to-have)."
+      "explanation": "**MoSCoW** = Must, Should, Could, Won't. **Gesetzliche Vorgaben** (DSGVO) sind immer **Must Have** (sonst illegal!). **Komfortfunktionen** (Dark Mode) sind **Could Have** (Nice-to-have, wird bei Budgetknappheit gestrichen)."
     },
     {
-      "id": "2_f_3",
-      "text": "In einem SMART-Ziel steht das 'T' für [blank]. Ein Beispiel wäre: 'Das System ist bis zum [blank] betriebsbereit zu installieren.'",
+      "id": "002-fb-3",
+      "difficulty": "easy",
+      "bloomLevel": 2,
+      "text": "In einem SMART-Ziel steht das 'T' für {{0}}. Ein Beispiel: 'Das System ist bis zum {{1}} betriebsbereit.' Das 'M' steht für {{2}}, z.B. 'Ladezeit max. 2 Sekunden'.",
       "blanks": [
-        { "index": 0, "correct": "Terminiert", "options": ["Teuer", "Terminiert", "Total"] },
-        { "index": 1, "correct": "31.12.2024", "options": ["nächstmöglichen", "31.12.2024", "Ende"] }
+        {
+          "options": ["Teuer", "Terminiert", "Total"],
+          "correct": "Terminiert"
+        },
+        {
+          "options": ["nächstmöglichen Termin", "31.12.2024", "Ende nächsten Jahres"],
+          "correct": "31.12.2024"
+        },
+        {
+          "options": ["Machbar", "Messbar", "Motivierend"],
+          "correct": "Messbar"
+        }
       ],
-      "explanation": "Terminiert heißt: Es gibt ein klares Datum. 'Bald' oder 'demnächst' ist nicht terminiert."
+      "explanation": "**SMART**: **S**pezifisch, **M**essbar, **A**kzeptiert, **R**ealistisch, **T**erminiert. **T**: Konkretes Datum, nicht 'bald' oder 'demnächst'. **M**: Objektiv prüfbar mit Stoppuhr/Zollstock/Waage. 'Schnell' ist NICHT messbar!"
+    },
+    {
+      "id": "002-fb-4",
+      "difficulty": "medium",
+      "bloomLevel": 3,
+      "text": "Bei 'Großen Dateien' und 'Multitasking' ist oft {{0}} (Arbeitsspeicher) der Flaschenhals. Bei '3D-Software' oder 'CAD' braucht man eine dedizierte {{1}}. Für 'Außendienst' ist ein {{2}}-Modem (z.B. LTE/5G) wichtig.",
+      "blanks": [
+        {
+          "options": ["GPU", "RAM", "SSD"],
+          "correct": "RAM"
+        },
+        {
+          "options": ["CPU", "GPU", "SSD"],
+          "correct": "GPU"
+        },
+        {
+          "options": ["WLAN", "Ethernet", "Mobilfunk"],
+          "correct": "Mobilfunk"
+        }
+      ],
+      "explanation": "**Hardware-Transfer-Regeln**: 'Große Dateien' → **RAM** (muss in Arbeitsspeicher geladen werden). '3D/CAD' → **GPU** (Grafikberechnung). 'Außendienst/unterwegs' → **Mobilfunk** (LTE/5G), weil kein WLAN verfügbar."
+    },
+    {
+      "id": "002-fb-5",
+      "difficulty": "medium",
+      "bloomLevel": 3,
+      "text": "{{0}} (Total Cost of Ownership) umfasst nicht nur den Kaufpreis, sondern auch {{1}}, Wartung und Entsorgung über die komplette {{2}}. Ein günstiger PC mit hohen Stromkosten kann langfristig teurer sein.",
+      "blanks": [
+        {
+          "options": ["ROI", "TCO", "KPI"],
+          "correct": "TCO"
+        },
+        {
+          "options": ["Marketing", "Betriebskosten", "Design"],
+          "correct": "Betriebskosten"
+        },
+        {
+          "options": ["Woche", "Garantiezeit", "Nutzungsdauer"],
+          "correct": "Nutzungsdauer"
+        }
+      ],
+      "explanation": "**TCO** = Total Cost of Ownership = Alle Kosten über Lebenszeit. **Beispiel**: Laptop für 1000€, hält 5 Jahre, 50W Stromverbrauch = TCO ~1150€ (150€ Strom). Laptop für 1200€, hält 5 Jahre, 25W = TCO ~1275€. Oft lohnt sich teureres Gerät mit niedrigerer TDP!"
+    },
+    {
+      "id": "002-fb-6",
+      "difficulty": "medium",
+      "bloomLevel": 2,
+      "text": "Eine {{0}} Anforderung beschreibt, WAS das System TUN muss (z.B. 'Rechnung drucken'). Eine {{1}} Anforderung beschreibt, WIE GUT es sein muss (z.B. '{{2}} unter 2 Sekunden').",
+      "blanks": [
+        {
+          "options": ["nicht-funktionale", "funktionale", "optionale"],
+          "correct": "funktionale"
+        },
+        {
+          "options": ["funktionale", "nicht-funktionale", "optionale"],
+          "correct": "nicht-funktionale"
+        },
+        {
+          "options": ["Preis", "Performance", "Design"],
+          "correct": "Performance"
+        }
+      ],
+      "explanation": "**Funktional** = Features/Funktionen. **Nicht-funktional** = Qualitätsmerkmale (Performance, Sicherheit, Verfügbarkeit, Usability). Beispiel: 'Nutzer kann Daten exportieren' (funktional). 'Export dauert max. 5 Sek.' (nicht-funktional/Performance)."
+    },
+    {
+      "id": "002-fb-7",
+      "difficulty": "medium",
+      "bloomLevel": 3,
+      "text": "Im {{0}}-Modell sind nur ~10% der Anforderungen sichtbar. Die restlichen 90% musst du durch {{1}} herausfinden. Typische W-Fragen sind: {{2}}? Wie läuft...? Warum brauchen Sie...?",
+      "blanks": [
+        {
+          "options": ["Wasserfall", "Eisberg", "V-Modell"],
+          "correct": "Eisberg"
+        },
+        {
+          "options": ["Raten", "Nachfragen", "Ignorieren"],
+          "correct": "Nachfragen"
+        },
+        {
+          "options": ["Wieviel kostet", "Beschreiben Sie", "Ja oder Nein"],
+          "correct": "Beschreiben Sie"
+        }
+      ],
+      "explanation": "**Eisberg-Modell**: Kunde sagt nur Offensichtliches ('Ich brauche PC'). **Versteckte Anforderungen** (Budget, Mobilität, Software, Netzwerk) musst DU durch **offene Fragen** ermitteln. **W-Fragen** (Was, Wer, Wie, Warum, Wann, Wo) sind besser als Ja/Nein-Fragen!"
+    },
+    {
+      "id": "002-fb-8",
+      "difficulty": "easy",
+      "bloomLevel": 2,
+      "text": "Bei der Stakeholder-Analyse identifizierst du verschiedene {{0}} (Interessengruppen). Die {{1}} fokussiert auf Wirtschaftlichkeit, der {{2}} auf Datenschutz und Mitarbeiterrechte, die IT-Abteilung auf Wartbarkeit.",
+      "blanks": [
+        {
+          "options": ["Kunden", "Stakeholder", "Lieferanten"],
+          "correct": "Stakeholder"
+        },
+        {
+          "options": ["Fachabteilung", "Geschäftsführung", "Marketing"],
+          "correct": "Geschäftsführung"
+        },
+        {
+          "options": ["Vertrieb", "Betriebsrat", "Controlling"],
+          "correct": "Betriebsrat"
+        }
+      ],
+      "explanation": "**Stakeholder** = Alle Personen/Gruppen mit Interesse am Projekt. **Geschäftsführung** = Geld-Brille (ROI, TCO). **Betriebsrat** = Arbeitnehmer-Schutz (keine Überwachung, Ergonomie). Konflikte sind normal (z.B. billig vs. leistungsstark)!"
+    },
+    {
+      "id": "002-fb-9",
+      "difficulty": "medium",
+      "bloomLevel": 3,
+      "text": "Ein {{0}}-Laptop ist für Business oft ungeeignet, weil sie {{1}} (Lüfter), schwer, kurze Akkulaufzeit haben und meist nur Windows {{2}} (keine Domäne). Besser: Business-Geräte wie ThinkPad.",
+      "blanks": [
+        {
+          "options": ["Business", "Gaming", "Ultrabook"],
+          "correct": "Gaming"
+        },
+        {
+          "options": ["leise", "laut", "keine"],
+          "correct": "laut"
+        },
+        {
+          "options": ["Pro", "Home", "Server"],
+          "correct": "Home"
+        }
+      ],
+      "explanation": "**Gaming-Laptops** für Business = schlechte Idee! **Probleme**: (1) **Laute Lüfter** (stört im Büro), (2) schwer (2,5+ kg), (3) kurze Akkulaufzeit (<4h), (4) oft Windows **Home** (kein Domänenbeitritt), (5) RGB-Beleuchtung unprofessionell, (6) nur 1 Jahr Garantie. **Business-Laptops**: ThinkPad, EliteBook, Latitude."
+    },
+    {
+      "id": "002-fb-10",
+      "difficulty": "medium",
+      "bloomLevel": 3,
+      "text": "{{0}} bedeutet: schleichender Zuwachs neuer Anforderungen ohne Budget-/Zeitanpassung. Gegenmaßnahme: Jede neue Anforderung als {{1}} dokumentieren und neu verhandeln. Das {{2}} ist die Basis für Abnahme.",
+      "blanks": [
+        {
+          "options": ["Agile Methode", "Scope Creep", "Wasserfall"],
+          "correct": "Scope Creep"
+        },
+        {
+          "options": ["Bug", "Change Request", "Feature"],
+          "correct": "Change Request"
+        },
+        {
+          "options": ["Lastenheft", "Meeting-Protokoll", "Pflichtenheft"],
+          "correct": "Pflichtenheft"
+        }
+      ],
+      "explanation": "**Scope Creep** = 'Könnten wir nicht noch...'-Syndrom. Einzeln harmlos, summiert → Projekt scheitert. **Change Request** = Formeller Prozess: Neue Anforderung → bewerten → neue Kosten/Zeit → Unterschrift. **Pflichtenheft** definiert Leistungsumfang → Basis für Abnahme."
     }
   ],
   "match": [
     {
-      "id": "2_ma_1",
-      "question": "Welcher Stakeholder hat welches primäre Interesse? Ordne zu.",
-      "left": ["Geschäftsführung", "Betriebsrat", "IT-Administrator", "Endanwender"],
-      "right": ["Investitionssicherheit & ROI", "Keine unnötige Mitarbeiterüberwachung", "Wartbarkeit & Sicherheit", "Einfache Bedienbarkeit (Usability)"],
-      "matches": [
-        { "l": 0, "r": 0 },
-        { "l": 1, "r": 1 },
-        { "l": 2, "r": 2 },
-        { "l": 3, "r": 3 }
+      "id": "002-match-1",
+      "difficulty": "medium",
+      "bloomLevel": 3,
+      "question": "Ordne den Stakeholdern ihre typischen Hauptinteressen zu:",
+      "left": ["Geschäftsführung", "Betriebsrat", "IT-Administrator", "Fachabteilung"],
+      "right": [
+        "Wirtschaftlichkeit, TCO, ROI",
+        "Keine Mitarbeiterüberwachung, Ergonomie",
+        "Wartbarkeit, Sicherheit, Standardisierung",
+        "Leistung, Funktionalität, Usability"
       ],
-      "explanation": "Jeder Stakeholder blickt anders auf das System. Der Betriebsrat (Überwachung) und die GF (Kosten) sind oft die härtesten Kritiker."
+      "matches": [
+        "Wirtschaftlichkeit, TCO, ROI",
+        "Keine Mitarbeiterüberwachung, Ergonomie",
+        "Wartbarkeit, Sicherheit, Standardisierung",
+        "Leistung, Funktionalität, Usability"
+      ],
+      "explanation": "**GF** = Geld-Brille (ROI = Return on Investment). **Betriebsrat** = Arbeitnehmer-Schutz (§87 BetrVG). **IT-Admin** = Will Support einfach halten (gleiche Modelle!). **Fachabteilung** = Will, dass ihre Arbeit funktioniert. **Konflikte**: GF will billig, Fach will leistungsstark → Dein Job: Kompromiss!"
     },
     {
-      "id": "2_ma_2",
-      "question": "Ordne die Qualitätskriterien für Anforderungen zu.",
-      "left": ["Vollständig", "Widerspruchsfrei", "Prüfbar", "Lösungsneutral"],
+      "id": "002-match-2",
+      "difficulty": "medium",
+      "bloomLevel": 3,
+      "question": "Ordne die Signalwörter den Hardware-Anforderungen zu:",
+      "left": ["Große Dateien, Multitasking", "3D/CAD/Rendering", "Außendienst, unterwegs", "Videokonferenz"],
       "right": [
-        "Es fehlen keine notwendigen Infos.",
-        "Anforderung A verbietet nicht Anforderung B.",
-        "Man kann objektiv testen, ob sie erfüllt ist.",
-        "Beschreibt das 'Was', nicht das technische 'Wie'."
+        "Viel RAM (z.B. 32 GB)",
+        "Dedizierte GPU (z.B. NVIDIA RTX)",
+        "LTE/5G + langer Akku + Blickschutz",
+        "Gute Webcam + Headset"
       ],
       "matches": [
-        { "l": 0, "r": 0 },
-        { "l": 1, "r": 1 },
-        { "l": 2, "r": 2 },
-        { "l": 3, "r": 3 }
+        "Viel RAM (z.B. 32 GB)",
+        "Dedizierte GPU (z.B. NVIDIA RTX)",
+        "LTE/5G + langer Akku + Blickschutz",
+        "Gute Webcam + Headset"
       ],
-      "explanation": "Qualitätskriterien verhindern teure Missverständnisse später im Projekt."
+      "explanation": "**RAM**: Dateien müssen in Arbeitsspeicher geladen werden. **GPU**: 3D-Berechnungen sind grafikintensiv. **Mobilfunk**: Kein WLAN im Auto/Zug. **Webcam**: Integrierte Laptop-Cams oft schlecht (720p) → mind. Full-HD empfehlen."
+    },
+    {
+      "id": "002-match-3",
+      "difficulty": "medium",
+      "bloomLevel": 2,
+      "question": "Ordne die Qualitätskriterien für Anforderungen ihren Bedeutungen zu:",
+      "left": ["Vollständig", "Widerspruchsfrei", "Prüfbar", "Lösungsneutral"],
+      "right": [
+        "Es fehlen keine notwendigen Informationen",
+        "Anforderung A verbietet nicht Anforderung B",
+        "Man kann objektiv testen, ob erfüllt",
+        "Beschreibt 'Was', nicht technisches 'Wie'"
+      ],
+      "matches": [
+        "Es fehlen keine notwendigen Informationen",
+        "Anforderung A verbietet nicht Anforderung B",
+        "Man kann objektiv testen, ob erfüllt",
+        "Beschreibt 'Was', nicht technisches 'Wie'"
+      ],
+      "explanation": "**Vollständig**: Alle relevanten Aspekte erfasst. **Widerspruchsfrei**: 'Soll billig sein' + 'Soll High-End-Grafik' = Widerspruch! **Prüfbar**: 'Max. 2 Sek. Ladezeit' → mit Stoppuhr messbar. **Lösungsneutral**: 'System muss 200 Datensätze/Sek. verarbeiten' (neutral) vs. 'MySQL 8.0 installieren' (nicht neutral)."
+    },
+    {
+      "id": "002-match-4",
+      "difficulty": "easy",
+      "bloomLevel": 2,
+      "question": "Ordne die MoSCoW-Prioritäten ihren Definitionen zu:",
+      "left": ["Must have", "Should have", "Could have", "Won't have"],
+      "right": [
+        "Ohne das ist System nutzlos/illegal",
+        "Sehr wichtig, aber notfalls verzichtbar",
+        "Nice-to-have, wird bei Knappheit gestrichen",
+        "Bewusst ausgeschlossen (für jetzt)"
+      ],
+      "matches": [
+        "Ohne das ist System nutzlos/illegal",
+        "Sehr wichtig, aber notfalls verzichtbar",
+        "Nice-to-have, wird bei Knappheit gestrichen",
+        "Bewusst ausgeschlossen (für jetzt)"
+      ],
+      "explanation": "**Must**: Grundfunktion oder Gesetz (DSGVO). **Should**: Komfort-Feature (Dockingstation). **Could**: Luxus (RGB-Beleuchtung). **Won't**: Explizit NICHT in diesem Release (Erwartungsmanagement!). **Eselsbrücke**: **M**ama **S**agt: **C**hippendales **W**aren gestern!"
+    },
+    {
+      "id": "002-match-5",
+      "difficulty": "easy",
+      "bloomLevel": 2,
+      "question": "Ordne die Dokumenttypen ihren Erstellern zu:",
+      "left": ["Lastenheft", "Pflichtenheft", "Angebot", "Abnahmeprotokoll"],
+      "right": [
+        "Auftraggeber (Kunde)",
+        "Auftragnehmer (Dienstleister)",
+        "Auftragnehmer (vor Vertragsschluss)",
+        "Beide gemeinsam (bei Projektende)"
+      ],
+      "matches": [
+        "Auftraggeber (Kunde)",
+        "Auftragnehmer (Dienstleister)",
+        "Auftragnehmer (vor Vertragsschluss)",
+        "Beide gemeinsam (bei Projektende)"
+      ],
+      "explanation": "**Lastenheft**: Kunde beschreibt, WAS er will. **Pflichtenheft**: Dienstleister beschreibt, WIE er's umsetzt (wird Teil des Vertrags). **Angebot**: Dienstleister schätzt Kosten/Zeit (vor Zusage). **Abnahmeprotokoll**: Gemeinsame Prüfung, ob Anforderungen erfüllt."
+    },
+    {
+      "id": "002-match-6",
+      "difficulty": "easy",
+      "bloomLevel": 2,
+      "question": "Ordne die SMART-Kriterien ihren Bedeutungen zu:",
+      "left": ["Spezifisch", "Messbar", "Akzeptiert", "Realistisch", "Terminiert"],
+      "right": [
+        "Konkret formuliert, nicht schwammig",
+        "Objektiv prüfbar (Stoppuhr/Waage/Zähler)",
+        "Von allen Beteiligten getragen",
+        "Technisch/wirtschaftlich machbar",
+        "Mit Deadline versehen"
+      ],
+      "matches": [
+        "Konkret formuliert, nicht schwammig",
+        "Objektiv prüfbar (Stoppuhr/Waage/Zähler)",
+        "Von allen Beteiligten getragen",
+        "Technisch/wirtschaftlich machbar",
+        "Mit Deadline versehen"
+      ],
+      "explanation": "**Spezifisch**: 'Schnell' → 'Max. 2 Sek.'. **Messbar**: Mit Werkzeug prüfbar. **Akzeptiert**: Alle Stakeholder einverstanden. **Realistisch**: Nicht 'System antwortet in 0,001 ms' (unmöglich). **Terminiert**: '31.12.2024', nicht 'bald'."
     }
   ],
   "order": [
     {
-      "id": "2_o_1",
-      "question": "Bringe den idealtypischen Ablauf einer IT-Beschaffung in die richtige Reihenfolge.",
+      "id": "002-order-1",
+      "difficulty": "easy",
+      "bloomLevel": 2,
+      "question": "Bringe den idealtypischen Ablauf einer IT-Beschaffung in die richtige Reihenfolge:",
       "items": [
         "Bedarf entsteht & Ist-Analyse",
-        "Lastenheft erstellen (Kunde)",
+        "Lastenheft erstellen (Auftraggeber)",
         "Angebote einholen & vergleichen",
-        "Pflichtenheft erstellen (AN) & Vertrag",
+        "Pflichtenheft erstellen & Vertrag schließen",
         "Umsetzung / Lieferung",
         "Abnahmetest & Übergabe"
       ],
-      "correctOrder": [0, 1, 2, 3, 4, 5],
-      "explanation": "Erst analysieren, dann Wünsche formulieren (Last), dann Partner suchen, dann Lösung fixieren (Pflicht), dann tun, dann prüfen."
+      "correctOrder": [1, 2, 3, 4, 5, 6],
+      "explanation": "**Ablauf**: (1) Problem erkennen + Ist-Zustand analysieren. (2) Kunde schreibt **Lastenheft** (WAS brauche ich?). (3) Dienstleister senden Angebote. (4) Auftrag wird erteilt, Dienstleister erstellt **Pflichtenheft** (WIE setze ich's um?) → Vertrag. (5) Umsetzung/Beschaffung. (6) Gemeinsame Prüfung gegen Pflichtenheft → Abnahmeprotokoll."
+    },
+    {
+      "id": "002-order-2",
+      "difficulty": "medium",
+      "bloomLevel": 3,
+      "question": "Bringe die Ebenen der Anforderungs-Ableitung in die logische Reihenfolge:",
+      "items": [
+        "Business-Anforderung (Warum? → Geschäftsziel)",
+        "User-Anforderung (Was tut der Nutzer?)",
+        "System-Anforderung (Welche Technik?)",
+        "Hardware-Auswahl konkret (Dell OptiPlex 7090...)"
+      ],
+      "correctOrder": [1, 2, 3, 4],
+      "explanation": "**Progressive Verfeinerung**: (1) **Business**: 'Umsatz steigern' (Warum machen wir das?). (2) **User**: 'Außendienstler berät Kunden vor Ort' (Was tut er?). (3) **System**: 'Mobiles Gerät mit LTE + CRM-Zugriff' (Welche Technik?). (4) **Konkret**: 'Lenovo ThinkPad X1 Carbon mit LTE-Modul' (Produkt). **AP1-Praxis**: Text gibt oft (1)+(2), DU musst (3) ableiten!"
+    },
+    {
+      "id": "002-order-3",
+      "difficulty": "hard",
+      "bloomLevel": 4,
+      "question": "Bringe die Schritte der systematischen Fehleranalyse bei Anforderungsproblemen in die richtige Reihenfolge:",
+      "items": [
+        "Symptom erfassen (Was beschwert sich der Kunde?)",
+        "Hypothese bilden (Welche Anforderung wurde übersehen?)",
+        "Test durchführen (Nachfragen/Messungen)",
+        "Ergebnis auswerten (Hypothese bestätigt?)",
+        "Lösung implementieren (Anforderung anpassen)",
+        "Kontrolle (Funktioniert es jetzt?)"
+      ],
+      "correctOrder": [1, 2, 3, 4, 5, 6],
+      "explanation": "**6-Schritte-Prozess**: (1) **Symptom**: 'Laptop zu langsam bei Excel'. (2) **Hypothese**: Zu wenig RAM? (3) **Test**: Taskmanager → RAM bei 98%. (4) **Auswertung**: Ja, RAM ist Problem. (5) **Lösung**: RAM-Upgrade von 8GB → 16GB. (6) **Kontrolle**: Datei öffnet jetzt in 5 Sek. statt 45 Sek. → Erfolg!"
+    },
+    {
+      "id": "002-order-4",
+      "difficulty": "easy",
+      "bloomLevel": 2,
+      "question": "Bringe die MoSCoW-Prioritäten in die Reihenfolge von 'dringendsten' (muss umgesetzt werden) bis 'am wenigsten dringend':",
+      "items": [
+        "Must have",
+        "Should have",
+        "Could have",
+        "Won't have"
+      ],
+      "correctOrder": [1, 2, 3, 4],
+      "explanation": "**Must** = Kritisch (ohne das: Systemausfall oder illegal). **Should** = Wichtig (ohne das: unbequem, aber funktioniert). **Could** = Nice-to-have (ohne das: egal). **Won't** = Bewusst nicht in diesem Release. **Bei Budget-Knappheit** streicht man in umgekehrter Reihenfolge: Erst Won't (eh nicht geplant), dann Could, dann Should, Must NIE!"
+    },
+    {
+      "id": "002-order-5",
+      "difficulty": "hard",
+      "bloomLevel": 3,
+      "question": "Bringe die typischen Projektphasen im V-Modell (Anforderungsmanagement-Fokus) in die korrekte Reihenfolge:",
+      "items": [
+        "Anforderungsdefinition (Lastenheft)",
+        "Grobentwurf (Systemarchitektur)",
+        "Feinentwurf (Komponentendesign)",
+        "Implementierung (Programmierung)",
+        "Komponententest",
+        "Systemtest",
+        "Abnahmetest"
+      ],
+      "correctOrder": [1, 2, 3, 4, 5, 6, 7],
+      "explanation": "**V-Modell** (links abwärts = Spezifikation, rechts aufwärts = Test): (1) **Anforderungen** → dokumentieren. (2) **Grobentwurf** → Wie ist System aufgebaut? (3) **Feinentwurf** → Wie ist jede Komponente aufgebaut? (4) **Implementierung** → Coden. (5) **Komponententest** (Unit-Tests). (6) **Systemtest** (alles zusammen). (7) **Abnahmetest** (gegen Lastenheft prüfen). Tests prüfen jeweils die gegenüberliegende Spezifikations-Ebene!"
+    },
+    {
+      "id": "002-order-6",
+      "difficulty": "medium",
+      "bloomLevel": 4,
+      "question": "Du hast 5 Laptop-Modelle zur Auswahl für einen Außendienstler. Bringe die Auswahlkriterien in die sinnvolle Prüfreihenfolge:",
+      "items": [
+        "K.O.-Kriterien prüfen (LTE vorhanden? Windows Pro? Im Budget?)",
+        "Leistungsdaten vergleichen (CPU, RAM, SSD)",
+        "Akkulaufzeit & Gewicht vergleichen",
+        "Garantie & Support-Optionen prüfen (TCO!)",
+        "Finale Entscheidung & Begründung dokumentieren"
+      ],
+      "correctOrder": [1, 2, 3, 4, 5],
+      "explanation": "**Systematische Auswahl**: (1) **K.O.-Kriterien** (Must-Haves) → Alles ohne LTE/Windows Pro fliegt raus. (2) **Leistung** → Reicht für Software? (3) **Mobilität** → Akku >8h? Gewicht <1,5kg? (4) **TCO** → 3 Jahre Garantie besser als 1 Jahr! (5) **Dokumentieren** → Warum Modell X? → Nachvollziehbar für Prüfer/Chef. **AP1-Tipp**: Immer begründen, nie nur aufzählen!"
     }
   ],
   "true_false": [
     {
-      "id": "2_tf_1",
+      "id": "002-tf-1",
+      "difficulty": "easy",
+      "bloomLevel": 2,
       "statement": "Eine Anforderung 'Das System soll gut aussehen' ist eine valide SMART-Anforderung.",
       "answer": "false",
-      "explanation": "'Gut aussehen' ist subjektiv und nicht messbar. Besser: 'CI-Farben #123456 nutzen'."
+      "explanation": "**Falsch!** 'Gut aussehen' ist subjektiv und nicht messbar → Verstößt gegen SMART (**M**essbar). **Besser**: 'Die CI-Farben #1A2B3C und #FFFFFF werden verwendet' oder 'System Usability Scale (SUS) Score >80 bei Nutzertests'."
     },
     {
-      "id": "2_tf_2",
-      "statement": "Im Lastenheft sollte man bereits festlegen, welche CPU-Marke verbaut wird, auch wenn es technisch egal ist.",
+      "id": "002-tf-2",
+      "difficulty": "medium",
+      "bloomLevel": 2,
+      "statement": "Im Lastenheft sollte man festlegen, welche CPU-Marke verbaut wird, auch wenn Intel oder AMD technisch gleichwertig wären.",
       "answer": "false",
-      "explanation": "Das Lastenheft sollte 'Lösungsneutral' sein. Wenn Intel oder AMD egal ist, darf man es nicht einschränken (Wettbewerb!)."
-    },
-     {
-      "id": "2_tf_3",
-      "statement": "Die Beobachtung von Arbeitsabläufen (Shadowing) kann Diskrepanzen zwischen 'Wunsch' und 'Realität' aufdecken.",
-      "answer": "true",
-      "explanation": "Nutzer sagen oft A, tun aber B. Zuschauen hilft, den *echten* Bedarf zu erkennen."
+      "explanation": "**Falsch!** Das Lastenheft soll **lösungsneutral** sein (beschreibt WAS, nicht WIE). Unnötige Einschränkungen (Marken-Nennung) schaden: (1) Wettbewerbsnachteil (nur 1 Anbieter), (2) Vergaberecht-Verstoß bei öffentlichen Ausschreibungen. **Richtig**: 'CPU mit mind. 6 Kernen, 3,5 GHz Turbo' (neutral)."
     },
     {
-      "id": "2_tf_4",
-      "statement": "Funktionale Anforderungen beschreiben, was das System TUN muss (z.B. 'Rechnung drucken').",
+      "id": "002-tf-3",
+      "difficulty": "medium",
+      "bloomLevel": 3,
+      "statement": "Die Beobachtung von Arbeitsabläufen (Shadowing/Contextual Inquiry) kann Diskrepanzen zwischen 'Wunsch' und 'Realität' aufdecken.",
       "answer": "true",
-      "explanation": "Korrekt. Das Gegenteil sind nicht-funktionale Anforderungen (Qualität, Speed, Sicherheit)."
+      "explanation": "**Richtig!** Nutzer sagen oft A, tun aber B. **Beispiel**: 'Ich brauche 3 Monitore' (Aussage), aber beim Zuschauen nutzt er nur 1 davon aktiv → 2 würden reichen. **Shadowing** = als Schatten mitlaufen + beobachten. Deckt versteckte Anforderungen auf!"
+    },
+    {
+      "id": "002-tf-4",
+      "difficulty": "easy",
+      "bloomLevel": 1,
+      "statement": "Funktionale Anforderungen beschreiben, WAS das System TUN muss (z.B. 'Rechnung drucken').",
+      "answer": "true",
+      "explanation": "**Richtig!** **Funktionale Anforderung** = Features/Funktionen (Was kann es?). **Nicht-funktionale Anforderung** = Qualität (Wie gut? → Performance, Sicherheit, Verfügbarkeit, Usability). Beispiel: 'Nutzer kann Rechnung drucken' (funktional). 'Druck dauert max. 10 Sek.' (nicht-funktional/Performance)."
+    },
+    {
+      "id": "002-tf-5",
+      "difficulty": "medium",
+      "bloomLevel": 3,
+      "statement": "Gaming-Laptops sind für Business-Anwendungen ideal, weil sie besonders leistungsstark sind.",
+      "answer": "false",
+      "explanation": "**Falsch!** Gaming-Laptops haben zwar viel Power, aber massive **Nachteile für Business**: (1) Laut (Lüfter stört im Büro), (2) schwer (2,5+ kg), (3) kurze Akkulaufzeit (<4h), (4) meist Windows Home (keine Domäne), (5) RGB unprofessionell, (6) kurze Garantie (1 Jahr). **Business-Laptops** sind besser optimiert!"
+    },
+    {
+      "id": "002-tf-6",
+      "difficulty": "medium",
+      "bloomLevel": 3,
+      "statement": "Bei 'Außendienst' als Arbeitsort sollte man automatisch an LTE-Modem, langen Akku und Blickschutzfilter denken.",
+      "answer": "true",
+      "explanation": "**Richtig!** **Außendienst** = mobiles Szenario. **Signalwort-Regel**: (1) **LTE/5G** (kein WLAN im Auto/Zug verfügbar), (2) **Langer Akku** (>8h, keine Steckdose), (3) **Blickschutzfilter** (Datenschutz im Café/Zug), (4) Bonus: Robustes Gehäuse (MIL-STD-810), Verschlüsselung (TPM). **AP1-Standard-Frage**!"
+    },
+    {
+      "id": "002-tf-7",
+      "difficulty": "easy",
+      "bloomLevel": 2,
+      "statement": "Das Pflichtenheft wird vom Kunden erstellt und beschreibt seine Anforderungen.",
+      "answer": "false",
+      "explanation": "**Falsch – verwechselt!** **Lastenheft** = vom **Kunden** (WAS will ich?). **Pflichtenheft** = vom **Dienstleister** (WIE setze ich's um?). **Eselsbrücke**: **L**ast des Kunden, **P**flicht des Profis. Diese Verwechslung ist DER Klassiker in Prüfungen!"
+    },
+    {
+      "id": "002-tf-8",
+      "difficulty": "medium",
+      "bloomLevel": 2,
+      "statement": "TCO (Total Cost of Ownership) beinhaltet nur den Kaufpreis der Hardware.",
+      "answer": "false",
+      "explanation": "**Falsch!** TCO = ALLE Kosten über Lebensdauer: (1) **Kaufpreis**, (2) **Betriebskosten** (Strom), (3) **Wartung/Reparaturen**, (4) **Software-Lizenzen**, (5) **Support-Aufwand**, (6) **Entsorgung**. Oft lohnt sich teureres Gerät mit niedrigerem TCO!"
+    },
+    {
+      "id": "002-tf-9",
+      "difficulty": "medium",
+      "bloomLevel": 3,
+      "statement": "Wenn ein Kunde sagt 'Das System muss schnell sein', ist das eine ausreichend präzise Anforderung für die Umsetzung.",
+      "answer": "false",
+      "explanation": "**Falsch!** 'Schnell' ist **subjektiv** und nicht **messbar** (verstößt gegen SMART). **Richtige Formulierung**: 'Seitenaufbau in max. 2 Sekunden bei 100 gleichzeitigen Nutzern' oder 'Rechenvorgang in max. 5 Sekunden' → objektiv mit Stoppuhr prüfbar!"
+    },
+    {
+      "id": "002-tf-10",
+      "difficulty": "medium",
+      "bloomLevel": 3,
+      "statement": "Bei 'CAD-Software' oder '3D-Modellierung' braucht man immer eine dedizierte Grafikkarte (GPU), Onboard-Chips reichen nicht.",
+      "answer": "true",
+      "explanation": "**Richtig!** CAD/3D-Software ist **GPU-intensiv**. **Onboard-Grafikchips** (Intel UHD, AMD Vega) sind für 2D-Büroarbeit okay, aber für 3D katastrophal langsam (Ruckeln/Abstürze). **Empfehlung**: NVIDIA Quadro/RTX oder AMD Radeon Pro (zertifiziert für CAD). **Signalwort-Regel**: '3D/CAD/Rendering' → dedizierte GPU!"
+    },
+    {
+      "id": "002-tf-11",
+      "difficulty": "medium",
+      "bloomLevel": 2,
+      "statement": "Der Betriebsrat hat bei IT-Systemen, die Mitarbeiter überwachen könnten, ein Mitbestimmungsrecht (§87 BetrVG).",
+      "answer": "true",
+      "explanation": "**Richtig!** §87 Abs. 1 Nr. 6 BetrVG: Betriebsrat hat Mitbestimmung bei technischen Einrichtungen, die zur **Überwachung von Verhalten oder Leistung** geeignet sind (z.B. Keylogger, Zeiterfassung, GPS-Tracking). **Praxis**: Betriebsvereinbarung nötig!"
+    },
+    {
+      "id": "002-tf-12",
+      "difficulty": "easy",
+      "bloomLevel": 1,
+      "statement": "MoSCoW steht für: Must have, Should have, Could have, Won't have.",
+      "answer": "true",
+      "explanation": "**Richtig!** MoSCoW = Priorisierungsmethode für Anforderungen. **Must** = kritisch (ohne das: Systemausfall). **Should** = wichtig (ohne das: unbequem). **Could** = Nice-to-have. **Won't** = bewusst NICHT in diesem Release (Erwartungsmanagement). **Eselsbrücke**: **M**ama **S**agt: **C**hippendales **W**aren gestern!"
+    },
+    {
+      "id": "002-tf-13",
+      "difficulty": "medium",
+      "bloomLevel": 3,
+      "statement": "Bei 'große Dateien bearbeiten' (z.B. 500-MB-Excel, Photoshop) ist meist RAM (Arbeitsspeicher) der Flaschenhals, nicht die Grafikkarte.",
+      "answer": "true",
+      "explanation": "**Richtig!** Große Dateien werden **in den RAM geladen**. Wenn RAM voll ist (z.B. nur 8 GB), lagert Windows auf langsame Festplatte aus (Paging) → extrem langsam. **Lösung**: RAM aufrüsten (16/32/64 GB). **Grafikkarte** hilft nur bei GPU-beschleunigten Aufgaben (3D, Video-Rendering), nicht bei Excel/Photoshop-Dateien öffnen."
+    },
+    {
+      "id": "002-tf-14",
+      "difficulty": "medium",
+      "bloomLevel": 3,
+      "statement": "Standardisierung (gleiche Gerätemodelle für alle) erhöht den Support-Aufwand, weil IT-Admins sich mit weniger Vielfalt langweilen.",
+      "answer": "false",
+      "explanation": "**Falsch – Gegenteil!** **Standardisierung SENKT Support-Aufwand**: (1) IT kennt Gerät in- und auswendig, (2) Ersatzteile lagerbar, (3) Treiber/Images einmal erstellen → auf alle anwenden, (4) Mengenrabatt, (5) einfachere Schulung. **Exotische Einzellösungen** = Support-Albtraum! **AP1-Buzzword**: 'Durch Standardisierung reduziert sich der Wartungsaufwand'."
+    },
+    {
+      "id": "002-tf-15",
+      "difficulty": "medium",
+      "bloomLevel": 3,
+      "statement": "Scope Creep bezeichnet den schleichenden Zuwachs neuer Anforderungen ohne Anpassung von Budget/Deadline und führt oft zum Projektscheitern.",
+      "answer": "true",
+      "explanation": "**Richtig!** **Scope Creep** = 'Könnten wir nicht noch kurz...'-Syndrom. Einzeln klingt jede Anforderung harmlos ('nur 1 Stunde extra'), aber summiert → Projekt überzieht massiv Budget/Zeit. **Gegenmaßnahme**: **Change-Request-Prozess** (jede neue Anforderung dokumentieren → bewerten → neue Kosten/Zeit aushandeln → Unterschrift)."
+    },
+    {
+      "id": "002-tf-16",
+      "difficulty": "hard",
+      "bloomLevel": 4,
+      "statement": "Ein Server-Raum braucht keine spezielle Kühlung, normale Raumtemperatur reicht aus.",
+      "answer": "false",
+      "explanation": "**Falsch!** Server produzieren massive **Abwärme** (z.B. 10 Server à 300W TDP = 3000W = ~10.000 BTU/h). Ohne Klimaanlage überhitzt der Raum → **Thermal Throttling** (CPU drosselt sich) oder **Hardware-Schäden**. **Anforderung**: Klimaanlage mit ausreichender Kühlleistung (BTU/h) + 20% Reserve. **Zusatz**: Redundantes Kühlgerät bei kritischen Systemen!"
     }
-  ]
+  ],
+  "_metadata": {
+    "conceptCoverage": {
+      "Eisberg-Problem & Grundlagen": {
+        "questionIds": ["002-mcq-1", "002-mcq-2", "002-mcq-18", "002-fb-7", "002-tf-3"],
+        "count": 5,
+        "difficulty": {"easy": 2, "medium": 2, "hard": 1}
+      },
+      "3 Ebenen der Anforderungen": {
+        "questionIds": ["002-mcq-21", "002-order-2", "002-tf-4"],
+        "count": 3,
+        "difficulty": {"easy": 1, "medium": 1, "hard": 1}
+      },
+      "Stakeholder-Analyse": {
+        "questionIds": ["002-mcq-6", "002-mcq-12", "002-mcq-15", "002-mcq-26", "002-fb-8", "002-match-1", "002-tf-11"],
+        "count": 7,
+        "difficulty": {"easy": 1, "medium": 3, "hard": 3}
+      },
+      "Lastenheft vs. Pflichtenheft": {
+        "questionIds": ["002-mcq-2", "002-mcq-19", "002-fb-1", "002-fb-10", "002-match-5", "002-order-1", "002-tf-2", "002-tf-7"],
+        "count": 8,
+        "difficulty": {"easy": 2, "medium": 3, "hard": 3}
+      },
+      "MoSCoW-Priorisierung": {
+        "questionIds": ["002-mcq-8", "002-fb-2", "002-match-4", "002-order-4", "002-tf-12"],
+        "count": 5,
+        "difficulty": {"easy": 2, "medium": 2, "hard": 1}
+      },
+      "Hardware-Transfer (Signalwörter)": {
+        "questionIds": ["002-mcq-3", "002-mcq-4", "002-mcq-5", "002-mcq-11", "002-mcq-17", "002-mcq-22", "002-fb-4", "002-match-2", "002-tf-6", "002-tf-10", "002-tf-13"],
+        "count": 11,
+        "difficulty": {"easy": 2, "medium": 6, "hard": 3}
+      },
+      "Fehleranalyse & Troubleshooting": {
+        "questionIds": ["002-mcq-14", "002-mcq-20", "002-mcq-23", "002-order-3", "002-tf-16"],
+        "count": 5,
+        "difficulty": {"easy": 0, "medium": 2, "hard": 3}
+      },
+      "AP1-Prüfungsstrategie & Best Practices": {
+        "questionIds": ["002-mcq-7", "002-mcq-9", "002-mcq-10", "002-mcq-16", "002-mcq-24", "002-mcq-25", "002-fb-3", "002-fb-5", "002-fb-6", "002-fb-9", "002-match-3", "002-match-6", "002-order-5", "002-order-6", "002-tf-1", "002-tf-5", "002-tf-8", "002-tf-9", "002-tf-14", "002-tf-15"],
+        "count": 20,
+        "difficulty": {"easy": 4, "medium": 10, "hard": 6}
+      }
+    },
+    "totalConcepts": 8,
+    "averageQuestionsPerConcept": 8.0,
+    "difficultyDistribution": {
+      "easy": 16,
+      "medium": 30,
+      "hard": 18
+    },
+    "bloomDistribution": {
+      "1 (Erinnern)": 5,
+      "2 (Verstehen)": 18,
+      "3 (Anwenden)": 27,
+      "4 (Analysieren)": 11,
+      "5 (Bewerten)": 3
+    }
+  }
 }

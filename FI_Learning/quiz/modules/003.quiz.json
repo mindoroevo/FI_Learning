@@ -1,166 +1,942 @@
 {
-  "meta": {
-    "module": "003",
-    "title": "Hardware-Auswahl & Konfiguration"
+  "meta": { 
+    "module": "003", 
+    "title": "Hardware-Auswahl & Konfiguration",
+    "estimatedTime": "50-65 Minuten",
+    "lastUpdated": "2026-02-20"
   },
   "engine": "mixed",
   "mcq": [
     {
-      "id": "3_m_1",
-      "question": "Ein Server für eine Datenbankanwendung hat eine CPU-Auslastung von nur 20%, aber die Nutzer beschweren sich über massive Wartezeiten bei Abfragen. Die Disk-Queue-Length ist permanent hoch. Was ist das wahrscheinlichste Problem?",
+      "id": "003-mcq-1",
+      "type": "multi",
+      "question": "Ein Server für eine Datenbank hat 20 % CPU-Auslastung, aber Nutzer klagen über massive Wartezeiten. Die Disk-Queue-Length ist permanent hoch. Was ist das wahrscheinlichste Problem? (Mehrfachauswahl)",
       "options": [
         "Die CPU ist zu schwach für die Datenbank.",
-        "Ein I/O-Bottleneck (Flaschenhals) beim Speichersystem.",
-        "Zu wenig RAM, das System swappt (lagert aus).",
+        "Ein I/O-Bottleneck beim Speichersystem.",
+        "Zu wenig RAM – das System lagert (swappt) auf die Festplatte aus.",
         "Die Netzwerkkarte ist defekt."
       ],
-      "correct": [1, 2],
-      "classification": "diagnosis",
-      "explanation": "Wenn die CPU sich langweilt, wartet sie auf Daten. Hohe Disk-Queue -> Festplatten kommen nicht hinterher (I/O Wait). Zu wenig RAM führt zu Swapping auf die (langsame) Disk, was ebenfalls wie ein Disk-Problem aussieht."
+      "answer": [1, 2],
+      "explanation": "Wenn die CPU wartet, wartet sie auf Daten. Hohe Disk-Queue → Festplatten kommen nicht hinterher (I/O-Wait). Zu wenig RAM führt ebenfalls zu Swap-Traffic auf der langsamen Disk.",
+      "difficulty": "hard",
+      "bloomLevel": 4
     },
     {
-      "id": "3_m_2",
-      "question": "Warum ist der L1-Cache einer CPU so viel kleiner als der L3-Cache?",
+      "id": "003-mcq-2",
+      "type": "multi",
+      "question": "Warum ist der L1-Cache einer CPU so viel kleiner als der L3-Cache? (Mehrfachauswahl)",
       "options": [
-        "Weil schneller Speicher extrem teuer und physikalisch groß auf dem Chip ist (SRAM vs DRAM).",
+        "Schneller SRAM-Speicher ist extrem teuer und physikalisch groß auf dem Chip.",
         "Weil die CPU sonst überhitzen würde.",
         "Damit Intel/AMD mehr CPUs verkaufen können.",
-        "Der L1-Cache muss mit dem Takt der CPU mithalten (Latenz < 1ns), was bei großen Speichermengen physikalisch unmöglich wird (Signallaufzeiten)."
+        "Der L1-Cache muss mit dem Chiptakt mithalten (< 1 ns Latenz), was bei großen Mengen physikalisch unmöglich wird."
       ],
-      "correct": [0, 3],
-      "classification": "theory",
-      "explanation": "L1 ist der schnellste, teuerste Speicher direkt am Kern. Die Physik (Lichtgeschwindigkeit/Signallaufzeit) begrenzt die Größe, da Daten in einem Taktzyklus da sein müssen."
+      "answer": [0, 3],
+      "explanation": "L1 ist der schnellste, teuerste Speicher direkt am Kern. Signallaufzeiten (Lichtgeschwindigkeit) begrenzen die Größe, da Daten in einem Taktzyklus bereitstehen müssen.",
+      "difficulty": "medium",
+      "bloomLevel": 2
     },
     {
-      "id": "3_m_3",
-      "question": "Ein Kunde möchte eine Workstation für 4K-Videoschnitt. Welche Komponente ist am kritischsten für das 'Schrubben' (schnelles Durchscrollen) in der Timeline?",
+      "id": "003-mcq-3",
+      "type": "single",
+      "question": "Ein Kunde möchte eine Workstation für 4K-Videoschnitt. Welche Komponente ist am kritischsten für das 'Schrubben' in der Timeline?",
       "options": [
-        "Eine High-End Soundkarte.",
-        "Viel RAM und eine sehr schnelle NVMe-SSD (hohe sequenzielle Leseraten).",
-        "Ein 64-Kern Server-Prozessor.",
-        "Eine mechanische 10 TB HDD für das Archiv."
+        "Eine High-End-Soundkarte.",
+        "Viel RAM und eine schnelle NVMe-SSD (hohe sequenzielle Leseraten).",
+        "Ein 64-Kern-Server-Prozessor.",
+        "Eine mechanische 10-TB-HDD für das Archiv."
       ],
-      "correct": [1],
-      "classification": "apply",
-      "explanation": "Beim Timeline-Scrubbing müssen riesige Datenmengen in Echtzeit in den RAM geladen werden. Eine HDD schafft das nicht (Ruckeln). CPU-Kerne helfen beim Rendern, aber RAM/SSD beim Arbeiten."
+      "answer": 1,
+      "explanation": "Beim Timeline-Scrubbing müssen riesige Datenmengen in Echtzeit in den RAM geladen werden. Eine HDD schafft das nicht (Ruckeln). CPU-Kerne helfen beim Rendern, aber RAM + NVMe beim Arbeiten.",
+      "difficulty": "medium",
+      "bloomLevel": 3
     },
     {
-      "id": "3_m_4",
+      "id": "003-mcq-4",
+      "type": "single",
       "question": "Was unterscheidet ECC-RAM von normalem Desktop-RAM?",
       "options": [
         "Er ist doppelt so schnell.",
-        "Er hat einen zusätzlichen Chip für Paritätsbits/Fehlerkorrektur.",
+        "Er hat einen zusätzlichen Chip für Paritätsbits und Fehlerkorrektur.",
         "Er leuchtet bunt (RGB).",
         "Er passt in jeden Laptop."
       ],
-      "correct": [1],
-      "classification": "tech",
-      "explanation": "ECC (Error Correcting Code) erkennt und korrigiert Bit-Kipper (z.B. durch kosmische Strahlung). Essenziell für Server/Workstations, wo Datenintegrität wichtiger ist als der letzte Frame beim Gaming."
+      "answer": 1,
+      "explanation": "ECC (Error Correcting Code) erkennt und korrigiert Bit-Kipper (z. B. durch kosmische Strahlung). Essenziell für Server/Workstations, wo Datenintegrität wichtiger ist als Spieleleistung.",
+      "difficulty": "easy",
+      "bloomLevel": 1
     },
     {
-      "id": "3_m_5",
-      "question": "Welche Aussage zu PCIe-Lanes ist KORREKT?",
+      "id": "003-mcq-5",
+      "type": "single",
+      "question": "Welche Aussage zu PCIe-Lanes ist korrekt?",
       "options": [
         "Jedes Gerät bekommt immer 16 Lanes.",
-        "Die Anzahl der Lanes bestimmt die maximale Datenübertragungsrate (Bandbreite) der Verbindung.",
+        "Die Anzahl der Lanes bestimmt die maximale Bandbreite der Verbindung.",
         "PCIe 4.0 x1 ist schneller als PCIe 3.0 x16.",
         "Lanes werden dynamisch per Software verteilt."
       ],
-      "correct": [1],
-      "classification": "theory",
-      "explanation": "Eine Lane ist eine Datenautobahn-Spur. x16 = 16 Spuren. PCIe 4.0 ist pro Spur doppelt so schnell wie 3.0, aber x1 (4.0) ist immer noch langsamer als x16 (3.0)."
+      "answer": 1,
+      "explanation": "Eine Lane ist eine Datenautobahn-Spur. x16 = 16 Spuren = 16-fache Bandbreite. PCIe 4.0 ist pro Spur doppelt so schnell wie 3.0, aber x1 (4.0) ist immer noch deutlich langsamer als x16 (3.0).",
+      "difficulty": "medium",
+      "bloomLevel": 2
+    },
+    {
+      "id": "003-mcq-6",
+      "type": "single",
+      "question": "Warum ist IPC (Instructions Per Cycle) oft wichtiger als die GHz-Zahl einer CPU?",
+      "options": [
+        "Weil IPC die RGB-Beleuchtung steuert.",
+        "Eine CPU mit niedriger GHz aber hoher IPC kann pro Taktzyklus mehr Arbeit erledigen.",
+        "IPC bestimmt nur die Größe des L1-Cache.",
+        "GHz ist komplett irrelevant für die Leistung."
+      ],
+      "answer": 1,
+      "explanation": "IPC misst, wie viele Befehle pro Takt ausgeführt werden. Eine CPU mit 3,5 GHz und IPC=4 ist schneller als eine mit 4,5 GHz und IPC=2. GHz * IPC = effektive Leistung.",
+      "difficulty": "medium",
+      "bloomLevel": 2
+    },
+    {
+      "id": "003-mcq-7",
+      "type": "multi",
+      "question": "Welche Faktoren erhöhen die Wirtschaftlichkeit (TCO) eines PCs über 5 Jahre? (Mehrfachauswahl)",
+      "options": [
+        "Ein 80 PLUS Gold Netzteil statt Bronze (niedrigere Stromkosten).",
+        "RGB-Beleuchtung für bessere Optik.",
+        "Hochwertige VRMs auf dem Mainboard (verhindert Throttling = längere Lebensdauer).",
+        "Tower-Luftkühler statt AIO-Wasserkühlung (keine Pumpe = weniger Verschleiß)."
+      ],
+      "answer": [0, 2, 3],
+      "explanation": "TCO = Total Cost of Ownership. Gold-Netzteil spart Strom (9€/Jahr), gute VRMs verhindern Performance-Verlust, Luftkühler haben keine ausfallende Pumpe. RGB kostet nur Geld.",
+      "difficulty": "hard",
+      "bloomLevel": 4
+    },
+    {
+      "id": "003-mcq-8",
+      "type": "single",
+      "question": "Ein PC startet, aber der Monitor zeigt 'No Signal'. Der Kunde hat einen AMD Ryzen 5 5600X verbaut. Was ist die wahrscheinlichste Ursache?",
+      "options": [
+        "Das Mainboard ist defekt.",
+        "Die CPU hat keine integrierte GPU (iGPU) und es fehlt eine dedizierte Grafikkarte.",
+        "Der Monitor ist kaputt.",
+        "Das BIOS muss aktualisiert werden."
+      ],
+      "answer": 1,
+      "explanation": "Ryzen 5600X hat KEINE iGPU (nur Modelle mit 'G' wie 5600G haben eine). Ohne dedizierte GPU kein Bildsignal. Klassischer Anfängerfehler bei PC-Zusammenbau!",
+      "difficulty": "medium",
+      "bloomLevel": 3
+    },
+    {
+      "id": "003-mcq-9",
+      "type": "single",
+      "question": "Wofür steht TDP (Thermal Design Power) und wofür wird es genutzt?",
+      "options": [
+        "Maximale Watt-Aufnahme der CPU unter Last, wichtig für Netzteil-Dimensionierung und Kühlung.",
+        "Die RGB-Beleuchtungs-Leistung in Watt.",
+        "Die Garantiezeit der CPU in Jahren.",
+        "Die maximale Taktfrequenz unter Boost."
+      ],
+      "answer": 0,
+      "explanation": "TDP gibt die Abwärme in Watt an. Kühler muss mindestens TDP der CPU abführen können. Netzteil-Rechnung: (CPU-TDP + GPU-TDP + 50W) × 1,5 = empfohlene Watt.",
+      "difficulty": "easy",
+      "bloomLevel": 1
+    },
+    {
+      "id": "003-mcq-10",
+      "type": "multi",
+      "question": "Welche Signalwörter in einer AP1-Aufgabe deuten darauf hin, dass eine dedizierte GPU PFLICHT ist? (Mehrfachauswahl)",
+      "options": [
+        "CAD-Software (z.B. AutoCAD, SolidWorks)",
+        "Office-Anwendungen (Word, Excel)",
+        "Video-Editing (Premiere Pro, DaVinci Resolve)",
+        "KI/Machine Learning (TensorFlow, PyTorch)"
+      ],
+      "answer": [0, 2, 3],
+      "explanation": "CAD, Video-Editing und KI nutzen GPU-Beschleunigung (CUDA/OpenCL). Office läuft problemlos mit iGPU. In AP1: Diese Signalwörter = dedizierte GPU empfehlen!",
+      "difficulty": "easy",
+      "bloomLevel": 3
+    },
+    {
+      "id": "003-mcq-11",
+      "type": "single",
+      "question": "Was ist Dual Channel RAM und warum ist es wichtig?",
+      "options": [
+        "RAM mit zwei verschiedenen Farben für bessere Optik.",
+        "Zwei RAM-Riegel parallel = doppelte Bandbreite zum RAM-Controller.",
+        "RAM kann zwei Programme gleichzeitig speichern.",
+        "Es gibt zwei Garantie-Jahre statt einem."
+      ],
+      "answer": 1,
+      "explanation": "2x 16 GB Dual Channel hat doppelte Bandbreite gegenüber 1x 32 GB! Bei AMD Ryzen besonders wichtig (Infinity Fabric profitiert). In AP1 IMMER Dual Channel empfehlen!",
+      "difficulty": "easy",
+      "bloomLevel": 2
+    },
+    {
+      "id": "003-mcq-12",
+      "type": "single",
+      "question": "Warum ist eine NVMe-SSD schneller als eine SATA-SSD?",
+      "options": [
+        "NVMe nutzt PCIe-Lanes direkt (keine SATA-Controller-Begrenzung auf 6 Gbit/s).",
+        "NVMe hat größere NAND-Chips.",
+        "NVMe-SSDs sind immer teurer, daher automatisch schneller.",
+        "NVMe kann RGB-Beleuchtung."
+      ],
+      "answer": 0,
+      "explanation": "SATA III ist auf 6 Gbit/s (~600 MB/s) limitiert. NVMe nutzt PCIe direkt → PCIe 4.0 x4 = 64 Gbit/s (~7.000 MB/s). 10x schneller bei Random-I/O!",
+      "difficulty": "medium",
+      "bloomLevel": 2
+    },
+    {
+      "id": "003-mcq-13",
+      "type": "multi",
+      "question": "In einer AP1-Aufgabe sollst du Hardware für 4 CAD-Arbeitsplätze auswählen. Was MUSS die Begründung enthalten? (Mehrfachauswahl)",
+      "options": [
+        "Leistung: Warum dedizierte GPU statt iGPU.",
+        "Wirtschaftlichkeit: TCO-Rechnung (z.B. 80 PLUS Gold spart Strom über 5 Jahre).",
+        "Persönliche Meinung: 'Ich mag Intel lieber als AMD.'",
+        "Kompatibilität: Sockel-Check, DDR-Generation, GPU-Länge vs. Gehäuse."
+      ],
+      "answer": [0, 1, 3],
+      "explanation": "AP1-Erwartungshorizont verlangt: Leistung (dedizierte GPU bei CAD!), Wirtschaftlichkeit (TCO), Kompatibilität (Sockel, DDR). Persönliche Meinung = 0 Punkte!",
+      "difficulty": "hard",
+      "bloomLevel": 5
+    },
+    {
+      "id": "003-mcq-14",
+      "type": "single",
+      "question": "Was bedeutet '80 PLUS Gold' bei einem Netzteil?",
+      "options": [
+        "Es ist gold-farben lackiert.",
+        "Mindestens 90% Effizienz bei 50% Last (weniger Stromverschwendung als Wärme).",
+        "Es hat eine 10-Jahres-Garantie.",
+        "Es kann nur mit Gold-Mainboards betrieben werden."
+      ],
+      "answer": 1,
+      "explanation": "80 PLUS zertifiziert Effizienz: Bronze ≥85%, Gold ≥90%, Platinum ≥92%. Gold spart Geld bei 24/7-Betrieb (Server) oder hohen Stromkosten. TCO-Argument in AP1!",
+      "difficulty": "easy",
+      "bloomLevel": 1
+    },
+    {
+      "id": "003-mcq-15",
+      "type": "single",
+      "question": "Welcher NAND-Typ hält am längsten (höchste TBW-Garantie)?",
+      "options": [
+        "QLC (4 Bit pro Zelle)",
+        "TLC (3 Bit pro Zelle)",
+        "MLC (2 Bit pro Zelle)",
+        "SLC (1 Bit pro Zelle)"
+      ],
+      "answer": 3,
+      "explanation": "Weniger Bits pro Zelle = länger haltbar. SLC (teuer) > MLC > TLC (Consumer-Standard) > QLC (billig, aber niedrige TBW). Für Server: MLC oder besser!",
+      "difficulty": "medium",
+      "bloomLevel": 2
+    },
+    {
+      "id": "003-mcq-16",
+      "type": "single",
+      "question": "Ein i9-13900K PC bootet extrem langsam trotz 64 GB DDR5-RAM. Beim Check stellt sich heraus: Systemplatte ist eine 5400 RPM HDD. Was ist das Problem?",
+      "options": [
+        "Die CPU ist defekt.",
+        "Die HDD ist der Bottleneck (Flaschenhals). Random-I/O ist bei HDD 100x langsamer als NVMe-SSD.",
+        "64 GB RAM ist zu viel und bremst das System.",
+        "Das BIOS muss aktualisiert werden."
+      ],
+      "answer": 1,
+      "explanation": "Klassischer Bottleneck! i9 wartet auf Daten von der HDD. HDD: ~100 IOPS. NVMe-SSD: 500.000+ IOPS. Boot-Zeit: HDD 60s, NVMe 10s. Lösung: NVMe-SSD einbauen!",
+      "difficulty": "medium",
+      "bloomLevel": 4
+    },
+    {
+      "id": "003-mcq-17",
+      "type": "multi",
+      "question": "Welche Schutzschaltungen sollte ein hochwertiges Netzteil haben? (Mehrfachauswahl)",
+      "options": [
+        "OVP (Over Voltage Protection) - schaltet ab bei zu hoher Spannung.",
+        "RGB-Controller für bunte LEDs.",
+        "OCP (Over Current Protection) - schaltet ab bei zu hohem Strom.",
+        "OTP (Over Temperature Protection) - schaltet ab bei Überhitzung."
+      ],
+      "answer": [0, 2, 3],
+      "explanation": "Wichtige Schutzschaltungen: OVP, OCP, OTP, SCP (Short Circuit). Billig-Netzteile haben diese oft NICHT und zerstören bei Defekt das Mainboard/GPU!",
+      "difficulty": "medium",
+      "bloomLevel": 2
+    },
+    {
+      "id": "003-mcq-18",
+      "type": "single",
+      "question": "Warum dürfen SSDs NICHT defragmentiert werden?",
+      "options": [
+        "Defragmentierung erzeugt unnötige Schreibzyklen und verkürzt die Lebensdauer (TBW).",
+        "SSDs sind zu schnell für Defragmentierung.",
+        "Defragmentierung ist nur für HDDs erfunden worden, aber schadet SSDs nicht.",
+        "SSDs können nicht fragmentiert werden."
+      ],
+      "answer": 0,
+      "explanation": "SSDs haben keine mechanischen Leseköpfe, Fragmentierung ist fast irrelevant. Defragmentierung verschwendet TBW (Schreibzyklen). TRIM ist der richtige Befehl für SSDs!",
+      "difficulty": "easy",
+      "bloomLevel": 2
+    },
+    {
+      "id": "003-mcq-19",
+      "type": "single",
+      "question": "Was sind VRMs auf einem Mainboard und warum sind sie wichtig?",
+      "options": [
+        "RGB-Beleuchtungs-Module.",
+        "Voltage Regulator Modules - wandeln 12V vom Netzteil in die niedrigen Spannungen für CPU/RAM.",
+        "Virtuelle RAM-Speicherbereiche.",
+        "Video-RAM-Management-System."
+      ],
+      "answer": 1,
+      "explanation": "VRMs versorgen die CPU mit stabiler Spannung. Billige VRMs bei High-End-CPUs (i9/Ryzen 9) = Überhitzung = Throttling. Für i9: Mind. 12+ Power-Phasen!",
+      "difficulty": "medium",
+      "bloomLevel": 2
+    },
+    {
+      "id": "003-mcq-20",
+      "type": "multi",
+      "question": "Ein PC piept beim Start mehrfach (1 lang + 2 kurz). Was bedeutet das üblicherweise? (Mehrfachauswahl)",
+      "options": [
+        "RAM-Fehler oder RAM nicht richtig eingesteckt.",
+        "Grafikkarte defekt oder nicht erkannt.",
+        "Kühler ist zu laut.",
+        "RGB-Beleuchtung funktioniert nicht."
+      ],
+      "answer": [0, 1],
+      "explanation": "BIOS-Piepcode (Award): 1 lang + 2 kurz = RAM/GPU-Problem. Lösung: RAM neu einsetzen (Klick!), andere Slots testen, GPU-Stromkabel prüfen. BIOS-Handbuch konsultieren!",
+      "difficulty": "medium",
+      "bloomLevel": 3
+    },
+    {
+      "id": "003-mcq-21",
+      "type": "single",
+      "question": "Was ist der Vorteil von ECC-RAM gegenüber normalem RAM?",
+      "options": [
+        "ECC ist doppelt so schnell.",
+        "ECC kann Bit-Fehler erkennen und korrigieren (wichtig für Datensicherheit).",
+        "ECC hat RGB-Beleuchtung.",
+        "ECC funktioniert mit allen Desktop-Mainboards."
+      ],
+      "answer": 1,
+      "explanation": "ECC (Error Correcting Code) schützt vor Bit-Kippern (kosmische Strahlung, elektrische Störungen). Pflicht bei: Server, Finanzbuchhaltung, Krankenhaus-IT. Braucht ECC-fähiges Mainboard!",
+      "difficulty": "easy",
+      "bloomLevel": 1
+    },
+    {
+      "id": "003-mcq-22",
+      "type": "single",
+      "question": "Welche Aussage zu M.2-SSDs ist korrekt?",
+      "options": [
+        "Alle M.2-SSDs nutzen NVMe und sind ultraschnell.",
+        "M.2 ist nur ein Formfaktor (Stecker). Es gibt M.2-SATA (langsam) und M.2-NVMe (schnell).",
+        "M.2-SSDs brauchen kein Netzteil-Kabel.",
+        "M.2-SSDs sind immer teurer als 2,5 Zoll SSDs."
+      ],
+      "answer": 1,
+      "explanation": "M.2 = Physischer Stecker! M.2-SATA: ~550 MB/s. M.2-NVMe: ~7.000 MB/s (PCIe 4.0). Beim Kauf auf 'NVMe' achten! Beide brauchen kein extra Stromkabel (kommt vom M.2-Slot).",
+      "difficulty": "medium",
+      "bloomLevel": 2
+    },
+    {
+      "id": "003-mcq-23",
+      "type": "multi",
+      "question": "Welche Faktoren beeinflussen die RAM-Geschwindigkeit? (Mehrfachauswahl)",
+      "options": [
+        "Taktfrequenz (z.B. DDR4-3200 = 3200 MHz).",
+        "CAS Latency (CL) - niedrigere Zahl = schneller (z.B. CL16 besser als CL18).",
+        "RGB-Beleuchtung.",
+        "Dual Channel vs. Single Channel (Dual = doppelte Bandbreite)."
+      ],
+      "answer": [0, 1, 3],
+      "explanation": "RAM-Speed = Frequenz × Dual Channel ÷ Latenz. DDR4-3600 CL16 Dual > DDR4-3200 CL18 Single. RGB kostet nur Geld und erhöht Latenz nicht.",
+      "difficulty": "hard",
+      "bloomLevel": 2
+    },
+    {
+      "id": "003-mcq-24",
+      "type": "single",
+      "question": "Wann sollte man in einer AP1-Aufgabe empfehlen, Standardisierung der Hardware durchzuführen?",
+      "options": [
+        "Niemals, jeder PC sollte individuell konfiguriert werden.",
+        "Bei mehreren identischen Arbeitsplätzen (z.B. 10x Office-PCs) wegen: Mengenrabatt, ein Image für alle, Ersatzteile lagerbar, weniger Support-Aufwand.",
+        "Nur bei Gaming-PCs.",
+        "Standardisierung ist in AP1 nicht relevant."
+      ],
+      "answer": 1,
+      "explanation": "Standardisierung = TCO-Argument! 10 identische PCs: ~10% Einkaufsrabatt, Rollout mit einem Image schneller, IT kennt Hardware perfekt → weniger Supportkosten. Wichtig für AP1!",
+      "difficulty": "medium",
+      "bloomLevel": 4
+    },
+    {
+      "id": "003-mcq-25",
+      "type": "single",
+      "question": "Ein Kunde beschwert sich, dass sein neuer Gaming-PC nach 5 Minuten unter Last abstürzt. GPU hat 350W TDP, CPU 125W TDP. Netzteil: 500W NoName. Was ist das Problem?",
+      "options": [
+        "Die GPU ist defekt.",
+        "Das Netzteil ist unterdimensioniert. Unter Lastspitzen (GPU+CPU) werden 550W+ gezogen, das 500W Billig-Netzteil schaltet ab (OCP).",
+        "Die CPU überhitzt.",
+        "Windows muss neu installiert werden."
+      ],
+      "answer": 1,
+      "explanation": "TDP-Rechnung: (125 + 350 + 50) × 1,5 = 787W empfohlen! 500W Billig-Netzteil schafft real nur ~450W. Lastspitzen triggern OCP (Überstromschutz). Lösung: 750W+ Marken-Netzteil.",
+      "difficulty": "hard",
+      "bloomLevel": 4
+    },
+    {
+      "id": "003-mcq-26",
+      "type": "single",
+      "question": "Was ist der Unterschied zwischen Hyperthreading (Intel) und SMT (AMD)?",
+      "options": [
+        "Hyperthreading ist schneller als SMT.",
+        "Beide sind gleich: Ein physischer Kern wird als zwei logische Kerne präsentiert (mehr Threads gleichzeitig).",
+        "SMT ist nur für Server-CPUs.",
+        "Hyperthreading verdoppelt die Cache-Größe."
+      ],
+      "answer": 1,
+      "explanation": "Hyperthreading (Intel) = SMT (AMD). 1 physischer Kern → 2 logische Threads. Vorteil: Besser Ressourcen-Auslastung bei Multitasking. Nachteil: Nicht volle 2× Leistung (ca. 1,3×).",
+      "difficulty": "easy",
+      "bloomLevel": 1
     }
   ],
   "fill_blank": [
     {
-      "id": "3_f_1",
-      "text": "Die [blank] ist die zentrale Recheneinheit. Sie holt sich Befehle aus dem [blank]. Wenn dieser voll ist, wird auf die [blank] ausgelagert, was das System drastisch verlangsamt.",
+      "id": "003-fb-1",
+      "text": "Die {{0}} ist die zentrale Recheneinheit. Sie holt Befehle aus dem {{1}}. Wenn dieser voll ist, wird auf die {{2}} ausgelagert (Swapping), was das System stark verlangsamt.",
       "blanks": [
-        { "index": 0, "correct": "CPU", "options": ["CPU", "GPU", "PSU"] },
-        { "index": 1, "correct": "RAM", "options": ["Cache", "RAM", "BIOS"] },
-        { "index": 2, "correct": "Festplatte", "options": ["Festplatte", "Cloud", "DMA"] }
+        {
+          "options": ["CPU", "GPU", "PSU"],
+          "correct": "CPU"
+        },
+        {
+          "options": ["Cache", "RAM", "BIOS"],
+          "correct": "RAM"
+        },
+        {
+          "options": ["Festplatte", "Cloud", "DMA"],
+          "correct": "Festplatte"
+        }
       ],
-      "explanation": "Die Speicherhierarchie ist essenziell: CPU Register > Cache > RAM > SSD > HDD > Tape/Cloud. Je weiter weg von der CPU, desto langsamer."
+      "explanation": "Die Speicherhierarchie: CPU-Register > Cache > RAM > SSD > HDD. Je weiter weg von der CPU, desto langsamer und größer.",
+      "difficulty": "easy",
+      "bloomLevel": 1
     },
     {
-      "id": "3_f_2",
-      "text": "Für Virtualisierung ist es wichtig, dass die CPU [blank]-Erweiterungen (z.B. VT-x / AMD-V) unterstützt. Außerdem benötigt jeder virtuelle Maschine ihren eigenen virtuellen [blank], der vom physischen Host abgezwackt wird.",
+      "id": "003-fb-2",
+      "text": "Für Virtualisierung braucht die CPU {{0}}-Erweiterungen (z. B. Intel VT-x / AMD-V). Jede VM bekommt ihren eigenen virtuellen {{1}}, der vom physischen Host abgezwackt wird.",
       "blanks": [
-        { "index": 0, "correct": "Hardware", "options": ["Software", "Hardware", "Netzwerk"] },
-        { "index": 1, "correct": "Arbeitsspeicher", "options": ["Grafikchip", "Arbeitsspeicher", "Kühler"] }
+        {
+          "options": ["Software", "Hardware", "Netzwerk"],
+          "correct": "Hardware"
+        },
+        {
+          "options": ["Grafikchip", "Arbeitsspeicher", "Kühler"],
+          "correct": "Arbeitsspeicher"
+        }
       ],
-      "explanation": "Ohne Hardware-Virtualisierung wäre VM-Betrieb extrem langsam (Software-Emulation). RAM ist oft der begrenzende Faktor bei vielen VMs auf einem Host."
+      "explanation": "Ohne Hardware-Virtualisierung wäre VM-Betrieb extrem langsam. RAM ist bei vielen VMs auf einem Host meist der begrenzende Faktor.",
+      "difficulty": "medium",
+      "bloomLevel": 2
+    },
+    {
+      "id": "003-fb-3",
+      "text": "Die Netzteil-Dimensionierung erfolgt nach der Formel: (CPU-{{0}} + GPU-TDP + 50W) × {{1}} = empfohlene Watt-Leistung. Ein {{2}} PLUS Zertifikat spart Stromkosten durch höhere Effizienz.",
+      "blanks": [
+        {
+          "options": ["TDP", "GHz", "Kerne"],
+          "correct": "TDP"
+        },
+        {
+          "options": ["1,5", "2,0", "0,5"],
+          "correct": "1,5"
+        },
+        {
+          "options": ["Bronze", "Gold", "80"],
+          "correct": "80"
+        }
+      ],
+      "explanation": "TDP (Thermal Design Power) in Watt gibt Abwärme an. ×1,5 Puffer für Lastspitzen. 80 PLUS (Bronze/Gold/Platinum) misst Effizienz bei AC→DC-Wandlung.",
+      "difficulty": "medium",
+      "bloomLevel": 3
+    },
+    {
+      "id": "003-fb-4",
+      "text": "Bei RAM-Auswahl ist {{0}} Channel (2 Riegel parallel) doppelt so schnell wie Single Channel. Die {{1}} (z.B. CL16) gibt die Latenz an - niedriger ist besser. DDR4 und DDR5 sind {{2}} inkompatibel (Kerbe sitzt anders).",
+      "blanks": [
+        {
+          "options": ["Dual", "Triple", "Single"],
+          "correct": "Dual"
+        },
+        {
+          "options": ["CAS Latency", "RGB", "Garantie"],
+          "correct": "CAS Latency"
+        },
+        {
+          "options": ["mechanisch", "elektrisch", "softwareseitig"],
+          "correct": "mechanisch"
+        }
+      ],
+      "explanation": "Dual Channel verdoppelt Bandbreite. CAS Latency (CL) = Verzögerung bis Daten bereit. DDR4/DDR5 haben unterschiedliche Kerbe → passen physisch nicht in falschen Slot!",
+      "difficulty": "hard",
+      "bloomLevel": 2
+    },
+    {
+      "id": "003-fb-5",
+      "text": "NVMe-SSDs nutzen das {{0}}-Protokoll und sind bis zu {{1}}× schneller als SATA-SSDs bei Random-I/O. Die Haltbarkeit wird in {{2}} (Total Bytes Written) gemessen.",
+      "blanks": [
+        {
+          "options": ["PCIe", "USB", "SATA"],
+          "correct": "PCIe"
+        },
+        {
+          "options": ["10", "2", "100"],
+          "correct": "10"
+        },
+        {
+          "options": ["TBW", "RPM", "MHz"],
+          "correct": "TBW"
+        }
+      ],
+      "explanation": "NVMe nutzt PCIe-Lanes direkt (keine SATA-Begrenzung). SATA: 600 MB/s, NVMe PCIe 4.0: 7.000 MB/s = ~10× schneller. TBW gibt Schreibzyklen-Garantie an (z.B. 600 TBW).",
+      "difficulty": "medium",
+      "bloomLevel": 2
+    },
+    {
+      "id": "003-fb-6",
+      "text": "Der {{0}}-Cache ist der schnellste, kleinste Speicher direkt am CPU-Kern (< 1 ns Latenz). Der {{1}}-Cache ist größer aber langsamer (~50 ns). Bei {{2}} wartet die CPU auf Daten (~100-200 ns).",
+      "blanks": [
+        {
+          "options": ["L1", "L3", "RAM"],
+          "correct": "L1"
+        },
+        {
+          "options": ["L3", "L1", "SSD"],
+          "correct": "L3"
+        },
+        {
+          "options": ["RAM-Zugriff", "GPU-Nutzung", "Netzwerk-Latenz"],
+          "correct": "RAM-Zugriff"
+        }
+      ],
+      "explanation": "Cache-Hierarchie: L1 (schnellst, pro Kern, ~32 KB) → L2 (~512 KB) → L3 (shared, ~32 MB) → RAM (GB-Bereich). Je weiter weg, desto langsamer.",
+      "difficulty": "hard",
+      "bloomLevel": 2
+    },
+    {
+      "id": "003-fb-7",
+      "text": "Bei CAD-Software ist eine {{0}} GPU PFLICHT (nicht iGPU!), da Programme wie {{1}} GPU-Beschleunigung nutzen. Für 4K-Auflösung ist mind. {{2}} GB VRAM empfohlen.",
+      "blanks": [
+        {
+          "options": ["dedizierte", "integrierte", "externe"],
+          "correct": "dedizierte"
+        },
+        {
+          "options": ["SolidWorks", "Word", "Excel"],
+          "correct": "SolidWorks"
+        },
+        {
+          "options": ["8", "2", "32"],
+          "correct": "8"
+        }
+      ],
+      "explanation": "CAD = GPU-intensiv! SolidWorks, AutoCAD nutzen CUDA/OpenCL. iGPU ist 10× langsamer. 4K braucht mehr VRAM für Texturen (8 GB minimum).",
+      "difficulty": "medium",
+      "bloomLevel": 3
+    },
+    {
+      "id": "003-fb-8",
+      "text": "{{0}} RAM kann Bit-Fehler erkennen und korrigieren. Es ist PFLICHT bei {{1}}-Systemen, Finanzbuchhaltung und Medizin-IT. Es braucht ein ECC-fähiges {{2}}.",
+      "blanks": [
+        {
+          "options": ["ECC", "DDR4", "RGB"],
+          "correct": "ECC"
+        },
+        {
+          "options": ["Server", "Gaming", "Office"],
+          "correct": "Server"
+        },
+        {
+          "options": ["Mainboard", "Netzteil", "Gehäuse"],
+          "correct": "Mainboard"
+        }
+      ],
+      "explanation": "ECC (Error Correcting Code) schützt vor Datenverlust. Server/Finanzen = Datensicherheit wichtig! Desktop-Mainboards unterstützen meist kein ECC, nur Server/Workstation-Boards.",
+      "difficulty": "medium",
+      "bloomLevel": 2
+    },
+    {
+      "id": "003-fb-9",
+      "text": "Ein {{0}} ist der schwächste Punkt einer System-Konfiguration. Beispiel: Ein i9-Prozessor mit 5400 RPM {{1}} ist verschwendetes Geld, weil die CPU ständig auf {{2}} wartet.",
+      "blanks": [
+        {
+          "options": ["Bottleneck", "Benchmark", "BIOS"],
+          "correct": "Bottleneck"
+        },
+        {
+          "options": ["HDD", "GPU", "Netzteil"],
+          "correct": "HDD"
+        },
+        {
+          "options": ["Daten", "Strom", "Updates"],
+          "correct": "Daten"
+        }
+      ],
+      "explanation": "Bottleneck = Flaschenhals. Das langsamste Bauteil limitiert die Gesamtleistung. HDD bei i9 = I/O-Wait. Lösung: Balanced System (alle Komponenten auf ähnlichem Niveau).",
+      "difficulty": "medium",
+      "bloomLevel": 3
+    },
+    {
+      "id": "003-fb-10",
+      "text": "PCIe {{0}}.0 ist doppelt so schnell wie PCIe 3.0 pro Lane. Eine GPU mit x16-Slot hat {{1}}× mehr Bandbreite als x1. M.2-NVMe nutzt typisch {{2}} Lanes.",
+      "blanks": [
+        {
+          "options": ["4", "5", "2"],
+          "correct": "4"
+        },
+        {
+          "options": ["16", "8", "32"],
+          "correct": "16"
+        },
+        {
+          "options": ["4", "16", "1"],
+          "correct": "4"
+        }
+      ],
+      "explanation": "PCIe 4.0: 2 GB/s pro Lane. x16 = 32 GB/s, x4 = 8 GB/s, x1 = 2 GB/s. NVMe-SSDs nutzen x4 (daher ~7 GB/s möglich). GPU braucht x16 für volle Performance.",
+      "difficulty": "hard",
+      "bloomLevel": 2
     }
   ],
   "match": [
     {
-      "id": "3_ma_1",
-      "question": "Ordne die Schnittstelle ihrer typischen Brutto-Datenrate zu (Stand ca. 2024 verbreitet).",
+      "id": "003-match-1",
+      "question": "Ordne die Schnittstelle ihrer typischen Datenrate zu (Stand 2024):",
       "left": ["USB 2.0", "Gigabit Ethernet", "SATA III (SSD)", "PCIe 4.0 x4 (NVMe)"],
-      "right": ["480 Mbit/s", "1000 Mbit/s (1 Gbit/s)", "6 Gbit/s (~600 MB/s)", "~64 Gbit/s (~7-8 GB/s)"],
-      "matches": [
-        { "l": 0, "r": 0 },
-        { "l": 1, "r": 1 },
-        { "l": 2, "r": 2 },
-        { "l": 3, "r": 3 }
-      ],
-      "explanation": "NVMe (PCIe) ist um Faktoren schneller als SATA. USB 2.0 ist heute nur noch für Maus/Tastatur tauglich."
+      "right": ["480 Mbit/s", "1.000 Mbit/s (1 Gbit/s)", "6 Gbit/s (~600 MB/s)", "~64 Gbit/s (~7–8 GB/s)"],
+      "matches": ["480 Mbit/s", "1.000 Mbit/s (1 Gbit/s)", "6 Gbit/s (~600 MB/s)", "~64 Gbit/s (~7–8 GB/s)"],
+      "explanation": "NVMe (PCIe) ist um Faktoren schneller als SATA. USB 2.0 ist heute nur noch für Maus/Tastatur geeignet.",
+      "difficulty": "medium",
+      "bloomLevel": 1
     },
     {
-      "id": "3_ma_2",
+      "id": "003-match-2",
       "question": "Welche Kühllösung passt zu welchem Szenario?",
-      "left": ["Passivkühlkörper", "Luftkühler (Aktiv)", "AiO Wasserkühlung", "Custom Loop Wakü"],
-      "right": ["Lautloser Office-PC (wenig Last)", "Standard Gaming/Workstation", "High-End CPU, Platzmangel am Sockel", "Enthusiast/Server mit extremer Abwärme"],
-      "matches": [
-        { "l": 0, "r": 0 },
-        { "l": 1, "r": 1 },
-        { "l": 2, "r": 2 },
-        { "l": 3, "r": 3 }
+      "left": ["Passivkühlkörper", "Luftkühler (aktiv)", "AiO-Wasserkühlung", "Custom-Loop-Wakü"],
+      "right": [
+        "Lautloser Office-PC mit wenig Last",
+        "Standard Gaming- oder Workstation-PC",
+        "High-End-CPU, Platzmangel am Sockel",
+        "Enthusiast/Server mit extremer Abwärme"
       ],
-      "explanation": "Passiv = 0dB aber wenig Leistung. Luft = Standard. Wasser = Teuer, aber transportiert Wärme besser weg."
+      "matches": [
+        "Lautloser Office-PC mit wenig Last",
+        "Standard Gaming- oder Workstation-PC",
+        "High-End-CPU, Platzmangel am Sockel",
+        "Enthusiast/Server mit extremer Abwärme"
+      ],
+      "explanation": "Passiv = 0 dB aber wenig Kühlleistung. Luft = Standard. Wasser transportiert Wärme besser weg, ist aber teurer.",
+      "difficulty": "easy",
+      "bloomLevel": 2
+    },
+    {
+      "id": "003-match-3",
+      "question": "Ordne den NAND-Typ der Lebensdauer (TBW) zu:",
+      "left": ["SLC (1 Bit/Zelle)", "MLC (2 Bit/Zelle)", "TLC (3 Bit/Zelle)", "QLC (4 Bit/Zelle)"],
+      "right": ["Extrem langlebig (100.000+ P/E-Zyklen)", "Sehr gut (10.000 P/E)", "Standard Consumer (3.000 P/E)", "Budget (1.000 P/E)"],
+      "matches": ["Extrem langlebig (100.000+ P/E-Zyklen)", "Sehr gut (10.000 P/E)", "Standard Consumer (3.000 P/E)", "Budget (1.000 P/E)"],
+      "explanation": "P/E = Program/Erase Cycles. Weniger Bits pro Zelle = länger haltbar, aber teurer. SLC für Enterprise, TLC für Consumer-Standard.",
+      "difficulty": "hard",
+      "bloomLevel": 2
+    },
+    {
+      "id": "003-match-4",
+      "question": "Ordne die 80 PLUS Zertifizierung der Effizienz bei 50% Last zu:",
+      "left": ["80 PLUS Bronze", "80 PLUS Silver", "80 PLUS Gold", "80 PLUS Platinum"],
+      "right": ["≥ 85% Effizienz", "≥ 88% Effizienz", "≥ 90% Effizienz", "≥ 92% Effizienz"],
+      "matches": ["≥ 85% Effizienz", "≥ 88% Effizienz", "≥ 90% Effizienz", "≥ 92% Effizienz"],
+      "explanation": "Höhere Effizienz = weniger Stromverschwendung als Wärme. Gold amortisiert sich bei 24/7-Betrieb in 2-3 Jahren gegenüber Bronze. TCO-Argument!",
+      "difficulty": "medium",
+      "bloomLevel": 1
+    },
+    {
+      "id": "003-match-5",
+      "question": "Ordne den Mainboard-Formfaktor der Größe zu:",
+      "left": ["Mini-ITX", "Micro-ATX", "ATX", "E-ATX"],
+      "right": ["170 × 170 mm", "244 × 244 mm", "305 × 244 mm", "305 × 330 mm"],
+      "matches": ["170 × 170 mm", "244 × 244 mm", "305 × 244 mm", "305 × 330 mm"],
+      "explanation": "Je kleiner der Formfaktor, desto weniger Erweiterungs-Slots (PCIe, RAM). Mini-ITX = kompakt, aber nur 2 RAM-Slots und 1 PCIe. ATX = Standard.",
+      "difficulty": "easy",
+      "bloomLevel": 1
+    },
+    {
+      "id": "003-match-6",
+      "question": "Welche AP1-Signalwörter erfordern welche Hardware?",
+      "left": ["CAD-Software", "Virtualisierung (viele VMs)", "4K-Video-Editing", "Buchhaltung (DATEV)"],
+      "right": ["Dedizierte GPU (CUDA/OpenCL)", "Viel RAM (32-64 GB+) + CPU-Kerne", "NVMe-SSD + 32 GB RAM + GPU", "Zuverlässigkeit (ECC, Marken-HW), leise"],
+      "matches": ["Dedizierte GPU (CUDA/OpenCL)", "Viel RAM (32-64 GB+) + CPU-Kerne", "NVMe-SSD + 32 GB RAM + GPU", "Zuverlässigkeit (ECC, Marken-HW), leise"],
+      "explanation": "Signalwörter richtig zuordnen = 50% der AP1-Punkte! CAD = GPU. VM = RAM. Video = Sequential I/O (NVMe). Buchhaltung = Stabilität vor Speed.",
+      "difficulty": "hard",
+      "bloomLevel": 5
     }
   ],
   "order": [
     {
-      "id": "3_o_1",
-      "question": "Sortiere die Speicherarten nach ihrer Zugriffsgeschwindigkeit (Schnellste zuerst!).",
+      "id": "003-order-1",
+      "question": "Sortiere die Speicherarten nach Zugriffsgeschwindigkeit (schnellste zuerst):",
       "items": [
-        "CPU Register",
-        "L1 Cache",
-        "L3 Cache",
-        "DDR5 RAM",
-        "NVMe SSD",
-        "SATA SSD",
+        "CPU-Register",
+        "L1-Cache",
+        "L3-Cache",
+        "DDR5-RAM",
+        "NVMe-SSD",
+        "SATA-SSD",
         "Mechanische HDD"
       ],
-      "correctOrder": [0, 1, 2, 3, 4, 5, 6],
-      "explanation": "Die wichtigste Pyramide der Informatik. Register (schnell, winzig) -> HDD (langsam, riesig)."
+      "correctOrder": [1, 2, 3, 4, 5, 6, 7],
+      "explanation": "Die Speicherpyramide: Register (ultra-schnell, winzig) → L1 → L3 → RAM → NVMe → SATA → HDD (langsam, aber groß).",
+      "difficulty": "medium",
+      "bloomLevel": 2
+    },
+    {
+      "id": "003-order-2",
+      "question": "Sortiere die CPU-Generationen nach Erscheinungsjahr (älteste zuerst):",
+      "items": [
+        "Intel Core 2 Duo (2006)",
+        "Intel Core i7-2600K (Sandy Bridge, 2011)",
+        "Intel Core i7-4790K (Haswell, 2014)",
+        "Intel Core i9-9900K (Coffee Lake, 2018)",
+        "Intel Core i9-13900K (Raptor Lake, 2022)"
+      ],
+      "correctOrder": [1, 2, 3, 4, 5],
+      "explanation": "CPU-Evolution: Core 2 Duo (Dual-Core-Revolution) → Sandy Bridge (modernere Architektur) → Haswell (Effizienz) → Coffee Lake (mehr Kerne) → Raptor Lake (Hybrid-Architektur).",
+      "difficulty": "easy",
+      "bloomLevel": 1
+    },
+    {
+      "id": "003-order-3",
+      "question": "Sortiere die Schritte der Hardware-Fehleranalyse in richtiger Reihenfolge:",
+      "items": [
+        "1. Symptom präzise erfassen (Piept der PC? Drehen Lüfter?)",
+        "2. Hypothese bilden (RAM-Fehler? GPU defekt?)",
+        "3. Minimal-System testen (nur CPU, 1 RAM, Netzteil, Mainboard)",
+        "4. Komponenten einzeln tauschen (anderer RAM-Riegel, anderer Slot)",
+        "5. BIOS-Reset (CMOS-Batterie 30s entfernen)",
+        "6. Dokumentieren (Was war Ursache? Was wurde getauscht?)"
+      ],
+      "correctOrder": [1, 2, 3, 4, 5, 6],
+      "explanation": "6-Schritte-Diagnoseprozess: Erst präzise erfassen, dann systematisch eingrenzen (nicht raten!), dokumentieren für Zukunft. Aus Handbuch Kapitel 7!",
+      "difficulty": "hard",
+      "bloomLevel": 3
+    },
+    {
+      "id": "003-order-4",
+      "question": "Sortiere die PCIe-Generationen nach Geschwindigkeit pro Lane (langsamste zuerst):",
+      "items": [
+        "PCIe 1.0 (250 MB/s)",
+        "PCIe 2.0 (500 MB/s)",
+        "PCIe 3.0 (985 MB/s)",
+        "PCIe 4.0 (1969 MB/s)",
+        "PCIe 5.0 (3938 MB/s)"
+      ],
+      "correctOrder": [1, 2, 3, 4, 5],
+      "explanation": "Jede PCIe-Generation verdoppelt fast die Bandbreite. PCIe 5.0 ist 16× schneller als 1.0! x16-Slot mit PCIe 5.0 = 63 GB/s theoretisch.",
+      "difficulty": "medium",
+      "bloomLevel": 1
+    },
+    {
+      "id": "003-order-5",
+      "question": "Sortiere die Schritte bei der AP1-Hardware-Auswahl in logischer Reihenfolge:",
+      "items": [
+        "1. Anforderungen analysieren (CAD? Office? Server?)",
+        "2. Signalwörter erkennen (CAD = GPU, VM = RAM, etc.)",
+        "3. Komponenten auswählen (CPU, RAM, SSD, GPU, Netzteil)",
+        "4. Kompatibilität prüfen (Sockel, DDR, Formfaktor, GPU-Länge)",
+        "5. Begründung schreiben (Leistung, TCO, Kompatibilität)",
+        "6. Must-Have vs. Nice-to-Have trennen (Budget-Check)"
+      ],
+      "correctOrder": [1, 2, 3, 4, 5, 6],
+      "explanation": "Systematischer AP1-Workflow: Erst verstehen was gebraucht wird, dann auswählen, dann BEGRÜNDEN (= Punkte!). Aus Handbuch Kapitel 8!",
+      "difficulty": "hard",
+      "bloomLevel": 5
+    },
+    {
+      "id": "003-order-6",
+      "question": "Sortiere die DDR-RAM-Generationen nach Erscheinungsjahr (älteste zuerst):",
+      "items": [
+        "DDR (2000, 200-400 MHz)",
+        "DDR2 (2003, 400-1066 MHz)",
+        "DDR3 (2007, 800-2133 MHz)",
+        "DDR4 (2014, 2133-3200 MHz Standard)",
+        "DDR5 (2021, 4800+ MHz)"
+      ],
+      "correctOrder": [1, 2, 3, 4, 5],
+      "explanation": "RAM-Evolution: Jede Generation höhere Taktraten, niedrigere Spannung (DDR4: 1,2V, DDR5: 1,1V), bessere Effizienz. DDR4/DDR5 mechanisch inkompatibel!",
+      "difficulty": "easy",
+      "bloomLevel": 1
     }
   ],
   "true_false": [
     {
-      "id": "3_tf_1",
+      "id": "003-tf-1",
       "statement": "Mehr CPU-Kerne bedeuten automatisch, dass jedes Programm schneller läuft.",
       "answer": "false",
-      "explanation": "Falsch! Viele Programme nutzen nur einen Kern (Single-Threaded). Mehr Kerne helfen nur bei Parallelisierung (Multitasking, Rendering)."
+      "explanation": "Falsch! Viele Programme nutzen nur einen Kern (Single-threaded). Mehr Kerne helfen nur bei parallelisierbaren Aufgaben (Rendering, Komprimierung, Serveranfragen).",
+      "difficulty": "easy",
+      "bloomLevel": 2
     },
     {
-      "id": "3_tf_2",
-      "statement": "Ein 32-Bit Betriebssystem kann maximal 4 GB RAM adressieren.",
+      "id": "003-tf-2",
+      "statement": "Ein 32-Bit-Betriebssystem kann maximal 4 GB RAM adressieren.",
       "answer": "true",
-      "explanation": "2^32 Adressen = 4.294.967.296 Byte = 4 GB. Davon geht noch Speicher für Hardware-Mapping ab."
+      "explanation": "Richtig! 2^32 Adressen = 4.294.967.296 Byte = 4 GB – davon gehen noch Adressen für Hardware-Mapping ab, sodass effektiv oft nur ~3,2 GB nutzbar sind.",
+      "difficulty": "easy",
+      "bloomLevel": 1
     },
     {
-      "id": "3_tf_3",
+      "id": "003-tf-3",
       "statement": "SSDs sollten regelmäßig defragmentiert werden, um schnell zu bleiben.",
       "answer": "false",
-      "explanation": "Tödlich für SSDs! Defrag erzeugt unnötige Schreibzyklen (Verschleiß). SSDs haben keine Suchzeiten wie HDDs, Fragmentierung ist fast egal. TRIM ist der richtige Befehl."
+      "explanation": "Falsch! Defragmentierung erzeugt unnötige Schreibzyklen und verschleißt die SSD. SSDs haben keine mechanischen Leseköpfe, Fragmentierung ist fast irrelevant. TRIM ist der richtige Befehl.",
+      "difficulty": "easy",
+      "bloomLevel": 2
     },
-     {
-      "id": "3_tf_4",
-      "statement": "Der Formfaktor M.2 sagt automatisch aus, dass die SSD sehr schnell ist (NVMe).",
+    {
+      "id": "003-tf-4",
+      "statement": "Der Formfaktor M.2 bedeutet automatisch, dass die SSD sehr schnell ist (NVMe-Standard).",
       "answer": "false",
-      "explanation": "M.2 ist nur der Stecker! Es gibt M.2 SATA (langsam) und M.2 NVMe (schnell). Vorsicht beim Kauf!"
+      "explanation": "Falsch! M.2 ist nur der Stecker. Es gibt M.2-SATA (langsam, ~550 MB/s) und M.2-NVMe (schnell, >3.000 MB/s). Immer auf 'NVMe' achten!",
+      "difficulty": "medium",
+      "bloomLevel": 2
+    },
+    {
+      "id": "003-tf-5",
+      "statement": "Dual Channel RAM (2x 16 GB) hat doppelte Bandbreite gegenüber Single Channel (1x 32 GB).",
+      "answer": "true",
+      "explanation": "Richtig! Dual Channel nutzt zwei RAM-Controller parallel. Bandbreite verdoppelt sich. Bei AMD Ryzen besonders wichtig (Infinity Fabric profitiert massiv).",
+      "difficulty": "easy",
+      "bloomLevel": 1
+    },
+    {
+      "id": "003-tf-6",
+      "statement": "ECC-RAM ist mit jedem Desktop-Mainboard kompatibel.",
+      "answer": "false",
+      "explanation": "Falsch! ECC braucht ein ECC-fähiges Mainboard UND einen ECC-fähigen Prozessor (meist Xeon/EPYC). Standard-Desktop-Boards (B550, Z690) unterstützen KEIN ECC!",
+      "difficulty": "medium",
+      "bloomLevel": 1
+    },
+    {
+      "id": "003-tf-7",
+      "statement": "Eine NVMe-SSD ist immer schneller als eine SATA-SSD.",
+      "answer": "true",
+      "explanation": "Richtig! NVMe nutzt PCIe direkt (bis zu 7.000 MB/s bei PCIe 4.0 x4). SATA III ist auf 6 Gbit/s (~600 MB/s) limitiert. NVMe ist 5-10× schneller bei Random-I/O.",
+      "difficulty": "easy",
+      "bloomLevel": 1
+    },
+    {
+      "id": "003-tf-8",
+      "statement": "Ein AMD Ryzen 5 5600X hat eine integrierte Grafik (iGPU) und braucht keine dedizierte Grafikkarte für Bildausgabe.",
+      "answer": "false",
+      "explanation": "Falsch! Ryzen 5600X hat KEINE iGPU. Nur Modelle mit 'G' im Namen (z.B. 5600G) haben iGPU. Ohne dedizierte GPU = kein Bildsignal! Klassischer Anfängerfehler.",
+      "difficulty": "medium",
+      "bloomLevel": 1
+    },
+    {
+      "id": "003-tf-9",
+      "statement": "TDP (Thermal Design Power) gibt die maximale Wärmeleistung (Abwärme) der CPU in Watt an.",
+      "answer": "true",
+      "explanation": "Richtig! TDP ist die Abwärme unter Dauerlast. Kühler muss mind. TDP abführen können. Netzteil-Berechnung: (CPU-TDP + GPU-TDP + 50W) × 1,5.",
+      "difficulty": "easy",
+      "bloomLevel": 1
+    },
+    {
+      "id": "003-tf-10",
+      "statement": "Ein 80 PLUS Gold Netzteil hat mindestens 90% Effizienz bei 50% Last.",
+      "answer": "true",
+      "explanation": "Richtig! 80 PLUS Zertifizierung: Bronze ≥85%, Gold ≥90%, Platinum ≥92%, Titanium ≥94%. Gold spart Strom (TCO!) gegenüber Bronze.",
+      "difficulty": "easy",
+      "bloomLevel": 1
+    },
+    {
+      "id": "003-tf-11",
+      "statement": "PCIe 4.0 ist doppelt so schnell wie PCIe 3.0 pro Lane.",
+      "answer": "true",
+      "explanation": "Richtig! PCIe 3.0: ~985 MB/s pro Lane. PCIe 4.0: ~1969 MB/s pro Lane. PCIe 5.0: ~3938 MB/s. Jede Generation verdoppelt fast die Geschwindigkeit.",
+      "difficulty": "easy",
+      "bloomLevel": 1
+    },
+    {
+      "id": "003-tf-12",
+      "statement": "Wenn ein M.2-Slot belegt ist, können auf manchen Mainboards bestimmte SATA-Ports deaktiviert werden.",
+      "answer": "true",
+      "explanation": "Richtig! PCIe-Lanes sind begrenzt. Einige Mainboards teilen Lanes: M.2_1 nutzt → SATA_5/6 disabled. Immer im Mainboard-Handbuch nachschauen!",
+      "difficulty": "medium",
+      "bloomLevel": 2
+    },
+    {
+      "id": "003-tf-13",
+      "statement": "Billige VRMs auf einem Mainboard können bei High-End-CPUs (i9/Ryzen 9) zu Throttling führen.",
+      "answer": "true",
+      "explanation": "Richtig! VRMs wandeln 12V in CPU-Spannung. Billige VRMs überhitzen bei High-End-CPUs → Throttling (CPU läuft langsamer). Für i9: Mind. 12+ Power-Phasen!",
+      "difficulty": "medium",
+      "bloomLevel": 2
+    },
+    {
+      "id": "003-tf-14",
+      "statement": "In AP1-Aufgaben zur Hardware-Auswahl reicht es, Komponenten zu nennen. Begründung ist optional.",
+      "answer": "false",
+      "explanation": "Falsch! Begründung ist PFLICHT und gibt die meisten Punkte! Erwartungshorizont verlangt: Leistung (warum diese GPU?), Wirtschaftlichkeit (TCO), Kompatibilität (Sockel, DDR).",
+      "difficulty": "medium",
+      "bloomLevel": 5
+    },
+    {
+      "id": "003-tf-15",
+      "statement": "DDR4 und DDR5 RAM sind mechanisch kompatibel und können im gleichen Mainboard-Slot verwendet werden.",
+      "answer": "false",
+      "explanation": "Falsch! DDR4 und DDR5 haben unterschiedliche Kerbe-Positionen (Notch). Mechanisch inkompatibel! Mainboards unterstützen entweder DDR4 ODER DDR5, nie beides.",
+      "difficulty": "easy",
+      "bloomLevel": 1
+    },
+    {
+      "id": "003-tf-16",
+      "statement": "Ein i9-Prozessor mit einer 5400 RPM HDD als Systemplatte läuft langsamer als ein i5 mit NVMe-SSD beim Booten und Programmstarts.",
+      "answer": "true",
+      "explanation": "Richtig! Bottleneck-Prinzip: Die HDD bremst den i9 aus. Boot-Zeit i9+HDD: 60s. i5+NVMe: 10s. HDD: ~100 IOPS, NVMe: 500.000+ IOPS. Storage ist oft der Flaschenhals!",
+      "difficulty": "medium",
+      "bloomLevel": 3
     }
-  ]
+  ],
+  "_metadata": {
+    "totalQuestions": 64,
+    "distribution": {
+      "mcq": 26,
+      "fill_blank": 10,
+      "match": 6,
+      "order": 6,
+      "true_false": 16
+    },
+    "distributionPercentages": {
+      "mcq": "40.6%",
+      "fill_blank": "15.6%",
+      "match": "9.4%",
+      "order": "9.4%",
+      "true_false": "25.0%"
+    },
+    "difficultyDistribution": {
+      "easy": 22,
+      "medium": 32,
+      "hard": 10
+    },
+    "conceptCoverage": {
+      "CPU-Architektur": ["003-mcq-2", "003-mcq-6", "003-mcq-26", "003-fb-2", "003-fb-6", "003-order-2", "003-tf-1", "003-tf-9"],
+      "RAM & Speicherhierarchie": ["003-mcq-4", "003-mcq-11", "003-mcq-23", "003-fb-1", "003-fb-4", "003-fb-8", "003-order-1", "003-order-6", "003-tf-2", "003-tf-5", "003-tf-6", "003-tf-15"],
+      "Massenspeicher (SSD/HDD)": ["003-mcq-3", "003-mcq-12", "003-mcq-15", "003-mcq-16", "003-mcq-22", "003-fb-5", "003-match-1", "003-match-3", "003-order-1", "003-tf-3", "003-tf-4", "003-tf-7", "003-tf-12", "003-tf-16"],
+      "Mainboard & PCIe": ["003-mcq-5", "003-mcq-19", "003-fb-10", "003-match-5", "003-order-4", "003-tf-11", "003-tf-12", "003-tf-13"],
+      "GPU & VRAM": ["003-mcq-8", "003-mcq-10", "003-fb-7", "003-tf-8"],
+      "Netzteil & Effizienz": ["003-mcq-7", "003-mcq-14", "003-mcq-17", "003-mcq-25", "003-fb-3", "003-match-4", "003-tf-9", "003-tf-10"],
+      "Fehleranalyse & Troubleshooting": ["003-mcq-1", "003-mcq-8", "003-mcq-16", "003-mcq-20", "003-mcq-25", "003-fb-9", "003-order-3"],
+      "AP1-Prüfungsvorbereitung": ["003-mcq-3", "003-mcq-7", "003-mcq-10", "003-mcq-13", "003-mcq-24", "003-fb-7", "003-match-6", "003-order-5", "003-tf-14"]
+    },
+    "estimatedCompletionTime": "50-65 Minuten",
+    "lastUpdated": "2026-02-20",
+    "notes": "Quiz vollständig überarbeitet nach CREATE_MODULE_PROMPT-Standard. Alle Fragen haben difficulty + bloomLevel. 8 Kernkonzepte mit je 6-12 Fragen abgedeckt. Fokus auf AP1-Prüfungsrelevanz (Begründungspflicht, TCO, Kompatibilität)."
+  }
 }

@@ -1,10 +1,10 @@
-const CACHE_NAME = "fiae-app-v2";
+const CACHE_NAME = "fiae-app-v21";
 const ASSETS_TO_CACHE = [
   "./",
   "./index.html",
   "./app.css",
-  "./icons/icon-192.png",
-  "./icons/icon-512.png",
+  "./icons/icon_192.png",
+  "./icons/icon_512.png",
   "./js/app.js",
   "./js/modules.js",
   "./js/state.js",
@@ -13,7 +13,14 @@ const ASSETS_TO_CACHE = [
   "./js/quiz/renderers.js",
   "./js/quiz/sections.js",
   "./js/quiz/validation.js",
-  "./manifest.json"
+  "./js/games/blitzkarten.js",
+  "./js/games/subnetz.js",
+  "./js/games/binary.js",
+  "./js/saveSystem.js",
+  "./manifest.json",
+  "./datenschutz.html",
+  "./agb.html",
+  "./dokumentation.html"
 ];
 
 self.addEventListener("install", (event) => {

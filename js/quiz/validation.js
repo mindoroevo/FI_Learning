@@ -166,6 +166,7 @@ export function checkAnswer(questionId) {
   }
 
   showResult(questionId, ok ? `✅ Richtig!<br>${explanation}` : `❌ Nicht korrekt.<br>${explanation}`, ok ? "ok" : "error");
+  document.dispatchEvent(new CustomEvent("fiae:quizAnswer", { detail: { correct: ok, moduleId: state.currentModuleId } }));
 }
 
 export function showSolution(questionId) {

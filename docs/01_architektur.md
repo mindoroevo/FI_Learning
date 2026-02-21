@@ -63,4 +63,18 @@ Wir nutzen JSON-Dateien statt einer Datenbank.
 
 ### 2. Modulare JavaScript-Dateien
 Früher schrieb man alles in eine riesige Datei. Das war unübersichtlich. Wir nutzen **ES6 Module**.
-Das bedeutet: Jede Aufgabe hat ihre eigene Datei (`quiz.js`, `utils.js` usw.). Das macht den Code wartbar wie einen Legobaukasten.
+Das bedeutet: Jede Aufgabe hat ihre eigene Datei. Das macht den Code wartbar wie einen Legobaukasten.
+
+| Datei | Aufgabe |
+|---|---|
+| `js/app.js` | Regisseur – Navigation, Rendering, Event-Handling |
+| `js/state.js` | Gedächtnis – Zustand, Quiz-Cache, Filter |
+| `js/modules.js` | Modulliste – 40 Einträge mit Pfaden |
+| `js/markdown.js` | Parser – wandelt Markdown in HTML um |
+| `js/utils.js` | Werkzeugkasten – escapeHtml, shuffle, inlineMd … |
+| `js/saveSystem.js` | Tresor – AES-256-Verschlüsselung, XP, Erfolge, Lesezeichen |
+| `js/quiz/sections.js` | Fragetyp-Renderer – 7 verschiedene Quiz-Typen |
+| `js/quiz/validation.js` | Lehrer – prüft Antworten, feuert Events |
+| `js/games/blitzkarten.js` | Karteikarten-Spiel |
+| `js/games/subnetz.js` | IPv4-Subnetting-Trainer |
+| `js/games/binary.js` | Binär/Hex-Umrechnungs-Trainer |

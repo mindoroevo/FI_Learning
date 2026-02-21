@@ -1,5 +1,5 @@
 import { renderMcqCards, renderFillBlankCards, renderMatchCards, renderOrderCards, renderTrueFalseCards, renderCaseLabCards } from "./renderers.js";
-import { state } from "../state.js";
+import { state, getFilteredQuizData, getQuizStats } from "../state.js";
 
 function renderSection(title, content, emptyMsg) {
   if (!content) return `<section class="quiz-section"><h2>${title}</h2><p>${emptyMsg}</p></section>`;
@@ -49,8 +49,19 @@ export function renderCaseLabSection(moduleId) {
 }
 
 export function renderMixedSection(moduleId) {
-  const data = state.currentQuizData;
-  let html = `<section class="quiz-section"><h2>Abschluss-Quiz (Mixed) zu Modul ${moduleId}</h2>`;
+  const data = getFilteredQuizData();
+  const stats = getQuizStats();
+  
+  let filterInfo = "";
+  if (state.selectedConcept) filterInfo += ` · ${state.selectedConcept}`;
+  if (state.difficultyFilter !== 'all') filterInfo += ` · ${state.difficultyFilter}`;
+  if (state.questionTypeFilter !== 'all') filterInfo += ` · ${state.questionTypeFilter}`;
+  
+  let html = `<section class="quiz-section">
+    <div class="quiz-header">
+      <h2>Quiz zu Modul ${moduleId}</h2>
+      <div class="quiz-meta">${stats.total} Fragen${filterInfo}</div>
+    </div>`;
   
   let questionCounter = 0;
 
@@ -73,6 +84,10 @@ export function renderMixedSection(moduleId) {
   if (data.true_false && data.true_false.length) {
     html += renderTrueFalseCards(data.true_false, questionCounter);
     questionCounter += data.true_false.length;
+  }
+  
+  if (questionCounter === 0) {
+    html += `<p class="no-questions">⚠️ Keine Fragen mit den aktuellen Filtern verfügbar.</p>`;
   }
   
   html += `</section>`;

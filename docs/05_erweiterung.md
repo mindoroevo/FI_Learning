@@ -10,29 +10,33 @@ Sei es ein neues Modul oder ein ganz neuer Fragetyp.
 Die App wächst mit Ihrem Wissen. Ein neues Modul anzulegen ist einfach!
 
 ### Schritt 1: Das Handbuch (Markdown)
-1.  Gehen Sie in den Ordner `module_001_014/` (oder Hauptordner).
-2.  Erstellen Sie eine neue Datei, z.B. `module_015.md`.
-3.  Schreiben Sie Ihr Wissen hinein. Nutzen Sie Überschriften (`#`, `##`), Listen (`-`) und Code (` ``` `).
+1.  Erstellen Sie eine neue Datei unter `FI_Learning/module_015_040/`, z.B. `041_neues_thema.md`.
+2.  Schreiben Sie Ihr Wissen hinein. Nutzen Sie Überschriften (`#`, `##`), Listen (`-`) und Code (` ``` `).
 
 ### Schritt 2: Das Quiz (JSON)
-1.  Gehen Sie in den Ordner `quiz/modules/`.
-2.  Erstellen Sie `015.quiz.json`.
-3.  Nutzen Sie dieses Template:
+1.  Erstellen Sie `FI_Learning/quiz/modules/041.quiz.json`.
+2.  Nutzen Sie dieses aktuelle Template:
 
 ```json
 {
-  "meta": { "module": "015", "title": "Mein Titel" },
-  "engine": "mixed",
-  "mcq": [
+  "meta": { "module": "041", "title": "Mein Titel", "version": 1 },
+  "questions": [
     {
-      "id": "1",
+      "id": "041_q01",
+      "type": "mcq",
+      "difficulty": "easy",
+      "concept": "Grundlagen",
       "question": "Was ist 1+1?",
       "options": ["1", "2", "3"],
-      "correct": [1]
+      "correct": [1],
+      "explanation": "1+1 ergibt 2, weil..."
     }
   ]
 }
 ```
+
+> **Wichtig:** Das Format `"questions": [...]` mit `"type"` pro Frage ist das aktuelle Format.
+> Ältere Beispiele mit `"mcq": [...]` direkt auf Root-Ebene sind veraltet.
 
 ### Schritt 3: Registrieren (`modules.js`)
 1.  Öffnen Sie `js/modules.js`.
@@ -40,8 +44,22 @@ Die App wächst mit Ihrem Wissen. Ein neues Modul anzulegen ist einfach!
 
 ```javascript
 export const MODULES = [
-  // ... alte Module ...
-  ["015", "Mein Titel", "../module_015.md"]
+  // ... bestehende Module ...
+  ["041", "Mein Titel", "./FI_Learning/module_015_040/041_neues_thema.md", true]
+  //  ↑ id  ↑ Name        ↑ Pfad zur .md-Datei                             ↑ hasQuiz
+  // hasQuiz: true  = Quiz-Tab wird angezeigt (nur wenn .quiz.json existiert)
+  // hasQuiz: false = kein Quiz-Tab, nur Lerninhalt
+];
+```
+
+### Schritt 4: Service Worker aktualisieren
+In `sw.js` die neue Quiz-Datei in `ASSETS_TO_CACHE` eintragen und die Cache-Version erhöhen:
+
+```javascript
+const CACHE_NAME = "fiae-app-v22"; // ← Zahl erhöhen!
+const ASSETS_TO_CACHE = [
+  // ... bestehende Einträge ...
+  "./FI_Learning/quiz/modules/041.quiz.json"
 ];
 ```
 
