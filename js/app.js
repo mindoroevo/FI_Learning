@@ -795,32 +795,36 @@ function handleGlobalClick(e) {
   }
 
   // Quiz Mode Selection
-  if (target.hasAttribute("data-mode") && target.classList.contains("filter-btn")) {
-    const mode = target.getAttribute("data-mode");
+  const quizModeBtn = target.closest(".filter-btn[data-mode]");
+  if (quizModeBtn) {
+    const mode = quizModeBtn.getAttribute("data-mode");
     state.quizMode = mode;
     refreshQuiz();
     return;
   }
 
   // Difficulty Filter
-  if (target.hasAttribute("data-difficulty")) {
-    const difficulty = target.getAttribute("data-difficulty");
+  const difficultyBtn = target.closest("[data-difficulty]");
+  if (difficultyBtn) {
+    const difficulty = difficultyBtn.getAttribute("data-difficulty");
     state.difficultyFilter = difficulty;
     refreshQuiz();
     return;
   }
 
   // Question Type Filter
-  if (target.hasAttribute("data-qtype")) {
-    const qtype = target.getAttribute("data-qtype");
+  const qtypeBtn = target.closest("[data-qtype]");
+  if (qtypeBtn) {
+    const qtype = qtypeBtn.getAttribute("data-qtype");
     state.questionTypeFilter = qtype;
     refreshQuiz();
     return;
   }
 
   // Concept Filter Selection
-  if (target.hasAttribute("data-concept") && target.classList.contains("filter-btn-sm")) {
-    const concept = target.getAttribute("data-concept");
+  const conceptBtn = target.closest(".filter-btn-sm[data-concept]");
+  if (conceptBtn) {
+    const concept = conceptBtn.getAttribute("data-concept");
     state.selectedConcept = concept || null;
     refreshQuiz();
     return;
