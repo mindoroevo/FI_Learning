@@ -376,13 +376,13 @@
       "type": "multipleChoice",
       "question": "Welche Aussage über die Windows-Gruppe 'Jeder' (Everyone) ist korrekt?",
       "options": [
-        "'Jeder' umfasst alle Benutzer inklusive Gäste und anonyme Zugriffe",
+        "'Jeder' umfasst alle Benutzer inklusive Gäste, aber standardmäßig nicht anonyme Zugriffe",
         "'Jeder' umfasst nur angemeldete Benutzer (nicht Gäste)",
         "'Jeder' ist nur eine Empfehlung, keine echte Gruppe",
         "'Jeder' = nur lokale Benutzer, keine Domänen-User"
       ],
       "correctAnswer": 0,
-      "explanation": "**'Jeder' (Everyone) = ALLE!** Lokale User, Domänen-User, Gäste, anonyme Netzwerkzugriffe. Sehr weit gefasst! Deshalb: VORSICHT bei 'Jeder' auf sensiblen Ordnern. Alternativ: 'Authentifizierte Benutzer' (Authenticated Users) = nur angemeldete User (sicherer!).",
+      "explanation": "**'Jeder' (Everyone) ist sehr weit gefasst** (lokale User, Domänen-User, Gäste), umfasst aber in modernen Windows-Versionen standardmäßig **nicht** anonyme Zugriffe. Für sensible Freigaben besser gezielt mit passenden Gruppen arbeiten.",
       "difficulty": "medium",
       "bloomLevel": 2,
       "concept": "windows_user_management"
@@ -989,8 +989,8 @@
       "id": "004-tf-010",
       "type": "trueFalse",
       "question": "Die Windows-Gruppe 'Jeder' (Everyone) umfasst auch Gäste und anonyme Netzwerkzugriffe.",
-      "correctAnswer": true,
-      "explanation": "**RICHTIG!** 'Jeder' = wirklich ALLE (lokale User, Domänen-User, Gäste, anonym). Sehr weit! Bei sensiblen Ordnern besser 'Authentifizierte Benutzer' nutzen (nur angemeldete User).",
+      "correctAnswer": false,
+      "explanation": "**FALSCH!** 'Jeder' umfasst zwar sehr viele Konten (u.a. Gäste), aber in modernen Windows-Versionen standardmäßig **nicht** anonyme Zugriffe.",
       "difficulty": "medium",
       "bloomLevel": 2,
       "concept": "windows_user_management"

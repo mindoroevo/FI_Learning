@@ -2,7 +2,7 @@
   "meta": {
     "module": "005",
     "title": "Netzwerk-Grundlagen",
-    "totalQuestions": 62,
+    "totalQuestions": 60,
     "estimatedTime": "75 Minuten",
     "concepts": [
       "OSI-Modell & TCP/IP-Modell",
@@ -326,12 +326,12 @@
       "question": "Was ist der aktuelle Wi-Fi-Standard und welche IEEE-Bezeichnung hat er?",
       "options": [
         "Wi-Fi 5 = IEEE 802.11ac",
+        "Wi-Fi 7 = IEEE 802.11be",
         "Wi-Fi 6 = IEEE 802.11ax",
-        "Wi-Fi 4 = IEEE 802.11n",
         "Wi-Fi 6 = IEEE 802.11ad"
       ],
       "answer": 1,
-      "explanation": "**Wi-Fi 6 = IEEE 802.11ax** (aktueller Standard, seit 2019). Unterstützt 2,4 GHz, 5 GHz und 6 GHz, bis 9,6 GBit/s, bessere Leistung in dicht belegten Netzen (OFDMA). Wi-Fi 5 = 802.11ac (nur 5 GHz), Wi-Fi 4 = 802.11n."
+      "explanation": "**Wi-Fi 7 = IEEE 802.11be** ist der aktuelle Standard. **Wi-Fi 6 = 802.11ax** bleibt weit verbreitet. Hinweis: Das 6-GHz-Band gehört zu Wi-Fi 6E (Erweiterung von Wi-Fi 6) und Wi-Fi 7."
     },
     {
       "id": "005-mcq-22",
@@ -841,8 +841,8 @@
       "id": "005-tf-12",
       "concept": "Verkabelung & WLAN-Standards",
       "statement": "Wi-Fi 6 hat die IEEE-Bezeichnung 802.11ax und unterstützt auch das 6-GHz-Frequenzband.",
-      "answer": "true",
-      "explanation": "**Richtig!** Wi-Fi 6 = **IEEE 802.11ax**, veröffentlicht 2019, unterstützt 2,4 GHz, 5 GHz und (bei Wi-Fi 6E) **6 GHz**. Wichtige Neuerungen: OFDMA (bessere Effizienz bei vielen Geräten), höhere theoretische Datenrate (9,6 GBit/s)."
+      "answer": "false",
+      "explanation": "**Falsch!** Wi-Fi 6 = **802.11ax** ist korrekt, aber das 6-GHz-Band ist **Wi-Fi 6E** (Erweiterung), nicht pauschal jeder Wi-Fi-6-Betrieb."
     },
     {
       "id": "005-tf-13",
@@ -909,7 +909,7 @@
       },
       "Fehleranalyse & Troubleshooting": {
         "questionIds": ["005-mcq-22", "005-mcq-23", "005-mcq-24", "005-mcq-25", "005-fb-7", "005-fb-8", "005-match-5", "005-order-3", "005-tf-13", "005-tf-14", "005-tf-15"],
-        "count": 12,
+        "count": 11,
         "difficulty": {"easy": 2, "medium": 6, "hard": 4}
       }
     },

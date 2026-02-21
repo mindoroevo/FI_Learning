@@ -1,16 +1,5 @@
-# 004 – Betriebssysteme, Benutzer & Rechteverwaltung (Praxisorientierter Deep Dive)
+﻿# 004 – Betriebssysteme, Benutzer & Rechteverwaltung (Praxisorientierter Deep Dive)
 
-## Lernzeit & Zielniveau
-- **Empfohlene Lernzeit:** 3–4 Stunden (Mittlerer Umfang mit vielen Praxisbeispielen)
-- **Zielniveau:** Du verstehst die fundamental unterschiedlichen Rechtesysteme von Windows und Linux so tief, dass du Zugriffsprobleme systematisch diagnostizieren, Berechtigungen korrekt setzen und AP1-Aufgaben zu Rechtevergabe begründet lösen kannst. Du kennst die Sicherheitsprinzipien (Least Privilege, Need-to-Know) und kannst sie in realen Szenarien anwenden.
-- **Vorkenntnisse:** 
-  - Modul 001 (Prüfungsrahmen) bekannt
-  - Modul 002 (Bedarfsermittlung) hilft beim Verständnis von Sicherheitsanforderungen
-  - Grundkenntnisse: Was ist ein Betriebssystem, was sind Dateien/Ordner
-- **Prüfungsrelevanz:** ⭐⭐⭐⭐⭐ (5/5 Sterne)  
-  **Begründung:** Rechteverwaltung ist KERN-Thema der AP1 und kommt in fast jeder Prüfung vor! Typische Aufgaben: "Die Firma X braucht einen Dateiserver mit folgenden Anforderungen: Marketing-Abteilung darf eigene Dateien lesen/schreiben, aber Geschäftsführung darf Marketing-Ordner NUR lesen. Richten Sie die Berechtigungen ein." Du musst Windows NTFS oder Linux Permissions EXAKT kennen und BEGRÜNDEN können (Sicherheit, Prüfbarkeit, Wirtschaftlichkeit).
-
----
 
 ## Kapitelübersicht
 1. Betriebssysteme im Vergleich (Windows Server vs. Linux)
@@ -86,18 +75,18 @@ In der Praxis wirst du **beides** verwalten:
 
 ### 1.4 Fachbegriffe-Tabelle (Pflicht-Vokabular für AP1)
 
-| Begriff | Englisch | Bedeutung | AP1-Relevanz |
-|---------|----------|-----------|--------------|
-| **ACL** | Access Control List | Liste von Berechtigungseinträgen (wer darf was) | ⭐⭐⭐⭐⭐ |
-| **NTFS** | New Technology File System | Windows-Dateisystem mit ACL-Unterstützung | ⭐⭐⭐⭐⭐ |
-| **UAC** | User Account Control | Windows-Feature: Bestätigung bei Admin-Aktionen | ⭐⭐⭐⭐ |
-| **sudo** | SuperUser DO | Linux-Befehl für temporäre root-Rechte | ⭐⭐⭐⭐⭐ |
-| **Least Privilege** | Prinzip der minimalen Rechte | User bekommt NUR die Rechte, die er wirklich braucht | ⭐⭐⭐⭐⭐ |
-| **Vererbung** | Inheritance | Unterordner erben Rechte vom Oberordner | ⭐⭐⭐⭐⭐ |
-| **Explizite Deny** | Explicit Deny | "Verbieten" schlägt "Erlauben" (Deny > Allow) | ⭐⭐⭐⭐ |
-| **SID** | Security Identifier | Windows-interne ID für Benutzer/Gruppen (S-1-5-21-...) | ⭐⭐⭐ |
-| **UID/GID** | User ID / Group ID | Linux-Zahlen für Benutzer (z.B. UID 1000) | ⭐⭐⭐⭐ |
-| **Need-to-Know** | - | User darf nur auf Daten zugreifen, die er für seine Arbeit braucht | ⭐⭐⭐⭐ |
+| Begriff | Englisch | Bedeutung |
+|---------|----------|-----------|
+| **ACL** | Access Control List | Liste von Berechtigungseinträgen (wer darf was) |
+| **NTFS** | New Technology File System | Windows-Dateisystem mit ACL-Unterstützung |
+| **UAC** | User Account Control | Windows-Feature: Bestätigung bei Admin-Aktionen |
+| **sudo** | SuperUser DO | Linux-Befehl für temporäre root-Rechte |
+| **Least Privilege** | Prinzip der minimalen Rechte | User bekommt NUR die Rechte, die er wirklich braucht |
+| **Vererbung** | Inheritance | Unterordner erben Rechte vom Oberordner |
+| **Explizite Deny** | Explicit Deny | "Verbieten" schlägt "Erlauben" (Deny > Allow) |
+| **SID** | Security Identifier | Windows-interne ID für Benutzer/Gruppen (S-1-5-21-...) |
+| **UID/GID** | User ID / Group ID | Linux-Zahlen für Benutzer (z.B. UID 1000) |
+| **Need-to-Know** | - | User darf nur auf Daten zugreifen, die er für seine Arbeit braucht |
 
 **Eselsbrücke:** "**A**lle **C**hefs **L**ieben **N**eue **T**abellen **F**ür **S**icherheit" = ACL, NTFS
 
@@ -1197,3 +1186,4 @@ Standard-Pattern für AP1:
 ---
 
 **Abschluss:** Rechteverwaltung ist das Rückgrat JEDER IT-Infrastruktur. Wer Berechtigungen falsch setzt, riskiert Datenlecks (DSGVO-Strafe!), Chaos (jeder löscht alles) und Support-Albtraum. Verstehe Least Privilege, nutze Gruppen, deaktiviere Vererbung bei sensiblen Ordnern – und du bist in der AP1 unschlagbar!
+

@@ -65,6 +65,14 @@ function isValidIp(s) {
   if (p.length !== 4) return false;
   return p.every(x => /^\d+$/.test(x) && Number(x) >= 0 && Number(x) <= 255);
 }
+function isValidSubnetMask(mask) {
+  if (!isValidIp(mask)) return false;
+  const n = ipToNum(mask) >>> 0;
+  if (n === 0 || n === 0xffffffff) return true; // /0 and /32
+  const inv = (~n) >>> 0;
+  // Valid if inverse has contiguous 1-bits from LSB only (000..0011..11)
+  return ((inv + 1) & inv) === 0;
+}
 
 // ─── Difficulty ranges ────────────────────────────────────────────────────────
 
@@ -140,13 +148,13 @@ function genNeededPrefix(diff) {
   const cidr  = randomInt(Math.max(min,2), Math.min(max,30));
   const hosts = usableHosts(cidr);
   const needed = cidr <= 2 ? hosts : randomInt(Math.max(1, usableHosts(cidr+1)+1), hosts);
-  let answerCidr = 30;
-  for (let x = 1; x <= 30; x++) {
+  let answerCidr = 1;
+  for (let x = 30; x >= 1; x--) {
     if (usableHosts(x) >= needed) { answerCidr = x; break; }
   }
   return {
     type: "needed_prefix",
-    prompt: `Ein Netz soll <strong>${needed.toLocaleString()}</strong> nutzbare Hosts haben.<br>Welcher ist der <em>kleinste</em> CIDR-Präfix (= größtes Netz), der ausreicht?`,
+    prompt: `Ein Netz soll <strong>${needed.toLocaleString()}</strong> nutzbare Hosts haben.<br>Welcher ist der <em>groesste</em> CIDR-Präfix (= kleinstes Netz), der ausreicht?`,
     fields: [{ label: "CIDR-Präfix (nur Zahl)", key: "cidr", answer: String(answerCidr) }],
     explanation:
       `Formel: 2<sup>(32 − Präfix)</sup> − 2 ≥ ${needed.toLocaleString()}<br>` +
@@ -523,7 +531,7 @@ function getHowToHtml(q) {
       </table>`,
 
     needed_prefix: `
-      <p><strong>Gesucht: kleinster Präfix x (= größtes Netz) mit</strong><br>
+      <p><strong>Gesucht: größter Präfix x (= kleinstes Netz) mit</strong><br>
       2<sup>(32 − x)</sup> − 2 ≥ benötigte Hosts</p>
       <p>Strategie: Starte bei /30 und gehe rückwärts, bis die Formel ausreicht.<br>
       Oder: Berechne 2<sup>n</sup> ≥ (Hosts + 2), dann Präfix = 32 − n.</p>
@@ -904,6 +912,10 @@ function runCalc() {
   if (/^\d+$/.test(cidrRaw)) {
     cidr = Number(cidrRaw);
   } else if (isValidIp(cidrRaw)) {
+    if (!isValidSubnetMask(cidrRaw)) {
+      res.innerHTML = `<div class="sn-calc-error">Ungültige Subnetzmaske (Bits müssen zusammenhängend sein)</div>`;
+      res.classList.remove("hidden"); return;
+    }
     cidr = maskToCidr(cidrRaw);
   } else {
     res.innerHTML = `<div class="sn-calc-error">Ungültige Maske / Präfix</div>`;

@@ -906,8 +906,8 @@
       "difficulty": "medium",
       "bloomLevel": 3,
       "statement": "Bei 'CAD-Software' oder '3D-Modellierung' braucht man immer eine dedizierte Grafikkarte (GPU), Onboard-Chips reichen nicht.",
-      "answer": "true",
-      "explanation": "**Richtig!** CAD/3D-Software ist **GPU-intensiv**. **Onboard-Grafikchips** (Intel UHD, AMD Vega) sind für 2D-Büroarbeit okay, aber für 3D katastrophal langsam (Ruckeln/Abstürze). **Empfehlung**: NVIDIA Quadro/RTX oder AMD Radeon Pro (zertifiziert für CAD). **Signalwort-Regel**: '3D/CAD/Rendering' → dedizierte GPU!"
+      "answer": "false",
+      "explanation": "**Falsch!** Die Aussage ist zu absolut. CAD/3D ist oft GPU-intensiv, aber nicht jede CAD-Aufgabe braucht zwingend eine dedizierte Grafikkarte. Für einfache 2D-Workflows kann integrierte Grafik ausreichen. Korrekt ist: Software-Anforderungen, Modellkomplexität und Performance-Ziele konkret prüfen."
     },
     {
       "id": "002-tf-11",

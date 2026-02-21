@@ -2,6 +2,7 @@
   "meta": { 
     "module": "003", 
     "title": "Hardware-Auswahl & Konfiguration",
+    "totalQuestions": 64,
     "estimatedTime": "50-65 Minuten",
     "lastUpdated": "2026-02-20"
   },
@@ -132,7 +133,7 @@
       "type": "single",
       "question": "Wofür steht TDP (Thermal Design Power) und wofür wird es genutzt?",
       "options": [
-        "Maximale Watt-Aufnahme der CPU unter Last, wichtig für Netzteil-Dimensionierung und Kühlung.",
+        "Thermische Auslegungsleistung (Abwärme) der CPU/GPU in Watt, wichtig für Kühlung und als Richtwert für die Netzteil-Dimensionierung.",
         "Die RGB-Beleuchtungs-Leistung in Watt.",
         "Die Garantiezeit der CPU in Jahren.",
         "Die maximale Taktfrequenz unter Boost."
@@ -145,7 +146,7 @@
     {
       "id": "003-mcq-10",
       "type": "multi",
-      "question": "Welche Signalwörter in einer AP1-Aufgabe deuten darauf hin, dass eine dedizierte GPU PFLICHT ist? (Mehrfachauswahl)",
+      "question": "Welche Signalwörter in einer AP1-Aufgabe deuten darauf hin, dass eine dedizierte GPU meist sinnvoll ist? (Mehrfachauswahl)",
       "options": [
         "CAD-Software (z.B. AutoCAD, SolidWorks)",
         "Office-Anwendungen (Word, Excel)",
@@ -523,7 +524,7 @@
     },
     {
       "id": "003-fb-7",
-      "text": "Bei CAD-Software ist eine {{0}} GPU PFLICHT (nicht iGPU!), da Programme wie {{1}} GPU-Beschleunigung nutzen. Für 4K-Auflösung ist mind. {{2}} GB VRAM empfohlen.",
+      "text": "Bei CAD-Software ist eine {{0}} GPU oft erforderlich, da Programme wie {{1}} GPU-Beschleunigung nutzen. Für 4K-Auflösung sind mind. {{2}} GB VRAM empfohlen.",
       "blanks": [
         {
           "options": ["dedizierte", "integrierte", "externe"],
@@ -826,8 +827,8 @@
     {
       "id": "003-tf-7",
       "statement": "Eine NVMe-SSD ist immer schneller als eine SATA-SSD.",
-      "answer": "true",
-      "explanation": "Richtig! NVMe nutzt PCIe direkt (bis zu 7.000 MB/s bei PCIe 4.0 x4). SATA III ist auf 6 Gbit/s (~600 MB/s) limitiert. NVMe ist 5-10× schneller bei Random-I/O.",
+      "answer": "false",
+      "explanation": "Falsch! Die Aussage ist zu absolut. NVMe ist meist deutlich schneller, aber nicht in jedem Szenario automatisch. Je nach SSD-Modell, Queue-Tiefe, thermischer Drosselung und Workload kann der Praxisunterschied klein sein.",
       "difficulty": "easy",
       "bloomLevel": 1
     },

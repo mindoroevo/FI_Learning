@@ -1,4 +1,4 @@
-const CACHE_NAME = "fiae-app-v23";
+const CACHE_NAME = "fiae-app-v48";
 const ASSETS_TO_CACHE = [
   "./",
   "./index.html",
@@ -16,6 +16,9 @@ const ASSETS_TO_CACHE = [
   "./js/games/blitzkarten.js",
   "./js/games/subnetz.js",
   "./js/games/binary.js",
+  "./js/games/diagramm.js",
+  "./js/games/diagramm-editor.js",
+  "./js/games/diagramm.quiz.json",
   "./js/saveSystem.js",
   "./manifest.json",
   "./datenschutz.html",

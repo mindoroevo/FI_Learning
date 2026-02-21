@@ -1,12 +1,5 @@
-# 002 – Bedarfsermittlung & Anforderungsanalyse (Vollständiger Deep Dive)
+﻿# 002 – Bedarfsermittlung & Anforderungsanalyse (Vollständiger Deep Dive)
 
-## Lernzeit & Zielniveau
-- **Empfohlene Lernzeit:** 2–3 Stunden (inkl. aller Übungen und Fallstudien)
-- **Zielniveau:** Du kannst aus jedem noch so schwammigen Prüfungsszenario ("Wir brauchen neue Laptops") eine **präzise, technische Anforderungsliste** extrahieren, priorisieren (Muss/Kann) und dokumentieren. Du verstehst, warum falsche Anforderungen das teuerste Problem in IT-Projekten sind.
-- **Vorkenntnisse:** Modul 001 (Prüfungsrahmen AP1) sollte bekannt sein. Grundverständnis von IT-Hardware (CPU, RAM, SSD) ist hilfreich, wird aber im Modul erklärt.
-- **Prüfungsrelevanz:** ⭐⭐⭐⭐⭐ (5/5) - **Absolutes Kernthema!** Fast jede AP1-Aufgabe beginnt mit Anforderungsanalyse. Ohne dieses Modul kannst du keine Hardwareauswahl begründen.
-
----
 
 ## Kapitelübersicht
 1. Was ist Bedarfsermittlung eigentlich? (Grundlagen erklärt)
@@ -77,17 +70,17 @@ Du musst lernen, "Nein" zu sagen, wenn ein Wunsch technisch oder wirtschaftlich 
 
 ### 1.4 Fachbegriffe präzise erklärt
 
-| Begriff | Definition | Englisch | Synonym | AP1-Relevanz |
-|---------|------------|----------|---------|--------------|
-| **Anforderung** | Eine messbare, überprüfbare Eigenschaft, die ein System erfüllen muss | Requirement | Erfordernis | ⭐⭐⭐⭐⭐ Kernbegriff |
-| **Stakeholder** | Jede Person/Gruppe, die Interesse am Projekt hat | Stakeholder | Interessengruppe | ⭐⭐⭐⭐ Oft in Szenarien |
-| **Lastenheft** | Dokument des Auftraggebers mit allen Anforderungen | Customer Specification | - | ⭐⭐⭐⭐⭐ Prüfungsliebling |
-| **Pflichtenheft** | Dokument des Auftragnehmers mit der Umsetzung | Functional Specification | - | ⭐⭐⭐⭐⭐ Prüfungsliebling |
-| **MoSCoW** | Priorisierungsmethode (Must, Should, Could, Won't) | MoSCoW | - | ⭐⭐⭐⭐ Für Begründungen |
-| **SMART** | Qualitätskriterien für Anforderungen (Spezifisch, Messbar, Akzeptiert, Realistisch, Terminiert) | SMART criteria | - | ⭐⭐⭐⭐ Für Anforderungsformulierung |
-| **Bedarfsanalyse** | Ermittlung dessen, was wirklich benötigt wird | Needs Analysis | Anforderungsanalyse | ⭐⭐⭐⭐⭐ Kernthema |
-| **Funktionale Anf.** | Was soll das System TUN? (Funktionen) | Functional Req. | - | ⭐⭐⭐ Oft gefragt |
-| **Nicht-funkt. Anf.** | WIE soll es sein? (Leistung, Sicherheit, Design) | Non-functional Req. | Qualitätsanf. | ⭐⭐⭐ Oft übersehen |
+| Begriff | Definition | Englisch | Synonym |
+|---------|------------|----------|---------|
+| **Anforderung** | Eine messbare, überprüfbare Eigenschaft, die ein System erfüllen muss | Requirement | Erfordernis |
+| **Stakeholder** | Jede Person/Gruppe, die Interesse am Projekt hat | Stakeholder | Interessengruppe |
+| **Lastenheft** | Dokument des Auftraggebers mit allen Anforderungen | Customer Specification | - |
+| **Pflichtenheft** | Dokument des Auftragnehmers mit der Umsetzung | Functional Specification | - |
+| **MoSCoW** | Priorisierungsmethode (Must, Should, Could, Won't) | MoSCoW | - |
+| **SMART** | Qualitätskriterien für Anforderungen (Spezifisch, Messbar, Akzeptiert, Realistisch, Terminiert) | SMART criteria | - |
+| **Bedarfsanalyse** | Ermittlung dessen, was wirklich benötigt wird | Needs Analysis | Anforderungsanalyse |
+| **Funktionale Anf.** | Was soll das System TUN? (Funktionen) | Functional Req. | - |
+| **Nicht-funkt. Anf.** | WIE soll es sein? (Leistung, Sicherheit, Design) | Non-functional Req. | Qualitätsanf. |
 
 ---
 
@@ -296,7 +289,7 @@ Hier sind typische Signalwörter aus AP1-Prüfungen und was sie technisch bedeut
 |--------------------|--------------------------------------------|
 | "Muss viele Programme gleichzeitig offen haben" | **Viel RAM** (min. 16GB, besser 32GB) |
 | "Arbeitet mit großen Datenbanken / Videobearbeitung" | **Schnelle Massenspeicher** (NVMe SSD) & viel RAM |
-| "Macht CAD / 3D-Zeichnungen / Rendering" | **Dedizierte Grafikkarte** (GPU), z.B. NVIDIA Quadro/RTX (kein Onboard-Chip!) |
+| "Macht CAD / 3D-Zeichnungen / Rendering" | **Je nach Workload dedizierte Grafikkarte** (GPU), bei anspruchsvollen Modellen/Rendering oft erforderlich; einfache 2D-Aufgaben können mit integrierter Grafik auskommen |
 | "Arbeitet im Zug / Café / Außendienst" | **Blickschutzfilter**, **LTE/5G-Modul**, lange **Akkulaufzeit**, **Mattes Display** |
 | "Vertrauliche Personaldaten / Finanzdaten" | **Verschlüsselung** (TPM-Chip, BitLocker), **Biometrie** (Fingerprint/IR-Kamera) |
 | "Präsentiert oft beim Kunden" | **Anschlüsse** (HDMI/USB-C für Beamer), **Convertible**-Funktion |
@@ -341,7 +334,7 @@ Wenn eine Anforderungsanalyse schiefgeht, merkst du es meist erst, wenn die Hard
 | Symptom | Übersehene Anforderung | Diagnose-Methode | Lösung | Wie vermeiden? |
 |---------|------------------------|------------------|--------|----------------|
 | **Software stürzt ab** | RAM-Bedarf | Taskmanager → Speicherauslastung prüfen | RAM aufrüsten | Systemanforderungen der Software VORHER checken |
-| **3D-Programm ruckelt** | Dedizierte GPU fehlt | Grafikeinstellungen → Onboard-Chip aktiv? | Workstation mit NVIDIA Quadro/RTX | Bei CAD/3D/Video IMMER nach GPU fragen |
+| **3D-Programm ruckelt** | Dedizierte GPU fehlt oder zu schwach | Grafikeinstellungen → integrierte GPU aktiv? | Passende Workstation-GPU oder Treiberkonfiguration | Bei CAD/3D/Video GPU-Anforderung immer konkret prüfen |
 | **VPN verbindet nicht** | Firewall-Kompatibilität | IT-Admin fragen: Welche Ports/Protokolle? | VPN-Client abstimmen mit Firmennetzwerk | IT-Infrastruktur VORHER klären |
 | **Display zu dunkel** | Helligkeit (Nits) | Datenblatt prüfen: <300 Nits = zu wenig | Display mit mind. 400 Nits (Outdoor) | Arbeitsort ernst nehmen ("oft im Außendienst") |
 | **Akku hält nur 2 Std.** | Laufzeitanforderung | Herstellerangabe vs. reale Nutzung | Größerer Akku (WHr) oder Zweitakku | Mobilität = immer nach Akkulaufzeit fragen! |
@@ -768,4 +761,5 @@ Pflichtenheft = Du sagst: *"Ich baue 120m², Ziegel, Fußbodenheizung, Rollrasen
 Nächster Schritt: **Quiz 002** bearbeiten (50-80 Fragen zur Vertiefung)
 
 Dann geht es weiter mit **Modul 003: Hardware-Kompatibilität & Komponenten**.
+
 

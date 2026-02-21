@@ -1,16 +1,5 @@
-# 005 – Netzwerk-Grundlagen (Vollständiger Deep Dive)
+﻿# 005 – Netzwerk-Grundlagen (Vollständiger Deep Dive)
 
-## Lernzeit & Zielniveau
-- **Empfohlene Lernzeit:** 3–4 Stunden (inkl. aller Übungen und Fallstudien)
-- **Zielniveau:** Du verstehst den Aufbau von Netzwerken vom Kabel bis zur Anwendungsschicht so gut, dass du Topologien planst, Protokolle zuordnest, Netzwerkgeräte auswählst und AP1-Aufgaben zu Netzwerk-Infrastruktur begründet löst.
-- **Vorkenntnisse:**
-  - Modul 001 (Prüfungsrahmen) bekannt
-  - Modul 003 (Hardware) hilfreich für Verständnis von Netzwerkkarten/Switches
-  - Grundverständnis: Was ist ein Computer, was ist das Internet?
-- **Prüfungsrelevanz:** ⭐⭐⭐⭐⭐ (5/5 Sterne)
-  **Begründung:** Netzwerk-Grundlagen sind KERN-Thema der AP1! Fast jede Prüfung enthält ein Szenario mit Netzwerk-Anforderungen: "Richten Sie den Arbeitsplatz im Firmennetzwerk ein", "Warum kann der Mitarbeiter nicht auf den Server zugreifen?" oder "Welche Verkabelung empfehlen Sie für das Büro?"
-
----
 
 ## Kapitelübersicht
 1. OSI-Modell & TCP/IP-Modell (Das Fundament)
@@ -77,16 +66,16 @@ Das OSI-Modell ist Theorie. In der Praxis läuft das **TCP/IP-Modell** mit nur *
 
 ### 1.4 Fachbegriffe – OSI & Protokollmodell
 
-| Begriff | Definition | AP1-Relevanz |
-|---------|------------|--------------|
-| **OSI-Modell** | 7-Schichten-Referenzmodell für Netzwerkkommunikation | ⭐⭐⭐⭐⭐ |
-| **Protokoll** | Vereinbarte Regeln für Datenaustausch zwischen Systemen | ⭐⭐⭐⭐⭐ |
-| **MAC-Adresse** | 48-Bit Hardware-Adresse (z.B. 00:1A:2B:3C:4D:5E), OSI Layer 2 | ⭐⭐⭐⭐⭐ |
-| **IP-Adresse** | Logische Netzwerkadresse, OSI Layer 3 (z.B. 192.168.1.10) | ⭐⭐⭐⭐⭐ |
-| **Port** | Nummer 0–65535 zur Unterscheidung von Diensten (Layer 4) | ⭐⭐⭐⭐⭐ |
-| **ARP** | Address Resolution Protocol: IP→MAC-Auflösung im lokalen Netz | ⭐⭐⭐⭐ |
-| **Encapsulation** | Daten werden beim Senden je Schicht mit Header ummantelt | ⭐⭐⭐ |
-| **PDU** | Protocol Data Unit: Einheit je Schicht (Bit/Frame/Paket/Segment) | ⭐⭐⭐ |
+| Begriff | Definition |
+|---------|------------|
+| **OSI-Modell** | 7-Schichten-Referenzmodell für Netzwerkkommunikation |
+| **Protokoll** | Vereinbarte Regeln für Datenaustausch zwischen Systemen |
+| **MAC-Adresse** | 48-Bit Hardware-Adresse (z.B. 00:1A:2B:3C:4D:5E), OSI Layer 2 |
+| **IP-Adresse** | Logische Netzwerkadresse, OSI Layer 3 (z.B. 192.168.1.10) |
+| **Port** | Nummer 0–65535 zur Unterscheidung von Diensten (Layer 4) |
+| **ARP** | Address Resolution Protocol: IP→MAC-Auflösung im lokalen Netz |
+| **Encapsulation** | Daten werden beim Senden je Schicht mit Header ummantelt |
+| **PDU** | Protocol Data Unit: Einheit je Schicht (Bit/Frame/Paket/Segment) |
 
 ---
 
@@ -232,13 +221,13 @@ Acknowledge → Server: "OK, für 24h reserviert!"
 
 Die **Topologie** beschreibt, wie Geräte physisch oder logisch miteinander verbunden sind.
 
-| Topologie | Beschreibung | Vorteil | Nachteil | AP1-Relevanz |
-|-----------|-------------|---------|----------|--------------|
-| **Stern** (Star) | Alle Geräte an zentralem Switch | Ausfall eines Geräts stört Netz nicht | Switch-Ausfall = alles weg | ⭐⭐⭐⭐⭐ Standard heute! |
-| **Bus** | Alle Geräte an einer Leitung | Günstig, einfach | Ein Kabelbruch = alles weg | ⭐ Veraltet |
-| **Ring** | Geräte in Ringstruktur | Gleichmäßige Last | Ausfall = ganzer Ring weg | ⭐ Veraltet (Token Ring) |
-| **Mesh** | Jedes Gerät direkt mit mehreren verbunden | Höchste Ausfallsicherheit | Teuer, aufwändig | ⭐⭐⭐ Für Server/Rechenzentrum |
-| **Baum** (Tree) | Hierarchische Stern-Kombination | Skalierbar | Abhängig von Root-Switch | ⭐⭐⭐⭐ Typisch in Firmen |
+| Topologie | Beschreibung | Vorteil | Nachteil |
+|-----------|-------------|---------|----------|
+| **Stern** (Star) | Alle Geräte an zentralem Switch | Ausfall eines Geräts stört Netz nicht | Switch-Ausfall = alles weg |
+| **Bus** | Alle Geräte an einer Leitung | Günstig, einfach | Ein Kabelbruch = alles weg |
+| **Ring** | Geräte in Ringstruktur | Gleichmäßige Last | Ausfall = ganzer Ring weg |
+| **Mesh** | Jedes Gerät direkt mit mehreren verbunden | Höchste Ausfallsicherheit | Teuer, aufwändig |
+| **Baum** (Tree) | Hierarchische Stern-Kombination | Skalierbar | Abhängig von Root-Switch |
 
 **AP1-Praxis:** Die **Sterntopologie** (alle PCs an Switch, Switch ans Router) ist heute **der Standard** für Büronetze. Das musst du begründen können!
 
@@ -253,12 +242,12 @@ Ein VPN (Virtual Private Network) erstellt einen **verschlüsselten Tunnel** dur
 - Datenschutz in öffentlichen WLANs (Café, Hotel)
 
 **Wichtige VPN-Protokolle:**
-| Protokoll | Beschreibung | AP1-Relevanz |
-|-----------|-------------|--------------|
-| **IPSec** | Standard für Site-to-Site-VPNs, stark verschlüsselt | ⭐⭐⭐⭐ |
-| **OpenVPN** | Open-Source, flexibel, oft für Remote-Access | ⭐⭐⭐⭐ |
-| **WireGuard** | Modern, sehr schnell, wenig Code → sicher | ⭐⭐⭐ |
-| **SSL/TLS-VPN** | Nur Browser nötig (z.B. Citrix, AnyConnect) | ⭐⭐⭐ |
+| Protokoll | Beschreibung |
+|-----------|-------------|
+| **IPSec** | Standard für Site-to-Site-VPNs, stark verschlüsselt |
+| **OpenVPN** | Open-Source, flexibel, oft für Remote-Access |
+| **WireGuard** | Modern, sehr schnell, wenig Code → sicher |
+| **SSL/TLS-VPN** | Nur Browser nötig (z.B. Citrix, AnyConnect) |
 
 ---
 
@@ -303,7 +292,7 @@ Für große Distanzen, hohe Geschwindigkeit und elektrische Isolation.
 |----------|------------|---------------|---------|---------|
 | **802.11n** | Wi-Fi 4 | 600 Mbit/s | 2,4 / 5 GHz | Veraltet, aber noch häufig |
 | **802.11ac** | Wi-Fi 5 | 3,5 GBit/s | 5 GHz | Standard bis ~2021 |
-| **802.11ax** | Wi-Fi 6 | 9,6 GBit/s | 2,4 / 5 / 6 GHz | Aktueller Standard |
+| **802.11ax** | Wi-Fi 6 | 9,6 GBit/s | 2,4 / 5 GHz (6 GHz via Wi-Fi 6E) | Weit verbreiteter Standard |
 | **802.11be** | Wi-Fi 7 | 46 GBit/s | 2,4 / 5 / 6 GHz | Aktuellster Standard (2024) |
 
 **2,4 GHz vs. 5 GHz:**
@@ -467,7 +456,7 @@ Für große Distanzen, hohe Geschwindigkeit und elektrische Isolation.
 | **Sterntopologie** | Netzwerkstruktur empfehlen | Standard, erkläre Vorteil! |
 | **Cat 6** | Kabelempfehlung | Standard begründen (Geschwindigkeit, Distanz) |
 | **PoE** | WAP ohne eigene Steckdose | Elegante Lösung für WLAN-Ausbau |
-| **802.11ax (Wi-Fi 6)** | WLAN-Standard | Aktuell, hohe Kapazität in Büroumgebung |
+| **802.11ax (Wi-Fi 6)** | WLAN-Standard | Weit verbreitet, hohe Kapazität in Büroumgebung |
 | **3-Way-Handshake** | TCP-Verbindungsaufbau | Erklärt, warum TCP zuverlässig ist |
 
 ### 7.3 Insider-Tipps vom Prüfer
@@ -720,3 +709,4 @@ Gib 3 mögliche Ursachen an und je einen Diagnose-Schritt.
 ### APIPA (169.254.x.x)
 🧠 **"169 = kein DHCP, selbst vergeben!"**  
 → Sofort daran denken: DHCP-Server nicht erreichbar → Kabel? WLAN? Router läuft?
+

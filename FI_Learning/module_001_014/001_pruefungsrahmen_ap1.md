@@ -1,12 +1,4 @@
-# 001 – Prüfungsrahmen AP1 (FIAE) vollständig verstehen
-
-## Lernzeit & Zielniveau
-- **Empfohlene Lernzeit:** 120–150 Minuten (mit allen Erklärungen und Übungen)
-- **Zielniveau:** Du verstehst JEDEN Begriff, der in AP1 vorkommt, und kannst jede Aufgabe strukturiert lösen. Du kannst anderen Azubis erklären, wie AP1 funktioniert.
-- **Vorkenntnisse:** Keine! Dieses Modul ist für absolute Einsteiger geeignet.
-- **Prüfungsrelevanz:** ⭐⭐⭐⭐⭐ (100%) - **PFLICHT-MODUL!** Ohne dieses Grundverständnis kannst du AP1 nicht bestehen.
-
----
+# 001 – Prüfungsrahmen AP1 (FIAE) vollständig verstehen
 
 ## Kapitelübersicht
 1. Was ist AP1 eigentlich? (Grundlagen erklärt)  
@@ -95,7 +87,7 @@ Die Aufgaben sind immer an einem **realen Szenario** orientiert. Du bekommst kei
 ✅ **Richtig ist:** Du musst auch **begründen** (warum passt das zum Fall?), **Sicherheit** erwähnen und einen **Test/Nachweis** beschreiben.
 
 ❌ **Fehlvorstellung 3:** "AP1 zählt nur 20%, also ist es nicht so wichtig."  
-✅ **Richtig ist:** 20% deiner **Gesamtnote**! Das kann den Unterschied zwischen "befriedigend" und "gut" machen. Außerdem: Wenn du AP1 nicht bestehst, kannst du nicht zur AP2-Prüfung zugelassen werden!
+✅ **Richtig ist:** 20% deiner **Gesamtnote**! Das kann den Unterschied zwischen "befriedigend" und "gut" machen. Wichtig: Für AP2 ist die **Teilnahme** an AP1 relevant; ein nicht bestandenes AP1-Ergebnis sperrt AP2 nicht automatisch.
 
 ❌ **Fehlvorstellung 4:** "Ich muss jede Frage perfekt beantworten."  
 ✅ **Richtig ist:** Es geht um **Punkte sammeln**. Lieber alle Fragen mit 70% Qualität als 2 perfekt und 2 leer!

@@ -407,8 +407,9 @@ function handleClick(e) {
 
   if (t.id === "bkBackBtn" || t.id === "bkBackBtn2") {
     stopTimer();
+    const back = _onBack;
     cleanupBlitzkarten();
-    if (_onBack) _onBack();
+    if (back) back();
   }
 }
 

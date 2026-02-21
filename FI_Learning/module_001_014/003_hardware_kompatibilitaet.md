@@ -1,16 +1,5 @@
-# 003 – Hardware-Architektur, Kompatibilität & Troubleshooting (Vollständiger Deep Dive)
+﻿# 003 – Hardware-Architektur, Kompatibilität & Troubleshooting (Vollständiger Deep Dive)
 
-## Lernzeit & Zielniveau
-- **Empfohlene Lernzeit:** 2–3 Stunden (AP1-Kerninhalt) · 4–5 Stunden (mit allen optionalen Vertiefungen – ideal auf 2–3 Sessions aufteilen)
-- **Zielniveau:** Du verstehst die Hardware-Architektur so tief, dass du nicht nur Komponenten zusammenstecken, sondern komplexe Inkompatibilitäten und Flaschenhälse (Bottlenecks) erkennen und lösen kannst. Du verstehst die technischen Datenblätter im Detail und kannst AP1-Aufgaben zu Hardware-Auswahl systematisch lösen.
-- **Vorkenntnisse:** 
-  - Modul 001 (Prüfungsrahmen) sollte bekannt sein
-  - Modul 002 (Bedarfsermittlung) hilft beim Verständnis von Anforderungen → Hardware-Transfer
-  - Grundkenntnisse über PC-Komponenten (CPU, RAM, SSD) vorhanden
-- **Prüfungsrelevanz:** ⭐⭐⭐⭐⭐ (5/5 Sterne)  
-  **Begründung:** Hardware-Auswahl und -Kompatibilität ist KERN-Thema der AP1! In fast jeder Prüfung kommt eine Aufgabe mit 15-20 Punkten, bei der du Hardware für einen konkreten Anwendungsfall auswählen und **begründen** musst. Typische Aufgabenstellung: "Die Firma X braucht 10 Arbeitsplätze für CAD-Software. Wählen Sie geeignete Hardware aus und begründen Sie Ihre Entscheidung hinsichtlich Leistung, Wirtschaftlichkeit und Kompatibilität."
-
----
 
 ## Kapitelübersicht
 1. Das magische Dreieck der Hardware (Performance, TCO, Effizienz)
@@ -54,7 +43,7 @@ Ein "schnellerer" Prozessor kann eine **schlechte** Wahl sein, wenn er:
 ### 1.3 Häufige Missverständnisse
 
 #### ❌ "Mehr GHz = Schneller"
-✅ **Richtig:** GHz ist nur **innerhalb derselben CPU-Generation** vergleichbar! Eine moderne CPU mit 3,5 GHz schlägt eine 10 Jahre alte CPU mit 4,5 GHz, weil moderne Architekturen **mehr Arbeit pro Taktzyklus** (IPC = Instructions Per Cycle) schaffen. **AP1-Relevanz:** In Prüfungsaufgaben darfst du nicht einfach GHz-Zahlen vergleichen, sondern musst die Generation/Architektur erwähnen!
+✅ **Richtig:** GHz ist nur **innerhalb derselben CPU-Generation** vergleichbar! Eine moderne CPU mit 3,5 GHz schlägt eine 10 Jahre alte CPU mit 4,5 GHz, weil moderne Architekturen **mehr Arbeit pro Taktzyklus** (IPC = Instructions Per Cycle) schaffen. In Prüfungsaufgaben darfst du nicht einfach GHz-Zahlen vergleichen, sondern musst die Generation/Architektur erwähnen!
 
 #### ❌ "Grafikkarte ist nur für Gaming"
 ✅ **Richtig:** Grafikkarten werden auch für **CAD/3D** (AutoCAD, SolidWorks), **Video-Encoding** (Adobe Premiere), **Machine Learning** (TensorFlow, PyTorch) und **Multi-Monitor-Setups** (4+ Bildschirme) gebraucht. Eine iGPU reicht nur für Office/Surfen. **AP1-Tipp:** Wenn "CAD", "3D", "Video", "KI" im Text steht → dedizierte GPU empfehlen!
@@ -70,18 +59,18 @@ Ein "schnellerer" Prozessor kann eine **schlechte** Wahl sein, wenn er:
 
 ### 1.4 Fachbegriffe-Tabelle (Essenzial für AP1)
 
-| Begriff | Englisch | Bedeutung | AP1-Relevanz |
-|---------|----------|-----------|--------------|
-| **TDP** | Thermal Design Power | Maximale Abwärme, die CPU/GPU erzeugt (in Watt). Wichtig für Kühlungs- und Netzteil-Dimensionierung. | ⭐⭐⭐⭐⭐ |
-| **IPC** | Instructions Per Cycle | Wie viele Befehle die CPU pro Taktzyklus ausführt. Moderne CPUs haben höheres IPC als alte. | ⭐⭐⭐⭐ |
-| **Dual Channel** | - | Zwei RAM-Riegel parallel betreiben → doppelte Bandbreite. Pflicht für Performance! | ⭐⭐⭐⭐⭐ |
-| **NVMe** | Non-Volatile Memory Express | Protokoll für SSDs über PCIe-Lanes (viel schneller als SATA). Standard für moderne SSDs. | ⭐⭐⭐⭐⭐ |
-| **ECC** | Error Correction Code | RAM, das Fehler erkennt und korrigiert. Pflicht für Server, optional für Workstations. | ⭐⭐⭐⭐ |
-| **PCIe-Lanes** | - | Datenleitungen zwischen CPU und Komponenten (GPU, SSD). x16 für GPU, x4 für NVMe. | ⭐⭐⭐⭐ |
-| **VRM** | Voltage Regulator Module | Spannungswandler auf dem Mainboard, der 12V in CPU-Spannung (~1,2V) wandelt. Billige VRMs → Throttling. | ⭐⭐⭐ |
-| **80 PLUS** | - | Effizienz-Zertifizierung für Netzteile (Bronze/Silber/Gold/Platinum/Titanium = 82-96% Wirkungsgrad). | ⭐⭐⭐⭐ |
-| **TBW** | Terabytes Written | Garantierte Schreibmenge einer SSD. Wichtig für Server/Caching, irrelevant für Office-PCs. | ⭐⭐⭐ |
-| **iGPU** | Integrated GPU | In CPU integrierte Grafikeinheit. Reicht für Office/Coding, nicht für CAD/Gaming. | ⭐⭐⭐⭐⭐ |
+| Begriff | Englisch | Bedeutung |
+|---------|----------|-----------|
+| **TDP** | Thermal Design Power | Maximale Abwärme, die CPU/GPU erzeugt (in Watt). Wichtig für Kühlungs- und Netzteil-Dimensionierung. |
+| **IPC** | Instructions Per Cycle | Wie viele Befehle die CPU pro Taktzyklus ausführt. Moderne CPUs haben höheres IPC als alte. |
+| **Dual Channel** | - | Zwei RAM-Riegel parallel betreiben → doppelte Bandbreite. Pflicht für Performance! |
+| **NVMe** | Non-Volatile Memory Express | Protokoll für SSDs über PCIe-Lanes (viel schneller als SATA). Standard für moderne SSDs. |
+| **ECC** | Error Correction Code | RAM, das Fehler erkennt und korrigiert. Pflicht für Server, optional für Workstations. |
+| **PCIe-Lanes** | - | Datenleitungen zwischen CPU und Komponenten (GPU, SSD). x16 für GPU, x4 für NVMe. |
+| **VRM** | Voltage Regulator Module | Spannungswandler auf dem Mainboard, der 12V in CPU-Spannung (~1,2V) wandelt. Billige VRMs → Throttling. |
+| **80 PLUS** | - | Effizienz-Zertifizierung für Netzteile (Bronze/Silber/Gold/Platinum/Titanium = 82-96% Wirkungsgrad). |
+| **TBW** | Terabytes Written | Garantierte Schreibmenge einer SSD. Wichtig für Server/Caching, irrelevant für Office-PCs. |
+| **iGPU** | Integrated GPU | In CPU integrierte Grafikeinheit. Reicht für Office/Coding, nicht für CAD/Gaming. |
 
 **Eselsbrücke:** **T**im **I**sst **D**oppelt **N**udeln, **E**r **P**feift **V**om **8**0er **T**eller **I**mmer.  
 (TDP, IPC, Dual Channel, NVMe, ECC, PCIe, VRM, 80 PLUS, TBW, iGPU)
@@ -223,7 +212,7 @@ Nicht nur für Gamer.
 
 ### 6.1 Wann brauche ich eine dedizierte GPU?
 - **Gaming:** Offensichtlich.
-- **CAD/3D-Modeling:** Zwingend. (Oft zertifizierte Treiber nötig -> Quadro/Pro-Karten).
+- **CAD/3D-Modeling:** Häufig sinnvoll bis notwendig, je nach Software, Modellkomplexität und Treiberanforderungen (oft Workstation-GPU empfohlen).
 - **Video-Editing:** GPU-Beschleunigung (NVENC, QuickSync) für Encoding/Decoding.
 - **Machine Learning / AI:** NVIDIA CUDA-Cores sind hier Standard. Viel VRAM nötig!
 - **Multi-Monitor:** Wenn mehr als 2-3 Displays benötigt werden.
@@ -351,13 +340,13 @@ RAM ist **nicht defekt**! DDR-RAM startet immer mit JEDEC-Standard-Takt (DDR4 = 
 **✅ RICHTIGE Diagnose:**  
 1. GPU-Check: Keine dedizierte Grafikkarte verbaut! Monitor hängt am Mainboard (nutzt iGPU).
 2. iGPU der Intel UHD 770 hat nur ~96 Shader-Einheiten, kein Hardware-Raytracing, nur 2 GB VRAM (vom RAM geklaut).
-3. **CAD-Software braucht dedizierte GPU!** (AutoCAD, SolidWorks, Revit etc. nutzen GPU-Beschleunigung massiv)
+3. **CAD-Software profitiert häufig stark von dedizierter GPU.** (Bei komplexen 3D-Workloads oft notwendig; bei einfachen 2D-Szenarien nicht immer zwingend.)
 
 **Beweis:** NVIDIA RTX A2000 (Workstation-GPU mit zertifizierten Treibern) einbauen → Ruckeln weg, Modell läuft flüssig.
 
 **Lösung:** Workstation-GPU nachrüsten (NVIDIA Quadro/RTX-A-Serie oder AMD Radeon Pro).
 
-**AP1-Lesson:** **Anforderungsermittlung war fehlerhaft!** Bei "CAD", "3D", "Rendering" MUSS dedizierte GPU empfohlen werden. Hätte man in Modul 002 (Bedarfsermittlung) gelernt: Signalwort "CAD" → GPU!
+**AP1-Lesson:** **Anforderungsermittlung war fehlerhaft!** Bei "CAD", "3D", "Rendering" sollte die GPU-Anforderung immer konkret geprüft und meist eine dedizierte GPU empfohlen werden. Hätte man in Modul 002 (Bedarfsermittlung) gelernt: Signalwort "CAD" → GPU!
 
 ---
 
@@ -601,7 +590,7 @@ Bevor du Hardware bestellst, gehe diese Liste durch:
 8. **PCIe-Lane-Verteilung:** x16 für GPU, x4 für NVMe, Rest für SATA etc. Wenn M.2_1 belegt → SATA_5/6 disabled!
 9. **80 PLUS Zertifizierung:** Gold (90% Effizienz) hat sich in 2-3 Jahren amortisiert vs. Bronze (85%).
 10. **TDP-Netzteil-Regel:** (CPU-TDP + GPU-TDP + 50W) × 1,5 = empfohlene Netzteil-Watt.
-11. **iGPU vs. dediziert:** Bei "CAD", "3D", "Video", "KI" → dedizierte GPU ist PFLICHT! iGPU reicht für Office.
+11. **iGPU vs. dediziert:** Bei "CAD", "3D", "Video", "KI" ist eine dedizierte GPU bei anspruchsvollen Workloads meist sinnvoll; iGPU reicht für Office und leichte Aufgaben.
 12. **ECC RAM:** Bei Server, Finanz, Medizin zwingend (Fehlerkorrektur für Datensicherheit).
 13. **Formfaktoren:** ATX (305×244mm) > MicroATX (244×244mm) > Mini-ITX (170×170mm). Je kleiner, desto weniger Slots!
 14. **Bottleneck-Analyse:** Schwächstes Glied limitiert Gesamtsystem. i9 + HDD = Geldverschwendung!
@@ -684,7 +673,7 @@ Hake ab, was du sicher kannst:
 
 #### 6. **iGPU vs. dedizierte GPU**
 > **"C-A-D und K-I brauchen GPU, sonst ruckelt's zu!"**  
-> Signalwörter: **C**AD, **A**utoCAD, **D**esign, **K**I, 3D-Modelling, Video-Editing → dedizierte GPU PFLICHT!
+> Signalwörter: **C**AD, **A**utoCAD, **D**esign, **K**I, 3D-Modelling, Video-Editing → dedizierte GPU oft sinnvoll; konkrete Software-Anforderungen immer prüfen.
 
 #### 7. **NVMe vs. SATA SSD**
 > **"Große Dateien? Dann NVMe-Zeilen!"**  
@@ -697,3 +686,4 @@ Hake ab, was du sicher kannst:
 ---
 
 **Abschluss:** Jetzt hast du das Rüstzeug, um Hardware wirklich zu verstehen und nicht nur Prospekte zu lesen. Wenn du die Unterschiede zwischen L1-Cache und RAM-Latenz verstanden hast, bist du bereit für das Quiz!
+

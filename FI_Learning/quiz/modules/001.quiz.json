@@ -67,15 +67,15 @@
       "type": "single",
       "difficulty": "medium",
       "concept": "Was ist AP1?",
-      "question": "Ein Azubi besteht AP1 nicht. Was passiert?",
+      "question": "Ein Azubi hat an AP1 teilgenommen, aber nicht bestanden. Was gilt für AP2?",
       "options": [
-        "Er darf trotzdem zu AP2, AP1 wird einfach nachgeholt",
-        "Er kann nicht zur AP2 zugelassen werden",
+        "Er kann trotzdem zu AP2 zugelassen werden (Teilnahme an AP1 vorausgesetzt)",
+        "Er ist automatisch endgültig durchgefallen",
         "AP1 zählt nicht, nur AP2 ist wichtig",
         "Er muss die gesamte Ausbildung wiederholen"
       ],
-      "answer": 1,
-      "explanation": "Wer AP1 nicht besteht, **kann nicht zur AP2 zugelassen werden**. AP1 ist also nicht optional!"
+      "answer": 0,
+      "explanation": "Für AP2 ist die **Teilnahme** an AP1 entscheidend. Ein nicht bestandenes AP1-Ergebnis führt nicht automatisch zu einer Sperre für AP2."
     },
     {
       "id": "001-mcq-5",
@@ -776,8 +776,8 @@
       "id": "001-tf-6",
       "concept": "Was ist AP1?",
       "statement": "Wer AP1 nicht besteht, kann trotzdem zur AP2 zugelassen werden.",
-      "answer": "false",
-      "explanation": "**Falsch!** Wer AP1 nicht besteht, **kann NICHT zur AP2 zugelassen werden**. AP1 ist also keine optionale Übung!"
+      "answer": "true",
+      "explanation": "**Richtig!** Für die AP2-Zulassung ist die Teilnahme an AP1 relevant. Ein nicht bestandenes AP1-Ergebnis sperrt AP2 nicht automatisch."
     },
     {
       "id": "001-tf-7",

@@ -3,6 +3,7 @@ import { state, loadQuizData, getAvailableConcepts, getQuizStats } from "./state
 import { launchBlitzkarten, cleanupBlitzkarten } from "./games/blitzkarten.js";
 import { launchSubnetz, cleanupSubnetz } from "./games/subnetz.js";
 import { launchBinary, cleanupBinary } from "./games/binary.js";
+import { launchDiagramm, cleanupDiagramm } from "./games/diagramm.js";
 import { initSaveSystem, openSaveManager, toggleBookmark, hasBookmark } from "./saveSystem.js";
 import { markdownToHtml } from "./markdown.js";
 import { inlineMd, escapeAttr, escapeHtml } from "./utils.js";
@@ -115,6 +116,16 @@ function init() {
       closeSidebar();
       document.querySelectorAll(".module-item").forEach(l => l.classList.remove("active"));
       launchBinary(contentEl, () => { setActiveTab("spiele"); showGamesScreen(); });
+    });
+  }
+
+  // Diagramm-Trainer
+  const diagrammBtn = document.getElementById("diagrammBtn");
+  if (diagrammBtn) {
+    diagrammBtn.addEventListener("click", () => {
+      closeSidebar();
+      document.querySelectorAll(".module-item").forEach(l => l.classList.remove("active"));
+      launchDiagramm(contentEl, () => { setActiveTab("spiele"); showGamesScreen(); });
     });
   }
 
@@ -298,6 +309,7 @@ function showWelcomeMessage() {
   cleanupBlitzkarten();
   cleanupSubnetz();
   cleanupBinary();
+  cleanupDiagramm();
   state.currentModuleId = null;
   contentEl.innerHTML = `
     <div class="welcome-msg">
@@ -311,6 +323,7 @@ function showGamesScreen() {
   cleanupBlitzkarten();
   cleanupSubnetz();
   cleanupBinary();
+  cleanupDiagramm();
   state.currentModuleId = null;
   document.querySelectorAll(".module-item").forEach(l => l.classList.remove("active"));
 
@@ -336,6 +349,11 @@ function showGamesScreen() {
           <span class="home-tile-name">Binär-Trainer</span>
           <span class="home-tile-desc">Zahlensysteme meistern</span>
         </button>
+        <button class="home-tile home-tile-dg" id="homeDg">
+          <span class="home-tile-icon">📐</span>
+          <span class="home-tile-name">Diagramm-Trainer</span>
+          <span class="home-tile-desc">UML, ER &amp; Use-Case</span>
+        </button>
       </div>
     </div>`;
 
@@ -350,6 +368,10 @@ function showGamesScreen() {
   document.getElementById("homeBin")?.addEventListener("click", () => {
     document.querySelectorAll(".module-item").forEach(l => l.classList.remove("active"));
     launchBinary(contentEl, () => { setActiveTab("spiele"); showGamesScreen(); });
+  });
+  document.getElementById("homeDg")?.addEventListener("click", () => {
+    document.querySelectorAll(".module-item").forEach(l => l.classList.remove("active"));
+    launchDiagramm(contentEl, () => { setActiveTab("spiele"); showGamesScreen(); });
   });
 }
 
@@ -378,6 +400,7 @@ async function loadModule(moduleId) {
   cleanupBlitzkarten();
   cleanupSubnetz();
   cleanupBinary();
+  cleanupDiagramm();
   state.currentModuleId = moduleId;
   
   // Reset filters when switching modules

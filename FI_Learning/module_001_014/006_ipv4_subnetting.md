@@ -1,16 +1,5 @@
-# 006 – IPv4-Subnetting (Vollständiger Deep Dive)
+﻿# 006 – IPv4-Subnetting (Vollständiger Deep Dive)
 
-## Lernzeit & Zielniveau
-- **Empfohlene Lernzeit:** 4–5 Stunden (inkl. aller Übungen und Fallstudien)
-- **Zielniveau:** Du berechnest Netzwerk-, Broadcast- und Hostadressen sicher, teilst Netze anhand von CIDR-Präfixen in Subnetze auf, erkennst private Adressbereiche nach RFC 1918 und löst typische Konfigurationsfehler systematisch.
-- **Vorkenntnisse:**
-  - Modul 005 (Netzwerk-Grundlagen) – OSI-Modell, IP-Adresse, Router, DHCP-Begriff
-  - Grundrechenarten und Potenzen (2^n)
-  - Was ist ein Binärsystem? (kurze Wiederholung in Kapitel 1)
-- **Prüfungsrelevanz:** ⭐⭐⭐⭐⭐ (5/5 Sterne)
-  **Begründung:** Subnetting ist eines der zuverlässigsten AP1-Aufgabenthemen. In fast jeder Prüfung wird entweder eine Netzwerkadresse berechnet, ein Subnetz geplant oder ein Konfigurationsfehler durch falsche Subnetzmaske diagnostiziert.
-
----
 
 ## Kapitelübersicht
 1. IPv4-Adressstruktur & Binär-Notation
@@ -35,7 +24,7 @@ Stell dir Adressen wie Hausnummern vor – aber für Netzwerkgeräte. Jedes Ger�
 Eine **IPv4-Adresse** besteht aus genau **32 Bit** (4 × 8 Bit), dargestellt als vier Dezimalzahlen getrennt durch Punkte:
 
 ```
-192   .  168  .   1   .  100
+     192.     168.       1.     100
 11000000.10101000.00000001.01100100
 ```
 
@@ -88,14 +77,14 @@ Früher wurden IPv4-Adressen in Klassen eingeteilt. Heute nutzt man CIDR (Kapite
 
 ### 1.5 Fachbegriffe – IPv4 Grundlagen
 
-| Begriff | Definition | AP1-Relevanz |
-|---------|------------|--------------|
-| **IPv4** | Internet Protocol Version 4, 32-Bit-Adressraum | ⭐⭐⭐⭐⭐ |
-| **Oktett** | 8-Bit-Gruppe einer IPv4-Adresse (je eine der 4 Dezimalzahlen) | ⭐⭐⭐ |
-| **Netzwerkteil** | Bits der IP-Adresse, die das Netz identifizieren | ⭐⭐⭐⭐⭐ |
-| **Hostteil** | Bits der IP-Adresse, die das Gerät im Netz identifizieren | ⭐⭐⭐⭐⭐ |
-| **Broadcast** | Adresse zum Ansprechen aller Hosts im Subnetz (alle Host-Bits = 1) | ⭐⭐⭐⭐⭐ |
-| **RFC 1918** | IETF-Dokument, das private IP-Adressbereiche definiert | ⭐⭐⭐⭐ |
+| Begriff | Definition |
+|---------|------------|
+| **IPv4** | Internet Protocol Version 4, 32-Bit-Adressraum |
+| **Oktett** | 8-Bit-Gruppe einer IPv4-Adresse (je eine der 4 Dezimalzahlen) |
+| **Netzwerkteil** | Bits der IP-Adresse, die das Netz identifizieren |
+| **Hostteil** | Bits der IP-Adresse, die das Gerät im Netz identifizieren |
+| **Broadcast** | Adresse zum Ansprechen aller Hosts im Subnetz (alle Host-Bits = 1) |
+| **RFC 1918** | IETF-Dokument, das private IP-Adressbereiche definiert |
 
 ---
 
@@ -282,7 +271,7 @@ Da private Adressen im Internet nicht routbar sind, übersetzt der **Router mit 
 [PC 192.168.1.10] → [Router/NAT] → [Internet: öffentliche IP 85.1.2.3]
 ```
 
-**AP1-Relevanz:** NAT wird oft gefragt bei Aufgaben zur Internet-Anbindung eines Firmennetzes.
+NAT wird oft gefragt bei Aufgaben zur Internet-Anbindung eines Firmennetzes.
 
 ### 4.3 Sonderadressen – Die musst du kennen
 
@@ -756,3 +745,4 @@ c) DHCP-Server: 172.16.0.1 (statisch, erste nutzbare Adresse, gut merkbar; auße
 
 ### DORA
 🧠 **Merkhilfe:** **D**ora die Entdeckerin – zuerst **entdecken** (Discover), dann **anbieten** (Offer), dann **anfragen** (Request), dann **bestätigen** (Acknowledge).
+

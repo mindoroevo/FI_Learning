@@ -1,0 +1,672 @@
+{
+  "version": "1",
+  "questions": [
+    {
+      "id": "kl_mc_01",
+      "type": "klasse",
+      "mode": "mc",
+      "icon": "📦",
+      "question": "Was bedeutet \"+\" vor einem Attribut oder einer Methode in UML?",
+      "diagramDef": null,
+      "options": [
+        "public – von überall zugreifbar",
+        "private – nur innerhalb der Klasse",
+        "protected – nur in Unterklassen",
+        "static – gehört zur Klasse, nicht zur Instanz"
+      ],
+      "correct": 0,
+      "explanation": "+ steht für public: Das Attribut oder die Methode ist von überall erreichbar."
+    },
+    {
+      "id": "kl_mc_02",
+      "type": "klasse",
+      "mode": "mc",
+      "icon": "📦",
+      "question": "Was bedeutet \"-\" vor einem Attribut?",
+      "diagramDef": null,
+      "options": [
+        "private – nur innerhalb der Klasse",
+        "public – von überall",
+        "protected – in Klasse und Unterklassen",
+        "abstract – nicht direkt verwendbar"
+      ],
+      "correct": 0,
+      "explanation": "- (Minus) steht für private: Nur die eigene Klasse kann direkt darauf zugreifen."
+    },
+    {
+      "id": "kl_mc_03",
+      "type": "klasse",
+      "mode": "mc",
+      "icon": "📦",
+      "question": "Was bedeutet \"#\" vor einem Attribut oder einer Methode?",
+      "diagramDef": null,
+      "options": [
+        "protected – in Klasse und Unterklassen sichtbar",
+        "private – nur intern",
+        "public – überall sichtbar",
+        "package-private – nur im selben Paket"
+      ],
+      "correct": 0,
+      "explanation": "# = protected: Zugriff in der eigenen Klasse und in allen abgeleiteten Unterklassen."
+    },
+    {
+      "id": "kl_mc_04",
+      "type": "klasse",
+      "mode": "mc",
+      "icon": "📦",
+      "question": "Was bedeutet Kardinalität \"1..*\" in UML?",
+      "diagramDef": null,
+      "options": [
+        "Mindestens 1, beliebig viele",
+        "Genau einer",
+        "Null oder einer",
+        "Beliebig viele (auch null möglich)"
+      ],
+      "correct": 0,
+      "explanation": "1..* = mindestens 1, maximal beliebig viele. Z.B.: Eine Bestellung muss mindestens eine Position enthalten."
+    },
+    {
+      "id": "kl_mc_05",
+      "type": "klasse",
+      "mode": "mc",
+      "icon": "📦",
+      "question": "Was bedeutet Kardinalität \"0..1\"?",
+      "diagramDef": null,
+      "options": [
+        "Optional – kein oder genau ein Element",
+        "Genau einer",
+        "Null bis beliebig viele",
+        "Mindestens einer"
+      ],
+      "correct": 0,
+      "explanation": "0..1 = optional: Es kann kein oder genau ein zugehöriges Element geben."
+    },
+    {
+      "id": "kl_mc_06",
+      "type": "klasse",
+      "mode": "mc",
+      "icon": "📦",
+      "question": "Durchgezogene Linie + leeres Dreieck als Pfeilspitze bedeutet:",
+      "diagramDef": {"type": "relation", "left": "Auto", "arrow": "inherit", "right": "Fahrzeug"},
+      "options": [
+        "Vererbung – Auto erbt von Fahrzeug",
+        "Assoziation – einfache Verbindung",
+        "Realisierung – Klasse implementiert Interface",
+        "Komposition – starke Abhängigkeit"
+      ],
+      "correct": 0,
+      "explanation": "Leeres Dreieck + durchgezogene Linie = Vererbung. Der Pfeil zeigt zur Elternklasse."
+    },
+    {
+      "id": "kl_mc_07",
+      "type": "klasse",
+      "mode": "mc",
+      "icon": "📦",
+      "question": "Gestrichelte Linie + leeres Dreieck bedeutet in UML:",
+      "diagramDef": {"type": "relation", "left": "Kreditkarte", "arrow": "implement", "right": "Zahlung"},
+      "options": [
+        "Realisierung – Klasse implementiert Interface",
+        "Vererbung – Klasse erbt",
+        "Abhängigkeit – lose Kopplung",
+        "Aggregation – Teil-Ganzes-Beziehung"
+      ],
+      "correct": 0,
+      "explanation": "Gestrichelte Linie + hohles Dreieck = Realisierung (implements)."
+    },
+    {
+      "id": "kl_mc_08",
+      "type": "klasse",
+      "mode": "mc",
+      "icon": "📦",
+      "question": "Was bedeutet eine gefüllte (schwarze) Raute in UML?",
+      "diagramDef": {"type": "relation", "left": "Haus", "arrow": "compose", "right": "Zimmer"},
+      "options": [
+        "Komposition – Teil kann nicht ohne das Ganze existieren",
+        "Aggregation – lockere Zugehörigkeit",
+        "Vererbung – Unterklasse",
+        "Assoziation – beliebige Verbindung"
+      ],
+      "correct": 0,
+      "explanation": "Gefüllte Raute = Komposition: Zimmer kann ohne Haus nicht existieren. Die Raute steht beim 'Ganzen'."
+    },
+    {
+      "id": "kl_mc_09",
+      "type": "klasse",
+      "mode": "mc",
+      "icon": "📦",
+      "question": "Was bedeutet eine leere (hohle) Raute in UML?",
+      "diagramDef": {"type": "relation", "left": "Team", "arrow": "aggregate", "right": "Spieler"},
+      "options": [
+        "Aggregation – Teil kann alleine existieren",
+        "Komposition – starke Abhängigkeit",
+        "Vererbung",
+        "Realisierung"
+      ],
+      "correct": 0,
+      "explanation": "Leere Raute = Aggregation: Spieler gehört zum Team, kann aber auch ohne Team existieren."
+    },
+    {
+      "id": "kl_mc_10",
+      "type": "klasse",
+      "mode": "mc",
+      "icon": "🔍",
+      "question": "Fehler finden: Was stimmt an dieser Beziehung nicht?",
+      "diagramDef": {"type": "relation", "left": "Kunde", "arrow": "compose", "right": "Bestellung", "cardLeft": "1", "cardRight": "*", "errorHint": "Kompositionsraute – wo muss sie stehen?"},
+      "options": [
+        "Die Raute muss bei Kunde stehen – Bestellung gehört zu Kunde",
+        "Die Kardinalität 1:* ist falsch",
+        "Es sollte Vererbung statt Komposition sein",
+        "Der Klassenname fehlt"
+      ],
+      "correct": 0,
+      "explanation": "Die Kompositionsraute steht beim 'Ganzen'. Bestellung gehört zu Kunde, also Raute bei Kunde."
+    },
+    {
+      "id": "er_mc_01",
+      "type": "er",
+      "mode": "mc",
+      "icon": "🗃️",
+      "question": "Was stellt ein Rechteck in einem ER-Diagramm dar?",
+      "diagramDef": {"type": "erEntity", "name": "Kunde"},
+      "options": [
+        "Entity-Typ – z.B. alle Kunden",
+        "Attribut einer Entität",
+        "Beziehungstyp zwischen Entitäten",
+        "Schlüsselattribut"
+      ],
+      "correct": 0,
+      "explanation": "Rechtecke = Entity-Typen (Entitätsmengen), z.B. Kunde, Produkt, Bestellung."
+    },
+    {
+      "id": "er_mc_02",
+      "type": "er",
+      "mode": "mc",
+      "icon": "🗃️",
+      "question": "Was stellt eine Raute in einem ER-Diagramm dar?",
+      "diagramDef": {"type": "erRow", "left": "Kunde", "rel": "bestellt", "right": "Produkt"},
+      "options": [
+        "Beziehungstyp – Verbindung zwischen Entitäten",
+        "Entity-Typ",
+        "Attribut",
+        "Schlüsselattribut"
+      ],
+      "correct": 0,
+      "explanation": "Rauten = Beziehungstypen, z.B. 'bestellt', 'arbeitet in'."
+    },
+    {
+      "id": "er_mc_03",
+      "type": "er",
+      "mode": "mc",
+      "icon": "🗃️",
+      "question": "Was bedeutet ein unterstrichenes Attribut im ER-Diagramm?",
+      "diagramDef": {"type": "erAttr", "entity": "Kunde", "attr": "KundenID", "isKey": true},
+      "options": [
+        "Primärschlüssel – identifiziert eine Entität eindeutig",
+        "Fremdschlüssel",
+        "Pflichtfeld",
+        "Berechnetes Attribut"
+      ],
+      "correct": 0,
+      "explanation": "Unterstrichene Attribute sind Primärschlüssel – sie identifizieren jeden Datensatz eindeutig."
+    },
+    {
+      "id": "er_mc_04",
+      "type": "er",
+      "mode": "mc",
+      "icon": "🗃️",
+      "question": "Was bedeutet m:n als Kardinalität?",
+      "diagramDef": {"type": "erRow", "left": "Student", "cardLeft": "m", "rel": "belegt", "cardRight": "n", "right": "Kurs"},
+      "options": [
+        "Viele-zu-viele: jeder Student belegt mehrere Kurse, jeder Kurs hat mehrere Studenten",
+        "Eins-zu-viele",
+        "Eins-zu-eins",
+        "Mindestens m, maximal n"
+      ],
+      "correct": 0,
+      "explanation": "m:n = Viele-zu-viele. Benötigt in der DB eine Zwischentabelle."
+    },
+    {
+      "id": "er_mc_05",
+      "type": "er",
+      "mode": "mc",
+      "icon": "🗃️",
+      "question": "Was stellt eine Ellipse im ER-Diagramm dar?",
+      "diagramDef": {"type": "erAttr", "entity": "Kunde", "attr": "Name", "isKey": false},
+      "options": [
+        "Attribut – Eigenschaft einer Entität",
+        "Entity-Typ",
+        "Beziehungstyp",
+        "Systemgrenze"
+      ],
+      "correct": 0,
+      "explanation": "Ellipsen = Attribute. Sie beschreiben Eigenschaften von Entitäten."
+    },
+    {
+      "id": "er_mc_06",
+      "type": "er",
+      "mode": "mc",
+      "icon": "🔍",
+      "question": "Fehler finden: 'Kunde und Produkt stehen in m:n Beziehung' – was stimmt nicht?",
+      "diagramDef": {"type": "erRow", "left": "Kunde", "cardLeft": "1", "rel": "kauft", "cardRight": "n", "right": "Produkt", "errorSide": "left", "errorHint": "Kardinalität links prüfen"},
+      "options": [
+        "Muss m:n sein – viele Kunden kaufen viele Produkte",
+        "Beziehungstyp falsch",
+        "Entity-Typen falsch benannt",
+        "Muss 1:1 sein"
+      ],
+      "correct": 0,
+      "explanation": "Da viele Kunden viele Produkte kaufen, ist 1:n falsch. Korrekt: m:n."
+    },
+    {
+      "id": "er_mc_07",
+      "type": "er",
+      "mode": "mc",
+      "icon": "🗃️",
+      "question": "Warum braucht eine m:n-Beziehung eine Zwischentabelle?",
+      "diagramDef": null,
+      "options": [
+        "Relationale DB unterstützen m:n nicht direkt – Zwischentabelle löst sie in zwei 1:n auf",
+        "Nur zur Lesbarkeit",
+        "Um Primärschlüssel doppelt zu speichern",
+        "Weil m:n immer 1:1 enthält"
+      ],
+      "correct": 0,
+      "explanation": "Zwischentabelle (z.B. Student_Kurs mit StudentID + KursID) löst m:n in zwei 1:n auf."
+    },
+    {
+      "id": "er_mc_08",
+      "type": "er",
+      "mode": "mc",
+      "icon": "🗃️",
+      "question": "'Jeder Mitarbeiter arbeitet in genau einer Abteilung. Eine Abteilung hat mehrere Mitarbeiter.' – Kardinalität?",
+      "diagramDef": null,
+      "options": [
+        "1:n – eine Abteilung hat n Mitarbeiter",
+        "m:n",
+        "1:1",
+        "0:n"
+      ],
+      "correct": 0,
+      "explanation": "Abteilung (1) : Mitarbeiter (n). Jeder Mitarbeiter gehört zu genau einer Abteilung."
+    },
+    {
+      "id": "uc_mc_01",
+      "type": "usecase",
+      "mode": "mc",
+      "icon": "👤",
+      "question": "Was ist ein 'Akteur' (Actor) in einem Use-Case-Diagramm?",
+      "diagramDef": {"type": "ucActors", "actors": [{"icon": "🧍", "name": "Kunde"}, {"icon": "🖥️", "name": "Zahlungssystem"}]},
+      "options": [
+        "Externe Rolle die mit dem System interagiert",
+        "Interne Datenbank",
+        "Ein Use-Case selbst",
+        "Abstrakte Klasse"
+      ],
+      "correct": 0,
+      "explanation": "Akteure sind extern: Personen (Kunde, Admin) oder externe Systeme (Zahlungsdienst)."
+    },
+    {
+      "id": "uc_mc_02",
+      "type": "usecase",
+      "mode": "mc",
+      "icon": "👤",
+      "question": "Was zeigt das Rechteck (Systemgrenze) im Use-Case-Diagramm?",
+      "diagramDef": {"type": "ucBoundary", "label": "Online-Shop", "cases": ["Produkt kaufen", "Produkt suchen"]},
+      "options": [
+        "Trennt das System (innen) von externen Akteuren (außen)",
+        "Datenbankgrenzen",
+        "Sicherheitsbereiche",
+        "Paketgruppierung"
+      ],
+      "correct": 0,
+      "explanation": "Die Systemgrenze (Rechteck) enthält alle Use-Cases. Akteure stehen außen."
+    },
+    {
+      "id": "uc_mc_03",
+      "type": "usecase",
+      "mode": "mc",
+      "icon": "👤",
+      "question": "Was bedeutet «include» in einem Use-Case-Diagramm?",
+      "diagramDef": {"type": "ucRel", "from": "Bestellen", "relType": "include", "to": "Anmelden"},
+      "options": [
+        "Basisfall ruft den eingeschlossenen Fall immer zwingend auf",
+        "Optional",
+        "Vererbung",
+        "Akteur übernimmt Use-Case"
+      ],
+      "correct": 0,
+      "explanation": "«include»: Immer Pflicht. Wenn 'Bestellen' ausgeführt wird, wird 'Anmelden' zwingend mitausgeführt."
+    },
+    {
+      "id": "uc_mc_04",
+      "type": "usecase",
+      "mode": "mc",
+      "icon": "👤",
+      "question": "Was bedeutet «extend»?",
+      "diagramDef": {"type": "ucRel", "from": "Produkt kaufen", "relType": "extend", "to": "Gutschein einlösen"},
+      "options": [
+        "Optionale Erweiterung – nur unter bestimmten Bedingungen",
+        "Pflichtaufruf",
+        "Vererbung zwischen Akteuren",
+        "Löscht den Basisfall"
+      ],
+      "correct": 0,
+      "explanation": "«extend»: Optional. 'Gutschein einlösen' erweitert 'Produkt kaufen' nur wenn Gutschein vorhanden."
+    },
+    {
+      "id": "uc_mc_05",
+      "type": "usecase",
+      "mode": "mc",
+      "icon": "🔍",
+      "question": "Fehler finden: 'Adresse eingeben' ist bei jeder Bestellung Pflicht – was ist falsch?",
+      "diagramDef": {"type": "ucRel", "from": "Bestellung aufgeben", "relType": "extend", "to": "Adresse eingeben", "error": true, "errorHint": "Adresse eingeben ist immer Pflicht"},
+      "options": [
+        "Muss «include» sein – Adresse eingeben ist immer Pflicht",
+        "Pfeil zeigt falsch",
+        "Akteur fehlt",
+        "Use-Cases dürfen nicht verbunden werden"
+      ],
+      "correct": 0,
+      "explanation": "Da Pflicht: «include». «extend» wäre nur für optionale Fälle korrekt."
+    },
+    {
+      "id": "uc_mc_06",
+      "type": "usecase",
+      "mode": "mc",
+      "icon": "👤",
+      "question": "'Kunde kann Produkte suchen und kaufen. Admin kann Produkte verwalten.' – Wie viele Akteure?",
+      "diagramDef": null,
+      "options": [
+        "2 – Kunde und Admin",
+        "1 – nur Kunde",
+        "3 – Kunde, Admin und Produkt",
+        "4"
+      ],
+      "correct": 0,
+      "explanation": "Akteure sind externe Rollen: Kunde und Admin = 2. Produkte sind Datenobjekte."
+    },
+    {
+      "id": "gap_kl_01",
+      "type": "klasse",
+      "mode": "gap",
+      "icon": "✏️",
+      "question": "Fülle die Sichtbarkeitszeichen aus. Alle Attribute sollen gekapselt sein:",
+      "diagramDef": {
+        "type": "gapClass",
+        "name": "BankKonto",
+        "rows": [
+          {"slot": 0, "text": "kontonummer: int"},
+          {"slot": 1, "text": "saldo: double"},
+          {"slot": 2, "text": "pin: int"},
+          {"sep": true},
+          {"fixed": "+", "text": "getSaldo(): double"},
+          {"fixed": "+", "text": "einzahlen(betrag: double): void"}
+        ]
+      },
+      "wordBank": ["-", "+", "#", "~"],
+      "solution": {"0": "-", "1": "-", "2": "-"},
+      "explanation": "Alle Attribute müssen private (-) sein – Datenkapselung. Zugriff nur über öffentliche Methoden."
+    },
+    {
+      "id": "gap_kl_02",
+      "type": "klasse",
+      "mode": "gap",
+      "icon": "✏️",
+      "question": "Ergänze Sichtbarkeiten: Attribute privat, Hilfsmethode geschützt, Hauptmethode öffentlich:",
+      "diagramDef": {
+        "type": "gapClass",
+        "name": "Tier",
+        "rows": [
+          {"slot": 0, "text": "name: String"},
+          {"slot": 1, "text": "alter: int"},
+          {"sep": true},
+          {"slot": 2, "text": "berechneAlter(): int"},
+          {"slot": 3, "text": "getName(): String"}
+        ]
+      },
+      "wordBank": ["-", "+", "#", "~"],
+      "solution": {"0": "-", "1": "-", "2": "#", "3": "+"},
+      "explanation": "Attribute → private (-), Hilfsmethode → protected (#), öffentlicher Getter → public (+)."
+    },
+    {
+      "id": "gap_er_01",
+      "type": "er",
+      "mode": "gap",
+      "icon": "✏️",
+      "question": "Setze Kardinalitäten: 'Ein Arzt hat genau eine Zulassung, eine Zulassung gehört zu genau einem Arzt'",
+      "diagramDef": {
+        "type": "gapErRow",
+        "left": "Arzt",
+        "rel": "hat",
+        "right": "Zulassung",
+        "slotLeft": 0,
+        "slotRight": 1
+      },
+      "wordBank": ["1", "n", "m", "0..1"],
+      "solution": {"0": "1", "1": "1"},
+      "explanation": "1:1 – genau ein Arzt zu genau einer Zulassung."
+    },
+    {
+      "id": "gap_er_02",
+      "type": "er",
+      "mode": "gap",
+      "icon": "✏️",
+      "question": "Kardinalitäten: 'Eine Bestellung gehört zu genau einem Kunden. Ein Kunde hat viele Bestellungen.'",
+      "diagramDef": {
+        "type": "gapErRow",
+        "left": "Bestellung",
+        "rel": "gehört zu",
+        "right": "Kunde",
+        "slotLeft": 0,
+        "slotRight": 1
+      },
+      "wordBank": ["1", "n", "m", "0..1"],
+      "solution": {"0": "n", "1": "1"},
+      "explanation": "n Bestellungen gehören zu 1 Kunden. Kardinalität von Bestellung zu Kunde = n:1."
+    },
+    {
+      "id": "gap_uc_01",
+      "type": "usecase",
+      "mode": "gap",
+      "icon": "✏️",
+      "question": "Wähle die korrekte Beziehungsart: 'Login ist bei jedem Kauf zwingend notwendig'",
+      "diagramDef": {
+        "type": "gapUcRel",
+        "from": "Produkt kaufen",
+        "to": "Login",
+        "slot": 0
+      },
+      "wordBank": ["include", "extend", "inherit", "use"],
+      "solution": {"0": "include"},
+      "explanation": "include = Pflicht. Login ist bei 'Produkt kaufen' immer zwingend erforderlich."
+    },
+    {
+      "id": "build_er_01",
+      "type": "er",
+      "mode": "build",
+      "icon": "🔨",
+      "question": "Baue das ER-Diagramm: 'Ein Mitarbeiter arbeitet in genau einer Abteilung. Eine Abteilung hat mehrere Mitarbeiter.'",
+      "diagramDef": null,
+      "buildHint": "Reihenfolge: Entity – Kardinalität – Beziehung – Kardinalität – Entity",
+      "wordBank": ["Mitarbeiter", "n", "arbeitet in", "1", "Abteilung", "m", "hat", "Projekt"],
+      "solution": ["Mitarbeiter", "n", "arbeitet in", "1", "Abteilung"],
+      "explanation": "n Mitarbeiter arbeiten in 1 Abteilung → n:1 (von Mitarbeiter zu Abteilung)."
+    },
+    {
+      "id": "build_er_02",
+      "type": "er",
+      "mode": "build",
+      "icon": "🔨",
+      "question": "Baue das ER-Diagramm: 'Ein Arzt behandelt mehrere Patienten. Ein Patient wird von mehreren Ärzten behandelt.'",
+      "diagramDef": null,
+      "buildHint": "Entity – Kardinalität – Beziehung – Kardinalität – Entity",
+      "wordBank": ["Arzt", "m", "behandelt", "n", "Patient", "1", "hat", "Diagnose"],
+      "solution": ["Arzt", "m", "behandelt", "n", "Patient"],
+      "explanation": "m Ärzte behandeln n Patienten → m:n Beziehung. Benötigt Zwischentabelle in der DB."
+    },
+    {
+      "id": "build_er_03",
+      "type": "er",
+      "mode": "build",
+      "icon": "🔨",
+      "question": "Baue das ER-Diagramm: 'Jedes Produkt gehört zu genau einer Kategorie. Eine Kategorie enthält viele Produkte.'",
+      "diagramDef": null,
+      "buildHint": "Entity – Kardinalität – Beziehung – Kardinalität – Entity",
+      "wordBank": ["Produkt", "n", "gehört zu", "1", "Kategorie", "m", "hat", "Bestellung"],
+      "solution": ["Produkt", "n", "gehört zu", "1", "Kategorie"],
+      "explanation": "Produkt (n) gehört zu Kategorie (1) → n:1."
+    },
+    {
+      "id": "build_uc_01",
+      "type": "usecase",
+      "mode": "build",
+      "icon": "🔨",
+      "question": "Baue: 'Beim Bestellen muss der Nutzer immer eingeloggt sein. Optional kann er einen Gutschein einlösen.'",
+      "diagramDef": null,
+      "buildHint": "Basisfall → Beziehungsart → Ziel (zweimal je Beziehung)",
+      "wordBank": ["Bestellen", "include", "Einloggen", "extend", "Gutschein einlösen", "Registrieren", "inherit"],
+      "solution": ["Bestellen", "include", "Einloggen", "Bestellen", "extend", "Gutschein einlösen"],
+      "explanation": "Einloggen = include (Pflicht). Gutschein = extend (optional). Beide gehen von Bestellen aus."
+    },
+    {
+      "id": "build_kl_01",
+      "type": "klasse",
+      "mode": "build",
+      "icon": "🔨",
+      "question": "Ordne die UML-Symbole: 'Auto erbt von Fahrzeug und implementiert das Interface Antreibbar.'",
+      "diagramDef": null,
+      "buildHint": "Erst Vererbung, dann Realisierung – jeweils: Klasse → Pfeil → Ziel",
+      "wordBank": ["Auto", "erbt von", "Fahrzeug", "implementiert", "Antreibbar", "enthält", "hat", "Motor"],
+      "solution": ["Auto", "erbt von", "Fahrzeug", "Auto", "implementiert", "Antreibbar"],
+      "explanation": "Auto erbt von Fahrzeug (Vererbung). Auto implementiert Antreibbar (Realisierung)."
+    },
+    {
+      "id": "draw_kl_01",
+      "type": "klasse",
+      "mode": "draw",
+      "icon": "🎨",
+      "question": "Zeichne: Auto erbt von Fahrzeug. Auto enthält (Komposition) einen Motor.",
+      "diagramDef": null,
+      "drawTask": {
+        "diagramType": "klasse",
+        "elements": [
+          {"name": "Fahrzeug", "kind": "class"},
+          {"name": "Auto",     "kind": "class"},
+          {"name": "Motor",    "kind": "class"}
+        ],
+        "relations": [
+          {"from": "Auto", "to": "Fahrzeug", "type": "inherit",  "label": "erbt von"},
+          {"from": "Auto", "to": "Motor",    "type": "compose",  "label": "Komposition"}
+        ]
+      },
+      "explanation": "Auto ◁── Fahrzeug = Vererbung. Auto ◆── Motor = Komposition (Motor existiert nicht ohne Auto)."
+    },
+    {
+      "id": "draw_kl_02",
+      "type": "klasse",
+      "mode": "draw",
+      "icon": "🎨",
+      "question": "Zeichne: PayPal und Kreditkarte implementieren beide das Interface Zahlbar.",
+      "diagramDef": null,
+      "drawTask": {
+        "diagramType": "klasse",
+        "elements": [
+          {"name": "Zahlbar",     "kind": "class"},
+          {"name": "PayPal",      "kind": "class"},
+          {"name": "Kreditkarte", "kind": "class"}
+        ],
+        "relations": [
+          {"from": "PayPal",      "to": "Zahlbar", "type": "implement", "label": "implementiert"},
+          {"from": "Kreditkarte", "to": "Zahlbar", "type": "implement", "label": "implementiert"}
+        ]
+      },
+      "explanation": "Realisierung (gestrichelte Linie + offenes Dreieck): PayPal ◁╌╌ Zahlbar, Kreditkarte ◁╌╌ Zahlbar."
+    },
+    {
+      "id": "draw_kl_03",
+      "type": "klasse",
+      "mode": "draw",
+      "icon": "🎨",
+      "question": "Zeichne: Team besteht aus mehreren Spielern (Aggregation). Spieler erbt von Person.",
+      "diagramDef": null,
+      "drawTask": {
+        "diagramType": "klasse",
+        "elements": [
+          {"name": "Person",  "kind": "class"},
+          {"name": "Spieler", "kind": "class"},
+          {"name": "Team",    "kind": "class"}
+        ],
+        "relations": [
+          {"from": "Spieler", "to": "Person", "type": "inherit",   "label": "erbt von"},
+          {"from": "Team",    "to": "Spieler","type": "aggregate", "label": "Aggregation"}
+        ]
+      },
+      "explanation": "Spieler ◁── Person (Vererbung). Team ◇── Spieler (Aggregation – Spieler kann ohne Team existieren)."
+    },
+    {
+      "id": "draw_er_01",
+      "type": "er",
+      "mode": "draw",
+      "icon": "🎨",
+      "question": "Zeichne ein ER-Diagramm: 'Ein Kunde gibt viele Bestellungen auf. Jede Bestellung gehört zu genau einem Kunden.' Verbinde mit der richtigen Kardinalität.",
+      "diagramDef": null,
+      "drawTask": {
+        "diagramType": "er",
+        "elements": [
+          {"name": "Kunde",      "kind": "entity"},
+          {"name": "gibt auf",   "kind": "rel"},
+          {"name": "Bestellung", "kind": "entity"}
+        ],
+        "relations": [
+          {"from": "Kunde",      "to": "gibt auf",   "type": "1:n", "label": "1:n"},
+          {"from": "gibt auf",   "to": "Bestellung", "type": "1:n", "label": "1:n"}
+        ]
+      },
+      "explanation": "1 Kunde gibt n Bestellungen auf. Beziehungsraute 'gibt auf' verbindet Kunde (1) und Bestellung (n)."
+    },
+    {
+      "id": "draw_er_02",
+      "type": "er",
+      "mode": "draw",
+      "icon": "🎨",
+      "question": "Zeichne ein ER-Diagramm: 'Studenten belegen Kurse – jeder Student kann viele Kurse belegen und jeder Kurs hat viele Studenten.'",
+      "diagramDef": null,
+      "drawTask": {
+        "diagramType": "er",
+        "elements": [
+          {"name": "Student", "kind": "entity"},
+          {"name": "belegt",  "kind": "rel"},
+          {"name": "Kurs",    "kind": "entity"}
+        ],
+        "relations": [
+          {"from": "Student", "to": "belegt", "type": "m:n", "label": "m:n"},
+          {"from": "belegt",  "to": "Kurs",   "type": "m:n", "label": "m:n"}
+        ]
+      },
+      "explanation": "m:n-Beziehung. Student (m) ── belegt ── Kurs (n). In der DB braucht du eine Zwischentabelle (Student_Kurs)."
+    },
+    {
+      "id": "draw_uc_01",
+      "type": "usecase",
+      "mode": "draw",
+      "icon": "🎨",
+      "question": "Zeichne ein Use-Case-Diagramm: Akteur 'Kunde' nutzt 'Produkt kaufen'. 'Produkt kaufen' beinhaltet zwingend 'Einloggen' und optional 'Gutschein einlösen'.",
+      "diagramDef": null,
+      "drawTask": {
+        "diagramType": "usecase",
+        "elements": [
+          {"name": "Kunde",              "kind": "actor"},
+          {"name": "Produkt kaufen",     "kind": "usecase"},
+          {"name": "Einloggen",          "kind": "usecase"},
+          {"name": "Gutschein einlösen", "kind": "usecase"}
+        ],
+        "relations": [
+          {"from": "Kunde",          "to": "Produkt kaufen",     "type": "assoc",   "label": "Assoziation"},
+          {"from": "Produkt kaufen", "to": "Einloggen",          "type": "include", "label": "include"},
+          {"from": "Gutschein einlösen", "to": "Produkt kaufen", "type": "extend",  "label": "extend"}
+        ]
+      },
+      "explanation": "Kunde –assoc→ Produkt kaufen. Produkt kaufen –include→ Einloggen (Pflicht). Gutschein einlösen –extend→ Produkt kaufen (optional, Pfeil zeigt vom erweiternden UC zum Basisfall)."
+    }
+  ]
+}
