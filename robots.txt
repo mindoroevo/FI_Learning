@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://mindoroevo.github.io/FI_Learning/sitemap.xml

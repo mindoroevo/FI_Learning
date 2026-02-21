@@ -7,7 +7,7 @@
   "display": "standalone",
   "background_color": "#0d1117",
   "theme_color": "#238636",
-  "description": "Lernanwendung fuer die FIAE AP1 Pruefungsvorbereitung",
+  "description": "Kostenlose PWA zur AP1-Prüfungsvorbereitung für Fachinformatiker Anwendungsentwicklung (FIAE). Lernkarten, Quiz und Spiele – offline nutzbar.",
   "icons": [
     {
       "src": "icons/icon_192.png",
