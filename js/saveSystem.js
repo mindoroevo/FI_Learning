@@ -726,6 +726,9 @@ function renderSettings() {
     <div class="sm-donate-wrap">
       <a href="https://www.paypal.com/paypalme/mindoroevo" target="_blank" rel="noopener noreferrer" class="sm-donate-btn">❤️ Projekt unterstützen via PayPal</a>
     </div>
+    <div class="sm-feedback-wrap">
+      <a href="mailto:mindoro.evolution@gmail.com?subject=Feedback%20%E2%80%93%20FIAE%20AP1%20Lernapp" class="sm-feedback-btn">📧 Idee oder Verbesserungswunsch senden</a>
+    </div>
   </div>`;
 }
 

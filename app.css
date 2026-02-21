@@ -1651,6 +1651,26 @@ html {
   }
 }
 
+@media (max-width: 600px) {
+  .legal-footer {
+    gap: 6px 10px;
+    padding: 8px 12px calc(8px + env(safe-area-inset-bottom));
+  }
+  .legal-sep {
+    display: none;
+  }
+  .legal-footer a {
+    font-size: 0.78rem;
+  }
+  .footer-donate-btn {
+    font-size: 0.78rem;
+    padding: 3px 10px;
+  }
+  .footer-feedback-btn {
+    font-size: 0.78rem;
+  }
+}
+
 @media (max-width: 480px) {
   .topbar {
     padding: 6px 10px;
@@ -1701,7 +1721,11 @@ html {
   padding: 10px 16px;
   border-top: 1px solid var(--border);
   background: var(--panel);
-  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 4px 0;
 }
 
 .legal-footer a {
@@ -1730,6 +1754,15 @@ html {
   color: #e53935 !important;
   transform: scale(1.04);
 }
+
+.footer-feedback-btn {
+  color: var(--muted) !important;
+  font-weight: 600;
+  font-size: 0.88rem;
+  text-decoration: none !important;
+  transition: color 0.15s;
+}
+.footer-feedback-btn:hover { color: var(--text) !important; }
 
 .legal-sep {
   color: var(--muted);
@@ -3896,6 +3929,28 @@ kbd {
 .sm-donate-btn:hover {
   box-shadow: 0 6px 20px color-mix(in srgb, #e53935 55%, transparent);
   transform: translateY(-2px);
+}
+
+.sm-feedback-wrap {
+  text-align: center;
+  margin-top: 10px;
+}
+.sm-feedback-btn {
+  display: inline-block;
+  padding: 8px 20px;
+  border-radius: 24px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--muted) !important;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: border-color 0.15s, color 0.15s, background 0.15s;
+}
+.sm-feedback-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent) !important;
+  background: color-mix(in srgb, var(--accent) 8%, transparent);
 }
 
 /* ── Donation Nudge Toast ── */
