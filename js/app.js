@@ -234,7 +234,39 @@ function registerServiceWorker() {
 
   navigator.serviceWorker
     .register("./sw.js")
-    .then(() => console.log("Service Worker registered"))
+    .then((registration) => {
+      console.log("Service Worker registered");
+
+      // If an update is already waiting, activate it immediately.
+      if (registration.waiting) {
+        registration.waiting.postMessage({ type: "SKIP_WAITING" });
+      }
+
+      registration.addEventListener("updatefound", () => {
+        const newWorker = registration.installing;
+        if (!newWorker) return;
+
+        newWorker.addEventListener("statechange", () => {
+          if (newWorker.state === "installed" && navigator.serviceWorker.controller) {
+            newWorker.postMessage({ type: "SKIP_WAITING" });
+          }
+        });
+      });
+
+      let refreshing = false;
+      navigator.serviceWorker.addEventListener("controllerchange", () => {
+        if (refreshing) return;
+        refreshing = true;
+        window.location.reload();
+      });
+
+      // Trigger SW update checks when the tab becomes active again.
+      document.addEventListener("visibilitychange", () => {
+        if (document.visibilityState === "visible") {
+          registration.update().catch(() => {});
+        }
+      });
+    })
     .catch((err) => console.warn("Service Worker failed", err));
 }
 
