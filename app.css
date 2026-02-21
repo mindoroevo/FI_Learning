@@ -1651,26 +1651,6 @@ html {
   }
 }
 
-@media (max-width: 600px) {
-  .legal-footer {
-    gap: 6px 10px;
-    padding: 8px 12px calc(8px + env(safe-area-inset-bottom));
-  }
-  .legal-sep {
-    display: none;
-  }
-  .legal-footer a {
-    font-size: 0.78rem;
-  }
-  .footer-donate-btn {
-    font-size: 0.78rem;
-    padding: 3px 10px;
-  }
-  .footer-feedback-btn {
-    font-size: 0.78rem;
-  }
-}
-
 @media (max-width: 480px) {
   .topbar {
     padding: 6px 10px;
@@ -1725,7 +1705,22 @@ html {
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  gap: 4px 0;
+  gap: 6px 16px;
+}
+
+@media (max-width: 600px) {
+  .legal-footer {
+    gap: 6px 12px;
+    padding: 8px 12px calc(8px + env(safe-area-inset-bottom));
+    font-size: 0.78rem;
+  }
+  .footer-donate-btn {
+    font-size: 0.78rem;
+    padding: 3px 10px;
+  }
+  .footer-feedback-btn {
+    font-size: 0.78rem;
+  }
 }
 
 .legal-footer a {
@@ -1764,11 +1759,7 @@ html {
 }
 .footer-feedback-btn:hover { color: var(--text) !important; }
 
-.legal-sep {
-  color: var(--muted);
-  margin: 0 8px;
-  opacity: 0.5;
-}
+
 
 /* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
    BLITZ-KARTEN GAME
